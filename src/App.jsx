@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { createContext, useEffect, useRef, useState } from 'react'
 import './App.css'
+import FestivalList from './components/festival/festivallist';
+import Header from './components/header/header';
+
+const configContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [config,setConfig] = useState({
+		languages:[
+			'Kor',
+			'Eng',
+			'Jpn'
+		],
+		language:'Kor'
+	})
+	const handleConfig = {
+		setLanguage:(value)=>{
+			setConfig({
+				...config,
+				language:value
+			})
+		},
+		getLanguageByIndex:(index)=>{
+			return config.languages[index]
+		}
+	}
+	return <>
+		<configContext.Provider value={config}>
+			<Header handleConfig={handleConfig}/>
+			<FestivalList>
+			</FestivalList>
+		</configContext.Provider>
+	</>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
 }
 
-export default App
+export { App, configContext }
