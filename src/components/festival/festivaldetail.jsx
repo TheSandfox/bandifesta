@@ -18,13 +18,18 @@ export default function FestivalDetail() {
 				console.log('헉')
 				return;
 			}
-			await axios.get(config.baseUrl[param.language]+'detailIntro1',{params:{
+			await axios.get(config.baseUrl[param.language]+'detailCommon1',{params:{
 				MobileOS:'WIN',
 				MobileApp:'bandifesta',
 				_type:'json',
 				contentId:param.contentid,
-				// contentTypeId:'0',
-				contentTypeId:param.contenttypeid,
+				defaultYN:'Y',
+				firstImageYN:'Y',
+				areacodeYN:'Y',
+				catcodeYN:'Y',
+				addrinfoYN:'Y',
+				mapinfoYN:'Y',
+				overviewYN:'Y',
 				serviceKey:config.serviceKey
 			}}).then((response)=>{
 				console.log(response)

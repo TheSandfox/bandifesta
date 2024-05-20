@@ -4,6 +4,7 @@ import FestivalList from './components/festival/festivallist';
 import Header from './components/header/header';
 import { Route, Routes } from 'react-router-dom';
 import FestivalDetail from './components/festival/festivaldetail';
+import Main from './components/main/main';
 
 const configContext = createContext();
 
@@ -38,7 +39,9 @@ function App() {
 		<configContext.Provider value={config}>
 			<Header handleConfig={handleConfig}/>
 			<Routes>
-				<Route path={'/*'} element={<FestivalList/>}/>
+				<Route exact path={'/'} element={<Main/>}/>
+				{/* <Route path={'/'} element={<FestivalList/>}/> */}
+				<Route exact path={'/festival/list'} element={<FestivalList/>}/>
 				<Route path={'/festival/detail/:contentid/:contenttypeid/:language'} element={<FestivalDetail/>}/>
 			</Routes>
 		</configContext.Provider>
