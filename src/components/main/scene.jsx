@@ -1,59 +1,111 @@
-import { useGLTF } from '@react-three/drei';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useGLTF, Environment, useAnimations } from '@react-three/drei';
+import { Canvas, useFrame, useThree, useLoader, extend } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useControls } from 'leva';
+import { Water } from 'three-stdlib'
 import * as THREE from 'three';
+import waterNormalsFile from '/src/assets/waternormals.jpeg';
+
+extend({ Water })
 
 function SceneObject() {
+	const three = useThree()
 	const gltf = useGLTF('bandifesta_scene.glb');
-	const scene = useMemo(() => gltf.scene.clone(), [gltf.scene]);
-	const control = useControls({
-		positionX: { value: 0.0, min: -50, max: 50, step: 0.05, label: 'position x' },
-		positionY: { value: 0.0, min: -50, max: 50, step: 0.05, label: 'position y' },
-		positionZ: { value: 0.0, min: -50, max: 50, step: 0.05, label: 'position z' },
-		rotationX: { value: 0.0, min: -180, max: 180, step: 1.0, label: 'rotation x' },
-		rotationY: { value: 0.0, min: -180, max: 180, step: 1.0, label: 'rotation y' },
-		rotationZ: { value: 0.0, min: -180, max: 180, step: 1.0, label: 'rotation z' },
-	  });
-	// 카메라 리프레시
-	useEffect(() => {
-		// scene.position.set(control.positionX,control.positionY,control.positionZ)
-	},[control.positionX,control.positionY,control.positionZ])
+	const waterNormals = useLoader(THREE.TextureLoader, waterNormalsFile)
+	const [scene,camera] = useMemo(() => [gltf.scene.clone(),gltf.cameras[0].clone()], [gltf.scene]);
+	const animations = useAnimations(gltf.animations,scene)
+	const waterRef = useRef();
+	const waterPlane = useMemo(()=>{
+		return new THREE.PlaneGeometry(10000, 10000);
+	},[])
+	const waterConfig = useMemo(()=>{
+		return {
+			textureWidth: 512,
+			textureHeight: 512,
+			waterNormals,
+			sunDirection: new THREE.Vector3(),
+			sunColor: 0x000033,
+			waterColor: 0x000033,
+			distortionScale: 1.5,
+			fog: true,
+			format: three.encoding
+		}
+	},[waterNormals]);
 
 	useEffect(()=>{
-		console.log(scene);
-	},[])
+		// console.log(three);
+		console.log(gltf);
+		// scene.add(camera);
+		// console.log(camera);
+		// three.camera = camera.clone();
+		three.camera.position.copy(camera.position);
+		three.camera.rotation.copy(camera.rotation);
+		three.camera.fov = camera.fov;
+		// three.camera.aspect = camera.aspect;
+		// three.camera.aspect = camera.aspect;
+		// three.camera.position.copy(camera.position);
+		// three.camera.rotation.copy(camera.rotation);
+		// camera.updateProjectionMatrix();
+		three.camera.updateProjectionMatrix();
+		scene.fog = new THREE.Fog('black', 5, 50);
+		//애니메이션 초기화
+		console.log(animations.actions);
+		animations.actions['boat_float'].play();
+		animations.actions['boat_shake'].play();
+		animations.actions['kumo_flow1'].play();
+		animations.actions['kumo_flow2'].play();
+		// dispatchEvent({},'resize');
+		return ()=>{
+
+		}
+	},[scene,camera])
+
+	useFrame((state,delta)=>{
+		waterRef.current.material.uniforms.time.value += delta*0.25;
+		// three.camera.updateProjectionMatrix();
+	})
 
 	return (
 		<>
-			<ambientLight />
+			<fog/>
+			<Environment 
+				files={'bandifesta_environment.hdr'} 
+				background blur={0.25}
+				environmentIntensity={0.33}
+				backgroundIntensityIntensity={0.15}
+				backgroundRotationotation={[ 0.5, 0, 0, 0.8660254 ]}
+			/>
+			<ambientLight intensity={0.45}/>
+			<water ref={waterRef} args={[waterPlane, waterConfig]} rotation-x={-Math.PI / 2} />
 			<primitive 
 				object={scene} 
-				position={[
-					control.positionX,
-					control.positionY,
-					control.positionZ
-				]}
-				rotation={[
-					THREE.MathUtils.degToRad(control.rotationX),
-					THREE.MathUtils.degToRad(control.rotationY),
-					THREE.MathUtils.degToRad(control.rotationZ)
-				]}
 			/>
 		</>
 	);
 }
 
 export default function Scene() {
-	return (
+	const [loaded,setLoaded] = useState(false);
+	//로딩연출
+	useEffect(()=>{
+		const loadingTimeout = setTimeout(()=>{
+			setLoaded(true);
+		},2000);
+		return ()=>{
+			clearTimeout(loadingTimeout)
+		}
+	},[])
+	return <div className='scene'>
 		<Canvas 
-			camera={{fov:45,near:0.05,far:128,position:[
-				0,
-				5,
-				15
-			]}}
+			// camera={{fov:45,near:0.05,far:128,position:[
+			// 	0,
+			// 	5,
+			// 	15
+			// ]}}
 		>
 			<SceneObject />
 		</Canvas>
-	);
+		{!loaded?<div className='loadingBackdrop'>
+			잠깐만...
+		</div>:<></>}
+	</div>
 }
