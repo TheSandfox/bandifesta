@@ -39,10 +39,10 @@ function App() {
 		<configContext.Provider value={config}>
 			<Header handleConfig={handleConfig}/>
 			<Routes>
-				<Route exact path={'/'} element={<Main/>}/>
-				{/* <Route path={'/'} element={<FestivalList/>}/> */}
-				<Route exact path={'/festival/list'} element={<FestivalList/>}/>
-				<Route path={'/festival/detail/:contentid/:contenttypeid/:language'} element={<FestivalDetail/>}/>
+				{/* <Route exact path={'/'} element={<Main/>}/> */}
+				<Route path={'/'} element={<FestivalList/>}/>
+				{/* <Route exact path={'/festival/list'} element={<FestivalList/>}/> */}
+				{/* <Route path={'/festival/detail/:contentid/:contenttypeid/:language'} element={<FestivalDetail/>}/> */}
 			</Routes>
 		</configContext.Provider>
 	</>

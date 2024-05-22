@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Water } from 'three-stdlib'
 import * as THREE from 'three';
 import waterNormalsFile from '/src/assets/waternormals.jpeg';
+import Loading from '../generic/loading';
 
 extend({ Water })
 
@@ -84,28 +85,27 @@ function SceneObject() {
 }
 
 export default function Scene() {
-	const [loaded,setLoaded] = useState(false);
-	//로딩연출
+	const canvasRef = useRef();
 	useEffect(()=>{
-		const loadingTimeout = setTimeout(()=>{
-			setLoaded(true);
-		},2000);
+		const timeoutCallback = ()=>{
+			// console.log(canvasRef.current);
+			canvasRef.current.parentElement.parentElement.classList.add('active');
+		}
+		const timer = setTimeout(timeoutCallback,1000);
+
 		return ()=>{
-			clearTimeout(loadingTimeout)
+			clearTimeout(timer);
 		}
 	},[])
 	return <div className='scene'>
+		<div className='loadingBackdrop'>
+			<Loading timeout={3.5}/>
+		</div>
 		<Canvas 
-			// camera={{fov:45,near:0.05,far:128,position:[
-			// 	0,
-			// 	5,
-			// 	15
-			// ]}}
+			className='canvas'
+			ref={canvasRef}
 		>
 			<SceneObject />
 		</Canvas>
-		{!loaded?<div className='loadingBackdrop'>
-			잠깐만...
-		</div>:<></>}
 	</div>
 }
