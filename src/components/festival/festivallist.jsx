@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { configContext } from "../../App";
 import FestivalWidget from "./festivalwidget";
 import axios from 'axios';
-import { getFestivals } from "../../utils/festivalUtils";
+import { getFestivals } from '/src/api_utils/festivalUtils.js';
 
 export default function FestivalList({}) {
 	const config = useContext(configContext)
