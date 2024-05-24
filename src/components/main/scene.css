@@ -1,12 +1,7 @@
 .scene {
 	position: relative;
-	/* width:1280px;
-	height:720px; */
-	/* @media screen and (max-width:1280px) { */
-		width:100vw;
-		height:calc(80vw * (1080 / 1920));
-		/* height:100vh; */
-	/* } */
+	width:100vw;
+	height:calc(80vw * (1080 / 1920));
 	& .loadingBackdrop {
 		top:0;
 		left:0;

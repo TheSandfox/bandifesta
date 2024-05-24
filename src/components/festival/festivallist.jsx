@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { configContext } from "../../App";
 import FestivalWidget from "./festivalwidget";
-import axios from 'axios';
-import { getFestivals } from '/src/api_utils/festivalUtils.js';
+import { getOngoingFestivals } from '/src/api_utils/festivalUtils.js';
 
 export default function FestivalList({}) {
 	const config = useContext(configContext)
@@ -16,15 +15,15 @@ export default function FestivalList({}) {
 			loaded:false,
 			items:[]
 		})
-		getFestivals({
-			language:config.language,
+		getOngoingFestivals({
 			itemsPerPage:10,
-			pageNum:1
+			pageNum:1,
+			language:config.language
 		},(response)=>{
 			console.log(response);
 			setFestivals({
 				loaded:true,
-				items:response.body.items.item
+				items:response.data
 			})
 		})
 	},[config.language]);
@@ -36,7 +35,7 @@ export default function FestivalList({}) {
 				:(
 					festivals.items.length>0
 					?festivals.items.map((item)=>{
-						return <FestivalWidget key={item.contentid} festival={item}/>
+						return <FestivalWidget key={item.festival_id} festival={item}/>
 					})
 					:'...'
 				)

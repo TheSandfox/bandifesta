@@ -1,51 +1,30 @@
 import axios from "axios";
-const APPLICATION_NAME = 'bandifesta'
-const SERVICE_KEY = '+ArYhKOZcxDx6hjFGpftMY/IAhHCTOHX+GQm/rYzumqwDOlNLI1vh1c+Z52O20B1fhakJsvh1P+Yf9+0+Xfy7w==';
-const BASE_URL = {
-	Kor:'https://apis.data.go.kr/B551011/KorService1/',
-	Eng:'https://apis.data.go.kr/B551011/EngService1/',
-	Jpn:'https://apis.data.go.kr/B551011/JpnService1/'
-};
-/*{
-	language:Kor or Eng or Jpn,
-	itemsPerPage: 페이지당 아이템갯수,
-	pageNum: 페이지 번호,
-	sortMethod: 정렬방식('')
-}*/
-const getFestivals = async(params,callback)=>{
-	const today = new Date();
-	const minDay = new Date(today.setFullYear(today.getFullYear()-1));
-	const maxDay = new Date(today.setFullYear(today.getFullYear()+2));
-	await axios.get(BASE_URL[params.language]+'searchFestival1',{params:{
-		numOfRows:String(parseInt(params.itemsPerPage)),
-		pageNo:String(parseInt(params.pageNum||1)),
-		MobileOS:'WIN',
-		MobileApp:APPLICATION_NAME,
-		_type:'json',
-		arrange:(params.sortMethod||'D'),
-		eventStartDate:
-			String(minDay.getFullYear())+
-			String(minDay.getMonth()+2)+
-			String(minDay.getDate()),
-		eventEndDate:
-			String(maxDay.getFullYear())+
-			String(maxDay.getMonth()+2)+
-			String(maxDay.getDate()),
-		serviceKey:SERVICE_KEY
-	}})
+
+const DEBUG = true
+const BASE_URL = 
+	DEBUG
+	//백엔드 어플리케이션 URL
+	?'http://localhost:3001/api'//로컬
+	:'https://port-0-bandifesta-rest-ss7z32llwjy3ukc.sel5.cloudtype.app/api'//배포된거
+
+const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
+	await axios.get(BASE_URL+'/getOngoingFestivals',{
+		params
+	})
 	.then(function (response) {
 		// 성공 핸들링
-		callback(response.data.response);
+		thenCallback(response);
 	})
 	.catch(function (error) {
 		// 에러 핸들링
-		console.log(error);
+		if(catchCallback){catchCallback(error);}
 	})
 	.finally(function () {
 		// 항상 실행되는 영역
+		if(finallyCallback){finallyCallback();}
 	});
 }
 
 export {
-	getFestivals,
+	getOngoingFestivals,
 }
