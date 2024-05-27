@@ -9,6 +9,7 @@ export default function FestivalList({}) {
 		loaded:false,
 		items:[]
 	});
+	console.log("엥...")
 	//언어 변경 시
 	useEffect(()=>{
 		setFestivals({

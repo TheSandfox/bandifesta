@@ -1,14 +1,17 @@
-import { createContext, useEffect, useRef, useState } from 'react'
+import { createContext, useState } from 'react'
 import './App.css'
 import FestivalList from './components/festival/festivallist';
 import Header from './components/header/header';
-import { Route, Routes } from 'react-router-dom';
-import FestivalDetail from './components/festival/festivaldetail';
-import Main from './components/main/main';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import {Main,RedirectMain} from './components/main/main';
+import { LoginRedirect } from './components/header/login';
 
 const configContext = createContext();
 
 function App() {
+	//
+	const navigate = useNavigate();
+	//전역설정
 	const [config,setConfig] = useState({
 		languages:[
 			'Kor',
@@ -24,6 +27,7 @@ function App() {
 		},
 		debug:true
 	})
+	//전역설정 핸들러
 	const handleConfig = {
 		setLanguage:(value)=>{
 			setConfig({
@@ -40,7 +44,10 @@ function App() {
 			<Header handleConfig={handleConfig}/>
 			<Routes>
 				{/* <Route exact path={'/'} element={<Main/>}/> */}
-				<Route path={'/'} element={<FestivalList/>}/>
+				<Route exact path={'/'} element={<RedirectMain></RedirectMain>}/>
+				<Route path={'/main'} element={<Main></Main>}/>
+				<Route path={'/list'} element={<FestivalList/>}/>
+				<Route path={'/loginRedirect/:code'} element={<LoginRedirect/>}/>
 				{/* <Route exact path={'/festival/list'} element={<FestivalList/>}/> */}
 				{/* <Route path={'/festival/detail/:contentid/:contenttypeid/:language'} element={<FestivalDetail/>}/> */}
 			</Routes>

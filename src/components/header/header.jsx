@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { Login } from "./login"
 
 export default function Header({handleConfig}) {
 	const [selectValue,setSelectValue] = useState(
@@ -12,11 +13,12 @@ export default function Header({handleConfig}) {
 		handleConfig.setLanguage(event.target.value)
 	}
 	return <header>
-		<Link to={'/'}>메인으로가</Link>
+		<Link to={'/main'}>메인으로가</Link>
 		<select onChange={selectCallback} value={selectValue}>
 			<option value={handleConfig.getLanguageByIndex(0)}>한글</option>
 			<option value={handleConfig.getLanguageByIndex(1)}>English</option>
 			<option value={handleConfig.getLanguageByIndex(2)}>日本語</option>
 		</select>
+		<Login></Login>
 	</header>
 }

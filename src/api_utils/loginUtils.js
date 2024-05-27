@@ -1,9 +1,9 @@
 import axios from "axios";
 import * as config from "./utilsConfig";
 
-const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.get(config.BASE_URL+'/festival/getOngoing',{
-		params
+const requestToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
+	await axios.post(config.BASE_URL+'/kakao/requestToken',{
+		...body
 	})
 	.then(function (response) {
 		// 성공 핸들링
@@ -20,5 +20,5 @@ const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallb
 }
 
 export {
-	getOngoingFestivals,
+	requestToken,
 }
