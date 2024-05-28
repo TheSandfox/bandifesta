@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { requestToken } from "../../api_utils/loginUtils";
+import { BASE_URL } from "../../api_utils/utilsConfig";
 
 function LoginRedirect({}) {
 	const [codeString,setCodeString] = useState('');
@@ -23,8 +24,7 @@ function LoginRedirect({}) {
 
 function Login({}) {
 	const rest_api_key = 'c502c6ea782c2e1b700109d94cd8a0f8';
-	const redirect_uri = 'http://localhost:5173/bandifesta';
-	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
+	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${rest_api_key}&redirect_uri=${BASE_URL}&response_type=code`;
 	const handleLogin = {
 		submit:()=>{
 			window.location.href = authorizer;

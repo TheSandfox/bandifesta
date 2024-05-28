@@ -1,4 +1,4 @@
-const DEBUG = true
+const DEBUG = false
 const BASE_URL = 
 	DEBUG
 	//백엔드 어플리케이션 URL
