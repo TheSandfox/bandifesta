@@ -11,7 +11,7 @@ const cookieConfig = {
 	secure:true,
 	httpOnly:false
 }
-const REDIRECT_URI = import.meta.env.VITE_DEBUG
+const REDIRECT_URI = import.meta.env.VITE_DEBUG==="true"
 ?'http://localhost:5173/bandifesta'
 :'https://thesandfox.github.io/bandifesta'
 
