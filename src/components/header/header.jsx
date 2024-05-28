@@ -14,6 +14,7 @@ export default function Header({handleConfig}) {
 	}
 	return <header>
 		<Link to={'/main'}>메인으로가</Link>
+		<Link to={'/list'}>리스트로가</Link>
 		<select onChange={selectCallback} value={selectValue}>
 			<option value={handleConfig.getLanguageByIndex(0)}>한글</option>
 			<option value={handleConfig.getLanguageByIndex(1)}>English</option>

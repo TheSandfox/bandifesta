@@ -1,40 +1,64 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { requestToken } from "../../api_utils/loginUtils";
-import { BASE_URL } from "../../api_utils/utilsConfig";
+import { login, loginRequest, logout, unlink, REDIRECT_URI, getKakaoUser } from "../../api_utils/loginUtil";
 
 function LoginRedirect({}) {
-	const [codeString,setCodeString] = useState('');
 	const params = useParams();
 	useEffect(()=>{
 		if (params.code) {
-			setCodeString(params.code);
-			requestToken({
+			login({
 				code:params.code
 			},(response)=>{
-				console.log(response.data);
-				setTimeout(()=>{
-					console.log(document.cookie);
-				},1000);
+				window.location.href = REDIRECT_URI;
 			});
 		}
 	},[])
-	return <>로그인리다이렉트!! {codeString}</>
+	return <></>
 }
 
 function Login({}) {
-	const rest_api_key = 'c502c6ea782c2e1b700109d94cd8a0f8';
-	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${rest_api_key}&redirect_uri=${BASE_URL}&response_type=code`;
+	const [isLogin,setIsLogin] = useState(0);//0로딩안됨, 1로그인, (그외)로그아웃
 	const handleLogin = {
-		submit:()=>{
-			window.location.href = authorizer;
+		login:()=>{
+			loginRequest();
 		},
 		logout:()=>{
-			//do something
+			logout({},()=>{
+				setIsLogin(-1);
+			})
+		},
+		unlink:()=>{
+			unlink({},()=>{
+				setIsLogin(-1);
+			})
 		}
 	}
+	//컴포넌트분기
+	const jsxVal = useMemo(()=>{
+		switch (parseInt(isLogin)) {
+		case 0:
+			return <button onClick={handleLogin.login}>딸깍</button>;
+		case 1:
+			return <>
+				<button onClick={handleLogin.logout}>로그아웃하기!</button>
+				<button onClick={handleLogin.unlink}>회원탈퇴에에에엥</button>
+			</>;
+		default:
+			return <button onClick={handleLogin.login}>딸깍</button>;
+		}
+	},[isLogin]);
+	//로그인돼있는지확인
+	useEffect(()=>{
+		getKakaoUser({
+			
+		},(response)=>{
+			setIsLogin(1);
+		},(error)=>{
+			setIsLogin(-1);
+		})
+	},[])
 	return <>
-		<button onClick={handleLogin.submit}>딸깍</button>
+		{jsxVal}
 	</>
 }
 

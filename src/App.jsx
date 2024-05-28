@@ -19,13 +19,6 @@ function App() {
 			'Jpn'
 		],
 		language:'Kor',
-		serviceKey:'+ArYhKOZcxDx6hjFGpftMY/IAhHCTOHX+GQm/rYzumqwDOlNLI1vh1c+Z52O20B1fhakJsvh1P+Yf9+0+Xfy7w==',
-		baseUrl:{
-			Kor:'https://apis.data.go.kr/B551011/KorService1/',
-			Eng:'https://apis.data.go.kr/B551011/EngService1/',
-			Jpn:'https://apis.data.go.kr/B551011/JpnService1/'
-		},
-		debug:true
 	})
 	//전역설정 핸들러
 	const handleConfig = {
