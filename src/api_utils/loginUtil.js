@@ -11,8 +11,7 @@ const cookieConfig = {
 	secure:true,
 	httpOnly:false
 }
-const REST_KEY = 'c502c6ea782c2e1b700109d94cd8a0f8'
-const REDIRECT_URI = config.DEBUG
+const REDIRECT_URI = import.meta.env.VITE_DEBUG
 ?'http://localhost:5173/bandifesta'
 :'https://thesandfox.github.io/bandifesta'
 
@@ -25,6 +24,31 @@ const login = async(body,thenCallback,catchCallback,finallyCallback)=>{
 		}
 	})
 	.then(function (response) {
+		setCookie('access_token',response.data['access_token']);
+		setCookie('refresh_token',response.data['refresh_token']);
+		// 성공 핸들링
+		thenCallback(response);
+	})
+	.catch(function (error) {
+		// 에러 핸들링
+		if(catchCallback){catchCallback(error);}
+	})
+	.finally(function () {
+		// 항상 실행되는 영역
+		if(finallyCallback){finallyCallback();}
+	});
+}
+
+const refreshToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
+	await axios.post(config.BASE_URL+'/kakao/refreshToken',QueryString.stringify({
+		...body
+	}),{
+		headers:{
+
+		}
+	})
+	.then(function (response) {
+		console.log('토큰 리프레시');
 		setCookie('access_token',response.data['access_token']);
 		setCookie('refresh_token',response.data['refresh_token']);
 		// 성공 핸들링
@@ -65,7 +89,8 @@ const getKakaoUser = async(body,thenCallback,catchCallback,finallyCallback)=>{
 }
 
 const loginRequest = ()=>{
-	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+	console.log(import.meta.env.VITE_KAKAO_REST_KEY);
+	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_REST_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 	window.location.href = authorizer;
 }
 
@@ -137,6 +162,7 @@ export {
 	login,
 	logout,
 	unlink,
+	refreshToken,
 	//UTILS
 	getCookie,
 	setCookie,
