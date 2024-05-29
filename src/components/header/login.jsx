@@ -9,6 +9,8 @@ function LoginRedirect({}) {
 			login({
 				code:params.code
 			},()=>{
+				console.log('야!!!!');
+				console.log(import.meta.env.VITE_REDIRECT_URL);
 				window.location.href = import.meta.env.VITE_REDIRECT_URL;
 			});
 		}
