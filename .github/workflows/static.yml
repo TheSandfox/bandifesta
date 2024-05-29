@@ -1,16 +1,16 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite React App
 
 on:
   push:
     branches:
-      - main
+      - main  # 메인 브랜치에 푸시할 때 워크플로 실행
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Node.js
@@ -21,12 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build project
         run: npm run build
         env:
-          VITE_KAKAO_REST_KEY: ${{ secrets.VITE_KAKAO_REST_KEY }}
+          VITE_KAKAO_REST_KEY: ${{ secrets.VITE_KAKAO_REST_KEY }}  # 환경 변수 설정
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
