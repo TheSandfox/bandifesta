@@ -9,7 +9,7 @@ function LoginRedirect({}) {
 			login({
 				code:params.code
 			},()=>{
-				
+				window.location.href = import.meta.env.VITE_REDIRECT_URL;
 			});
 		}
 	},[])

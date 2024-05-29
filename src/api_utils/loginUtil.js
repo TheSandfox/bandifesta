@@ -22,7 +22,6 @@ const login = async(body,thenCallback,catchCallback,finallyCallback)=>{
 	.then(function (response) {
 		setCookie('access_token',response.data['access_token']);
 		setCookie('refresh_token',response.data['refresh_token']);
-		window.location.href = import.meta.env.VITE_REDIRECT_URL;
 		// 성공 핸들링
 		thenCallback(response);
 	})
