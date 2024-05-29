@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { login, loginRequest, logout, unlink, REDIRECT_URI, getKakaoUser } from "../../api_utils/loginUtil";
+import { login, loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil";
 
 function LoginRedirect({}) {
 	const params = useParams();
