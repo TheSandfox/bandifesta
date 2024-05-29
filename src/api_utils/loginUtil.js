@@ -10,9 +10,6 @@ const cookieConfig = {
 	secure:true,
 	httpOnly:false
 }
-const REDIRECT_URI = import.meta.env.VITE_DEBUG==="true"
-?'http://localhost:5173/bandifesta'
-:'https://thesandfox.github.io/bandifesta'
 
 const login = async(body,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/login',QueryString.stringify({
@@ -88,7 +85,7 @@ const getKakaoUser = async(body,thenCallback,catchCallback,finallyCallback)=>{
 }
 
 const loginRequest = ()=>{
-	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_REST_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_REST_KEY}&redirect_uri=${import.meta.env.VITE_REDIRECT_URL}&response_type=code`;
 	window.location.href = authorizer;
 }
 
@@ -164,5 +161,4 @@ export {
 	//UTILS
 	getCookie,
 	setCookie,
-	REDIRECT_URI
 }
