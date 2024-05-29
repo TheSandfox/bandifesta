@@ -8,8 +8,8 @@ function LoginRedirect({}) {
 		if (params.code) {
 			login({
 				code:params.code
-			},(response)=>{
-				window.location.href = REDIRECT_URI;
+			},()=>{
+				
 			});
 		}
 	},[])
