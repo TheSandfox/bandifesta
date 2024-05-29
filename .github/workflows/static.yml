@@ -25,6 +25,7 @@ jobs:
         run: npm run build
         env:
           VITE_KAKAO_REST_KEY: ${{ secrets.VITE_KAKAO_REST_KEY }}  # 환경 변수 설정
+          VITE_DEBUG_FALSE: ${{ secrets.VITE_DEBUG }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
