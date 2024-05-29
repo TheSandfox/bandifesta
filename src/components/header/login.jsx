@@ -5,6 +5,8 @@ import { login, loginRequest, logout, unlink, getKakaoUser } from "../../api_uti
 function LoginRedirect({}) {
 	const params = useParams();
 	useEffect(()=>{
+		console.log("리다이렉트 마운트");
+		console.log(import.meta.env.VITE_REDIRECT_URL);
 		if (params.code) {
 			login({
 				code:params.code
@@ -12,6 +14,8 @@ function LoginRedirect({}) {
 				console.log('야!!!!');
 				console.log(import.meta.env.VITE_REDIRECT_URL);
 				window.location.href = import.meta.env.VITE_REDIRECT_URL;
+			},(error)=>{
+				console.log(error);
 			});
 		}
 	},[])

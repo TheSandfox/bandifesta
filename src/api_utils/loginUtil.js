@@ -85,7 +85,7 @@ const getKakaoUser = async(body,thenCallback,catchCallback,finallyCallback)=>{
 }
 
 const loginRequest = ()=>{
-	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_REST_KEY}&redirect_uri=${import.meta.env.VITE_REDIRECT_URL}&response_type=code`;
+	const authorizer = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_REST_KEY}&redirect_uri=${encodeURI(import.meta.env.VITE_REDIRECT_URL)}&response_type=code`;
 	window.location.href = authorizer;
 }
 
