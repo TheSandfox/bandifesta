@@ -1,4 +1,4 @@
-console.log(import.meta.env.VITE_DEBUG);
+console.log(import.meta.env.VITE_DEBUG+"!!!");
 const BASE_URL = 
 	import.meta.env.VITE_DEBUG==="true"
 	//백엔드 어플리케이션 URL
