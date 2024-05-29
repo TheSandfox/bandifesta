@@ -1,4 +1,5 @@
-// console.log(String(import.meta.env.VITE_DEBUG)+"!!");
+console.log(String(import.meta.env.VITE_DEBUG)+"!!");
+console.log(String(import.meta.env.VITE_KAKAO_REST_KEY)+"!!");
 // console.log('깔깔!!');
 const BASE_URL = 
 	(Boolean(import.meta.env.VITE_DEBUG)===true)
