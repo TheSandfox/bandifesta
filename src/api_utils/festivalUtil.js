@@ -1,8 +1,7 @@
 import axios from "axios";
-import * as config from "./utilsConfig";
 
 const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.get(config.BASE_URL+'/festival/getOngoing',{
+	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getOngoing',{
 		params
 	})
 	.then(function (response) {

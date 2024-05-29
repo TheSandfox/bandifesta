@@ -1,5 +1,4 @@
 import axios from "axios";
-import * as config from "./utilsConfig";
 import QueryString from "qs";
 import Cookies from "universal-cookie";
 
@@ -16,7 +15,7 @@ const REDIRECT_URI = import.meta.env.VITE_DEBUG==="true"
 :'https://thesandfox.github.io/bandifesta'
 
 const login = async(body,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.post(config.BASE_URL+'/kakao/login',QueryString.stringify({
+	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/login',QueryString.stringify({
 		...body
 	}),{
 		headers:{
@@ -40,7 +39,7 @@ const login = async(body,thenCallback,catchCallback,finallyCallback)=>{
 }
 
 const refreshToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.post(config.BASE_URL+'/kakao/refreshToken',QueryString.stringify({
+	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/refreshToken',QueryString.stringify({
 		...body
 	}),{
 		headers:{
@@ -65,7 +64,7 @@ const refreshToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
 }
 
 const getKakaoUser = async(body,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.post(config.BASE_URL+'/kakao/getKakaoUser',QueryString.stringify({
+	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/getKakaoUser',QueryString.stringify({
 		...body,
 		access_token:getCookie('access_token')
 	}),{
@@ -94,7 +93,7 @@ const loginRequest = ()=>{
 }
 
 const logout = async(body,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.post(config.BASE_URL+'/kakao/logout',QueryString.stringify({
+	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/logout',QueryString.stringify({
 		...body,
 		access_token:getCookie('access_token')
 	}),{
@@ -120,7 +119,7 @@ const logout = async(body,thenCallback,catchCallback,finallyCallback)=>{
 }
 
 const unlink = async(body,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.post(config.BASE_URL+'/kakao/unlink',QueryString.stringify({
+	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/unlink',QueryString.stringify({
 		...body,
 		access_token:getCookie('access_token')
 	}),{
