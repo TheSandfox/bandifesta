@@ -13,8 +13,8 @@ export default function Header({handleConfig}) {
 		handleConfig.setLanguage(event.target.value)
 	}
 	return <header>
-		<Link to={'/main'}>메인으로가</Link>
-		<Link to={'/list'}>리스트로가</Link>
+		<Link to={'/main'}>메인페이지</Link>
+		<Link to={'/list'}>축제둘러보기</Link>
 		<select onChange={selectCallback} value={selectValue}>
 			<option value={handleConfig.getLanguageByIndex(0)}>한글</option>
 			<option value={handleConfig.getLanguageByIndex(1)}>English</option>

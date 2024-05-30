@@ -11,7 +11,6 @@ function LoginRedirect({}) {
 			login({
 				code:params.code
 			},()=>{
-				console.log('야!!!!');
 				console.log(import.meta.env.VITE_REDIRECT_URL);
 				window.location.href = import.meta.env.VITE_REDIRECT_URL;
 			},(error)=>{
@@ -24,6 +23,11 @@ function LoginRedirect({}) {
 
 function Login({}) {
 	const [isLogin,setIsLogin] = useState(0);//0로딩안됨, 1로그인, (그외)로그아웃
+	const [kakaoUser,setKakaoUser] = useState({
+		nickmane:'',
+		profile:'',
+		thumbnail:''
+	});
 	const handleLogin = {
 		login:()=>{
 			loginRequest();
@@ -43,14 +47,14 @@ function Login({}) {
 	const jsxVal = useMemo(()=>{
 		switch (parseInt(isLogin)) {
 		case 0:
-			return <button onClick={handleLogin.login}>딸깍</button>;
+			return <button onClick={handleLogin.login}>카카오 로그인</button>;
 		case 1:
 			return <>
-				<button onClick={handleLogin.logout}>로그아웃하기!</button>
-				<button onClick={handleLogin.unlink}>회원탈퇴에에에엥</button>
+				<button onClick={handleLogin.logout}>로그아웃</button>
+				<button onClick={handleLogin.unlink}>연결 해제</button>
 			</>;
 		default:
-			return <button onClick={handleLogin.login}>딸깍</button>;
+			return <button onClick={handleLogin.login}>카카오 로그인</button>;
 		}
 	},[isLogin]);
 	//로그인돼있는지확인
@@ -58,13 +62,18 @@ function Login({}) {
 		getKakaoUser({
 			
 		},(response)=>{
+			console.log(response);
+			setKakaoUser({...response.data});
 			setIsLogin(1);
 		},(error)=>{
 			setIsLogin(-1);
 		})
 	},[])
 	return <>
-		{jsxVal}
+		{jsxVal}<br/>
+		<div>{kakaoUser.nickname}님 안녕하세요</div>
+		<img src={kakaoUser.profile} alt={kakaoUser.nickmane+'님의 프로필사진'}/>
+		<img src={kakaoUser.thumbnail} alt={kakaoUser.nickmane+'님의 프로필사진2'}/>
 	</>
 }
 

@@ -4,19 +4,16 @@ export default function FestivalWidget({festival}) {
 	return <>
 	<div>
 		<img
-			style={{
-				width:'192px',
-				height:'192px'
-			}}
-			src={festival.image2}
+			src={festival.image1}
 			alt={festival.title}
 		/>
-		<Link to={
+		{/* <Link to={
 			'/festival/detail/'+
 			festival.festival_id
 		}>
 			{festival.title}
-		</Link>
+		</Link> */}
+		{festival.title}
 		{festival.start_date}~{festival.end_date}
 	</div>
 	</>
