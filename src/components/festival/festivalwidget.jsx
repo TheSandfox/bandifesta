@@ -13,8 +13,7 @@ export default function FestivalWidget({festival}) {
 		/>
 		<Link to={
 			'/festival/detail/'+
-			festival.festival_id+
-			'/'+festival.festival_type
+			festival.festival_id
 		}>
 			{festival.title}
 		</Link>

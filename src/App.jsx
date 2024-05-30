@@ -5,6 +5,7 @@ import Header from './components/header/header';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import {Main,RedirectMain} from './components/main/main';
 import { LoginRedirect } from './components/header/login';
+import FestivalDetail from './components/festival/festivaldetail';
 
 const configContext = createContext();
 
@@ -41,8 +42,7 @@ function App() {
 				<Route path={'/main'} element={<Main></Main>}/>
 				<Route path={'/list'} element={<FestivalList/>}/>
 				<Route path={'/loginRedirect/:code'} element={<LoginRedirect/>}/>
-				{/* <Route exact path={'/festival/list'} element={<FestivalList/>}/> */}
-				{/* <Route path={'/festival/detail/:contentid/:contenttypeid/:language'} element={<FestivalDetail/>}/> */}
+				<Route path={'/festival/detail/:festivalId'} element={<FestivalDetail/>}/>
 			</Routes>
 		</configContext.Provider>
 	</>

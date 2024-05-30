@@ -1,67 +1,29 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { configContext } from "../../App";
+import { getFestivalDetail } from "../../api_utils/festivalUtil";
 
-export default function FestivalDetail() {
-	const config = useContext(configContext);
-	const param = useParams();
-	const [loaded,setLoaded] = useState(false);
-	const [festival,setFestival] = useState(null);
-	console.log("?")
+export default function FestivalDetail({}) {
+	const params = useParams();
+	const [festival,setFestival] = useState({});
 	useEffect(()=>{
-		setLoaded(false);
-		const getFestivalData = async(param)=>{
-			if (!(param.contentid&&param.contenttypeid)) {
-				//콘텐트아이디, 콘텐트 타입아이디 둘 다 유효해야만 진행
-				//그렇지 않으면 리턴
-				console.log('헉')
-				return;
-			}
-			await axios.get(config.baseUrl[param.language]+'detailCommon1',{params:{
-				MobileOS:'WIN',
-				MobileApp:'bandifesta',
-				_type:'json',
-				contentId:param.contentid,
-				defaultYN:'Y',
-				firstImageYN:'Y',
-				areacodeYN:'Y',
-				catcodeYN:'Y',
-				addrinfoYN:'Y',
-				mapinfoYN:'Y',
-				overviewYN:'Y',
-				serviceKey:config.serviceKey
-			}}).then((response)=>{
-				console.log(response)
-				if(response.data.response.body.totalCount>0) {
-					//결과값 한 개 이상
-					setFestival(
-						response.data.response.body.items.item[0]
-					)
-				} else {
-					//결과값 없음
-					setFestival(
-						null
-					)
-				}
-			}).catch((error)=>{
-				console.log(error)
+		if(params.festivalId) {
+			getFestivalDetail({
+				festivalId:params.festivalId
+			},(response)=>{
+				setFestival({
+					...response.data
+				})
+				console.log(response.data);
+			},(error)=>{
+
 			})
 		}
-		getFestivalData(param);
-	},[config.language])
-	//로드 콜백
-	useEffect(()=>{
-		if(festival) {
-			setLoaded(true)
-		}
-	},[festival])
+	},[])
 	return <>
-		{loaded
-			?<div>
-				{festival.eventplace}
-			</div>
-			:<>로딩중</>
+		{
+			Object.keys(festival).map((key)=>{
+				return <>{festival[key]}<br/></>
+			})
 		}
 	</>
 }
