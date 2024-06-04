@@ -2,9 +2,6 @@ import { createContext, useState } from 'react'
 import './App.css'
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import { Route, Routes } from 'react-router-dom';
-import { Main } from './components/pages/main/PageMain';
-import { RedirectLogin, RedirectMain } from './components/generic/Redirects';
 
 const configContext = createContext();
 
