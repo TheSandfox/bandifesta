@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//진행중인 축제를 가져옵니다
 const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getOngoing',{
 		params
@@ -18,6 +19,7 @@ const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallb
 	});
 }
 
+//죽제의 상세정보를 가져옵니다
 const getFestivalDetail = async(params,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getDetail',{
 		params
