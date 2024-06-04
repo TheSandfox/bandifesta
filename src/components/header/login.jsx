@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil";
+import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil"
 
 function Login({}) {
 	const [isLogin,setIsLogin] = useState(0);//0로딩안됨, 1로그인, (그외)로그아웃

@@ -1,10 +1,9 @@
 import { createContext, useState } from 'react'
 import './App.css'
-import FestivalList from './components/festival/FestivalCardList';
 import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import { Main } from './components/pages/main/PageMain';
-import FestivalDetail from './components/festival/FestivalDetail';
 import { RedirectLogin, RedirectMain } from './components/generic/Redirects';
 
 const configContext = createContext();
@@ -35,7 +34,7 @@ function App() {
 		}
 	}
 	return <>
-		<Header/>
+		<Header handleConfig={handleConfig}/>
 		{/*테스트 보실 컴포넌트 여기에 놓고 하세요*/}
 		<Footer/>
 	</>
