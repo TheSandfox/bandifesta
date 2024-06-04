@@ -3,7 +3,7 @@ import './App.css'
 import FestivalList from './components/festival/FestivalCardList';
 import Header from './components/header/Header';
 import { Route, Routes } from 'react-router-dom';
-import { Main } from './components/pages/main/Main';
+import { Main } from './components/pages/main/PageMain';
 import FestivalDetail from './components/festival/FestivalDetail';
 import { RedirectLogin, RedirectMain } from './components/generic/Redirects';
 
