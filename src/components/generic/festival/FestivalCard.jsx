@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function FestivalWidget({festival}) {
+export default function FestivalCard({festival}) {
 	return <>
 	<div>
 		<img

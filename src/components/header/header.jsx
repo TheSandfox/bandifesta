@@ -1,6 +1,7 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { Login } from "./login"
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Login } from "./Login";
+import './header.css';
 
 export default function Header({handleConfig}) {
 	const [selectValue,setSelectValue] = useState(

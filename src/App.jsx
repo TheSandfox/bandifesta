@@ -1,17 +1,15 @@
 import { createContext, useState } from 'react'
 import './App.css'
-import FestivalList from './components/festival/festivallist';
-import Header from './components/header/header';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import {Main,RedirectMain} from './components/main/main';
-import { LoginRedirect } from './components/header/login';
-import FestivalDetail from './components/festival/festivaldetail';
+import FestivalList from './components/festival/FestivalCardList';
+import Header from './components/header/Header';
+import { Route, Routes } from 'react-router-dom';
+import { Main } from './components/pages/main/Main';
+import FestivalDetail from './components/festival/FestivalDetail';
+import { RedirectLogin, RedirectMain } from './components/generic/Redirects';
 
 const configContext = createContext();
 
 function App() {
-	//
-	const navigate = useNavigate();
 	//전역설정
 	const [config,setConfig] = useState({
 		languages:[
@@ -20,6 +18,9 @@ function App() {
 			'Jpn'
 		],
 		language:'Kor',
+		user:{
+
+		}
 	})
 	//전역설정 핸들러
 	const handleConfig = {
@@ -34,19 +35,22 @@ function App() {
 		}
 	}
 	return <>
-		<configContext.Provider value={config}>
-			<Header handleConfig={handleConfig}/>
-			<Routes>
-				{/* <Route exact path={'/'} element={<Main/>}/> */}
-				<Route exact path={'/'} element={<RedirectMain></RedirectMain>}/>
-				<Route path={'/main'} element={<Main></Main>}/>
-				<Route path={'/list'} element={<FestivalList/>}/>
-				<Route path={'/loginRedirect/:code'} element={<LoginRedirect/>}/>
-				<Route path={'/festival/detail/:festivalId'} element={<FestivalDetail/>}/>
-			</Routes>
-		</configContext.Provider>
+		<Header/>
+		{/*테스트 보실 컴포넌트 여기에 놓고 하세요*/}
+		<Footer/>
 	</>
-
+	// return <>
+	// 	<configContext.Provider value={config}>
+	// 		<Header handleConfig={handleConfig}/>
+	// 		<Routes>
+	// 			<Route exact path={'/'} element={<RedirectMain/>}/>
+	// 			<Route path={'/redirectLogin/:code'} element={<RedirectLogin/>}/>
+	// 			<Route path={'/main'} element={<Main/>}/>
+	// 			<Route path={'/list'} element={<FestivalList/>}/>
+	// 			<Route path={'/festival/detail/:festivalId'} element={<FestivalDetail/>}/>
+	// 		</Routes>
+	// 	</configContext.Provider>
+	// </>
 }
 
 export { App, configContext }

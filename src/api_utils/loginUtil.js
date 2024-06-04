@@ -44,7 +44,7 @@ const refreshToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
 		}
 	})
 	.then(function (response) {
-		console.log('토큰 리프레시');
+		// console.log('토큰 리프레시');
 		setCookie('access_token',response.data['access_token']);
 		setCookie('refresh_token',response.data['refresh_token']);
 		// 성공 핸들링

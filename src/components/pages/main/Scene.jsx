@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Water } from 'three-stdlib'
 import * as THREE from 'three';
 import waterNormalsFile from '/src/assets/waternormals.jpeg';
-import Loading from '../generic/loading';
+import Loading from '../../generic/Loading';
 
 extend({ Water })
 

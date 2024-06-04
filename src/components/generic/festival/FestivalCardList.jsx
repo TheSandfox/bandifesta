@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { configContext } from "../../App";
-import FestivalWidget from "./festivalwidget";
+import FestivalCard from "./FestivalCard";
 import { getOngoingFestivals } from '/src/api_utils/festivalUtil';
 
 export default function FestivalList({}) {
@@ -35,7 +35,7 @@ export default function FestivalList({}) {
 				:(
 					festivals.items.length>0
 					?festivals.items.map((item)=>{
-						return <FestivalWidget key={item.festival_id} festival={item}/>
+						return <FestivalCard key={item.festival_id} festival={item}/>
 					})
 					:'...'
 				)

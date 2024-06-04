@@ -1,25 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { login, loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil";
-
-function LoginRedirect({}) {
-	const params = useParams();
-	useEffect(()=>{
-		console.log("리다이렉트 마운트");
-		console.log(import.meta.env.VITE_REDIRECT_URL);
-		if (params.code) {
-			login({
-				code:params.code
-			},()=>{
-				console.log(import.meta.env.VITE_REDIRECT_URL);
-				window.location.href = import.meta.env.VITE_REDIRECT_URL;
-			},(error)=>{
-				console.log(error);
-			});
-		}
-	},[])
-	return <></>
-}
+import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil";
 
 function Login({}) {
 	const [isLogin,setIsLogin] = useState(0);//0로딩안됨, 1로그인, (그외)로그아웃
@@ -78,6 +59,5 @@ function Login({}) {
 }
 
 export {
-	Login,
-	LoginRedirect
+	Login
 }
