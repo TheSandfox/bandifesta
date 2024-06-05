@@ -1,3 +1,20 @@
+@font-face {
+	font-family: 'BookkBold';
+	src: url('/bandifesta/fonts/bookkmyeongjobold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'BookkThin';
+	src: url('/bandifesta/fonts/bookkmyeongjothin.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'PyeongChang';
+	src: url('/bandifesta/fonts/PyeongChangPeace-Light.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'NotoSans';
+	src: url('/bandifesta/fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype');
+}
+
 #root {
   width: 100%;
   overflow-x: hidden;

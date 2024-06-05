@@ -63,7 +63,7 @@ const refreshToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
 const getKakaoUser = async(body,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/getKakaoUser',QueryString.stringify({
 		...body,
-		access_token:getCookie('access_token')
+		access_token:getCookie('access_token')||"0"
 	}),{
 		headers:{
 
