@@ -1,5 +1,11 @@
 import axios from "axios";
 
+//진행중인 축제를 가져옵니다
+/*{
+	itemsPerPage: 표시할 갯수,
+	pageNum: 페이지,
+	language:config.language 건드리지않기
+}*/
 const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getOngoing',{
 		params
@@ -18,6 +24,10 @@ const getOngoingFestivals = async(params,thenCallback,catchCallback,finallyCallb
 	});
 }
 
+//축제의 상세정보를 가져옵니다
+/*{
+	festivalId: 축제ID
+}*/
 const getFestivalDetail = async(params,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getDetail',{
 		params

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { login } from "../../../api_utils/loginUtil";
+import { login } from "../../api_utils/loginUtil";
 
 function RedirectLogin({}) {
 	const params = useParams();
