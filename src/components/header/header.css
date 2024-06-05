@@ -49,3 +49,8 @@ header>.innerbox {
 		height: calc(100vw * (40 / 400));
 	}
 }
+
+.myMenuButton {
+	font-family: 'PyeongChang';
+	color: var(--color-white);
+}
