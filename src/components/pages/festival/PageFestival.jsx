@@ -1,3 +1,8 @@
+import { Outlet } from "react-router-dom";
+
 export default function PageFestival({}) {
-	return <></>
+	return <>
+		끼얏호웅
+		<Outlet/>
+	</>
 }
