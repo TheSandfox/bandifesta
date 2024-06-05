@@ -9,15 +9,24 @@ function LanguageSelector() {
 
 function MyMenu() {
 	const [visible,setVisible] = useState(false);
+	const [kakaoUser,setKakaoUser] = useState(null)
 	useEffect(()=>{
-		getKakaoUser({},(response)=>{
-			console.log(response.data)
+		getKakaoUser({
+
+		},(response)=>{
+			console.log(response);
+			setKakaoUser(response.data);
 		},(error)=>{
-			console.log(error)
+			// console.log('앙대');
+			// console.log(error);
+			setKakaoUser(null);
 		})
 	},[])
 	return <>
-	</>
+		<div className='myMenuButton'>
+			야야야야야야
+		</div>
+	</> 
 }
 
 export default function Header({}) {
@@ -28,11 +37,11 @@ export default function Header({}) {
 					<img src='/bandifesta/assets/logo1.png' alt='대한민국 밤산책 로고'/>
 				</div>
 
-				<div className='headerContextBox'>
-					<LanguageSelector/>
-					<MyMenu/>
-				</div>
 			</Link>
+			<div className='headerContext'>
+				<LanguageSelector/>
+				<MyMenu/>
+			</div>
 		</div>
 	</header>
 }
