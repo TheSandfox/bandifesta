@@ -1,3 +1,5 @@
 export default function SubFestivalSchedule({}) {
-	return <></>
+	return <>
+		싸-부
+	</>
 }
