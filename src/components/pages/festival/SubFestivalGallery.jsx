@@ -1,3 +1,5 @@
 export default function SubFestivalGallery({}) {
-	return <></>
+	return <>
+		갤라리
+	</>
 }

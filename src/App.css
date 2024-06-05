@@ -2,3 +2,95 @@
   width: 100%;
   overflow-x: hidden;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:visited {
+	color: inherit;
+}
+
+a:active {
+	color: inherit;
+}
+
+:root {
+	/*색상*/
+	--color-main: #050819;
+	--color-black: #222222;
+	--color-white: #F8F8F8;
+	--color-sub: #FDD745;
+	/*여백*/
+		--main-padding-aside: 20px;
+		--main-padding-top: 50px;
+		--main-padding-bottom: 10px;
+	@media screen and (max-width:1439px) {
+		--main-padding-aside: 30px;
+		--main-padding-top: 30px;
+		--main-padding-bottom: 10px;
+	}
+	@media screen and (max-width:1023px) {
+		--main-padding-aside: calc( 100vw * (20 / 400));
+		--main-padding-top: calc( 100vw * (20 / 400));
+		--main-padding-bottom: calc( 100vw * (40 / 400));
+	}
+}
+
+/*내부박스*/
+.innerbox {
+	width:1440px;
+	margin: 0 auto;
+	@media screen and (max-width:1439px) {
+		width: 100%;
+		margin: 0;
+	}
+}
+
+/*대제목폰트*/
+.fontTitle {
+	font-size: 32px;
+	@media screen and (max-width:1439px) {
+		font-size: 24px;
+	}
+	@media screen and (max-width:1023px) {
+		font-size: 20px;
+	}
+}
+
+/*소제목폰트*/
+.fontSubTitle {
+	font-size: 20px;
+	@media screen and (max-width:1439px) {
+		font-size: 18px;
+	}
+	@media screen and (max-width:1023px) {
+		font-size: 16px;
+	}
+}
+
+/*본문폰트*/
+.fontMain {
+	font-size: 16px;
+	@media screen and (max-width:1439px) {
+		font-size: 14px;
+	}
+	@media screen and (max-width:1023px) {
+		font-size: 12px;
+	}
+}
+
+/*메인 컨테이너*/
+.mainContent {
+	padding-left: var(--main-padding-aside);
+	padding-right: var(--main-padding-aside);
+	padding-top: var(--main-padding-top);
+	padding-bottom: var(--main-padding-bottom);
+}
