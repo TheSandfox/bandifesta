@@ -78,8 +78,8 @@ function App() {
 				<Route exact path={'/'} element={<RedirectMain/>}/>
 				<Route path={'/redirectLogin/:code'} element={<RedirectLogin/>}/>
 				{/*페이지들*/}
-				<Route path={'/main'} 	element={<PageMain/>}/>
-				<Route path={'/intro'} 	element={<PageIntro/>}>
+				<Route path={'/main'} 			element={<PageMain/>}/>
+				<Route path={'/intro'} element={<PageIntro/>}>
 					<Route path={'/intro/main'} 		element={<SubIntroMain/>}/>
 					<Route path={'/intro/preservation'} element={<SubIntroPreservation/>}/>
 					<Route path={'/intro/location'} 	element={<SubIntroLocation/>}/>
@@ -93,10 +93,7 @@ function App() {
 					<Route path={'/notice/main'} 	element={<SubNoticeMain/>}/>
 					<Route path={'/notice/faq'} 	element={<SubNoticeFAQ/>}/>
 				</Route>
-				<Route path={'/festival'} element={<PageFestival/>}>
-					<Route path={'/festival/gallery'} 	element={<SubFestivalGallery/>}/>
-					<Route path={'/festival/schedule'} 	element={<SubFestivalSchedule/>}/>
-				</Route>
+				<Route path={'/festival/:tabName'} element={<PageFestival/>}/>
 				<Route path={'/my'} element={<PageMy/>}>
 					<Route path={'/my/info'} 		element={<SubMyInfo/>}/>
 					<Route path={'/my/favorites'} 	element={<SubMyFavorites/>}/>

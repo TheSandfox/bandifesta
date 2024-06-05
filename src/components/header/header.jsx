@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './header.css';
+import './mymenu.css';
 import { useEffect, useState } from 'react';
 import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil"
 
@@ -10,6 +11,12 @@ function LanguageSelector() {
 function MyMenu() {
 	const [visible,setVisible] = useState(false);
 	const [kakaoUser,setKakaoUser] = useState(null)
+	const handleVisible = {
+		toggle:()=>{
+			setVisible(!visible);
+		}
+	}
+	//유저 정보 가져오기
 	useEffect(()=>{
 		getKakaoUser({
 
@@ -23,8 +30,11 @@ function MyMenu() {
 		})
 	},[])
 	return <>
-		<div className='myMenuButton'>
-			야야야야야야
+		<div className='myMenuButton' onClick={handleVisible.toggle}>
+			{kakaoUser?<img src={kakaoUser.thumbnail}/>:<></>}
+		</div>
+		<div className={`myMenuContainer${visible?' active':''}`}>
+
 		</div>
 	</> 
 }
@@ -38,6 +48,28 @@ export default function Header({}) {
 				</div>
 
 			</Link>
+			<div className='headerMiddleNav'>
+				<Link 
+					className={'navItem fontSubTitle'} 
+					to={'/intro/main'}>
+					경복궁별빛야행
+				</Link>
+				<Link 
+					className={'navItem fontSubTitle'} 
+					to={'/course/0'}>
+					경복궁나들이
+				</Link>
+				<Link 
+					className={'navItem fontSubTitle'} 
+					to={'/notice/main'}>
+					알려드립니다
+				</Link>
+				<Link 
+					className={'navItem fontSubTitle active'} 
+					to={'/festival/gallery'}>
+					축제둘러보기
+				</Link>
+			</div>
 			<div className='headerContext'>
 				<LanguageSelector/>
 				<MyMenu/>

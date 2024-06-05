@@ -36,6 +36,28 @@ header>.innerbox {
 	}
 }
 
+.headerMiddleNav {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	gap: 60px;
+	@media screen and (max-width:1439px) {
+		gap: 30px;
+	}
+	@media screen and (max-width:1023px) {
+		display: none;
+	}
+}
+
+.headerMiddleNav .navItem {
+	font-weight: bold;
+	color: var(--color-white);
+}
+
+.headerMiddleNav .navItem.active {
+	color: var(--color-sub);
+}
+
 .headerContext {
 	width: 144px;
 	display: flex;
@@ -48,9 +70,4 @@ header>.innerbox {
 		width: calc(100vw * (40 / 400));
 		height: calc(100vw * (40 / 400));
 	}
-}
-
-.myMenuButton {
-	font-family: 'PyeongChang';
-	color: var(--color-white);
 }

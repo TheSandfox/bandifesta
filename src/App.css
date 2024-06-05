@@ -20,6 +20,10 @@
   overflow-x: hidden;
 }
 
+body {
+	font-family: 'NotoSans';
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -78,7 +82,7 @@ a:active {
 		font-size: 24px;
 	}
 	@media screen and (max-width:1023px) {
-		font-size: 20px;
+		font-size: calc( 100vw * (20 / 400));
 	}
 }
 
@@ -89,7 +93,7 @@ a:active {
 		font-size: 18px;
 	}
 	@media screen and (max-width:1023px) {
-		font-size: 16px;
+		font-size: calc( 100vw * (16 / 400));
 	}
 }
 
@@ -100,7 +104,7 @@ a:active {
 		font-size: 14px;
 	}
 	@media screen and (max-width:1023px) {
-		font-size: 12px;
+		font-size: calc( 100vw * (12 / 400));
 	}
 }
 
@@ -110,4 +114,17 @@ a:active {
 	padding-right: var(--main-padding-aside);
 	padding-top: var(--main-padding-top);
 	padding-bottom: var(--main-padding-bottom);
+}
+
+/*좌우분할*/
+.tabContentDivision {
+	display: flex;
+	gap: 50px;
+	@media screen and (max-width:1439px) {
+		gap: 50px;
+	}
+	@media screen and (max-width:1023px) {
+		gap: 0px;
+		flex-direction: column;
+	}
 }

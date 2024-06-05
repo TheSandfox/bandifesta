@@ -5,7 +5,7 @@ import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/logi
 function Login({}) {
 	const [isLogin,setIsLogin] = useState(0);//0로딩안됨, 1로그인, (그외)로그아웃
 	const [kakaoUser,setKakaoUser] = useState({
-		nickmane:'',
+		nickname:'',
 		profile:'',
 		thumbnail:''
 	});
@@ -53,8 +53,8 @@ function Login({}) {
 	return <>
 		{jsxVal}<br/>
 		<div>{kakaoUser.nickname}님 안녕하세요</div>
-		<img src={kakaoUser.profile} alt={kakaoUser.nickmane+'님의 프로필사진'}/>
-		<img src={kakaoUser.thumbnail} alt={kakaoUser.nickmane+'님의 프로필사진2'}/>
+		<img src={kakaoUser.profile} alt={kakaoUser.nickname+'님의 프로필사진'}/>
+		<img src={kakaoUser.thumbnail} alt={kakaoUser.nickname+'님의 프로필사진2'}/>
 	</>
 }
 
