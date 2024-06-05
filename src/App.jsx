@@ -89,9 +89,12 @@ function App() {
 					<Route path={'/my/qna'} element={<></>}/>
 				</Route>
 				{/*상세,작성,수정페이지*/}
-				<Route path={'/notice/detail/:noticeid'} element={<PageNoticeDetail/>}/>
+				<Route path={'/notice/detail/:noticeId'} element={<PageNoticeDetail/>}/>
 				<Route path={'/notice/write'} element={<PageNoticeWrite/>}/>
-				<Route path={'/notice/edit/:noticeid'} element={<PageNoticeEdit/>}/>
+				<Route path={'/notice/edit/:noticeId'} element={<PageNoticeEdit/>}/>
+				<Route path={'/qna/write'} element={<PageQNAWrite/>}/>
+				<Route path={'/answer/write'} element={<PageAnswerWrite/>}/>
+				<Route path={'/answer/edit/:answerId'} element={<PageAnswerEdit/>}/>
 				<Route path={'/festival/detail/:festivalId'} element={<PageFestivalDetail/>}/>
 			</Routes>
 			<Footer/>
