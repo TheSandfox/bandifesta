@@ -8,3 +8,35 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+:root {
+	/*색상*/
+	--color-main: #050819;
+	--color-black: #222222;
+	--color-white: #F8F8F8;
+	--color-sub: #FDD745;
+	/*폰트크기*/
+	--font-title-large: 32px;
+	--font-title-medium: 24px;
+	--font-title-small: 20px;
+	--font-subtitle-large: 20px;
+	--font-subtitle-medium: 18px;
+	--font-subtitle-small: 16px;
+	--font-main-large: 16px;
+	--font-main-medium: 14px;
+	--font-main-small: 12px;
+	/*여백*/
+	--main-padding-aside: 20px;
+	--main-padding-top: 50px;
+	--main-padding-bottom: 10px;
+	@media screen and (max-width:1439px) {
+		--main-padding-aside: 30px;
+		--main-padding-top: 30px;
+		--main-padding-bottom: 10px;
+	}
+	@media screen and (max-width:1023px) {
+		--main-padding-aside: 5%;
+		--main-padding-top: 5%;
+		--main-padding-bottom: 10%;
+	}
+}

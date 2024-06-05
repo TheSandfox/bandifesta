@@ -1,0 +1,8 @@
+header {
+	width: 100%;
+	background-color: var(--color-main);
+	height: 100px;
+	@media screen and (max-width:1023px) {
+		height: calc(100vw * (64 / 400));
+	}
+}
