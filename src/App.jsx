@@ -23,6 +23,20 @@ import PageQNAWrite 		from './components/pages/details/PageQNAWrite';
 import PageAnswerWrite 		from './components/pages/details/PageAnswerWrite';
 import PageAnswerEdit 		from './components/pages/details/PageAnswerEdit';
 import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
+import SubIntroMain from './components/pages/intro/SubIntroMain';
+import SubIntroPreservation from './components/pages/intro/SubIntroPreservation';
+import SubIntroLocation from './components/pages/intro/SubIntroLocation';
+import SubCourse0 from './components/pages/course/SubCourse0';
+import SubCourse1 from './components/pages/course/SubCourse1';
+import SubCourse2 from './components/pages/course/SubCourse2';
+import SubNoticeMain from './components/pages/notice/SubNoticeMain';
+import SubNoticeFAQ from './components/pages/notice/SubNoticeFAQ';
+import SubFestivalGallery from './components/pages/festival/SubFestivalGallery';
+import SubFestivalSchedule from './components/pages/festival/SubFestivalSchedule';
+import SubMyInfo from './components/pages/my/SubMyInfo';
+import SubMyFavorites from './components/pages/my/SubMyFavorites';
+import SubMyQNA from './components/pages/my/SubMyQNA';
+import PageQNAEdit from './components/pages/details/PageQNAEdit';
 
 const configContext = createContext();
 
@@ -64,37 +78,39 @@ function App() {
 				<Route exact path={'/'} element={<RedirectMain/>}/>
 				<Route path={'/redirectLogin/:code'} element={<RedirectLogin/>}/>
 				{/*페이지들*/}
-				<Route path={'/main'} element={<PageMain/>}/>
-				<Route path={'/intro'} element={<PageIntro/>}>
-					<Route path={'/intro/main'} element={<></>}/>
-					<Route path={'/intro/preservation'} element={<></>}/>
-					<Route path={'/intro/location'} element={<></>}/>
+				<Route path={'/main'} 	element={<PageMain/>}/>
+				<Route path={'/intro'} 	element={<PageIntro/>}>
+					<Route path={'/intro/main'} 		element={<SubIntroMain/>}/>
+					<Route path={'/intro/preservation'} element={<SubIntroPreservation/>}/>
+					<Route path={'/intro/location'} 	element={<SubIntroLocation/>}/>
 				</Route>
 				<Route path={'/course'} element={<PageCourse/>}>
-					<Route path={'/course/0'} element={<></>}/>
-					<Route path={'/course/1'} element={<></>}/>
-					<Route path={'/course/2'} element={<></>}/>
+					<Route path={'/course/0'} element={<SubCourse0/>}/>
+					<Route path={'/course/1'} element={<SubCourse1/>}/>
+					<Route path={'/course/2'} element={<SubCourse2/>}/>
 				</Route>
 				<Route path={'/notice'} element={<PageNotice/>}>
-					<Route path={'/notice/main'} element={<></>}/>
-					<Route path={'/notice/faq'} element={<></>}/>
+					<Route path={'/notice/main'} 	element={<SubNoticeMain/>}/>
+					<Route path={'/notice/faq'} 	element={<SubNoticeFAQ/>}/>
 				</Route>
 				<Route path={'/festival'} element={<PageFestival/>}>
-					<Route path={'/festival/gallery'} element={<></>}/>
-					<Route path={'/festival/schedule'} element={<></>}/>
+					<Route path={'/festival/gallery'} 	element={<SubFestivalGallery/>}/>
+					<Route path={'/festival/schedule'} 	element={<SubFestivalSchedule/>}/>
 				</Route>
 				<Route path={'/my'} element={<PageMy/>}>
-					<Route path={'/my/info'} element={<></>}/>
-					<Route path={'/my/favorites'} element={<></>}/>
-					<Route path={'/my/qna'} element={<></>}/>
+					<Route path={'/my/info'} 		element={<SubMyInfo/>}/>
+					<Route path={'/my/favorites'} 	element={<SubMyFavorites/>}/>
+					<Route path={'/my/qna'} 		element={<SubMyQNA/>}/>
 				</Route>
 				{/*상세,작성,수정페이지*/}
-				<Route path={'/notice/detail/:noticeId'} element={<PageNoticeDetail/>}/>
-				<Route path={'/notice/write'} element={<PageNoticeWrite/>}/>
-				<Route path={'/notice/edit/:noticeId'} element={<PageNoticeEdit/>}/>
-				<Route path={'/qna/write'} element={<PageQNAWrite/>}/>
-				<Route path={'/answer/write'} element={<PageAnswerWrite/>}/>
-				<Route path={'/answer/edit/:answerId'} element={<PageAnswerEdit/>}/>
+				<Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
+				<Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>
+				<Route path={'/notice/edit/:noticeId'} 		element={<PageNoticeEdit/>}/>
+				<Route path={'/qna/detail:qnaId'} 			element={<PageQNADetail/>}/>
+				<Route path={'/qna/edit:qnaId'} 			element={<PageQNAEdit/>}/>
+				<Route path={'/qna/write'} 					element={<PageQNAWrite/>}/>
+				<Route path={'/answer/write'} 				element={<PageAnswerWrite/>}/>
+				<Route path={'/answer/edit/:answerId'} 		element={<PageAnswerEdit/>}/>
 				<Route path={'/festival/detail/:festivalId'} element={<PageFestivalDetail/>}/>
 			</Routes>
 			<Footer/>

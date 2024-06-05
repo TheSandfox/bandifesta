@@ -1,7 +1,7 @@
 import Scene from "./Scene";
 import './scene.css';
 
-export default function Main({}) {
+export default function PageMain({}) {
 	return <>
 		{/* <Scene/> */}
 	</>
