@@ -1,12 +1,8 @@
 import Scene from "./Scene";
 import './scene.css';
 
-function Main({}) {
+export default function Main({}) {
 	return <>
 		{/* <Scene/> */}
 	</>
-}
-
-export {
-	Main
 }
