@@ -1,0 +1,41 @@
+.SubIntroMainSec3_wrap{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* 인트로메인섹션 제목-start */
+.SubIntroMainSec3_wrap>h1{
+    font-family: 'BookkBold';
+    font-size: 90px;
+    padding-top: 70px;
+    font-weight: 400;
+}
+.SubIntroMainSec3_bar>div:first-child{
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-main);
+    margin:0 auto;
+}
+.SubIntroMainSec3_bar>div:last-child{
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    background-color: var(--color-main);
+    margin: 0 auto;
+}
+.SubIntroMainSec3_wrap>h2{
+    font-family: 'BookkThin';
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 70px;
+    font-weight: 400;
+}
+/* 인트로메인섹션 제목-end */
+.SubIntroMainSec3_wrap>p{
+    padding-top: 70px;
+    font-weight: 400;
+    font-family: 'BookkThin';
+    font-size: 30px;
+    line-height: 57px;
+}

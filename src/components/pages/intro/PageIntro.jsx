@@ -5,7 +5,8 @@ import SubIntroPreservation from "./SubIntroPreservation"
 export default function PageIntro({}) {
 	return <>
 	<div className="PageIntroWrap">
-		<SubIntroMain />
+		{/* <SubIntroMain /> */}
+		<SubIntroPreservation/>
 	</div>	
 	</>
 }
