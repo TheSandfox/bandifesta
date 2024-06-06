@@ -1,0 +1,27 @@
+/*메인페이지*/
+main/PageMain.jsx
+
+/*경복궁별빛야행*/
+intro/PageIntro.jsx
+
+/*경복궁나들이*/
+course/PageCourse.jsx
+
+/*알려드립니다*/
+notice/PageNotice.jsx
+
+/*축제둘러보기*/
+festivals/PageFestivals.jsx
+
+/*마이페이지*/
+my/PageMy.jsx
+
+/*상세&작성페이지*/
+details/PageNoticeDetail.jsx	공지상세
+details/PageNoticeWrite.jsx 	공지작성
+details/PageNoticeEdit.jsx		공지작성
+details/PageQNADetail.jsx		질문글상세
+details/PageQNAWrite.jsx		질문글작성
+details/PageAnswerWrite.jsx		답변작성
+details/PageAnswerEdit.jsx		답변수정
+details/PageFestivalDetail.jsx	축제상세

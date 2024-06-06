@@ -1,0 +1,20 @@
+.scene {
+	position: relative;
+	width:100vw;
+	height:calc(80vw * (1080 / 1920));
+	& .loadingBackdrop {
+		top:0;
+		left:0;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: #999;
+	}
+	& .canvas {
+		opacity: 0;
+		transition: opacity 3.0s;
+		&.active {
+			opacity: 1;
+		}
+	}
+}
