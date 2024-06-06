@@ -1,0 +1,60 @@
+.SubIntroMainSec4_wrap{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+/* 인트로메인섹션 제목-start */
+.SubIntroMainSec4_wrap>h1{
+    font-family: 'BookkBold';
+    font-size: 90px;
+    padding-top: 70px;
+    font-weight: 400;
+}
+.SubIntroMainSec4_bar>div:first-child{
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-main);
+    margin:0 auto;
+}
+.SubIntroMainSec4_bar>div:last-child{
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    background-color: var(--color-main);
+    margin: 0 auto;
+}
+.SubIntroMainSec4_wrap>h2{
+    font-family: 'BookkThin';
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 70px;
+    font-weight: 400;
+}
+/* 인트로메인섹션 제목-end */
+.SubIntroMainSec4_stroll{
+    padding-top: 70px;
+}
+.SubIntroMainSec4_stroll>div{
+    width: 950px;
+    height: 60px;
+    display: flex;
+    gap:60px;
+    margin:0 auto;
+    line-height: 60px;
+    background-color: #EAD6B3;
+    border-radius: 10px;
+}
+.SubIntroMainSec4_stroll>div>p{
+    font-size: 30px;
+    text-align: start;
+    font-family: 'BookkBold';
+    font-weight: 400px;
+
+}
+.SubIntroMainSec4_stroll>div>p:first-child{
+    width: 250px;
+    padding-left: 20px;
+}
+.SubIntroMainSec4_stroll>div:nth-child(2),.SubIntroMainSec4_stroll>div:nth-child(4){
+    background-color: #ffffff;
+}

@@ -1,0 +1,118 @@
+.SubIntroMainSec2_wrap{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* 인트로메인섹션 제목-start */
+.SubIntroMainSec2_wrap>h1{
+    font-family: 'BookkBold';
+    font-size: 90px;
+    padding-top: 70px;
+    font-weight: 400;
+}
+.SubIntroMainSec2_bar>div:first-child{
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-main);
+    margin:0 auto;
+}
+.SubIntroMainSec2_bar>div:last-child{
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    background-color: var(--color-main);
+    margin: 0 auto;
+}
+.SubIntroMainSec2_wrap>h2{
+    font-family: 'BookkThin';
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 70px;
+    font-weight: 400;
+}
+/* 인트로메인섹션 제목-end */
+.SubIntroMainSec2_wrap>p{
+    padding-top: 70px;
+    font-family: 'BookkThin';
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 57px;
+}
+
+/*SubIntroMainSec2_composition*/
+.SubIntroMainSec2_composition{
+    background-image: url(/bandifesta/public/assets/foodlistback.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 950px;
+    height: 920px;
+    background-color: #B88C62;
+    margin : 0 auto;
+    position: relative;
+    margin-top: 110px;
+}
+.SubIntroMainSec2_composition>h4{
+    font-family: 'BookkBold';
+    font-size: 50px;
+    font-weight: 400;
+    height: 70px;
+    width: 300px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: 50px;
+    line-height: 70px;
+    position: absolute;
+    top : -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #b88C62;
+}
+.SubIntroMainSec2_composition_wrap{
+    padding-top: 170px;
+    width: 740px;
+    margin: 0 auto;
+    display: flex;
+}
+.SubIntroMainSec2_composition_left>div{
+    width: 254px;
+    height: 200px;
+    font-family: 'BookkThin';
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 30px;
+}
+.SubIntroMainSec2_composition_left>div:first-child{
+    padding-bottom: 40px;
+}
+.SubIntroMainSec2_composition_left>div:last-child{
+    padding-top : 40px;
+}
+
+
+.SubIntroMainSec2_composition_right>div{
+    width: 483px;
+    height: 150px;
+    font-family: 'BookkThin';
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--color-white);
+    border-top: 2px solid var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.SubIntroMainSec2_composition_under{
+    width: 950px;
+    text-align: start;
+    margin:40px auto 0;
+    font-family: 'BookkThin';
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--color-main);
+    line-height: 27px;
+}

@@ -1,3 +1,6 @@
+import IntroTitle from "./intro_components/IntroTitle"
 export default function SubIntroLocation({}) {
-	return <></>
+	return <>
+			<IntroTitle introTitle={"프로그램 소개"}/>
+	</>
 }

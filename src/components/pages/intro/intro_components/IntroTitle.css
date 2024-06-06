@@ -1,0 +1,42 @@
+.IntroTitle{
+    width: 1090px;
+    margin : 0 auto;
+}
+.IntroTitle_box{
+    width: 380px;
+    height: 100px;
+    background-color: #050819;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.IntroTitle_innerbox{
+    position: relative;
+    width: 360px;
+    height: 80px;
+    border: 2px solid #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.IntroTitle_crossbox{
+    position: absolute;
+    left : 50%;
+    top : 50%;
+    transform: translate( -50%, -50%);
+    width: 440px;
+    height: 48px;
+    background-color: #050819;
+    border-radius: 999px;
+}
+.IntroTitle_title{
+    text-align: center;
+    color: #f8f8f8;
+    font-size: 32px;
+    display: block;
+    margin:0;
+    line-height: 48px;
+    font-family: 'BookkBold';
+}
