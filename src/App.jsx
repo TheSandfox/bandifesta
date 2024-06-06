@@ -3,7 +3,7 @@ import './App.css'
 //
 import { Routes, Route } from 'react-router-dom';
 //헤더푸터
-import Header from './components/header/header';
+import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 //리다이렉트
 import { RedirectLogin, RedirectMain } from './components/generic/Redirects';
