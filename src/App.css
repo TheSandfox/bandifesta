@@ -43,6 +43,10 @@ a:active {
 	color: inherit;
 }
 
+ul,ol,li {
+	list-style: none;
+}
+
 :root {
 	/*색상*/
 	--color-main: #050819;
