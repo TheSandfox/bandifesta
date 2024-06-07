@@ -3,6 +3,18 @@ import './festival.css';
 import { useEffect, useRef, useState } from 'react';
 import GenericTag from '../GenericTag';
 
+function FestivalLikeButton({festivalId,userId}) {
+	const [pressed,setPressed] = useState(false);
+	const handlePressed = {
+		toggle:()=>{
+			setPressed(!pressed);
+		}
+	}
+	return <div className='festivalLikeButton' onClick={handlePressed.toggle}>
+		<img className={'heart'} src={`/bandifesta/assets/${pressed?'heartFill':'heart'}.png`} alt={'축제 좋아요 버튼'}/>
+	</div>
+}
+
 function FestivalCard({festival}) {
 	const imgElement = useRef(null);
 	const [tagVariation,setTagVariation] = useState({
@@ -37,6 +49,7 @@ function FestivalCard({festival}) {
 				alt={festival.title} 
 				className='festivalCardImage'
 				ref={imgElement}/>
+			<FestivalLikeButton/>
 		</div>
 		{/* 진,예,마 태그 */}
 		<div className=''>

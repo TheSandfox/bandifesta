@@ -3,6 +3,9 @@
 	padding: 4px 8px;
 	color: var(--color-white);
 	display: inline-block;
+	@media screen and (max-width:1023px) {
+		padding: calc( 100vw * (4 / 400)) calc( 100vw * (8 / 400));
+	}
 }
 /*진*/
 .genericTag.var0 {

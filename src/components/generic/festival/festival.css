@@ -35,3 +35,84 @@
 		grid-template-columns: repeat(2,1fr);
 	}
 }
+
+.festivalSelectContainer {
+	position: relative;
+}
+
+.festivalSelect {
+	width: 130px;
+	height: 35px;
+	border-color: #ccc;
+	color: #9b9b9b;
+	appearance: none;
+	position: relative;
+	padding-left: 16px;
+	@media screen and (max-width:1023px) {
+		padding-left: calc( 100vw * (16 / 400));
+		width: calc( 100vw * (130 / 400));
+		height: calc( 100vw * (35 / 400));
+	}
+}
+
+.festivalSelect>option {
+	height: 32px;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 0 1px 1px 1px;
+	@media screen and (max-width:1023px) {
+		padding-left: calc( 100vw * (16 / 400));
+		height: calc( 100vw * (32 / 400));
+	}
+}
+
+.festivalSelectArrow {
+	pointer-events: none;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	right: 16px;
+	top: 50%;
+	background-image: url('/bandifesta/assets/arrowGrey.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translateY(-50%) rotate(90deg);
+	z-index: 32;
+	@media screen and (max-width:1023px) {
+		right: calc( 100vw * (16 / 400));
+		width: calc( 100vw * (18 / 400));
+		height: calc( 100vw * (18 / 400));
+	}
+}
+
+.festivalLikeButton {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	width: 32px;
+	height: 32px;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 8192px;
+	cursor: pointer;
+	font-size: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (27 / 400));
+		height: calc( 100vw * (27 / 400));
+	}
+}
+
+.festivalLikeButton>.heart {
+	user-select: none;
+	width: 20px;
+	height: 20px;
+	object-position: center;
+	object-fit: fill;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (16 / 400));
+		height: calc( 100vw * (16 / 400));
+	}
+}

@@ -4,6 +4,7 @@ import FestivalSelect from "../../generic/festival/FestivalSelect";
 import { getFestivals } from "/src/api_utils/festivalUtil"
 import { configContext } from "/src/App";
 import { getFestivalPeriodTypes, getFestivalSortMethods } from "../../../api_utils/festivalUtil";
+import './subfestivalgallery.css';
 
 export default function SubFestivalGallery({handleTabState,index}) {
 	const [festivalPeriodType,setFestivalPeriodType] = useState(null);
@@ -121,12 +122,14 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	},[festivals])
 	//
 	return <div ref={containerRef} className="subFestivalGallery">
-		<FestivalSelect handleValue={handleFestivalPeriodType} value={[
-			...festivalPeriodTypes
-		]}/>
-		<FestivalSelect handleValue={handleFestivalSortMethod} value={[
-			...festivalSortMethods
-		]}/>
+		<div className="subFestivalGallerySelectContainer">
+			<FestivalSelect handleValue={handleFestivalPeriodType} value={[
+				...festivalPeriodTypes
+			]}/>
+			<FestivalSelect handleValue={handleFestivalSortMethod} value={[
+				...festivalSortMethods
+			]}/>
+		</div>
 		<FestivalCardList festivals={festivals}></FestivalCardList>
 	</div>
 }

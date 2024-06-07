@@ -138,7 +138,6 @@ ul,ol,li {
 .tabContentDivisionAlter {
 	display: flex;
 	flex-direction: column;
-	gap: 64px;
 }
 
 /*플렉스*/
