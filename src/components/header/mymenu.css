@@ -13,7 +13,7 @@
 		width:32px;
 	}
 	@media screen and (max-width:1023px) {
-		background-image: url('/bandifesta/assets/logo1.png');
+		background-image: url('/bandifesta/assets/burger-bar.png');
 		width: calc(100vw * (24 / 400));
 	}
 }

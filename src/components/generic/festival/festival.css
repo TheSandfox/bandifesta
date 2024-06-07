@@ -1,0 +1,16 @@
+.festivalCard {
+	display: flex;
+	flex-direction: column;
+	gap:10px;
+}
+
+.festivalCardImage {
+	width: 100%;
+	aspect-ratio: 1 / 1.414;
+}
+
+.festivalCardList {
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	gap: 48px;
+}
