@@ -1,0 +1,126 @@
+.noticeWrap{
+    width: 1440px;
+    margin: 0 auto;
+    padding: 50px 20px 10px;
+    display: flex;
+}
+.noticeTab{
+    padding-right: 50px;
+}
+.noticeTab>div{
+    width: 260px;
+    border: 1px solid #ccc;
+}
+.noticeTabTit{
+    padding: 30px 0;
+    text-align: center;
+    color: var(--color-white);
+    font-size: 20px;
+    font-weight: 700;
+    background-color: var(--color-main);
+}
+.noticeTabSub{
+    padding: 17px 25px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: var(--color-white);
+}
+
+
+.noticeMain{
+    width: 1090px;
+}
+.searchWrap{
+    width: 1088px;
+    height: 144px;
+    border: 1px solid #ccc;
+}
+.noticeMain>p{
+    padding: 23px 0;
+    font-weight: 500;
+}
+.noticeMain>p>span{
+    font-weight: 700;
+    color: var(--color-main);
+}
+.noticeMain ul{
+    padding: 18px 25px;
+    justify-content: space-between;
+}
+.noticeListT{
+    border-bottom: 2px solid #686868;
+    text-align: center;
+    font-weight: 700;
+    display: flex;
+}
+.noticeListM{
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+}
+.noticeListM>li:not(.notiTitle){
+    text-align: center;
+}
+.notiNumber{
+    width: 30px;
+}
+.notiTitle{
+    width: 600px;
+}
+.notiWriter{
+    width: 50px;
+}
+.notiDate{
+    width: 90px;
+}
+.notiView{
+    width: 50px;
+}
+button{
+    margin: 23px 0;
+    padding: 8px 23px;
+    border: none;
+    font-size: 16px;
+    color: var(--color-white);
+    background-color: var(--color-main);
+    float: right;
+}
+
+
+@media screen and (max-width: 1440px) {
+    .noticeWrap{
+        width: 100% !important;
+        padding: 40px 30px 0;
+    }
+    .noticeTab>div{
+        width: 100%;
+    }
+    .noticeTabTit{
+        padding: 25px 0;
+        font-size: 18px;
+    }
+    .noticeTabSub{
+        padding: 15px;
+        font-size: 16px;
+    }
+    .noticeMain{
+        width: 100%;
+    }
+    .searchWrap{
+        width: 100%;
+    }
+    .noticeMain ul{
+        padding: 15px;
+    }
+    .noticeMain>p{
+        padding: 30px 0;
+        font-size: 14px;
+    }
+    .noticeListT{
+        font-size: 15px;
+    }
+    .noticeListM{
+        font-size: 14px;
+    }
+}

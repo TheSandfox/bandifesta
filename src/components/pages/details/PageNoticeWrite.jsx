@@ -1,3 +1,9 @@
-export default function PageNoticeWrite({}) {
-	return <></>
+import './PageNoticeWrite.css'
+
+function PageNoticeWrite(){
+    return(
+        <section className="noticeWrite"></section>
+    )
 }
+
+export default PageNoticeWrite;
