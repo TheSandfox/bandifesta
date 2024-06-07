@@ -79,11 +79,7 @@ function App() {
 				<Route path={'/redirectLogin/:code'} element={<RedirectLogin/>}/>
 				{/*페이지들*/}
 				<Route path={'/main'} 			element={<PageMain/>}/>
-				<Route path={'/intro'} element={<PageIntro/>}>
-					<Route path={'/intro/main'} 		element={<SubIntroMain/>}/>
-					<Route path={'/intro/preservation'} element={<SubIntroPreservation/>}/>
-					<Route path={'/intro/location'} 	element={<SubIntroLocation/>}/>
-				</Route>
+				<Route path={'/intro/:tabName'} element={<PageIntro/>}/>
 				<Route path={'/course'} element={<PageCourse/>}>
 					<Route path={'/course/0'} element={<SubCourse0/>}/>
 					<Route path={'/course/1'} element={<SubCourse1/>}/>

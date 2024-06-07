@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import IntroTitle from "./intro_components/IntroTitle"
 import SubIntroPreservation_sec1 from "./SubIntroPreservationCompo/SubIntroPreservation_sec1"
 // import SubIntroPreservation_sec2 from "./SubIntroPreservationCompo/SubIntroPreservation_sec2"
@@ -5,7 +6,10 @@ import SubIntroPreservation_sec1 from "./SubIntroPreservationCompo/SubIntroPrese
 // import SubIntroPreservation_sec4 from "./SubIntroPreservationCompo/SubIntroPreservation_sec4"
 // import SubIntroPreservation_sec5 from "./SubIntroPreservationCompo/SubIntroPreservation_sec5"
 // import SubIntroPreservation_sec6 from "./SubIntroPreservationCompo/SubIntroPreservation_sec6"
-export default function SubIntroPreservation({}) {
+export default function SubIntroPreservation({handleTabState,index}) {
+	useEffect(()=>{
+		handleTabState.set(index);
+	},[])
 	return <>
 	<IntroTitle introTitle={"예매안내"}/>
 	<SubIntroPreservation_sec1/>
