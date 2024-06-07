@@ -1,0 +1,19 @@
+.SubIntroPreservation_sec1_top{
+    border-top: 2px solid var(--color-main);
+    margin-top: 70px;
+    border-bottom: 2px solid var(--color-main);
+    
+}
+.SubIntroPreservation_sec1_top>div{
+    width: 950px;
+    background-color: var(--color-main);
+    margin: 10px auto;
+    padding : 50px 0;
+}
+.SubIntroPreservation_sec1_top h3{
+    font-family: "BookkBold";
+    font-size: 30px;
+    text-align: center;
+    color: var(--color-white);
+    line-height: 50px;
+}
