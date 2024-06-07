@@ -1,0 +1,15 @@
+.SubIntroPreservationSubTitle{
+    align-items: center;
+    gap : 10px;
+}
+.SubIntroPreservationSubTitle>div{
+    height: 41px;
+    padding : 3px 0 ;
+    align-items: center;
+    justify-content: center;
+}
+.SubIntroPreservationSubTitle h5{
+    font-size: 32px;
+    font-family: 'BookkBold';
+    font-weight: 400;
+}

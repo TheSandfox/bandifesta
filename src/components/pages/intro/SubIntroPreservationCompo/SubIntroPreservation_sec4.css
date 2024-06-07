@@ -1,0 +1,17 @@
+.SubIntroPreservation_sec4>div{
+    padding :30px 10px;
+    font-family: "BookkBold";
+    font-size: 24px;
+    line-height: 44px;
+    border-top: 2px solid var(--color-main);
+    border-bottom: 2px solid var(--color-main);
+    margin-top: 30px;
+}
+.SubIntroPreservation_sec4_bottom_cont{
+    font-family: "BookkThin";
+    font-size: 16px;
+    font-weight: 400;
+    padding-top : 30px;
+    line-height: 36px;
+    margin-bottom: 70px;
+}

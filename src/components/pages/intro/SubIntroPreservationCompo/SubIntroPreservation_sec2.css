@@ -1,0 +1,38 @@
+.SubIntroPreservation_sec2_wrap{
+    padding: 70px 0 0px;
+}
+.SubIntroPreservation_sec2_first_wrap{
+    margin-top: 30px;
+    padding: 10px 0;
+    border-top: 2px solid var(--color-main);
+    border-bottom: 2px solid var(--color-main);
+}
+.SubIntroPreservation_sec2_first{
+    width: 100%;
+    padding:30px 60px;
+    background-color: var(--color-main);
+    justify-content: space-between;
+}
+.SubIntroPreservation_sec2_first img{
+    height: 80px;
+}
+.SubIntroPreservation_sec2_first li{
+    text-align: center;
+    font-size: 20px;
+    font-family: "BookkBold";
+}
+.SubIntroPreservation_sec2_first li{
+    color: var(--color-white);
+}
+.SubIntroPreservation_sec2_first>div{
+    padding-top:20px;
+}
+.SubIntroPreservation_sec2_first>div>img{
+    height: 50px;
+}
+.SubIntroPreservation_sec2_wrap>p{
+    padding: 30px 0 70px;
+    font-size: 16px;
+    line-height: 36px;
+    font-family: "BookkThin";
+}
