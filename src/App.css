@@ -128,3 +128,15 @@ a:active {
 		flex-direction: column;
 	}
 }
+
+/*상하분할*/
+.tabContentDivisionAlter {
+	display: flex;
+	flex-direction: column;
+	gap: 64px;
+}
+
+/*플렉스*/
+.flex {
+	display:flex;
+}

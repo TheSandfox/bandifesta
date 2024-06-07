@@ -22,14 +22,16 @@ export default function PageFestival({}) {
 			break;
 		default:
 	}
-	return <div className="mainContent">
-		<div className="tabContentDivision">
-			<SsangTabContainer>
-				<SsangTab to={'/festival/gallery'} active={tabState===0}>갤러리뷰</SsangTab>
-				<SsangTab to={'/festival/schedule'} active={tabState===1}>스케쥴뷰</SsangTab>
-			</SsangTabContainer>
-			<div>
-				{jsx}
+	return <div className="innerbox">
+		<div className="mainContent">
+			<div className="tabContentDivisionAlter">
+				<SsangTabContainer>
+					<SsangTab to={'/festival/gallery'} active={tabState===0}>전체보기</SsangTab>
+					<SsangTab to={'/festival/schedule'} active={tabState===1}>날짜별 보기</SsangTab>
+				</SsangTabContainer>
+				<div>
+					{jsx}
+				</div>
 			</div>
 		</div>
 	</div>
