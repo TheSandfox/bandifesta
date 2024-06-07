@@ -1,0 +1,29 @@
+.SubIntroPreservation_sec3{
+    font-family: 'BookkBold';
+    font-size: 24px;
+    padding: 30px 0 70px;
+    display: grid;
+    grid-template-columns: 220px 770px;
+    grid-template-rows: repeat(3, auto);
+    grid-column-gap: 60px;
+}
+.SubIntroPreservation_sec3>div:first-child,.SubIntroPreservation_sec3>div:nth-child(2){
+    border-top: 2px solid var(--color-main);
+}
+.SubIntroPreservation_sec3>.grid_title{
+    border-bottom: 2px solid var(--color-main);
+    padding:30px 10px;
+}
+.SubIntroPreservation_sec3>.grid_cont{
+    border-bottom: 2px solid var(--color-main);
+    padding:30px 10px;
+}
+.SubIntroPreservation_sec3 p{
+    font-size: 16px;
+    line-height: 36px;
+    padding: 6px 0 0 20px;
+    font-family: "BookkThin";
+}
+.SubIntroPreservation_sec3>div:last-child{
+    line-height: 44px;
+}
