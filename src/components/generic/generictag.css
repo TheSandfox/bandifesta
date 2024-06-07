@@ -1,0 +1,19 @@
+.genericTag {
+	font-weight: bold;
+	padding: 4px 8px;
+	color: var(--color-white);
+	display: inline-block;
+}
+/*진*/
+.genericTag.var0 {
+	background-color: var(--color-main);
+}
+/*예*/
+.genericTag.var1 {
+	background-color: var(--color-sub);
+	color: var(--color-black);
+}
+/*마*/
+.genericTag.var2 {
+	background-color: var(--color-red);
+}

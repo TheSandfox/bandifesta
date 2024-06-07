@@ -6,7 +6,7 @@ export default function FestivalSelect({handleValue,value}) {
 	}
 	return <select className='festivalSelect' onChange={changeCallback}>
 		{value.map((strVal,index)=>{
-			return <option>
+			return <option key={index} value={index}>
 				{strVal}
 			</option>
 		})}

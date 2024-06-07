@@ -1,40 +1,60 @@
 import { Link } from 'react-router-dom';
 import './festival.css';
+import { useEffect, useRef, useState } from 'react';
+import GenericTag from '../GenericTag';
 
 function FestivalCard({festival}) {
+	const imgElement = useRef(null);
+	const [tagVariation,setTagVariation] = useState({
+		value:0,
+		string:''
+	});
+	//진,예,마 판별
+	useEffect(()=>{
+		let startDate = new Date(festival.start_date);
+		let today = new Date();
+		let endDate = new Date(festival.end_date);
+		if(startDate>today) {
+			setTagVariation({
+				value:1,
+				string:'예정'
+			})
+		} else if(endDate<today) {
+			setTagVariation({
+				value:2,
+				string:'마감'
+			})
+		} else {
+			setTagVariation({
+				value:0,
+				string:'진행중'
+			})
+		}
+	},[])
 	return <div className='festivalCard'>
-		<img src={'/bandifesta/assets/intromain01.png'} className='festivalCardImage'>
-
-		</img>
+		<div className='festivalCardTop'>
+			<img src={festival.image1}
+				alt={festival.title} 
+				className='festivalCardImage'
+				ref={imgElement}/>
+		</div>
+		{/* 진,예,마 태그 */}
+		<div className=''>
+			<GenericTag variation={tagVariation.value}>
+				{tagVariation.string}
+			</GenericTag>
+		</div>
+		<div className='fontSubTitle'>
+			{festival.title}
+		</div>
 	</div>
-	// return <>
-	// <div>
-	// 	<img
-	// 		src={festival.image1}
-	// 		alt={festival.title}
-	// 	/>
-	// 	{/* <Link to={
-	// 		'/festival/detail/'+
-	// 		festival.festival_id
-	// 	}>
-	// 		{festival.title}
-	// 	</Link> */}
-	// 	{festival.title}
-	// 	{festival.start_date}~{festival.end_date}
-	// </div>
-	// </>
 }
 
-function FestivalCardList({festivalList}) {
+function FestivalCardList({festivals}) {
 	return <div className="festivalCardList">
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
+		{festivals.map((festival)=>{
+			return <FestivalCard key={festival.festival_id} festival={festival}/>
+		})}
 	</div>
 	// const config = useContext(configContext)
 	// const [festivals,setFestivals] = useState({

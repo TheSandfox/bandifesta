@@ -4,13 +4,34 @@
 	gap:10px;
 }
 
-.festivalCardImage {
+.festivalCardTop {
+	position: relative;
 	width: 100%;
 	aspect-ratio: 1 / 1.414;
+	background-color: #ccc;
+	background-image: url('/bandifesta/assets/sparkle.png');
+	background-position: center;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.festivalCardImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .festivalCardList {
 	display: grid;
-	grid-template-columns: repeat(4,1fr);
 	gap: 48px;
+	grid-template-columns: repeat(4,1fr);
+	@media screen and (max-width:1439px) {
+		gap: 15px;
+		grid-template-columns: repeat(3,1fr);
+	}
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (10 / 400));
+		grid-template-columns: repeat(2,1fr);
+	}
 }
