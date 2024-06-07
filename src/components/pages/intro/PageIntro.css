@@ -1,5 +1,9 @@
 .PageIntroWrap{
-    width: 100%;
+    width: 1090px;
     border: 1px solid #ccc;
     padding : 20px 20px 80px 20px;
+}
+.tabContentDivision{
+    width: 1440px;
+    margin:0 auto;
 }

@@ -11,8 +11,8 @@ export default function SubIntroPreservation_sec1({ }) {
           </div>
         </div>
         <div className="SubIntroPreservation_sec1_second">
-          <div>
-            <div><img src="/bandifesta/public/assets/highlight 1" alt="" /></div>
+          <div className="">
+            <div><img src="/bandifesta/public/assets/highlight1.png" alt="별모양" /></div>
             <h5>예매권 추첨이란?</h5>
           </div>
           <div>
