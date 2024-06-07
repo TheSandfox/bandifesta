@@ -1,0 +1,21 @@
+.ssangTabContainer {
+	display: flex;
+	font-family: 'NotoSans';
+	@media screen and (max-width:1023px) {
+		display: none;
+	}
+}
+
+.ssangTab.fontSubTitle {
+	flex: 1;
+	margin-left:-1px;
+	color: var(--color-main);
+	background-color: var(--color-white);
+	padding: 17px 25px;
+	border: 1px solid #ccc;
+}
+
+.ssangTab.fontSubTitle.active {
+	color:var(--color-white);
+	background-color: var(--color-main);
+}
