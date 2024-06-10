@@ -36,6 +36,7 @@
 	}
 }
 
+/*축제리스트 필터*/
 .festivalSelectContainer {
 	position: relative;
 }
@@ -86,6 +87,7 @@
 	}
 }
 
+/* 축제조아요버튼 */
 .festivalLikeButton {
 	position: absolute;
 	bottom: 5px;
@@ -115,4 +117,9 @@
 		width: calc( 100vw * (16 / 400));
 		height: calc( 100vw * (16 / 400));
 	}
+}
+
+/* 축제달력 */
+.festivalDatePiscker {
+	
 }

@@ -56,7 +56,7 @@ export default function Header({}) {
 				</Link>
 				<Link 
 					className={'navItem fontSubTitle'} 
-					to={'/course/0'}>
+					to={'/course'}>
 					경복궁나들이
 				</Link>
 				<Link 

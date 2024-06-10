@@ -80,11 +80,7 @@ function App() {
 				{/*페이지들*/}
 				<Route path={'/main'} 			element={<PageMain/>}/>
 				<Route path={'/intro/:tabName'} element={<PageIntro/>}/>
-				<Route path={'/course'} element={<PageCourse/>}>
-					<Route path={'/course/0'} element={<SubCourse0/>}/>
-					<Route path={'/course/1'} element={<SubCourse1/>}/>
-					<Route path={'/course/2'} element={<SubCourse2/>}/>
-				</Route>
+				<Route path={'/course'} element={<PageCourse/>}/>
 				<Route path={'/notice'} element={<PageNotice/>}>
 					<Route path={'/notice/main'} 	element={<SubNoticeMain/>}/>
 					<Route path={'/notice/faq'} 	element={<SubNoticeFAQ/>}/>
