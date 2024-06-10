@@ -81,7 +81,7 @@ function App() {
 				<Route path={'/main'} 			element={<PageMain/>}/>
 				<Route path={'/intro/:tabName'} element={<PageIntro/>}/>
 				<Route path={'/course'} element={<PageCourse/>}/>
-				<Route path={'/notice:tabName'} element={<PageNotice/>}/>
+				<Route path={'/notice/:tabName'} element={<PageNotice/>}/>
 				<Route path={'/festival/:tabName'} element={<PageFestival/>}/>
 				<Route path={'/my'} element={<PageMy/>}>
 					<Route path={'/my/info'} 		element={<SubMyInfo/>}/>
