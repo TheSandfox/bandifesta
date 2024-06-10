@@ -2,11 +2,14 @@
 	display: flex;
 	flex-direction: column;
 	margin-top: 40px;
+	gap: 23px;
 	@media screen and (max-width:1439px) {
 		margin-top: 15px;
+		gap: 15px;
 	}
 	@media screen and (max-width:1023px) {
 		margin-top: 0;
+		gap: calc( 100vw * (15 / 400));
 	}
 }
 
@@ -18,9 +21,66 @@
 	}
 }
 
-.festivalListContainer {
+.festivalWidgetContainer {
 	flex: 1;
+	padding: 23px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	@media screen and (max-width:1439px) {
+		padding: 15px 15px;
+	}
 	@media screen and (max-width:1023px) {
+		padding: calc( 100vw * (15 / 400)) 
+			calc( 100vw * (15 / 400));
 		display: none;
 	}
+}
+.festivalWidgetContainer>.top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.festivalWidgetContainer>.top>.left {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	@media screen and (max-width:1439px) {
+		gap: 12px;
+	}
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (10 / 400));
+	}
+}
+
+.festivalWidgetContainer>.top>.left>p:last-child {
+	font-weight: bold;
+}
+
+.festivalWidgetContainer>.top>.right {
+	display: flex;
+	height: 100%;
+	align-items: end;
+	justify-content: space-between;
+	width: 55px;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (55 / 400));
+	}
+}
+
+.festivalWidgetContainer .btn {
+	width: 16px;
+	aspect-ratio: 1;
+	background-image: url('/bandifesta/assets/arrowGrey.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (16 / 400));
+	}
+}
+
+.btn.previous {
+	transform: scaleX(-1);
 }

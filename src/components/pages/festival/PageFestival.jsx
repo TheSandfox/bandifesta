@@ -3,6 +3,7 @@ import SubFestivalGallery from "./SubFestivalGallery";
 import { useState } from "react";
 import SubFestivalSchedule from "./SubFestivalSchedule";
 import { SsangTab, SsangTabContainer } from "../../generic/SsangTab";
+import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
 
 export default function PageFestival({}) {
 	const { tabName } = useParams();
@@ -23,6 +24,10 @@ export default function PageFestival({}) {
 		default:
 	}
 	return <div className="innerbox">
+		<MobileTabContainer>
+			<MobileTab to={'/festival/gallery'} active={tabState===0}>전체보기</MobileTab>
+			<MobileTab to={'/festival/schedule'} active={tabState===1}>달력으로 보기</MobileTab>
+		</MobileTabContainer>
 		<div className="mainContent">
 			<div className="tabContentDivisionAlter">
 				<SsangTabContainer>
