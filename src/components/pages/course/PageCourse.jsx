@@ -1,6 +1,6 @@
-import Course_40min from "./course_tap/Course_40min"
+import Course from "./course_tap/Course"
 export default function PageCourse({}) {
 	return <>
-		<Course_40min />
+		<Course />
 	</>
 }

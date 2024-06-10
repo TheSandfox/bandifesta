@@ -42,9 +42,7 @@ export default function PageIntro({}) {
               오시는 길
             </LeftTab>
           </LeftTabContainer>
-          <div className="PageIntroWrap">
-            {jsx}
-          </div>
+          <div className="PageIntroWrap">{jsx}</div>
         </div>
       </div>
     </div>
