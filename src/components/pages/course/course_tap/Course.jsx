@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router";
-import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../../generic/LeftTab";
 import "./Course.css";
 import "../../../generic/lefttab.css";
-import CourseInfo from "./CourseInfo";
 
 const points = {
   min40: [
@@ -40,15 +37,11 @@ const points = {
   ],
 };
 
-function Course() {
-  const { tabName } = useParams();
-  const [tabState, setTabState] = useState(0);
+function Course({ currentSet }) {
   const [position, setPosition] = useState({ x: 55, y: 100 });
   const [walking, setWalking] = useState(false);
   const [data, setData] = useState({});
   const [currentKey, setCurrentKey] = useState("01");
-  const [currentSet, setCurrentSet] = useState("min40");
-
   useEffect(() => {
     axios.get("/bandifesta/JSON/gbg_info.json").then((response) => {
       setData(response.data);
@@ -65,43 +58,52 @@ function Course() {
   const getCourseTitle = () => {
     switch (currentSet) {
       case "min40":
-        return "40분 코스";
+        return "아이와 함께 40분 코스";
       case "min60":
-        return "60분 코스";
+        return "가족과 함께 60분 코스";
       case "min90":
-        return "90분 코스";
+        return "연인과 함께 90분 코스";
       default:
         return "";
     }
   };
 
-  const handleTabState = (index) => {
-    setTabState(index);
-  };
-
   return (
     <>
-      <div className="tabContentDivision">
-        <LeftTabContainer>
-          <LeftTabTitle>경복궁나들이</LeftTabTitle>
-          <LeftTab to={"/intro/main"} active={tabState === 0} onClick={() => handleTabState(0)}>
-            행사 소개
-          </LeftTab>
-          <LeftTab to={"/intro/preservation"} active={tabState === 1} onClick={() => handleTabState(1)}>
-            예매 안내
-          </LeftTab>
-          <LeftTab to={"/intro/location"} active={tabState === 2} onClick={() => handleTabState(2)}>
-            오시는 길
-          </LeftTab>
-        </LeftTabContainer>
-        <CourseInfo
-          getCourseTitle={getCourseTitle}
-          points={points}
-          currentSet={currentSet}
-          ClickInfo={ClickInfo}
-          data={data}
-          currentKey={currentKey}
-        />
+      <div className="course">
+        <div>
+          <h2>{getCourseTitle()}</h2>
+          <div>
+            <a href=""></a>
+          </div>
+        </div>
+        <div className="course_gbg_map">
+          <img src="/bandifesta/assets/gbg_map02.jpg" alt="" />
+        </div>
+        <div>
+          <img
+            src="/bandifesta/assets/people.png"
+            alt="people"
+            className="path-image"
+          />
+        </div>
+        {points[currentSet].map((point) => (
+          <div
+            key={point.id}
+            className="clickable-point"
+            style={{ left: point.x, top: point.y }}
+            onClick={() => ClickInfo(point.id, point.x, point.y)}
+          >
+            {point.id}
+          </div>
+        ))}
+        <div className="info">
+          <h3>{data[currentKey]?.name}</h3>
+          {data[currentKey]?.image && (
+            <img src={data[currentKey]?.image} alt={currentKey} />
+          )}
+          <p>{data[currentKey]?.text}</p>
+        </div>
       </div>
     </>
   );

@@ -1,0 +1,12 @@
+.course{
+    width: 1090px;
+}
+.course_gbg_map{
+    padding: 20px;
+    
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px  rgba(0,0,0,.25);
+}
+.course_gbg_map>img{
+    width: 1050px;
+}
