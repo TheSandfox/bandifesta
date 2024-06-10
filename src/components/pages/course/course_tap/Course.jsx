@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Course.css";
 import "../../../generic/lefttab.css";
+import GenericButton from "../../../generic/GenericButton"
 
 const points = {
   min40: [
@@ -73,7 +74,7 @@ function Course({ currentSet }) {
       <div className="course">
         <div>
           <h2>{getCourseTitle()}</h2>
-          <GenericButton
+          <GenericButton></GenericButton>
         </div>
         <div className="course_gbg_map">
           <img src="/bandifesta/assets/gbg_map02.jpg" alt="" />
