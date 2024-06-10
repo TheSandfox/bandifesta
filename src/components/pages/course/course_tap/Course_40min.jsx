@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Course_40min.css';
 
-const point = [
+const points = [
     { id: "01", x: 455, y: 100 },
     { id: "02", x: 575, y: 100 },
     { id: "03", x: 705, y: 100 },
@@ -32,8 +32,9 @@ function Course_40min() {
     return (
         <div className="container">
             <div className="info">
-                <p>{data[currentKey]?.text}</p>
+                <h3>{data[currentKey]?.name}</h3>
                 <img src={data[currentKey]?.image} alt={currentKey} />
+                <p>{data[currentKey]?.text}</p>
             </div>
             <img src='/bandifesta/assets/people.png' alt="people" className="path-image" />
             {points.map(point => (
