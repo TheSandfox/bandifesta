@@ -121,7 +121,9 @@ function Course({ currentSet }) {
                 >
                   <div></div>
                 </div>
-                <div key={point.id} className="clickable-point">
+                <div key={point.id} className={`clickable-point ${
+                    blackSpot === point.id ? "clicked" : ""
+                  }`} >
                   {data[point.id]?.name}
                 </div>
               </div>

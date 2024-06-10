@@ -15,13 +15,13 @@ export default function PageCourse({}) {
           <div className="tabContentDivision">
             <LeftTabContainer>
               <LeftTabTitle>경복궁나들이</LeftTabTitle>
-              <LeftTab onClick={() => handleTabState("min40")}>
+              <LeftTab active={currentSet === 'min40'} onClick={() => handleTabState("min40")}>
                 아이와 함께(40분 코스)
               </LeftTab>
-              <LeftTab onClick={() => handleTabState("min60")}>
+              <LeftTab active={currentSet === 'min60'} onClick={() => handleTabState("min60")}>
                 가족과 함께(60분 코스)
               </LeftTab>
-              <LeftTab onClick={() => handleTabState("min90")}>
+              <LeftTab active={currentSet === 'min90'} onClick={() => handleTabState("min90")}>
                 연인과 함께(90분 코스)
               </LeftTab>
             </LeftTabContainer>
