@@ -1,0 +1,38 @@
+.festivalWidgetList {
+	width:100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.festivalWidget {
+	padding: 11px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #ccc;
+}
+
+.festivalWidget>.left {
+	display: flex;
+	font-weight: bold;
+	gap: 20px;
+}
+
+.festivalWidget>.left>img {
+	width: 30px;
+	height: 30px;
+	object-fit: contain;
+	@media screen and (max-width:1439px) {
+		width: 21px;
+		height: 21px;
+	}
+}
+
+.festivalWidget>.left>p {
+	display: flex;
+	align-items: center;
+}
+
+.festivalWidget>.right {
+	color:#666;
+}

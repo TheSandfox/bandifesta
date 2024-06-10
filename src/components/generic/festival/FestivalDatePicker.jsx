@@ -2,14 +2,38 @@ import './festivaldatepicker.css';
 import { useEffect, useMemo, useState } from "react"
 
 export default function FestivalDatePicker({value,onChange}) {
-	const [targetDate,setTargetDate] = useState(value
-		?new Date(value.getFullYear(),value.getMonth(),value.getDate())
-		:new Date()
-	);
-	//타겟 년,월
+	const [targetDate,setTargetDate] = useState({
+		value:value
+			?new Date(value.getFullYear(),value.getMonth(),value.getDate())
+			:new Date(),
+		display:value
+			?new Date(value.getFullYear(),value.getMonth(),value.getDate())
+			:new Date(),
+	})
 	const [targetYear,targetMonth] = useMemo(()=>{
-		return [targetDate.getFullYear(),targetDate.getMonth()];
+		return [targetDate.display.getFullYear(),targetDate.display.getMonth()];
 	},[targetDate])
+	//타겟핸들러
+	const handleTargetDate = {
+		set: (val)=>{
+			setTargetDate({
+				value:val,
+				display:val
+			})
+		},
+		setValue: (targetVal)=>{
+			setTargetDate({
+				value:targetVal,
+				display:targetDate.display
+			});
+		},
+		setDisplay: (displayVal)=>{
+			setTargetDate({
+				value:targetDate.value,
+				display:displayVal
+			});
+		}
+	}
 	//요일오프셋
 	const weekdayOffset = useMemo(()=>{
 		return new Date(targetYear,targetMonth,1).getDay();
@@ -32,7 +56,7 @@ export default function FestivalDatePicker({value,onChange}) {
 	//외부 onChange
 	useEffect(()=>{
 		if(onChange) {
-			onChange(targetDate);
+			onChange(targetDate.value.getTime());
 		}
 	},[targetDate])
 	//return JSX
@@ -45,16 +69,19 @@ export default function FestivalDatePicker({value,onChange}) {
 						축제일정
 					</div>
 					<div className='yearAndMonth fontSubTitle'>
-						{targetDate.getFullYear()}.{targetDate.getMonth()+1}
+						{targetDate.display.getFullYear()}.{targetDate.display.getMonth()+1}
 					</div>
 				</div>
 				<div className="right">
 					{/*연,월 페이징 버튼*/}
-					<div className="btn previous" onClick={()=>{setTargetDate(
-						new Date(targetDate.getFullYear(),targetDate.getMonth()-1,1)
+					<div className="btn previous" onClick={()=>{handleTargetDate.setDisplay(
+						new Date(targetDate.display.getFullYear(),targetDate.display.getMonth(),0)
 					)}}>
 					</div>
-					<div className="btn next"></div>
+					<div className="btn next" onClick={()=>{handleTargetDate.setDisplay(
+						new Date(targetDate.display.getFullYear(),targetDate.display.getMonth()+1,1)
+					)}}>
+					</div>
 				</div>
 			</div>
 			<div className="bottom">
@@ -74,7 +101,7 @@ export default function FestivalDatePicker({value,onChange}) {
 					{days.map((day,index)=>{
 						return <div key={index} 
 							className={`day fontMain ${
-									String(day.dateValue)===String(targetDate)
+									String(day.dateValue)===String(targetDate.value)
 									?'active'
 									:''
 								} ${
@@ -88,7 +115,7 @@ export default function FestivalDatePicker({value,onChange}) {
 								}`
 							} 
 							onClick={
-								()=>{setTargetDate(day.dateValue);}
+								()=>{handleTargetDate.set(day.dateValue);}
 							}
 						>
 							{day.display}
