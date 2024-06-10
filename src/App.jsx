@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import './App.css'
 //
 import { Routes, Route } from 'react-router-dom';
@@ -50,7 +50,7 @@ function App() {
 		],
 		language:'Kor',
 		user:{
-
+			id:0
 		}
 	})
 	//전역설정 핸들러
@@ -65,11 +65,11 @@ function App() {
 			return config.languages[index]
 		}
 	}
-	// return <>
-	// 	<Header handleConfig={handleConfig}/>
-	// 	{/*테스트 보실 컴포넌트 여기에 놓고 하세요*/}
-	// 	<Footer/>
-	// </>
+	//쿠키에서 유저세션확인
+	useEffect(()=>{
+
+	},[])
+	//
 	return <>
 		<configContext.Provider value={config}>
 			<Header handleConfig={handleConfig}/>
@@ -80,11 +80,7 @@ function App() {
 				{/*페이지들*/}
 				<Route path={'/main'} 			element={<PageMain/>}/>
 				<Route path={'/intro/:tabName'} element={<PageIntro/>}/>
-				<Route path={'/course'} element={<PageCourse/>}>
-					<Route path={'/course/0'} element={<SubCourse0/>}/>
-					<Route path={'/course/1'} element={<SubCourse1/>}/>
-					<Route path={'/course/2'} element={<SubCourse2/>}/>
-				</Route>
+				<Route path={'/course'} element={<PageCourse/>}/>
 				<Route path={'/notice'} element={<PageNotice/>}>
 					<Route path={'/notice/main'} 	element={<SubNoticeMain/>}/>
 					<Route path={'/notice/faq'} 	element={<SubNoticeFAQ/>}/>

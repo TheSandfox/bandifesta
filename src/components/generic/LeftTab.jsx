@@ -7,8 +7,8 @@ function LeftTabTitle({children}) {
 	</div>
 }
 
-function LeftTab({children,to,active}) {
-	return <Link className={`leftTab fontMain${active?' active':''}`} to={to}>
+function LeftTab({children,to,active,onClick}) {
+	return <Link className={`leftTab fontMain${active?' active':''}`} to={to||''} onClick={onClick||(()=>{})}>
 		{children}
 	</Link>
 }

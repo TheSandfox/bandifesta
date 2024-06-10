@@ -1,0 +1,22 @@
+.genericTag {
+	font-weight: bold;
+	padding: 4px 8px;
+	color: var(--color-white);
+	display: inline-block;
+	@media screen and (max-width:1023px) {
+		padding: calc( 100vw * (4 / 400)) calc( 100vw * (8 / 400));
+	}
+}
+/*진*/
+.genericTag.var0 {
+	background-color: var(--color-main);
+}
+/*예*/
+.genericTag.var1 {
+	background-color: var(--color-sub);
+	color: var(--color-black);
+}
+/*마*/
+.genericTag.var2 {
+	background-color: var(--color-red);
+}

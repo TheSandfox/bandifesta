@@ -1,0 +1,9 @@
+.subFestivalGallerySelectContainer {
+	padding: 23px 0;
+	display: flex;
+	gap: 20px;
+	@media screen and (max-width:1023px) {
+		padding: calc(100vw * (23 / 400)) 0;
+		gap: calc(100vw * (20 / 400));
+	}
+}

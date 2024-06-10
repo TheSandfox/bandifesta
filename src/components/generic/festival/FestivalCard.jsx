@@ -1,40 +1,73 @@
 import { Link } from 'react-router-dom';
 import './festival.css';
+import { useEffect, useRef, useState } from 'react';
+import GenericTag from '../GenericTag';
 
-function FestivalCard({festival}) {
-	return <div className='festivalCard'>
-		<img src={'/bandifesta/assets/intromain01.png'} className='festivalCardImage'>
-
-		</img>
+function FestivalLikeButton({festivalId,userId}) {
+	const [pressed,setPressed] = useState(false);
+	const handlePressed = {
+		toggle:()=>{
+			setPressed(!pressed);
+		}
+	}
+	return <div className='festivalLikeButton' onClick={handlePressed.toggle}>
+		<img className={'heart'} src={`/bandifesta/assets/${pressed?'heartFill':'heart'}.png`} alt={'축제 좋아요 버튼'}/>
 	</div>
-	// return <>
-	// <div>
-	// 	<img
-	// 		src={festival.image1}
-	// 		alt={festival.title}
-	// 	/>
-	// 	{/* <Link to={
-	// 		'/festival/detail/'+
-	// 		festival.festival_id
-	// 	}>
-	// 		{festival.title}
-	// 	</Link> */}
-	// 	{festival.title}
-	// 	{festival.start_date}~{festival.end_date}
-	// </div>
-	// </>
 }
 
-function FestivalCardList({festivalList}) {
+function FestivalCard({festival}) {
+	const imgElement = useRef(null);
+	const [tagVariation,setTagVariation] = useState({
+		value:0,
+		string:''
+	});
+	//진,예,마 판별
+	useEffect(()=>{
+		let startDate = new Date(festival.start_date);
+		let today = new Date();
+		let endDate = new Date(festival.end_date);
+		if(startDate>today) {
+			setTagVariation({
+				value:1,
+				string:'예정'
+			})
+		} else if(endDate<today) {
+			setTagVariation({
+				value:2,
+				string:'마감'
+			})
+		} else {
+			setTagVariation({
+				value:0,
+				string:'진행중'
+			})
+		}
+	},[])
+	return <div className='festivalCard'>
+		<div className='festivalCardTop'>
+			<img src={festival.image1}
+				alt={festival.title} 
+				className='festivalCardImage'
+				ref={imgElement}/>
+			<FestivalLikeButton/>
+		</div>
+		{/* 진,예,마 태그 */}
+		<div className=''>
+			<GenericTag variation={tagVariation.value}>
+				{tagVariation.string}
+			</GenericTag>
+		</div>
+		<div className='fontSubTitle'>
+			{festival.title}
+		</div>
+	</div>
+}
+
+function FestivalCardList({festivals}) {
 	return <div className="festivalCardList">
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
-		<FestivalCard></FestivalCard>
+		{festivals.map((festival)=>{
+			return <FestivalCard key={festival.festival_id} festival={festival}/>
+		})}
 	</div>
 	// const config = useContext(configContext)
 	// const [festivals,setFestivals] = useState({

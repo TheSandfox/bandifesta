@@ -27,7 +27,7 @@ export default function PageFestival({}) {
 			<div className="tabContentDivisionAlter">
 				<SsangTabContainer>
 					<SsangTab to={'/festival/gallery'} active={tabState===0}>전체보기</SsangTab>
-					<SsangTab to={'/festival/schedule'} active={tabState===1}>날짜별 보기</SsangTab>
+					<SsangTab to={'/festival/schedule'} active={tabState===1}>달력으로 보기</SsangTab>
 				</SsangTabContainer>
 				<div>
 					{jsx}
