@@ -1,0 +1,26 @@
+.subFestivalSchedule {
+	display: flex;
+	flex-direction: column;
+	margin-top: 40px;
+	@media screen and (max-width:1439px) {
+		margin-top: 15px;
+	}
+	@media screen and (max-width:1023px) {
+		margin-top: 0;
+	}
+}
+
+.subFestivalSchedule>.top {
+	display: flex;
+	gap: 30px;
+	@media screen and (max-width:1439px) {
+		gap: 15px;
+	}
+}
+
+.festivalListContainer {
+	flex: 1;
+	@media screen and (max-width:1023px) {
+		display: none;
+	}
+}
