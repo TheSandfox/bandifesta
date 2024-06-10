@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import './mymenu.css';
 import { useEffect, useState } from 'react';
@@ -9,11 +9,13 @@ function LanguageSelector() {
 }
 
 function MyMenu() {
+	const navigate = useNavigate();
 	const [visible,setVisible] = useState(false);
 	const [kakaoUser,setKakaoUser] = useState(null)
 	const handleVisible = {
 		toggle:()=>{
-			setVisible(!visible);
+			// setVisible(!visible);
+			navigate('/my/info');
 		}
 	}
 	//유저 정보 가져오기

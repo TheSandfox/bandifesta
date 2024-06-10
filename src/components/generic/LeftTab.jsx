@@ -10,7 +10,9 @@ function LeftTabTitle({children}) {
 function LeftTab({children,to,active,onClick}) {
 	const navigate = useNavigate();
 	const navigateCallback = ()=>{
-		navigate(to);
+		if(to) {
+			navigate(to);
+		}
 	}
 	return <div className={`leftTab fontMain${active?' active':''}`} onClick={onClick?onClick:navigateCallback}>
 		{children}

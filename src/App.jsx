@@ -23,16 +23,6 @@ import PageQNAWrite 		from './components/pages/details/PageQNAWrite';
 import PageAnswerWrite 		from './components/pages/details/PageAnswerWrite';
 import PageAnswerEdit 		from './components/pages/details/PageAnswerEdit';
 import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
-import SubIntroMain from './components/pages/intro/SubIntroMain';
-import SubIntroPreservation from './components/pages/intro/SubIntroPreservation';
-import SubIntroLocation from './components/pages/intro/SubIntroLocation';
-import SubNoticeMain from './components/pages/notice/SubNoticeMain';
-import SubNoticeFAQ from './components/pages/notice/SubNoticeFAQ';
-import SubFestivalGallery from './components/pages/festival/SubFestivalGallery';
-import SubFestivalSchedule from './components/pages/festival/SubFestivalSchedule';
-import SubMyInfo from './components/pages/my/SubMyInfo';
-import SubMyFavorites from './components/pages/my/SubMyFavorites';
-import SubMyQNA from './components/pages/my/SubMyQNA';
 import PageQNAEdit from './components/pages/details/PageQNAEdit';
 
 const configContext = createContext();
@@ -80,11 +70,7 @@ function App() {
 				<Route path={'/course'} element={<PageCourse/>}/>
 				<Route path={'/notice/:tabName'} element={<PageNotice/>}/>
 				<Route path={'/festival/:tabName'} element={<PageFestival/>}/>
-				<Route path={'/my'} element={<PageMy/>}>
-					<Route path={'/my/info'} 		element={<SubMyInfo/>}/>
-					<Route path={'/my/favorites'} 	element={<SubMyFavorites/>}/>
-					<Route path={'/my/qna'} 		element={<SubMyQNA/>}/>
-				</Route>
+				<Route path={'/my/:tabName'} element={<PageMy/>}/>
 				{/*상세,작성,수정페이지*/}
 				<Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
 				<Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>

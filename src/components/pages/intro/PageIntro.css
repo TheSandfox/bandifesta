@@ -1,9 +1,10 @@
 .PageIntroWrap{
-    width: 1090px;
+    /* width: 100%; */
+	flex: 1;
     border: 1px solid #ccc;
     padding : 20px 20px 80px 20px;
 }
-.tabContentDivision{
+/* .tabContentDivision{
     width: 1440px;
     margin:0 auto;
-}
+} */

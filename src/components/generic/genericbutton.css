@@ -1,0 +1,10 @@
+.genericButton {
+	cursor: pointer;
+	background-color: var(--color-main);
+	color: var(--color-white);
+	padding: 8px 24px;
+	@media screen and (max-width:1023px) {
+		padding: calc( 100vw * (6 / 400)) 
+		calc( 100vw * (16 / 400));
+	}
+}

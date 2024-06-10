@@ -1,0 +1,115 @@
+/* 축제달력 */
+.festivalDatePicker {
+	display: flex;
+	flex-direction: column;
+	padding: 23px 20px;
+	gap: 23px;
+	@media screen and (max-width:1439px) {
+		padding: 15px 15px;
+		gap: 15px;
+	}
+	@media screen and (max-width:1023px) {
+		padding: calc( 100vw * (15 / 400)) 
+			calc( 100vw * (15 / 400));
+		gap: calc( 100vw * (15 / 400));
+	}
+}
+
+.festivalDatePicker>.top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.festivalDatePicker>.top>.left {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	@media screen and (max-width:1439px) {
+		gap: 12px;
+	}
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (10 / 400));
+	}
+}
+
+.festivalDatePicker>.top>.right {
+	display: flex;
+	height: 100%;
+	align-items: end;
+	justify-content: space-between;
+	width: 55px;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (55 / 400));
+	}
+}
+
+.festivalDatePicker .yearAndMonth {
+	font-weight: bold;
+}
+
+.festivalDatePicker .days, .festivalDatePicker .dayColumns{
+	display: grid;
+	grid-template-columns: repeat(7, 57px);
+	@media screen and (max-width:1439px) {
+		grid-template-columns: repeat(7, 37px);
+	}
+	@media screen and (max-width:1023px) {
+		grid-template-columns: repeat(7, calc( 100vw * (47 / 400)));
+	}
+}
+
+.festivalDatePicker .days {
+	border: 1px solid #ccc;
+	border-width: 0 1px 1px 0;
+}
+
+.festivalDatePicker .day {
+	cursor: pointer;
+	border: 1px solid #ccc;
+	border-width: 1px 0 0 1px;
+}
+
+.festivalDatePicker .day:not(.inMonth) {
+	background-color: #ccc;
+	color: #6e6e6e;
+}
+
+.festivalDatePicker .today {
+	background-color: var(--color-sub);
+}
+
+.festivalDatePicker .day.active {
+	background-color: var(--color-main);
+	color: var(--color-white);
+}
+
+
+.festivalDatePicker .day, .festivalDatePicker .dayColumn {
+	aspect-ratio: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+}
+
+.dayColumn.red {
+	color: var(--color-red);
+}
+
+.dayColumn.blue {
+	color: #3333ff;
+}
+
+.festivalDatePicker .btn {
+	width: 16px;
+	aspect-ratio: 1;
+	background-image: url('/bandifesta/assets/arrowGrey.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.btn.previous {
+	transform: scaleX(-1);
+}
