@@ -1,12 +1,19 @@
-import './SubNoticeMain.css'
+import {useContext} from 'react';
+import {dataContext} from '../App';
+import {Routes, Route, Link} from 'react-router-dom';
+import SubNoticeList from './SubNoticeList';
+import './SubNoticeMain.css';
 
-function SubNoticeMain({}) {
+function SubNoticeMain() {
+
+    const datas = useContext(dataContext);
+
 	return(
-        <section className='noticeWrap'>
+        <section className='innerbox mainContent noticeWrap'>
             <div className="noticeTab">
-                <div className="noticeTabTit">알려드립니다</div>
-                <div className="noticeTabSub">공지사항</div>
-                <div className="noticeTabSub">자주하는 질문</div>
+                <div className="fontSubTitle noticeTabTit">알려드립니다</div>
+                <div className="noticeTabSub"><Link to="/notice/main">공지사항</Link></div>
+                <div className="noticeTabSub"><Link to="/notice/faq">자주하는 질문</Link></div>
             </div>
             <div className='noticeMain'>
                 <div className='searchWrap'></div>
@@ -19,78 +26,10 @@ function SubNoticeMain({}) {
                         <li className='notiDate'>작성일</li>
                         <li className='notiView'>조회수</li>
                     </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
-                    <ul className='noticeListM'>
-                        <li className='notiNumber'>01</li>
-                        <li className='notiTitle'>2024 부여 문화유산 야행 실시간 문의사항 오픈채팅</li>
-                        <li className='notiWriter'>관리자</li>
-                        <li className='notiDate'>2024-04-12</li>
-                        <li className='notiView'>369</li>
-                    </ul>
+                    {datas.map((data)=>
+                    <SubNoticeList key={data.id} {...data} />)}
                 </div>
-                <button>글쓰기</button>
+                <button><Link to="/notice/write">글쓰기</Link></button>
             </div>
         </section>
     )
