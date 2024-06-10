@@ -1,3 +1,4 @@
+import './festivaldatepicker.css';
 import { useEffect, useMemo, useState } from "react"
 
 export default function FestivalDatePicker({value,onChange}) {
@@ -49,8 +50,11 @@ export default function FestivalDatePicker({value,onChange}) {
 				</div>
 				<div className="right">
 					{/*연,월 페이징 버튼*/}
-					<div className="btnPrevious"></div>
-					<div className="btnNext"></div>
+					<div className="btn previous" onClick={()=>{setTargetDate(
+						new Date(targetDate.getFullYear(),targetDate.getMonth()-1,1)
+					)}}>
+					</div>
+					<div className="btn next"></div>
 				</div>
 			</div>
 			<div className="bottom">
