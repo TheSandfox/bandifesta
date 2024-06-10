@@ -28,15 +28,6 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	useEffect(()=>{
 		handleTabState.set(index);
 	},[])
-	//페이지핸들링
-	const handlePageNum = {
-		get:()=>{
-			return pageNum;
-		},
-		set:(val)=>{
-			setPageNum(val);
-		}
-	}
 	//축제유형&정렬방식 가져오기
 	useEffect(()=>{
 		//축제유형들 불러오고 아래로

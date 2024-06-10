@@ -17,11 +17,11 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 		setFestivals([]);
 		getFestivals({
 			itemsPerPage:12,
-			pageNum:pageNum,
+			pageNum:1,
 			language:config.language,
 			periodType:festivalPeriodType,
 			sortMethod:festivalSortMethod,
-			dateValue:dateValue||(new Date().getTime())
+			dateValue:dateValue?(parseInt(dateValue)):(new Date().getTime())
 		},(response)=>{
 			// console.log(response);
 			setFestivals(response.data)
@@ -65,6 +65,7 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 				language:config.language,
 				periodType:festivalPeriodType,
 				sortMethod:festivalSortMethod,
+				dateValue:dateValue?(parseInt(dateValue)):(new Date().getTime())
 			},(response)=>{
 				// console.log(response);
 				if (response.data.length>0) {

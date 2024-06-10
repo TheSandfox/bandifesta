@@ -1,0 +1,47 @@
+.topBanner {
+	user-select: none;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url('/bandifesta/assets/main_sec2_bg.png');
+	background-size: cover;
+	padding-top: 17px;
+	padding-bottom: 25px;
+	gap: 17px;
+	@media screen and (max-width:1439px) {
+		padding-top: 10px;
+		padding-bottom: 25px;
+		gap: 10px;
+	}
+	@media screen and (max-width:1023px) {
+		padding-top: calc( 100vw * (10 / 400));
+		padding-bottom: calc( 100vw * (30 / 400));
+		gap: calc( 100vw * (8 / 400));
+	}
+}
+
+.topBanner>.logo {
+	width: 100px;
+	height: auto;
+	@media screen and (max-width:1439px) {
+		height: 80px;
+		width: auto;
+	}
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (75 / 400));
+		height: auto;
+	}
+}
+
+.topBanner>.title {
+	font-family: 'PyeongChang';
+	color: var(--color-white);
+	font-size: 32px;
+	@media screen and (max-width:1439px) {
+		font-size: 25px;
+	}
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * (20 / 400));
+	}
+}

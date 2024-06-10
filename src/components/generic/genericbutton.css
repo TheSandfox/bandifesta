@@ -8,3 +8,19 @@
 		calc( 100vw * (16 / 400));
 	}
 }
+
+.genericIconButton {
+	cursor: pointer;
+	display: flex;
+}
+
+.genericIconButton>.icon {
+	aspect-ratio: 1;
+	width: 24px;
+	@media screen and (max-width:1439px) {
+		width: 20px;
+	}
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (16 / 400));
+	}
+}

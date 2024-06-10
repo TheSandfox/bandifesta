@@ -3,6 +3,7 @@ import './header.css';
 import './mymenu.css';
 import { useEffect, useState } from 'react';
 import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil"
+import GenericIconButton from '../generic/GenericIconButton';
 
 function LanguageSelector() {
 	return <></>
@@ -14,8 +15,8 @@ function MyMenu() {
 	const [kakaoUser,setKakaoUser] = useState(null)
 	const handleVisible = {
 		toggle:()=>{
-			// setVisible(!visible);
-			navigate('/my/info');
+			setVisible(!visible);
+			// navigate('/my/info');
 		}
 	}
 	//유저 정보 가져오기
@@ -26,7 +27,7 @@ function MyMenu() {
 			console.log(response);
 			setKakaoUser(response.data);
 		},(error)=>{
-			// console.log('앙대');
+			console.log('앙대');
 			// console.log(error);
 			setKakaoUser(null);
 		})
@@ -36,7 +37,23 @@ function MyMenu() {
 			{kakaoUser?<img src={kakaoUser.thumbnail}/>:<></>}
 		</div>
 		<div className={`myMenuContainer${visible?' active':''}`}>
-
+			{kakaoUser===null
+				?<div className='loginInfo'>
+					{/* 유저데이터 없음 */}
+					<div className='title'>
+						로그인
+					</div>
+					<div className='text'>
+						더 나은 서비스를 위해<br/>로그인 해주시기 바랍니다.
+					</div>
+					<GenericIconButton>
+						카카오로 로그인
+					</GenericIconButton>
+				</div>
+				:<div className='userMenu'>
+					{/* 유저데이터 있음 */}
+				</div>
+			}
 		</div>
 	</> 
 }

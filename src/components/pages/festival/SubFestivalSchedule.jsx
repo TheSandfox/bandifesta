@@ -85,7 +85,7 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 	return <div ref={containerRef} className="subFestivalSchedule">
 		<div className="top">
 			{/* 달력 */}
-			<FestivalDatePicker value={new Date(targetDate)} onChange={dateChangeCallback}/>
+			<FestivalDatePicker value={new Date()} onChange={dateChangeCallback}/>
 			{/* 리스트 */}
 			<div className="festivalWidgetContainer shadowBox">
 				<div className="top">
@@ -93,13 +93,13 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 						<p className="fontMain">오늘의 축제</p>
 						<p className="fontSubTitle">{targetDateString}</p>
 					</div>
-					<div className="right">
-						{/*연,월 페이징 버튼*/}
+					{/*페이징*/}
+					{/* <div className="right">
 						<div className="btn previous" onClick={()=>{handleListPage.prev()}}>
 						</div>
 						<div className="btn next" onClick={()=>{handleListPage.next()}}>
 						</div>
-					</div>
+					</div> */}
 				</div>
 				<FestivalWidgetList festivals={festivals.slice(listPage*itemsPerPage,(listPage+1)*itemsPerPage)}/>
 			</div>
@@ -112,7 +112,7 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 			festivalPeriodType={1}
 			festivalSortMethod={0}
 			containerRef={containerRef}
-			dateValue={targetDate}
+			dateValue={parseInt(targetDate)}
 		/>
 	</div>
 }
