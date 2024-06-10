@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react'
+import {useState, useRef, useEffect} from 'react'
 // import './faq.css'
 
 function Faqs(){
@@ -56,7 +56,10 @@ function Faqs(){
 }
 
 
-export default function SubNoticeFAQ({}) {
+export default function SubNoticeFAQ({handleTabState,index}) {
+	useEffect(()=>{
+		handleTabState.set(index);
+	},[]);
 	return <>
 		<div className="faqWrap">
 			{/* search */}

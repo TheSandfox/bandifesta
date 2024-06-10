@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './lefttab.css'
 
 function LeftTabTitle({children}) {
@@ -8,9 +8,13 @@ function LeftTabTitle({children}) {
 }
 
 function LeftTab({children,to,active,onClick}) {
-	return <Link className={`leftTab fontMain${active?' active':''}`} to={to||''} onClick={onClick||(()=>{})}>
+	const navigate = useNavigate();
+	const navigateCallback = ()=>{
+		navigate(to);
+	}
+	return <div className={`leftTab fontMain${active?' active':''}`} onClick={onClick?onClick:navigateCallback}>
 		{children}
-	</Link>
+	</div>
 }
 
 function LeftTabContainer({children}) {

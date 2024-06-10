@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react"
 
 export default function FestivalDatePicker({value,onChange}) {
-	const [dateValue,setDateValue] = useState(value);
-	const [targetDate,setTargetDate] = useState(new Date(value.getFullYear(),value.getMonth(),value.getDate()));
+	const [targetDate,setTargetDate] = useState(value
+		?new Date(value.getFullYear(),value.getMonth(),value.getDate())
+		:new Date()
+	);
 	//타겟 년,월
 	const [targetYear,targetMonth] = useMemo(()=>{
 		return [targetDate.getFullYear(),targetDate.getMonth()];
@@ -29,61 +31,66 @@ export default function FestivalDatePicker({value,onChange}) {
 	//외부 onChange
 	useEffect(()=>{
 		if(onChange) {
-			onChange(dateValue);
+			onChange(targetDate);
 		}
-	},[dateValue])
-	const select = ()=>{
-		setDateValue(targetDate);
-		setEditMode(false);
-	}
-	//선택버튼클릭
-	const selectButtonCallback = ()=>{
-		select();
-	}
-	//엔터치기
-	const dblClickCallback = (e)=>{
-		select();
-	}
+	},[targetDate])
 	//return JSX
 	return <>
-		<div className={`festivalDatePicker`}>
-			{/* 연,월 디스플레이 */}
-			<div className='yearAndMonth'>
-				{targetDate.getFullYear()}-{targetDate.getMonth()+1}
-			</div>
-			{/* 날짜 위젯들 */}
-			<div className='days'>
-				{/* 날짜위젯 뿌리기 */}
-				{days.map((day,index)=>{
-					return <div key={index} 
-						className={`day ${
-								String(day.dateValue)===String(targetDate)
-								?'active'
-								:''
-							} ${
-								day.today?'today':''
-							} ${
-								day.inMonth?'inMonth':''
-							} ${
-								day.dateValue.getDay()===0?'red':''
-							} ${
-								day.dateValue.getDay()===6?'blue':''
-							}`
-						} 
-						onClick={
-							()=>{setTargetDate(day.dateValue);}
-						}
-						onDoubleClick={
-							dblClickCallback
-						}
-					>
-						{day.display}
+		<div className={`festivalDatePicker shadowBox`}>
+			<div className="top">
+				<div className="left">
+					{/* 연,월 디스플레이 */}
+					<div className='fontMain'>
+						축제일정
 					</div>
-				})}
+					<div className='yearAndMonth fontSubTitle'>
+						{targetDate.getFullYear()}.{targetDate.getMonth()+1}
+					</div>
+				</div>
+				<div className="right">
+					{/*연,월 페이징 버튼*/}
+					<div className="btnPrevious"></div>
+					<div className="btnNext"></div>
+				</div>
 			</div>
-			{/* 하단 선택버튼 */}
-			<div className='bottom'>
-				<button onClick={selectButtonCallback}>선택</button>
+			<div className="bottom">
+				{/* 요일 */}
+				<div className="dayColumns">
+					<div className="dayColumn fontMain red">일</div>
+					<div className="dayColumn fontMain">월</div>
+					<div className="dayColumn fontMain">화</div>
+					<div className="dayColumn fontMain">수</div>
+					<div className="dayColumn fontMain">목</div>
+					<div className="dayColumn fontMain">금</div>
+					<div className="dayColumn fontMain blue">토</div>
+				</div>
+				{/* 날짜 위젯들 */}
+				<div className='days'>
+					{/* 날짜위젯 뿌리기 */}
+					{days.map((day,index)=>{
+						return <div key={index} 
+							className={`day fontMain ${
+									String(day.dateValue)===String(targetDate)
+									?'active'
+									:''
+								} ${
+									day.today?'today':''
+								} ${
+									day.inMonth?'inMonth':''
+								} ${
+									day.dateValue.getDay()===0?'red':''
+								} ${
+									day.dateValue.getDay()===6?'blue':''
+								}`
+							} 
+							onClick={
+								()=>{setTargetDate(day.dateValue);}
+							}
+						>
+							{day.display}
+						</div>
+					})}
+				</div>
 			</div>
 		</div>
 	</>
