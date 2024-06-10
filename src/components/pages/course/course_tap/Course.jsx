@@ -73,9 +73,7 @@ function Course({ currentSet }) {
       <div className="course">
         <div>
           <h2>{getCourseTitle()}</h2>
-          <div>
-            <a href=""></a>
-          </div>
+          <GenericButton
         </div>
         <div className="course_gbg_map">
           <img src="/bandifesta/assets/gbg_map02.jpg" alt="" />
