@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SsangTab, SsangTabContainer } from "../../generic/SsangTab";
 import SubMyFavorites from "./SubMyFavorites";
 import SubMyQNA from "./SubMyQNA";
@@ -7,25 +7,57 @@ import SubMyInfo from "./SubMyInfo";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
 import './pagemy.css';
+import { getKakaoUser } from '/src/api_utils/loginUtil'
+import GenericButton from '/src/components/generic/GenericButton';
+
+function UserInfo({kakaoUser}) {
+	let imgPath = ''
+	if (kakaoUser===null||kakaoUser.profile.length<=0) {
+		imgPath = '/bandifesta/assets/user2.png'
+	} else {
+		imgPath = kakaoUser.profile;
+	}
+	return <div className="pageMyUserInfo">
+		{/* 프사공간 */}
+		<img src={imgPath} alt={'프로필 이미지'} className="portrait"/>
+		<div className="nameAndLogout">
+			<div className="fontSubTitle name">
+				{kakaoUser?('#'+kakaoUser.name):''}
+			</div>
+			<GenericButton>로그아웃</GenericButton>
+		</div>
+	</div>
+}
 
 export default function PageMy({}) {
 	const { tabName } = useParams();
 	const [tabState,setTabState] = useState(0);
+	const [kakaoUser,setKakaoUser] = useState(null);
 	const handleTabState = {
 		set:(index)=>{
 			setTabState(index);
 		}
 	}
+	//마이페이지 입장 시 유저정보 가져오기
+	useEffect(()=>{
+		getKakaoUser({
+
+		},(response)=>{
+			setKakaoUser(response.data);
+		},(error)=>{
+			setKakaoUser(null);
+		})
+	},[tabState])
 	let jsx = <></>
 	switch (tabName) {
 		case 'info':
-			jsx = <SubMyInfo handleTabState={handleTabState} index={0}/>
+			jsx = <SubMyInfo handleTabState={handleTabState} index={0} kakaoUser={kakaoUser}/>
 			break;
 		case 'favorites':
-			jsx = <SubMyFavorites handleTabState={handleTabState} index={1}/>
+			jsx = <SubMyFavorites handleTabState={handleTabState} index={1} kakaoUser={kakaoUser}/>
 			break;
 		case 'qna':
-			jsx = <SubMyQNA handleTabState={handleTabState} index={2}/>
+			jsx = <SubMyQNA handleTabState={handleTabState} index={2} kakaoUser={kakaoUser}/>
 			break;
 		default:
 	}
@@ -45,9 +77,7 @@ export default function PageMy({}) {
 						<SsangTab to={'/my/qna'} active={tabState===2}>1:1 문의</SsangTab>
 					</SsangTabContainer>
 					<div className="leftRightDivision">
-						<div className="userInfo">
-							{/* 프사공간 */}
-						</div>
+						<UserInfo kakaoUser={kakaoUser}/>
 						<div className="rightContent">
 							{jsx}
 						</div>
