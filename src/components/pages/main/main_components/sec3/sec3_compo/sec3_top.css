@@ -1,0 +1,7 @@
+.sec3 .swiper{
+    width: 1440px;
+    overflow: hidden;
+}
+.sec3 .swiper-slide>img{
+    aspect-ratio: .85 / 1;
+}

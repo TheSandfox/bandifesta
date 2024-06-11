@@ -68,7 +68,7 @@ function FestivalCard({festival,disableTag}) {
 			</div>
 		}
 		<div className='fontSubTitle'>
-			{festival.title}
+			{festival.title}  
 		</div>
 	</div>
 }
