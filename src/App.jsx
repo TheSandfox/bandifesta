@@ -25,6 +25,7 @@ import PageAnswerWrite 		from './components/pages/details/PageAnswerWrite';
 import PageAnswerEdit 		from './components/pages/details/PageAnswerEdit';
 import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
 import PageQNAEdit from './components/pages/details/PageQNAEdit';
+import { getKakaoUser } from './api_utils/loginUtil';
 
 const configContext = createContext();
 
@@ -40,9 +41,7 @@ function App() {
 			'Jpn'
 		],
 		language:'Kor',
-		user:{
-			id:0
-		}
+		user:null
 	})
 	//전역설정 핸들러
 	const handleConfig = {
@@ -54,11 +53,21 @@ function App() {
 		},
 		getLanguageByIndex:(index)=>{
 			return config.languages[index]
+		},
+		setKakaoUser:(obj)=>{
+			setConfig({
+				...config,
+				user:obj
+			})
 		}
 	}
 	//쿠키에서 유저세션확인
 	useEffect(()=>{
+		getKakaoUser({
 
+		},(response)=>{
+			handleConfig.setKakaoUser(response.data);
+		})
 	},[])
 	// notice 
 	const [state, dispatch] = useReducer(Reducer, Contents);

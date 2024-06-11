@@ -56,7 +56,7 @@ export default function SubFestivalGallery({handleTabState,index}) {
 				...festivalSortMethods
 			]}/>
 		</div>
-		<FestivalCardList festivals={festivals}></FestivalCardList>
+		<FestivalCardList festivals={festivals}/>
 		<FestivalScrollLoader
 			onChange={setFestivals}
 			festivalPeriodType={festivalPeriodType}

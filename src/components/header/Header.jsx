@@ -1,47 +1,46 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import './mymenu.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { loginRequest, logout, unlink, getKakaoUser } from "/src/api_utils/loginUtil"
 import GenericIconButton from '../generic/GenericIconButton';
+import { configContext } from '../../App';
 
 function LanguageSelector() {
 	return <></>
 }
 
-function MyMenu() {
-	const navigate = useNavigate();
+function MyMenu({handleConfig}) {
 	const [visible,setVisible] = useState(false);
-	const [kakaoUser,setKakaoUser] = useState(null)
+	const config = useContext(configContext);
 	const handleVisible = {
 		toggle:()=>{
 			setVisible(!visible);
-			// navigate('/my/info');
 		},
 		hide:()=>{
 			setVisible(false);
 		}
 	}
-	//유저 정보 가져오기
-	useEffect(()=>{
-		getKakaoUser({
+	// //유저 정보 가져오기
+	// useEffect(()=>{
+	// 	getKakaoUser({
 
-		},(response)=>{
-			// console.log(response.data);
-			setKakaoUser(response.data);
-		},(error)=>{
-			// console.log('유저 가져오기 실패');
-			setKakaoUser(null);
-		})
-	},[])
+	// 	},(response)=>{
+	// 		// console.log(response.data);
+	// 		setKakaoUser(response.data);
+	// 	},(error)=>{
+	// 		// console.log('유저 가져오기 실패');
+	// 		setKakaoUser(null);
+	// 	})
+	// },[])
 	//로그아웃
 	const logoutCallback = ()=>{
 		logout({
 
 		},(response)=>{
-			setKakaoUser(null);
+			handleConfig.setKakaoUser(null);
 		},(error)=>{
-			setKakaoUser(null);
+			handleConfig.setKakaoUser(null);
 		})
 	}
 	//언링크
@@ -49,18 +48,18 @@ function MyMenu() {
 		unlink({
 
 		},(response)=>{
-			setKakaoUser(null);
+			handleConfig.setKakaoUser(null);
 		},(error)=>{
-			setKakaoUser(null);
+			handleConfig.setKakaoUser(null);
 		})
 	}
 	return <>
 		<div className='myMenuButton' onClick={handleVisible.toggle}>
-			{(kakaoUser&&kakaoUser.thumbnail.length>0)?<img src={kakaoUser.thumbnail}/>:<></>}
+			{(config.user&&config.user.thumbnail.length>0)?<img src={config.user.thumbnail}/>:<></>}
 		</div>
 		<div className={`myMenuContainerWrapper${visible?' active':''}`}>
 			<div className='myMenuContainer'>
-				{kakaoUser===null
+				{config.user===null
 					?<>
 						{/* 유저데이터 없음 */}
 						<div className='header'>
@@ -149,7 +148,7 @@ function MyMenu() {
 					</Link>
 				</div>
 				{
-					kakaoUser===null
+					config.user===null
 					?<></>
 					:<div className='logoutContainer'>
 						<div className='logout' onClick={logoutCallback}>
@@ -166,7 +165,7 @@ function MyMenu() {
 	</> 
 }
 
-export default function Header({}) {
+export default function Header({handleConfig}) {
 	return <header>
 		{/* <div className={'innerbox'}> */}
 			<Link to={'/main'}>
@@ -197,8 +196,8 @@ export default function Header({}) {
 				</Link>
 			</div>
 			<div className='headerContext'>
-				<LanguageSelector/>
-				<MyMenu/>
+				<LanguageSelector handleConfig={handleConfig}/>
+				<MyMenu handleConfig={handleConfig}/>
 			</div>
 		{/* </div> */}
 	</header>
