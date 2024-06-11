@@ -17,6 +17,9 @@ function MyMenu() {
 		toggle:()=>{
 			setVisible(!visible);
 			// navigate('/my/info');
+		},
+		hide:()=>{
+			setVisible(false);
 		}
 	}
 	//유저 정보 가져오기
@@ -24,11 +27,10 @@ function MyMenu() {
 		getKakaoUser({
 
 		},(response)=>{
-			console.log(response);
+			console.log(response.data);
 			setKakaoUser(response.data);
 		},(error)=>{
-			console.log('앙대');
-			// console.log(error);
+			console.log('유저 가져오기 실패');
 			setKakaoUser(null);
 		})
 	},[])
@@ -38,20 +40,76 @@ function MyMenu() {
 		</div>
 		<div className={`myMenuContainer${visible?' active':''}`}>
 			{kakaoUser===null
-				?<div className='loginInfo'>
+				?<>
 					{/* 유저데이터 없음 */}
-					<div className='title'>
-						로그인
+					<div className='header'>
+						<div className='title fontSubTitle'>
+							로그인
+						</div>
+						<div className='close' onClick={handleVisible.hide}>
+						</div>
 					</div>
-					<div className='text'>
+					<div className='text fontMain'>
 						더 나은 서비스를 위해<br/>로그인 해주시기 바랍니다.
 					</div>
-					<GenericIconButton>
+					<GenericIconButton className='kakao' src="/bandifesta/assets/kakao.png" onClick={loginRequest}>
 						카카오로 로그인
 					</GenericIconButton>
-				</div>
-				:<div className='userMenu'>
+				</>
+				:<>
 					{/* 유저데이터 있음 */}
+					<div className='header'>
+						<div className='title fontSubTitle'>
+							계정
+						</div>
+						<div className='close' onClick={handleVisible.hide}>
+						</div>
+					</div>
+				</>
+			}
+			{/* 서비스 내비 */}
+			<div className='header'>
+				<div className='title fontSubTitle'>
+					서비스
+				</div>
+			</div>
+			<div className='serviceNav'>
+				<Link to={'/intro/main'}>
+					<div className='serviceNavItem'>
+						<img className='icon' src="/bandifesta/assets/ballon.png" alt='경복궁별빛야행'/>
+						<div className='title fontMain'>경복궁별빛야행</div>
+						<div className='arrow'></div>
+					</div>
+				</Link>
+				<Link to={'/course'}>
+					<div className='serviceNavItem'>
+						<img className='icon' src="/bandifesta/assets/shoes.png" alt='경복궁나들이'/>
+						<div className='title fontMain'>경복궁나들이</div>
+						<div className='arrow'></div>
+					</div>
+				</Link>
+				<Link to={'/notice/main'}>
+					<div className='serviceNavItem'>
+						<img className='icon' src="/bandifesta/assets/notice.png" alt='알려드립니다'/>
+						<div className='title fontMain'>알려드립니다</div>
+						<div className='arrow'></div>
+					</div>
+				</Link>
+				<Link to={'/festival/gallery'}>
+					<div className='serviceNavItem'>
+						<img className='icon' src="/bandifesta/assets/location.png" alt='축제둘러보기'/>
+						<div className='title fontMain'>축제둘러보기</div>
+						<div className='arrow'></div>
+					</div>
+				</Link>
+			</div>
+			{
+				kakaoUser===null
+				?<></>
+				:<div className='logoutContainer'>
+					<div className='logout'>
+						로그아웃
+					</div>
 				</div>
 			}
 		</div>

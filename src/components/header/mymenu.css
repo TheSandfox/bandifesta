@@ -28,6 +28,7 @@
 }
 
 .myMenuContainer {
+	user-select: none;
 	display: none;
 	position: fixed;
 	background-color: #fff;
@@ -38,17 +39,109 @@
 	width: 370px;
 	z-index: 16384;
 	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
+	flex-direction: column;
+	gap: 40px;
+	@media screen and (max-width:1023px) {
+		right:0;
+		top: 0;
+		width: 100%;
+		min-height: 100dvh;
+		border-radius: 0;
+		gap: calc( 100vw * (30 / 400));
+		padding: calc( 100vw * (30 / 400)) calc( 100vw * (20 / 400));
+	}
 }
 
 .myMenuContainer.active {
 	display: flex;
 }
 
-/* 로그아웃상태 */
+.myMenuContainer .header {
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	@media screen and (max-width:1023px) {
+		padding-bottom: calc( 100vw * (20 / 400));
+	}
+}
 
-.myMenuContainer .loginInfo {
-	width: 100%;
+.myMenuContainer .text {
+	text-align: center;
+}
+
+.myMenuContainer .close {
+	cursor: pointer;
+	background-image: url('bandifesta/assets/closeBtn.png');
+	background-size: 100%;
+	aspect-ratio: 1;
+	width: 30px;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (30 / 400));
+	}
+}
+
+.myMenuContainer .logoutContainer {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.myMenuContainer .logout {
+	cursor: pointer;
+	font-family: 'NotoSans';
+	color: #6e6e6e;
+	font-size: 14px;
+	text-decoration: underline;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * (12 / 400));
+	}
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * (10 / 400));
+	}
+}
+
+.genericIconButton.kakao {
+	color: #3e2723;
+	background-color: #ffeb3b;
+}
+
+.serviceNav {
 	display: flex;
 	flex-direction: column;
-	gap: 57px;
+	gap: 30px;
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (30 / 400));
+	}
+}
+
+.serviceNavItem {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (20 / 400));
+	}
+}
+
+.serviceNavItem>.icon {
+	aspect-ratio: 1;
+	width: 32px;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (32 / 400));
+	}
+}
+
+.serviceNavItem>.title {
+	flex: 1;
+}
+
+.serviceNavItem>.arrow {
+	background-image: url('bandifesta/assets/arrowBlack.png');
+	background-size: 100%;
+	aspect-ratio: 1;
+	width: 16px;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (16 / 400));
+	}
 }
