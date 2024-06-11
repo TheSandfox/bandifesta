@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SsangTab, SsangTabContainer } from "../../generic/SsangTab";
 import SubMyFavorites from "./SubMyFavorites";
 import SubMyQNA from "./SubMyQNA";
@@ -7,7 +7,7 @@ import SubMyInfo from "./SubMyInfo";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
 import './pagemy.css';
-import { getKakaoUser } from '/src/api_utils/loginUtil'
+import { configContext } from '/src/App';
 import GenericButton from '/src/components/generic/GenericButton';
 
 function UserInfo({kakaoUser}) {
@@ -32,32 +32,22 @@ function UserInfo({kakaoUser}) {
 export default function PageMy({}) {
 	const { tabName } = useParams();
 	const [tabState,setTabState] = useState(0);
-	const [kakaoUser,setKakaoUser] = useState(null);
+	const config = useContext(configContext);
 	const handleTabState = {
 		set:(index)=>{
 			setTabState(index);
 		}
 	}
-	//마이페이지 입장 시 유저정보 가져오기
-	useEffect(()=>{
-		getKakaoUser({
-
-		},(response)=>{
-			setKakaoUser(response.data);
-		},(error)=>{
-			setKakaoUser(null);
-		})
-	},[tabState])
 	let jsx = <></>
 	switch (tabName) {
 		case 'info':
-			jsx = <SubMyInfo handleTabState={handleTabState} index={0} kakaoUser={kakaoUser}/>
+			jsx = <SubMyInfo handleTabState={handleTabState} index={0} kakaoUser={config.user}/>
 			break;
 		case 'favorites':
-			jsx = <SubMyFavorites handleTabState={handleTabState} index={1} kakaoUser={kakaoUser}/>
+			jsx = <SubMyFavorites handleTabState={handleTabState} index={1} kakaoUser={config.user}/>
 			break;
 		case 'qna':
-			jsx = <SubMyQNA handleTabState={handleTabState} index={2} kakaoUser={kakaoUser}/>
+			jsx = <SubMyQNA handleTabState={handleTabState} index={2} kakaoUser={config.user}/>
 			break;
 		default:
 	}
@@ -77,7 +67,7 @@ export default function PageMy({}) {
 						<SsangTab to={'/my/qna'} active={tabState===2}>1:1 문의</SsangTab>
 					</SsangTabContainer>
 					<div className="leftRightDivision">
-						<UserInfo kakaoUser={kakaoUser}/>
+						<UserInfo kakaoUser={config.user}/>
 						<div className="rightContent">
 							{jsx}
 						</div>
