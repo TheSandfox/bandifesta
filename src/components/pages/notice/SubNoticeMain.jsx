@@ -1,5 +1,5 @@
 import {useContext, useEffect} from 'react';
-import {Routes, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {dataContext} from '../../../App';
 import SubNoticeList from './SubNoticeList';
 import './SubNoticeMain.css';
