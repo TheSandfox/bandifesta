@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import './mymenu.css';
 import { useEffect, useState } from 'react';
-import { loginRequest, logout, unlink, getKakaoUser } from "../../api_utils/loginUtil"
+import { loginRequest, logout, unlink, getKakaoUser } from "/src/api_utils/loginUtil"
 import GenericIconButton from '../generic/GenericIconButton';
 
 function LanguageSelector() {
