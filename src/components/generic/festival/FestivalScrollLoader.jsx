@@ -14,7 +14,7 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 			) {
 			return;
 		}
-		setFestivals([]);
+		setPageNum(1);
 		getFestivals({
 			itemsPerPage:12,
 			pageNum:1,
@@ -25,6 +25,8 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 		},(response)=>{
 			// console.log(response);
 			setFestivals(response.data)
+		},(error)=>{
+			setFestivals([]);
 		});
 	},[festivalPeriodType,festivalSortMethod,dateValue]);
 	//스크롤다운 콜백
@@ -57,7 +59,7 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 	},[loading])
 	//로딩이 true로 바뀌어서 게시물 추가 로딩
 	useEffect(()=>{
-		// console.log(pageNum);
+		console.log(pageNum);
 		if (pageNum>1) {
 			getFestivals({
 				itemsPerPage:12,
