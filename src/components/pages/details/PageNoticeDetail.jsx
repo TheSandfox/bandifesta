@@ -8,8 +8,9 @@ function PageNoticeDetail(){
     const datas = useContext(dataContext);
 
     let params = useParams();
+console.log(params)
 
-    let data = params.id;
+    let data = params.noticeId;
 
     const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ function PageNoticeDetail(){
     function removeBtn(){
         if(window.confirm("해당 게시글을 삭제하시겠습니까?")){
             removeNotice(datas[data-1].id)
-            navigate("/notice")
+            navigate("/notice/main")
         }
     }
 

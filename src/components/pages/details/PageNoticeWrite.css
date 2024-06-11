@@ -36,11 +36,6 @@
 .notiWriteBox>textarea{
     height: 434px;
 }
-.notiWriteWrap>div:last-child{
-    display: flex;
-    gap: 16px;
-    justify-content: right;
-}
 .noticeWrite button{
     padding: 8px 24px;
     border: none;

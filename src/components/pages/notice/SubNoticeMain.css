@@ -1,20 +1,6 @@
-.noticeWrap{
+/* .noticeWrap{
     display: flex;
-}
-.noticeTab{
-    padding-right: 50px;
-}
-.noticeTab>div{
-    width: 260px;
-    border: 1px solid #ccc;
-}
-.noticeTabTit{
-    padding: 30px 0;
-    text-align: center;
-    color: var(--color-white);
-    font-weight: 700;
-    background-color: var(--color-main);
-}
+} */
 .noticeTabSub{
     padding: 17px 25px;
     font-size: 18px;
@@ -28,10 +14,10 @@
 
 
 .noticeMain{
-    width: 100%;
+    width: 1090px;
 }
 .searchWrap{
-    width: 100%;
+    width: 1088px;
     height: 144px;
     border: 1px solid #ccc;
 }
@@ -58,6 +44,11 @@
     font-size: 15px;
     font-weight: 500;
     display: flex;
+    align-items: center;
+}
+.noticeListM:hover{
+    transition: 0.2s;
+    background-color: #eee;
 }
 .noticeListM>li:not(.notiTitle){
     text-align: center;
@@ -67,6 +58,10 @@
 }
 .notiTitle{
     width: 600px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .notiWriter{
     width: 50px;
