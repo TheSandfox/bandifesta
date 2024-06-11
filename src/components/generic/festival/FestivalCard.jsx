@@ -2,15 +2,53 @@ import { Link } from 'react-router-dom';
 import './festival.css';
 import { useEffect, useRef, useState } from 'react';
 import GenericTag from '../GenericTag';
+import { getKakaoUser } from '/src/api_utils/loginUtil';
+import { isFestivalLiked } from '/src/api_utils/festivalUtil';
+import { likeFestival } from '/src/api_utils/festivalUtil';
 
-function FestivalLikeButton({festivalId,userId}) {
+function FestivalLikeButton({festivalId}) {
 	const [pressed,setPressed] = useState(false);
-	const handlePressed = {
-		toggle:()=>{
-			setPressed(!pressed);
-		}
+	//최초 마운트시 좋아요여부 확인
+	useEffect(()=>{
+		getKakaoUser({
+
+		},(response)=>{
+			//유저정보받기 성공
+			isFestivalLiked({
+				userId:response.data['id'],
+				festivalId:festivalId
+			},(response2)=>{
+				// console.log(Boolean(response2.data))
+				setPressed(Boolean(response2.data));
+			},(error2)=>{
+
+			})
+		},(error)=>{
+			console.log(error);
+		})
+	},[])
+	//좋아요버튼 콜백
+	const likeRequest = ()=>{
+		getKakaoUser({
+			
+		},(response)=>{
+			//유저정보받기 성공
+			console.log(festivalId);
+			likeFestival({
+				userId:response.data['id'],
+				festivalId:festivalId,
+				flag:String(!pressed)
+			},(response2)=>{
+				//좋아요 반영
+				setPressed(!pressed);
+			},(error2)=>{
+
+			})
+		},(error)=>{
+			console.log(error);
+		});
 	}
-	return <div className='festivalLikeButton' onClick={handlePressed.toggle}>
+	return <div className='festivalLikeButton' onClick={likeRequest}>
 		<img className={'heart'} src={`/bandifesta/assets/${pressed?'heartFill':'heart'}.png`} alt={'축제 좋아요 버튼'}/>
 	</div>
 }
@@ -49,7 +87,7 @@ function FestivalCard({festival,disableTag}) {
 				alt={festival.title} 
 				className='festivalCardImage'
 				ref={imgElement}/>
-			<FestivalLikeButton/>
+			<FestivalLikeButton festivalId={festival.festival_id}/>
 		</div>
 		{/* 진,예,마 태그 */}
 		{
