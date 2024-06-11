@@ -81,12 +81,15 @@ function Course({ currentSet }) {
   const course_wrap_height = {
     height: currentSet === "min40" ? "200px" : "350px",
   };
+  const tiketLink = () => {
+    window.location.href = 'https://www.ticketlink.co.kr/product/49248'; // 이동하려는 외부 URL
+  };
   return (
     <>
       <div className="course">
         <div className="course_top flex">
           <h2>{getCourseTitle()}</h2>
-          <GenericButton>온라인 예약하기</GenericButton>
+          <GenericButton onClick={tiketLink}>온라인 예약하기</GenericButton>
         </div>
         <div className="course_gbg_map">
           <img src="/bandifesta/assets/gbg_map02.jpg" alt="" />

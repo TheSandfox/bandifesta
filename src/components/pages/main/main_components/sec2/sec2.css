@@ -1,0 +1,35 @@
+.sec2{
+    width: 100%;
+    background-image: url("/bandifesta/assets/main_sec2_bg.png");
+    padding : 250px;
+    color:var(--color-white);
+    flex-direction: column;
+    justify-content: center;
+}
+.sec2_img{
+    text-align: center;
+    margin-top: 100px;
+}
+.sec2_wrap{
+    width: 1440px;
+    margin: 0 auto;
+    
+    padding-left:100px;
+}
+.sec2_top{
+    font-family: "BookkBold";
+    font-size: 50px;
+    line-height: 80px;
+}
+.sec2_button{
+    width: 170px;
+    height: 60px;
+    font-size: 32px;
+    font-family: "BookkBold";
+    margin-top: 30px;
+    border: 2px solid var(--color-white);
+    text-align: center;
+    line-height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
+}
