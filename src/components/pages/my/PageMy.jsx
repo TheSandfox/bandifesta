@@ -6,6 +6,7 @@ import SubMyQNA from "./SubMyQNA";
 import SubMyInfo from "./SubMyInfo";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
+import './pagemy.css';
 
 export default function PageMy({}) {
 	const { tabName } = useParams();
@@ -30,7 +31,7 @@ export default function PageMy({}) {
 	}
 	return <>
 		<TopBanner>마이페이지</TopBanner>
-		<div className="innerbox">
+		<div className="innerbox pageMy">
 			<MobileTabContainer>
 				<MobileTab to={'/my/info'} active={tabState===0}>회원 정보</MobileTab>
 				<MobileTab to={'/my/favorites'} active={tabState===1}>찜한 목록</MobileTab>
@@ -43,8 +44,13 @@ export default function PageMy({}) {
 						<SsangTab to={'/my/favorites'} active={tabState===1}>찜한 목록</SsangTab>
 						<SsangTab to={'/my/qna'} active={tabState===2}>1:1 문의</SsangTab>
 					</SsangTabContainer>
-					<div>
-						{jsx}
+					<div className="leftRightDivision">
+						<div className="userInfo">
+							{/* 프사공간 */}
+						</div>
+						<div className="rightContent">
+							{jsx}
+						</div>
 					</div>
 				</div>
 			</div>

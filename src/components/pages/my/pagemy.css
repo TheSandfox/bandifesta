@@ -1,0 +1,14 @@
+.pageMy .leftRightDivision {
+	display: flex;
+	gap: 50px;
+	margin-top: 40px;
+}
+
+.pageMy .userInfo {
+	width: 192px;
+	height: 244px;
+}
+
+.pageMy .leftRightDivision>.rightContent {
+	flex: 1;
+}

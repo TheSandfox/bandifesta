@@ -25,6 +25,8 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 		},(response)=>{
 			// console.log(response);
 			setFestivals(response.data)
+		},(error)=>{
+			// setFestivals([]);
 		});
 	},[festivalPeriodType,festivalSortMethod,dateValue]);
 	//스크롤다운 콜백
