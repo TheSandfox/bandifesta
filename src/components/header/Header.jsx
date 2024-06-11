@@ -171,7 +171,6 @@ export default function Header({}) {
 				<div className='headerLogo'>
 					<img src='/bandifesta/assets/logo1.png' alt='대한민국 밤산책 로고'/>
 				</div>
-
 			</Link>
 			<div className='headerMiddleNav'>
 				<Link 

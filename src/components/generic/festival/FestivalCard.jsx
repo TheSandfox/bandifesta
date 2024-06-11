@@ -15,7 +15,7 @@ function FestivalLikeButton({festivalId,userId}) {
 	</div>
 }
 
-function FestivalCard({festival}) {
+function FestivalCard({festival,disableTag}) {
 	const imgElement = useRef(null);
 	const [tagVariation,setTagVariation] = useState({
 		value:0,
@@ -52,11 +52,15 @@ function FestivalCard({festival}) {
 			<FestivalLikeButton/>
 		</div>
 		{/* 진,예,마 태그 */}
-		<div className=''>
+		{
+			disableTag
+			?<></>
+			:<div className=''>
 			<GenericTag variation={tagVariation.value}>
 				{tagVariation.string}
 			</GenericTag>
-		</div>
+			</div>
+		}
 		<div className='fontSubTitle'>
 			{festival.title}
 		</div>
