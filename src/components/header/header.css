@@ -1,13 +1,17 @@
 header {
 	width: 100%;
 	background-color: var(--color-main);
-	height: 100px;
-	@media screen and (max-width:1023px) {
-		height: calc(100vw * (64 / 400));
-	}
+	height: var(--header-height);
 }
 
-header>.innerbox {
+header {
+	/* height: 100%; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--header-padding);
+}
+/* header>.innerbox {
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -19,7 +23,7 @@ header>.innerbox {
 	@media screen and (max-width:1023px) {
 		padding: 0 calc(100vw * (16 / 400));
 	}
-}
+} */
 
 .headerLogo {
 	font-size:0;
@@ -61,7 +65,7 @@ header>.innerbox {
 .headerContext {
 	width: 144px;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
 	@media screen and (max-width:1439px) {
 		width: 128px;

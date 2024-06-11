@@ -10,7 +10,7 @@
 	position: relative;
 	cursor: pointer;
 	@media screen and (max-width:1439px) {
-		width:32px;
+		width:30px;
 	}
 	@media screen and (max-width:1023px) {
 		background-image: url('/bandifesta/assets/burger-bar.png');
@@ -27,67 +27,76 @@
 	}
 }
 
-.myMenuContainer {
+/* 마이메뉴 컨테이너 */
+.myMenuContainerWrapper {
 	user-select: none;
-	display: none;
 	position: fixed;
 	background-color: #fff;
 	border-radius: 10px;
-	padding: 30px 20px;
-	right: 32px;
-	top: 128px;
+	padding: var(--header-padding);
+	right: -100%;
+	top: 0;
 	width: 370px;
 	z-index: 16384;
 	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
-	flex-direction: column;
-	gap: 40px;
-	@media screen and (max-width:1023px) {
-		right:0;
-		top: 0;
-		width: 100%;
-		min-height: 100dvh;
-		border-radius: 0;
-		gap: calc( 100vw * (30 / 400));
-		padding: calc( 100vw * (30 / 400)) calc( 100vw * (20 / 400));
-	}
-}
-
-.myMenuContainer.active {
-	display: flex;
-}
-
-.myMenuContainer .header {
+	transition: right 0.25s ease;
 	padding-bottom: 20px;
-	border-bottom: 1px solid #ccc;
-	display: flex;
-	justify-content: space-between;
-	align-items: start;
 	@media screen and (max-width:1023px) {
+		width: 100%;
+		height: 100dvh;
+		border-radius: 0;
+		overflow-y: scroll;
 		padding-bottom: calc( 100vw * (20 / 400));
 	}
 }
 
-.myMenuContainer .text {
+.myMenuContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (30 / 400));
+		min-height: 1024px;
+	}
+}
+
+.myMenuContainerWrapper.active {
+	display: flex;
+	right: 0;
+}
+
+.myMenuContainerWrapper .header {
+	min-height: var(--header-height);
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.myMenuContainerWrapper .text {
 	text-align: center;
 }
 
-.myMenuContainer .close {
+.myMenuContainerWrapper .close {
 	cursor: pointer;
 	background-image: url('bandifesta/assets/closeBtn.png');
 	background-size: 100%;
 	aspect-ratio: 1;
-	width: 30px;
+	width: 40px;
+	@media screen and (max-width:1439px) {
+		width: 30px;
+	}
 	@media screen and (max-width:1023px) {
-		width: calc( 100vw * (30 / 400));
+		width: calc( 100vw * (24 / 400));
 	}
 }
 
-.myMenuContainer .logoutContainer {
+.myMenuContainerWrapper .logoutContainer {
 	display: flex;
 	justify-content: flex-end;
 }
 
-.myMenuContainer .logout {
+.myMenuContainerWrapper .logout {
 	cursor: pointer;
 	font-family: 'NotoSans';
 	color: #6e6e6e;
