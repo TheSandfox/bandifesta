@@ -33,7 +33,7 @@ function FestivalLikeButton({festivalId}) {
 			
 		},(response)=>{
 			//유저정보받기 성공
-			console.log(festivalId);
+			// console.log(festivalId);
 			likeFestival({
 				userId:response.data['id'],
 				festivalId:festivalId,
@@ -45,7 +45,7 @@ function FestivalLikeButton({festivalId}) {
 
 			})
 		},(error)=>{
-			console.log(error);
+			// console.log(error);
 		});
 	}
 	return <div className='festivalLikeButton' onClick={likeRequest}>
