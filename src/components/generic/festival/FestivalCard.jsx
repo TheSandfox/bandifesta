@@ -21,54 +21,56 @@ function FestivalLikeButton({ festivalId, userId }) {
   );
 }
 
-function FestivalCard({ festival }) {
-  const imgElement = useRef(null);
-  const [tagVariation, setTagVariation] = useState({
-    value: 0,
-    string: "",
-  });
-  //진,예,마 판별
-  useEffect(() => {
-    let startDate = new Date(festival.start_date);
-    let today = new Date();
-    let endDate = new Date(festival.end_date);
-    if (startDate > today) {
-      setTagVariation({
-        value: 1,
-        string: "예정",
-      });
-    } else if (endDate < today) {
-      setTagVariation({
-        value: 2,
-        string: "마감",
-      });
-    } else {
-      setTagVariation({
-        value: 0,
-        string: "진행중",
-      });
-    }
-  }, []);
-  return (
-    <div className="festivalCard">
-      <div className="festivalCardTop">
-        <img
-          src={festival.image1}
-          alt={festival.title}
-          className="festivalCardImage"
-          ref={imgElement}
-        />
-        <FestivalLikeButton />
-      </div>
-      {/* 진,예,마 태그 */}
-      <div className="">
-        <GenericTag variation={tagVariation.value}>
-          {tagVariation.string}
-        </GenericTag>
-      </div>
-      <div className="fontSubTitle">{festival.title}</div>
-    </div>
-  );
+function FestivalCard({festival,disableTag}) {
+	const imgElement = useRef(null);
+	const [tagVariation,setTagVariation] = useState({
+		value:0,
+		string:''
+	});
+	//진,예,마 판별
+	useEffect(()=>{
+		let startDate = new Date(festival.start_date);
+		let today = new Date();
+		let endDate = new Date(festival.end_date);
+		if(startDate>today) {
+			setTagVariation({
+				value:1,
+				string:'예정'
+			})
+		} else if(endDate<today) {
+			setTagVariation({
+				value:2,
+				string:'마감'
+			})
+		} else {
+			setTagVariation({
+				value:0,
+				string:'진행중'
+			})
+		}
+	},[])
+	return <div className='festivalCard'>
+		<div className='festivalCardTop'>
+			<img src={festival.image1}
+				alt={festival.title} 
+				className='festivalCardImage'
+				ref={imgElement}/>
+			<FestivalLikeButton/>
+		</div>
+		{/* 진,예,마 태그 */}
+		{
+			disableTag
+			?<></>
+			:<div className=''>
+			<GenericTag variation={tagVariation.value}>
+				{tagVariation.string}
+			</GenericTag>
+			</div>
+		}
+		<div className='fontSubTitle'>
+			{festival.title}
+		</div>
+	</div>
 }
 
 function FestivalCardList({ festivals }) {

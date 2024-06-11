@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useReducer, useMemo, useCallback, useRef } from 'react'
+import {Contents, Reducer} from './components/pages/notice/data';
 import './App.css'
 //
 import { Routes, Route } from 'react-router-dom';
@@ -26,6 +27,9 @@ import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
 import PageQNAEdit from './components/pages/details/PageQNAEdit';
 
 const configContext = createContext();
+
+export const dataContext = createContext();
+export const editContext = createContext();
 
 function App() {
 	//전역설정
@@ -56,33 +60,81 @@ function App() {
 	useEffect(()=>{
 
 	},[])
+	// notice 
+	const [state, dispatch] = useReducer(Reducer, Contents);
+	const {datas} = state;
+	const {name, title, content} = state.inputs;
+	const userId = useRef(21);
+  
+	const createNotice = useCallback((name, title, content)=>{
+	  const createDate = new Date().toLocaleDateString();
+  
+	  dispatch({
+		type: "create",
+		data: {
+		  name, title, content,
+		  id: userId.current,
+		  createDate
+		}
+	  })
+	  userId.current += 1;
+	}, [name, title, content])
+  
+	const editNotice = (id, content)=>{
+	  dispatch({
+		type: "edit",
+		id, content
+	  })
+	}
+  
+	const removeNotice = (id)=>{
+	  dispatch({
+		type: "remove",
+		id
+	  })
+	}
+  
+	const searchNotice = (text)=>{
+	  dispatch({
+		type: "search",
+		text
+	  })
+	}
+  
+	const memoNotice = useMemo(()=>{
+	  return {createNotice, editNotice, removeNotice, searchNotice}
+	}, [])
 	//
 	return <>
 		<configContext.Provider value={config}>
-			<Header handleConfig={handleConfig}/>
-			<Routes>
-				{/*리다이렉트*/}
-				<Route exact path={'/'} element={<RedirectMain/>}/>
-				<Route path={'/redirectLogin/:code'} element={<RedirectLogin/>}/>
-				{/*페이지들*/}
-				<Route path={'/main'} 			element={<PageMain/>}/>
-				<Route path={'/intro/:tabName'} element={<PageIntro/>}/>
-				<Route path={'/course'} element={<PageCourse/>}/>
-				<Route path={'/notice/:tabName'} element={<PageNotice/>}/>
-				<Route path={'/festival/:tabName'} element={<PageFestival/>}/>
-				<Route path={'/my/:tabName'} element={<PageMy/>}/>
-				{/*상세,작성,수정페이지*/}
-				<Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
-				<Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>
-				<Route path={'/notice/edit/:noticeId'} 		element={<PageNoticeEdit/>}/>
-				<Route path={'/qna/detail:qnaId'} 			element={<PageQNADetail/>}/>
-				<Route path={'/qna/edit:qnaId'} 			element={<PageQNAEdit/>}/>
-				<Route path={'/qna/write'} 					element={<PageQNAWrite/>}/>
-				<Route path={'/answer/write'} 				element={<PageAnswerWrite/>}/>
-				<Route path={'/answer/edit/:answerId'} 		element={<PageAnswerEdit/>}/>
-				<Route path={'/festival/detail/:festivalId'} element={<PageFestivalDetail/>}/>
-			</Routes>
-			<Footer/>
+			<dataContext.Provider value={datas}>
+				<editContext.Provider value={memoNotice}>
+				    <Header handleConfig={handleConfig}/>
+			        <Routes>
+				        {/*리다이렉트*/}
+				        <Route exact path={'/'} element={<RedirectMain/>}/>
+				        <Route path={'/redirectLogin/:code'} element={<RedirectLogin/>}/>
+				        {/*페이지들*/}
+				        <Route path={'/main'} 			element={<PageMain/>}/>
+				        <Route path={'/intro/:tabName'} element={<PageIntro/>}/>
+				        <Route path={'/course'} element={<PageCourse/>}/>
+				        <Route path={'/notice/:tabName'} element={<PageNotice/>}/>
+				        <Route path={'/festival/:tabName'} element={<PageFestival/>}/>
+				        <Route path={'/my/:tabName'} element={<PageMy/>}/>
+				        {/*상세,작성,수정페이지*/}
+				        <Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
+				        <Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>
+				        <Route path={'/notice/edit/:noticeId'} 		element={<PageNoticeEdit/>}/>
+				        <Route path={'/qna/detail:qnaId'} 			element={<PageQNADetail/>}/>
+				        <Route path={'/qna/edit:qnaId'} 			element={<PageQNAEdit/>}/>
+				        <Route path={'/qna/write'} 					element={<PageQNAWrite/>}/>
+				        <Route path={'/answer/write'} 				element={<PageAnswerWrite/>}/>
+				        <Route path={'/answer/edit/:answerId'} 		element={<PageAnswerEdit/>}/>
+				        <Route path={'/festival/detail/:festivalId'} element={<PageFestivalDetail/>}/>
+			        </Routes>
+			        <Footer/>
+				</editContext.Provider>
+			</dataContext.Provider>
 		</configContext.Provider>
 	</>
 }
