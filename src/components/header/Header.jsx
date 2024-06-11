@@ -27,10 +27,10 @@ function MyMenu() {
 		getKakaoUser({
 
 		},(response)=>{
-			console.log(response.data);
+			// console.log(response.data);
 			setKakaoUser(response.data);
 		},(error)=>{
-			console.log('유저 가져오기 실패');
+			// console.log('유저 가져오기 실패');
 			setKakaoUser(null);
 		})
 	},[])
