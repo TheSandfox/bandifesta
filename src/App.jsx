@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useReducer, useMemo, useCallback, useRef } from 'react'
+import {Contents, Reducer} from './components/pages/notice/data';
 import './App.css'
 //
 import { Routes, Route } from 'react-router-dom';
@@ -26,6 +27,9 @@ import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
 import PageQNAEdit from './components/pages/details/PageQNAEdit';
 
 const configContext = createContext();
+
+export const dataContext = createContext();
+export const editContext = createContext();
 
 function App() {
 	//전역설정
@@ -56,6 +60,50 @@ function App() {
 	useEffect(()=>{
 
 	},[])
+	// notice 
+	const [state, dispatch] = useReducer(Reducer, Contents);
+	const {datas} = state;
+	const {name, title, content} = state.inputs;
+	const userId = useRef(21);
+  
+	const createNotice = useCallback((name, title, content)=>{
+	  const createDate = new Date().toLocaleDateString();
+  
+	  dispatch({
+		type: "create",
+		data: {
+		  name, title, content,
+		  id: userId.current,
+		  createDate
+		}
+	  })
+	  userId.current += 1;
+	}, [name, title, content])
+  
+	const editNotice = (id, content)=>{
+	  dispatch({
+		type: "edit",
+		id, content
+	  })
+	}
+  
+	const removeNotice = (id)=>{
+	  dispatch({
+		type: "remove",
+		id
+	  })
+	}
+  
+	const searchNotice = (text)=>{
+	  dispatch({
+		type: "search",
+		text
+	  })
+	}
+  
+	const memoNotice = useMemo(()=>{
+	  return {createNotice, editNotice, removeNotice, searchNotice}
+	}, [])
 	//
 	return <>
 		<configContext.Provider value={config}>
