@@ -37,7 +37,8 @@ const login = async(body,thenCallback,catchCallback,finallyCallback)=>{
 
 const refreshToken = async(body,thenCallback,catchCallback,finallyCallback)=>{
 	await axios.post(import.meta.env.VITE_REST_URL+'/kakao/refreshToken',QueryString.stringify({
-		...body
+		...body,
+		refresh_token:getCookie('refresh_token')||"0"
 	}),{
 		headers:{
 

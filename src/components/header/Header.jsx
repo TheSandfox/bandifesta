@@ -34,9 +34,29 @@ function MyMenu() {
 			setKakaoUser(null);
 		})
 	},[])
+	//로그아웃
+	const logoutCallback = ()=>{
+		logout({
+
+		},(response)=>{
+			setKakaoUser(null);
+		},(error)=>{
+			setKakaoUser(null);
+		})
+	}
+	//언링크
+	const unlinkCallback = ()=>{
+		unlink({
+
+		},(response)=>{
+			setKakaoUser(null);
+		},(error)=>{
+			setKakaoUser(null);
+		})
+	}
 	return <>
 		<div className='myMenuButton' onClick={handleVisible.toggle}>
-			{kakaoUser?<img src={kakaoUser.thumbnail}/>:<></>}
+			{(kakaoUser&&kakaoUser.thumbnail.length>0)?<img src={kakaoUser.thumbnail}/>:<></>}
 		</div>
 		<div className={`myMenuContainer${visible?' active':''}`}>
 			{kakaoUser===null
@@ -65,6 +85,30 @@ function MyMenu() {
 						<div className='close' onClick={handleVisible.hide}>
 						</div>
 					</div>
+					{/* 마이&페이버릿 */}
+					<div className='serviceNav'>
+							<Link to={'/my/info'}>
+								<div className='serviceNavItem'>
+									<img className='icon' src="/bandifesta/assets/user2.png" alt='회원 정보'/>
+									<div className='title fontMain'>회원 정보</div>
+									<div className='arrow'></div>
+								</div>
+							</Link>
+							<Link to={'/my/favorites'}>
+								<div className='serviceNavItem'>
+									<img className='icon' src="/bandifesta/assets/heartFill.png" alt='찜한 목록'/>
+									<div className='title fontMain'>찜한 목록</div>
+									<div className='arrow'></div>
+								</div>
+							</Link>
+							<Link to={'/my/qna'}>
+								<div className='serviceNavItem'>
+									<img className='icon' src="/bandifesta/assets/user2.png" alt='1:1 문의'/>
+									<div className='title fontMain'>1:1 문의</div>
+									<div className='arrow'></div>
+								</div>
+							</Link>
+						</div>
 				</>
 			}
 			{/* 서비스 내비 */}
@@ -107,8 +151,12 @@ function MyMenu() {
 				kakaoUser===null
 				?<></>
 				:<div className='logoutContainer'>
-					<div className='logout'>
+					<div className='logout' onClick={logoutCallback}>
 						로그아웃
+					</div>
+					{/* 임시 */}
+					<div className='logout' onClick={unlinkCallback}>
+						연결끊기
 					</div>
 				</div>
 			}
