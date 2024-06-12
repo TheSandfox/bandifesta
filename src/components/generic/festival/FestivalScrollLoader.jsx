@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react"
 import { getFestivals } from "/src/api_utils/festivalUtil"
 import { configContext } from "/src/App";
 
-export default function FestivalScrollLoader({onChange,festivalPeriodType,festivalSortMethod,containerRef,dateValue}) {
+export default function FestivalScrollLoader({onChange,festivalPeriodType,festivalSortMethod,containerRef,dateValue,userId,getFavorites}) {
 	const [festivals,setFestivals] = useState([]);
 	const [loading,setLoading] = useState(false);
 	const [pageNum,setPageNum] = useState(1);
 	const config = useContext(configContext);
+	const [end,setEnd] = useState(false);
 	//정렬방식 변경(리스트초기화)
 	useEffect(()=>{
 		if (festivalPeriodType===null
@@ -14,19 +15,25 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 			) {
 			return;
 		}
-		setFestivals([]);
+		setFestivals(festivals.map(()=>{
+			return null;
+		}));
 		getFestivals({
 			itemsPerPage:12,
 			pageNum:1,
 			language:config.language,
-			periodType:festivalPeriodType,
-			sortMethod:festivalSortMethod,
-			dateValue:dateValue?(parseInt(dateValue)):(new Date().getTime())
+			periodType:festivalPeriodType||0,
+			sortMethod:festivalSortMethod||0,
+			dateValue:dateValue?(parseInt(dateValue)):(new Date().getTime()),
+			userId:userId||0,
+			getFavorites:getFavorites||false
 		},(response)=>{
 			// console.log(response);
 			setFestivals(response.data)
+		},(error)=>{
+			// setFestivals([]);
 		});
-	},[festivalPeriodType,festivalSortMethod,dateValue]);
+	},[festivalPeriodType,festivalSortMethod,dateValue,getFavorites,userId]);
 	//스크롤다운 콜백
 	useEffect(()=>{
 		const downCallback = ()=>{
@@ -58,19 +65,24 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 	//로딩이 true로 바뀌어서 게시물 추가 로딩
 	useEffect(()=>{
 		// console.log(pageNum);
+		if (end) {return;}
 		if (pageNum>1) {
 			getFestivals({
 				itemsPerPage:12,
 				pageNum:pageNum,
 				language:config.language,
-				periodType:festivalPeriodType,
-				sortMethod:festivalSortMethod,
-				dateValue:dateValue?(parseInt(dateValue)):(new Date().getTime())
+				periodType:festivalPeriodType||0,
+				sortMethod:festivalSortMethod||0,
+				dateValue:dateValue?(parseInt(dateValue)):(new Date().getTime()),
+				userId:userId||0,
+				getFavorites:getFavorites||false
 			},(response)=>{
 				// console.log(response);
 				if (response.data.length>0) {
 					setFestivals([...festivals,...response.data]);
-				} 
+				} else {
+					setEnd(true);
+				}
 				setLoading(false);
 			});
 		}

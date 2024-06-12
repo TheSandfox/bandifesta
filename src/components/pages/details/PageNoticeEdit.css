@@ -1,26 +1,26 @@
-.notiWriteWrap{
+.notiEditWrap{
     padding: 30px 32px 32px;
     border: 1px solid #ccc;
     border-radius: 12px;
 }
-.notiWriteBox{
+.notiEditBox{
     margin-bottom: 17px;
 }
-.notiWriteBox:first-child{
+.notiEditBox:first-child{
     padding-bottom: 30px;
     border-bottom: 1px solid #ccc;
 }
-.notiWriteBox>h2{
+.notiEditBox>h2{
     text-align: center;
 }
-.writeTit{
+.editTit{
     margin-bottom: 17px;
     font-weight: 700;
 }
-.writeTit, .notiWriteBox>textarea{
+.editTit, .notiEditBox>textarea{
     display: block;
 }
-.writeBox{
+.editBox{
     width: 100%;
     height: 60px;
     padding: 17px 25px;
@@ -33,15 +33,13 @@
     box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
     background-color: var(--color-white);
 }
-.notiWriteBox>textarea{
+.notiEditBox>textarea{
     height: 434px;
 }
-.notiWriteWrap>div:last-child{
-    display: flex;
-    gap: 16px;
-    justify-content: right;
+.noticeBtn>a{
+    display: block;
 }
-.noticeWrite button{
+.noticeBtn button{
     padding: 8px 24px;
     border: none;
     color: var(--color-white);
