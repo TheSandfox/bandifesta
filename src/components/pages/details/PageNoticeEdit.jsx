@@ -1,6 +1,7 @@
 import {useState, useContext} from 'react';
 import {editContext, dataContext} from '../../../App';
 import {useParams, useNavigate} from 'react-router-dom';
+import GenericButton from '../../generic/GenericButton';
 import './PageNoticeEdit.css'
 
 function PageNoticeEdit(){
@@ -14,12 +15,8 @@ function PageNoticeEdit(){
     const navigate = useNavigate();
 
     const {editNotice} = useContext(editContext);
-    const [update, setUpdate] = useState(true);
+    const [update, setUpdate] = useState(false);
     const [editCont, setEditCont] = useState(datas[data-1].content);
-
-    // function editBtn(){
-    //     setUpdate(!update)
-    // }
 
     function editChange(e){
         setEditCont(e.target.value)
@@ -33,10 +30,9 @@ function PageNoticeEdit(){
     }
 
     function saveBtn(){
-        // editBtn()
         editNotice(datas[data-1].id, editCont)
         setUpdate(!update)
-        // navigate(`/notice/detail/${datas[data-1].id}`)
+        navigate(`/notice/detail/${datas[data-1].id}`)
     }
 
     return(
@@ -56,8 +52,8 @@ function PageNoticeEdit(){
                 </div>
             </article>
             <article className='noticeBtn'>
-                <button onClick={saveBtn}>저장</button>
-                <button onClick={cancelBtn}>취소</button>
+                <GenericButton onClick={saveBtn}>저장</GenericButton>
+                <GenericButton onClick={cancelBtn}>취소</GenericButton>
             </article>
         </section>
     )

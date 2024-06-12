@@ -32,7 +32,7 @@ function PageNoticeDetail(){
                     <h2 className='fontTitle'>{datas[data-1].title}</h2>
                     <div>
                         <div className='fontMain detailTit'>작성자</div>
-                        <div className='fontMain detailBox'>{datas[data-1].name}</div>
+                        <div className='fontMain detailBox'>관리자</div>
                     </div>
                     <div>
                         <div className='fontMain detailTit'>작성일</div>

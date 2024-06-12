@@ -13,7 +13,8 @@ import GenericButton from '/src/components/generic/GenericButton';
 function UserInfo({kakaoUser,handleConfig}) {
 	const config = useContext(configContext);
 	let imgPath = ''
-	if (kakaoUser===null||kakaoUser.profile.length<=0) {
+	// if (kakaoUser===null||kakaoUser.profile.length<=0) {
+	if (kakaoUser===null) {
 		imgPath = '/bandifesta/assets/user2.png'
 	} else {
 		imgPath = kakaoUser.profile;

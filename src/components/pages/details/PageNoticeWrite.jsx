@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import {editContext} from '../../../App';
+import GenericButton from '../../generic/GenericButton';
 import DataInput from './PageNoticeDataInput';
 import './PageNoticeWrite.css'
 
@@ -36,9 +37,13 @@ function PageNoticeWrite(){
                     <textarea className='writeBox' name="content" value={content} onChange={onchange}></textarea>
                 </div>
             </article>
-            <article className='noticeBtn'>
+            {/* <article className='noticeBtn'>
                 <button onClick={createBtn}>작성하기</button>
                 <button><Link to="/notice">취소하기</Link></button>
+            </article> */}
+            <article className='noticeBtn'>
+                <GenericButton onClick={createBtn}>작성하기</GenericButton>
+                <GenericButton to="/notice/main">취소하기</GenericButton>
             </article>
         </section>
     )
