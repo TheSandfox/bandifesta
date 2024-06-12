@@ -53,7 +53,7 @@ function FestivalContent({festival}) {
 		let startDate = new Date(festival.start_date);
 		let today = new Date();
 		let endDate = new Date(festival.end_date);
-		console.log(festival);
+		// console.log(festival);
 		if(startDate>today) {
 			setTagVariation({
 				value:1,

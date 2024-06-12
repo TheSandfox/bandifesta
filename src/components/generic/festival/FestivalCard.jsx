@@ -89,7 +89,7 @@ function FestivalCard({festival,disableTag,userId}) {
 	// }
 	//
 	// Link
-	return <Link className={`festivalCard${(festival===null)?' disabled':''}`} to={`/festival/detail/${festival.festival_id}`}>
+	return <Link className={`festivalCard${(festival===null)?' disabled':''}`} to={`/festival/detail/${festival?festival.festival_id:'0'}`}>
 		<div className='festivalCardTop'>
 			{
 				(!isNull)

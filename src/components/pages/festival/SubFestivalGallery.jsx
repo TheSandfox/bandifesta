@@ -54,7 +54,7 @@ export default function SubFestivalGallery({handleTabState,index}) {
 			]}/>
 			<FestivalSelect handleValue={handleFestivalSortMethod} values={[
 				...festivalSortMethods
-			]} initialValue={1}/>
+			]}/>
 		</div>
 		<FestivalCardList festivals={festivals}/>
 		<FestivalScrollLoader
