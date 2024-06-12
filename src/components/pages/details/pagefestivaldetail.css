@@ -60,6 +60,11 @@
 	font-size: 0;
 	position: relative;
 	overflow: hidden;
+	background-color: #d9d9d9;
+	background-image: url('/bandifesta/assets/sparkle.png');
+	background-repeat: no-repeat;
+	background-size: 45%;
+	background-position: center;
 }
 
 .festivalDetail .imgContainer>.blur {

@@ -87,8 +87,15 @@ function FestivalContent({festival}) {
 		{/* 포스터&설명 */}
 		<div className="middle">
 			<div className="imgContainer">
-				<img className='blur' src={festival.image1}/>
-				<img className='upper' src={festival.image1}/>
+				{
+					festival.image1
+					?<>
+						<img className='blur' src={String(festival.image1).replace('http://','https://')}/>
+						<img className='upper' src={String(festival.image1).replace('http://','https://')}/>
+					</>
+					:<>
+					</>
+				}
 			</div>
 			<div className="description">
 				{/* 진행기간 */}
