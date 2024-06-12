@@ -26,7 +26,7 @@
   background-image: url(/bandifesta/public/assets/main_sec4_bg.png);
   color: var(--color-white);
   text-align: center;
-  padding: 100px 0;
+  padding: calc( 100vw * (20 / 400)) 0 100px;
   position: relative;
   overflow: hidden;
 }
@@ -108,7 +108,7 @@
   }
   .Main_sec4_bottom_logoMoon{
     width: calc( 100vw * (600 / 400));;
-    height: calc( 100vw * (600 / 400));;
+    height: calc( 100vw * (400 / 400));;
     top:50px;
   }
   .Main_sec4_bottom_logoMoon>img{
