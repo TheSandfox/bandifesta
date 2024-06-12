@@ -21,6 +21,21 @@
 	overflow: hidden;
 }
 
+.festivalCardTop .hightlight {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	opacity: 0;
+	transition: opacity 0.25s;
+}
+
+.festivalCardTop:hover .hightlight {
+	opacity: 0.33;
+}
+
 .festivalCardImage {
 	width: 100%;
 	height: 100%;

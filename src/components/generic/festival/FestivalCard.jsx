@@ -89,14 +89,19 @@ function FestivalCard({festival,disableTag,userId}) {
 	// }
 	//
 	// Link
-	return <Link className={`festivalCard${(festival===null)?' disabled':''}`} to={`/festival/detail/${festival?festival.festival_id:'0'}`}>
+	return <div className={`festivalCard${(festival===null)?' disabled':''}`}>
 		<div className='festivalCardTop'>
 			{
 				(!isNull)
-				?<img src={festival.image1}
-				alt={festival.title} 
-				className='festivalCardImage'
-				ref={imgElement}/>
+				?<Link to={`/festival/detail/${festival?festival.festival_id:'0'}`}>
+					{/* 썸네일 */}
+					<img src={festival.image1}
+					alt={festival.title} 
+					className='festivalCardImage'
+					ref={imgElement}/>
+					{/* 하이라이팅 */}
+					<div className='hightlight'></div>
+				</Link>
 				:<></>
 			}
 			{
@@ -119,7 +124,7 @@ function FestivalCard({festival,disableTag,userId}) {
 		<div className='fontSubTitle'>
 			{(!isNull)?festival.title:''}
 		</div>
-	</Link>
+	</div>
 }
 
 function FestivalCardList({festivals,className}) {

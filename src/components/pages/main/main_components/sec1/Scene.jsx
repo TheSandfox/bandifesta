@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Water } from 'three-stdlib'
 import * as THREE from 'three';
 import waterNormalsFile from '/src/assets/waternormals.jpeg';
-import Loading from '../../../../generic/Loading';
+import Loading from '/src/components/generic/Loading';
 
 extend({ Water })
 
@@ -34,7 +34,7 @@ function SceneObject() {
 
 	useEffect(()=>{
 		// console.log(three);
-		console.log(gltf);
+		// console.log(gltf);
 		// scene.add(camera);
 		// console.log(camera);
 		// three.camera = camera.clone();
@@ -49,7 +49,7 @@ function SceneObject() {
 		three.camera.updateProjectionMatrix();
 		scene.fog = new THREE.Fog('black', 5, 50);
 		//애니메이션 초기화
-		console.log(animations.actions);
+		// console.log(animations.actions);
 		animations.actions['boat_float'].play();
 		animations.actions['boat_shake'].play();
 		animations.actions['kumo_flow1'].play();
@@ -99,8 +99,8 @@ export default function Scene() {
 	},[])
 	return <div className='scene'>
 		<div className='loadingBackdrop'>
-			<Loading timeout={3.5}/>
 		</div>
+		<Loading timeout={2.5}/>
 		<Canvas 
 			className='canvas'
 			ref={canvasRef}
