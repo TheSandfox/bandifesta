@@ -5,7 +5,7 @@ export default function GenericButton({children, to, onClick}) {
 	return <>
 		{
 			to
-			?<Link className="genericButton" to={to} onClick={onClick?onClick:(()=>{})}>
+			?<Link className="genericButton static" to={to} onClick={onClick?onClick:(()=>{})}>
 				<div className="fontMain">
 					{children}
 				</div>

@@ -87,6 +87,9 @@
 	object-fit: cover;
 	transform: translateY(-50%);
 	box-shadow: 0 0 64px #000;
+	@media screen and (max-width:1023px) {
+		box-shadow: 0 0 calc( 100vw * (64 / 400) ) #000;
+	}
 }
 
 /* 우측 설명 */
@@ -121,6 +124,10 @@
 	justify-content: center;
 	width: 200px;
 	padding: 25px 0;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (100 / 400) );
+		padding: calc( 100vw * (16 / 400) ) 0;
+	}
 }
 
 .festivalDetail .descriptionRow>.right {
