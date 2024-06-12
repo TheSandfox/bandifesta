@@ -1,7 +1,8 @@
 import {useContext, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import {dataContext} from '../../../App';
 import SubNoticeList from './SubNoticeList';
+import SearchBox from './SubNoticeSearch';
+import GenericButton from '../../generic/GenericButton';
 import './SubNoticeMain.css';
 
 function SubNoticeMain({handleTabState,index}) {
@@ -15,8 +16,15 @@ function SubNoticeMain({handleTabState,index}) {
 	return(
 		<div className='noticeWrap'>
             <div className='noticeMain'>
-                <div className='searchWrap'></div>
-                <p>총 <span>{datas.length}</span>개의 게시글이 있습니다.</p>
+                <SearchBox />
+                <div className='fontMain noticeListN'>
+                    <p>
+                        총 <span>{datas.length}</span>개의 게시글이 있습니다.
+                    </p>
+                    <div className='noticeWriteBtn'>
+                        <GenericButton to="/notice/write">글쓰기</GenericButton>
+                    </div>
+                </div>
                 <div>
                     <ul className='noticeListT'>
                         <li className='notiNumber'>번호</li>
@@ -28,7 +36,9 @@ function SubNoticeMain({handleTabState,index}) {
                     {datas.map((data)=>
                     <SubNoticeList key={data.id} {...data} />)}
                 </div>
-                <button><Link to="/notice/write">글쓰기</Link></button>
+                <div className='noticeWriteBtn'>
+                    <GenericButton to="/notice/write">글쓰기</GenericButton>
+                </div>
             </div>
 		</div>
     )

@@ -1,6 +1,7 @@
 import {useContext} from 'react';
 import {Routes, Route, Link, useParams, useNavigate} from 'react-router-dom';
 import {editContext, dataContext} from '../../../App';
+import TopBanner from '../../generic/TopBanner';
 import './PageNoticeDetail.css';
 
 function PageNoticeDetail(){
@@ -8,7 +9,6 @@ function PageNoticeDetail(){
     const datas = useContext(dataContext);
 
     let params = useParams();
-console.log(params)
 
     let data = params.noticeId;
 
@@ -25,6 +25,7 @@ console.log(params)
 
     return(
         <>
+            <TopBanner>알려드립니다</TopBanner>
             <section key={datas[data-1].id} className='innerbox mainContent'>
                 <article className='noticeDetail'>
                     <h2 className='fontTitle'>{datas[data-1].title}</h2>

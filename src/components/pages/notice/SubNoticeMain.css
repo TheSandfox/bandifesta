@@ -1,18 +1,3 @@
-/* .noticeWrap{
-    display: flex;
-} */
-.noticeTabSub{
-    padding: 17px 25px;
-    font-size: 18px;
-    font-weight: 700;
-    background-color: var(--color-white);
-}
-.noticeTabSub:nth-child(2){
-    color: var(--color-white);
-    background-color: var(--color-main);
-}
-
-
 .noticeMain{
     width: 1090px;
 }
@@ -21,18 +6,64 @@
     height: 144px;
     border: 1px solid #ccc;
 }
-.noticeMain>p{
-    padding: 23px 0;
+.noticeListN{
+    padding: 17px 0 23px;
     font-weight: 500;
 }
-.noticeMain>p>span{
+.noticeListN span{
     font-weight: 700;
     color: var(--color-main);
+}
+.noticeListN>.noticeWriteBtn{
+    display: none;
 }
 .noticeMain ul{
     padding: 18px 25px;
     justify-content: space-between;
 }
+
+
+/* search */
+.noticeSearch{
+    text-align: center;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 23px 0;
+    margin-bottom: 23px;
+}
+.noticeSearch>h1{
+    /* font-size: 20px; */
+    margin-bottom: 17px;
+}
+.noticeSearchBar{
+    width: 70%;
+    position: relative;
+    margin-left: 15%;
+}
+.noticeSearchBar>input{
+    width: 100%; 
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    background-color: #f8f8f8;
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px inset;
+    padding: 15px;
+    font-size: 16px;
+}
+.noticeSearchBar>button{
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    background-color: #050819;
+    position: absolute;
+    right: 15px; top: 50%;
+    transform: translateY(-50%);
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px;
+}
+.noticeSearchBar>button>img{
+    width: 70%; height: 70%;
+}
+
+
+/* notice list */
 .noticeListT{
     border-bottom: 2px solid #686868;
     text-align: center;
@@ -58,6 +89,8 @@
 }
 .notiTitle{
     width: 600px;
+}
+.notiTitTxt{
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -72,24 +105,17 @@
 .notiView{
     width: 50px;
 }
-.noticeMain>button{
+.notiArrow{
+    display: none;
+}
+.noticeMain>.noticeWriteBtn{
     margin: 23px 0;
-    padding: 8px 24px;
     border: none;
-    color: var(--color-white);
-    background-color: var(--color-main);
     float: right;
 }
 
 
 @media screen and (max-width: 1439px) {
-    .noticeTabTit{
-        padding: 25px 0;
-    }
-    .noticeTabSub{
-        padding: 15px;
-        font-size: 16px;
-    }
     .noticeMain{
         width: 100%;
     }
@@ -99,9 +125,8 @@
     .noticeMain ul{
         padding: 15px;
     }
-    .noticeMain>p{
+    .noticeListN{
         padding: 30px 0;
-        font-size: 14px;
     }
     .noticeListT{
         font-size: 15px;
@@ -127,7 +152,53 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .noticeTab{
+    .noticeListN{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .noticeListN>.noticeWriteBtn{
+        display: flex;
+    }
+    .noticeListT{
+        display: none;
+    }
+    .noticeListM{
+        font-size: calc(100vw * (15/400));
+        flex-direction: column;
+        align-items: start;
+    }
+    .noticeListM>li:not(.notiTitle){
+        text-align: left;
+    }
+    .notiNumber{
+        display: none;
+    }
+    .notiTitle{
+        width: 100%;
+        order: 2;
+    }
+    .notiTitle>a{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .notiWriter{
+        display: none;
+    }
+    .notiDate{
+        width: 100%;
+        order: 1;
+        font-size: calc(100vw * (10/400));
+    }
+    .notiView{
+        display: none;
+    }
+    .notiArrow{
+        display: block;
+        width: calc(100vw * (20/400));
+    }
+    .noticeMain>.noticeWriteBtn{
         display: none;
     }
 }

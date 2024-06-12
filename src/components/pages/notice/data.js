@@ -199,7 +199,7 @@ const Reducer = (state, action)=>{
             return{
                 ...state,
                 datas: state.datas.filter((data)=>{return(
-                    data.title.toLowerCase().includes(action.title.toLowerCase())
+                  data.title.includes(action.title) || data.content.includes(action.text)
                 )})
             }
         default:
