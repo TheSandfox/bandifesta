@@ -95,7 +95,7 @@ function FestivalCard({festival,disableTag,userId}) {
 				(!isNull)
 				?<Link to={`/festival/detail/${festival?festival.festival_id:'0'}`}>
 					{/* 썸네일 */}
-					<img src={festival.image1}
+					<img src={festival.image1.replace('http://','https://')}
 					alt={festival.title} 
 					className='festivalCardImage'
 					ref={imgElement}/>
