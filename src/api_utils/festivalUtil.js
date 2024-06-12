@@ -39,11 +39,16 @@ const getFestivalSortMethods = async(thenCallback,catchCallback,finallyCallback)
 	itemsPerPage: 표시할 갯수,
 	pageNum: 페이지,
 	language:config.language 건드리지않기,
-	dateValue: 기준날짜의 getTime정수값
+	dateValue: 기준날짜의 getTime정수값,
+	periodType: 유형,
 	sortMethod: 정렬방식,
 }*/
 const getFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.get(import.meta.env.VITE_REST_URL+`/festival/getFestivals`,{
+	let targetRoute = `/festival/getFestivals`;
+	if (params.getFavorites&&(params.userId>0)) {
+		targetRoute = `/festival/getLikedFestivals`
+	}
+	await axios.get(import.meta.env.VITE_REST_URL+targetRoute,{
 		params
 	})
 	.then(function (response) {
@@ -66,23 +71,23 @@ const getFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
 	pageNum: 페이지,
 	userId: 유저아이디,
 }*/
-const getLikedFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
-	await axios.get(import.meta.env.VITE_REST_URL+`/festival/getLikedFestivals`,{
-		params
-	})
-	.then(function (response) {
-		// 성공 핸들링
-		thenCallback(response);
-	})
-	.catch(function (error) {
-		// 에러 핸들링
-		if(catchCallback){catchCallback(error);}
-	})
-	.finally(function () {
-		// 항상 실행되는 영역
-		if(finallyCallback){finallyCallback();}
-	});
-}
+// const getLikedFestivals = async(params,thenCallback,catchCallback,finallyCallback)=>{
+// 	await axios.get(import.meta.env.VITE_REST_URL+`/festival/getLikedFestivals`,{
+// 		params
+// 	})
+// 	.then(function (response) {
+// 		// 성공 핸들링
+// 		thenCallback(response);
+// 	})
+// 	.catch(function (error) {
+// 		// 에러 핸들링
+// 		if(catchCallback){catchCallback(error);}
+// 	})
+// 	.finally(function () {
+// 		// 항상 실행되는 영역
+// 		if(finallyCallback){finallyCallback();}
+// 	});
+// }
 
 //축제의 상세정보를 가져옵니다
 /*{
@@ -179,7 +184,7 @@ export {
 	getFestivalPeriodTypes,
 	getFestivalSortMethods,
 	getFestivals,
-	getLikedFestivals,
+	// getLikedFestivals,
 	getFestivalDetail,
 	likeFestival,
 	isFestivalLiked,

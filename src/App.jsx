@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useReducer, useMemo, useCallback, u
 import {Contents, Reducer} from './components/pages/notice/data';
 import './App.css'
 //
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 //헤더푸터
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -25,7 +25,7 @@ import PageAnswerWrite 		from './components/pages/details/PageAnswerWrite';
 import PageAnswerEdit 		from './components/pages/details/PageAnswerEdit';
 import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
 import PageQNAEdit from './components/pages/details/PageQNAEdit';
-import { getKakaoUser } from './api_utils/loginUtil';
+import { getKakaoUser, logout, unlink } from './api_utils/loginUtil';
 
 const configContext = createContext();
 
@@ -33,6 +33,8 @@ export const dataContext = createContext();
 export const editContext = createContext();
 
 function App() {
+	//네비게이트
+	const navigate = useNavigate();
 	//전역설정
 	const [config,setConfig] = useState({
 		languages:[
@@ -58,6 +60,40 @@ function App() {
 			setConfig({
 				...config,
 				user:obj
+			})
+		},
+		logout:()=>{
+			logout({
+
+			},(response)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},(error)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},()=>{
+				navigate('/')
+			})
+		},
+		unlink:()=>{
+			unlink({
+
+			},(response)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},(error)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},()=>{
+				navigate('/')
 			})
 		}
 	}
@@ -129,7 +165,7 @@ function App() {
 				        <Route path={'/course'} element={<PageCourse/>}/>
 				        <Route path={'/notice/:tabName'} element={<PageNotice/>}/>
 				        <Route path={'/festival/:tabName'} element={<PageFestival/>}/>
-				        <Route path={'/my/:tabName'} element={<PageMy/>}/>
+				        <Route path={'/my/:tabName'} element={<PageMy handleConfig={handleConfig}/>}/>
 				        {/*상세,작성,수정페이지*/}
 				        <Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
 				        <Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>

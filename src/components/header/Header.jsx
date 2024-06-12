@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './header.css';
 import './mymenu.css';
-import { useContext, useEffect, useState } from 'react';
-import { loginRequest, logout, unlink, getKakaoUser } from "/src/api_utils/loginUtil"
+import { useContext, useState } from 'react';
+import { loginRequest } from "/src/api_utils/loginUtil"
 import GenericIconButton from '../generic/GenericIconButton';
 import { configContext } from '../../App';
 
@@ -21,37 +21,13 @@ function MyMenu({handleConfig}) {
 			setVisible(false);
 		}
 	}
-	// //유저 정보 가져오기
-	// useEffect(()=>{
-	// 	getKakaoUser({
-
-	// 	},(response)=>{
-	// 		// console.log(response.data);
-	// 		setKakaoUser(response.data);
-	// 	},(error)=>{
-	// 		// console.log('유저 가져오기 실패');
-	// 		setKakaoUser(null);
-	// 	})
-	// },[])
 	//로그아웃
 	const logoutCallback = ()=>{
-		logout({
-
-		},(response)=>{
-			handleConfig.setKakaoUser(null);
-		},(error)=>{
-			handleConfig.setKakaoUser(null);
-		})
+		handleConfig.logout();
 	}
 	//언링크
 	const unlinkCallback = ()=>{
-		unlink({
-
-		},(response)=>{
-			handleConfig.setKakaoUser(null);
-		},(error)=>{
-			handleConfig.setKakaoUser(null);
-		})
+		handleConfig.unlink();
 	}
 	return <>
 		<div className='myMenuButton' onClick={handleVisible.toggle}>
@@ -87,28 +63,28 @@ function MyMenu({handleConfig}) {
 						</div>
 						{/* 마이&페이버릿 */}
 						<div className='serviceNav'>
-								<Link to={'/my/info'}>
-									<div className='serviceNavItem'>
-										<img className='icon' src="/bandifesta/assets/user2.png" alt='회원 정보'/>
-										<div className='title fontMain'>회원 정보</div>
-										<div className='arrow'></div>
-									</div>
-								</Link>
-								<Link to={'/my/favorites'}>
-									<div className='serviceNavItem'>
-										<img className='icon' src="/bandifesta/assets/heartFill.png" alt='찜한 목록'/>
-										<div className='title fontMain'>찜한 목록</div>
-										<div className='arrow'></div>
-									</div>
-								</Link>
-								<Link to={'/my/qna'}>
-									<div className='serviceNavItem'>
-										<img className='icon' src="/bandifesta/assets/user2.png" alt='1:1 문의'/>
-										<div className='title fontMain'>1:1 문의</div>
-										<div className='arrow'></div>
-									</div>
-								</Link>
-							</div>
+							<Link to={'/my/info'} onClick={handleVisible.hide}>
+								<div className='serviceNavItem'>
+									<img className='icon' src="/bandifesta/assets/user2.png" alt='회원 정보'/>
+									<div className='title fontMain'>회원 정보</div>
+									<div className='arrow'></div>
+								</div>
+							</Link>
+							<Link to={'/my/favorites'} onClick={handleVisible.hide}>
+								<div className='serviceNavItem'>
+									<img className='icon' src="/bandifesta/assets/heartFill.png" alt='찜한 목록'/>
+									<div className='title fontMain'>찜한 목록</div>
+									<div className='arrow'></div>
+								</div>
+							</Link>
+							<Link to={'/my/qna'} onClick={handleVisible.hide}>
+								<div className='serviceNavItem'>
+									<img className='icon' src="/bandifesta/assets/user2.png" alt='1:1 문의'/>
+									<div className='title fontMain'>1:1 문의</div>
+									<div className='arrow'></div>
+								</div>
+							</Link>
+						</div>
 					</>
 				}
 				{/* 서비스 내비 */}
@@ -118,28 +94,28 @@ function MyMenu({handleConfig}) {
 					</div>
 				</div>
 				<div className='serviceNav'>
-					<Link to={'/intro/main'}>
+					<Link to={'/intro/main'} onClick={handleVisible.hide}>
 						<div className='serviceNavItem'>
 							<img className='icon' src="/bandifesta/assets/ballon.png" alt='경복궁별빛야행'/>
 							<div className='title fontMain'>경복궁별빛야행</div>
 							<div className='arrow'></div>
 						</div>
 					</Link>
-					<Link to={'/course'}>
+					<Link to={'/course'} onClick={handleVisible.hide}>
 						<div className='serviceNavItem'>
 							<img className='icon' src="/bandifesta/assets/shoes.png" alt='경복궁나들이'/>
 							<div className='title fontMain'>경복궁나들이</div>
 							<div className='arrow'></div>
 						</div>
 					</Link>
-					<Link to={'/notice/main'}>
+					<Link to={'/notice/main'} onClick={handleVisible.hide}>
 						<div className='serviceNavItem'>
 							<img className='icon' src="/bandifesta/assets/notice.png" alt='알려드립니다'/>
 							<div className='title fontMain'>알려드립니다</div>
 							<div className='arrow'></div>
 						</div>
 					</Link>
-					<Link to={'/festival/gallery'}>
+					<Link to={'/festival/gallery'} onClick={handleVisible.hide}>
 						<div className='serviceNavItem'>
 							<img className='icon' src="/bandifesta/assets/location.png" alt='축제둘러보기'/>
 							<div className='title fontMain'>축제둘러보기</div>

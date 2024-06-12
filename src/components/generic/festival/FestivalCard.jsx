@@ -46,9 +46,17 @@ function FestivalCard({festival,disableTag,userId}) {
 		value:0,
 		string:''
 	});
+	const isNull = festival===null;
 	// console.log(userId);
 	//진,예,마 판별
 	useEffect(()=>{
+		if (isNull){
+			setTagVariation({
+				value:3,
+				string:''
+			});
+			return;
+		}
 		let startDate = new Date(festival.start_date);
 		let today = new Date();
 		let endDate = new Date(festival.end_date);
@@ -71,11 +79,20 @@ function FestivalCard({festival,disableTag,userId}) {
 	},[])
 	return <div className='festivalCard'>
 		<div className='festivalCardTop'>
-			<img src={festival.image1}
+			{
+				(!isNull)
+				?<img src={festival.image1}
 				alt={festival.title} 
 				className='festivalCardImage'
 				ref={imgElement}/>
-			<FestivalLikeButton festivalId={festival.festival_id} userId={userId}/>
+				:<></>
+			}
+			{
+				//userId에 따른 좋아요버튼 표시 분기
+				(userId&&!isNull)
+				?<FestivalLikeButton festivalId={festival.festival_id} userId={userId}/>
+				:<></>
+			}
 		</div>
 		{/* 진,예,마 태그 */}
 		{
@@ -88,7 +105,7 @@ function FestivalCard({festival,disableTag,userId}) {
 			</div>
 		}
 		<div className='fontSubTitle'>
-			{festival.title}
+			{(!isNull)?festival.title:''}
 		</div>
 	</div>
 }
@@ -97,8 +114,8 @@ function FestivalCardList({festivals,className}) {
 	const config = useContext(configContext);
 	// console.log(config);
 	return <div className={`festivalCardList${className?(' '+className):''}`}>
-		{festivals.map((festival)=>{
-			return <FestivalCard key={festival.festival_id} festival={festival} userId={(config.user)?config.user.id:undefined}/>
+		{festivals.map((festival,index)=>{
+			return <FestivalCard key={(festival===null)?index:festival.festival_id} festival={festival} userId={(config.user)?config.user.id:undefined}/>
 		})}
 	</div>
 }

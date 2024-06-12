@@ -10,12 +10,17 @@ import './pagemy.css';
 import { configContext } from '/src/App';
 import GenericButton from '/src/components/generic/GenericButton';
 
-function UserInfo({kakaoUser}) {
+function UserInfo({kakaoUser,handleConfig}) {
+	const config = useContext(configContext);
 	let imgPath = ''
 	if (kakaoUser===null||kakaoUser.profile.length<=0) {
 		imgPath = '/bandifesta/assets/user2.png'
 	} else {
 		imgPath = kakaoUser.profile;
+	}
+	//
+	const logoutCallback = ()=>{
+		handleConfig.logout();
 	}
 	return <div className="pageMyUserInfo">
 		{/* 프사공간 */}
@@ -24,12 +29,12 @@ function UserInfo({kakaoUser}) {
 			<div className="fontSubTitle name">
 				{kakaoUser?('#'+kakaoUser.name):''}
 			</div>
-			<GenericButton>로그아웃</GenericButton>
+			<GenericButton onClick={logoutCallback}>로그아웃</GenericButton>
 		</div>
 	</div>
 }
 
-export default function PageMy({}) {
+export default function PageMy({handleConfig}) {
 	const { tabName } = useParams();
 	const [tabState,setTabState] = useState(0);
 	const config = useContext(configContext);
@@ -53,27 +58,31 @@ export default function PageMy({}) {
 	}
 	return <>
 		<TopBanner>마이페이지</TopBanner>
-		<div className="innerbox pageMy">
-			<MobileTabContainer>
-				<MobileTab to={'/my/info'} active={tabState===0}>회원 정보</MobileTab>
-				<MobileTab to={'/my/favorites'} active={tabState===1}>찜한 목록</MobileTab>
-				<MobileTab to={'/my/qna'} active={tabState===2}>1:1 문의</MobileTab>
-			</MobileTabContainer>
-			<div className="mainContent">
-				<div className="tabContentDivisionAlter">
-					<SsangTabContainer>
-						<SsangTab to={'/my/info'} active={tabState===0}>회원 정보</SsangTab>
-						<SsangTab to={'/my/favorites'} active={tabState===1}>찜한 목록</SsangTab>
-						<SsangTab to={'/my/qna'} active={tabState===2}>1:1 문의</SsangTab>
-					</SsangTabContainer>
-					<div className="leftRightDivision">
-						<UserInfo kakaoUser={config.user}/>
-						<div className="rightContent">
-							{jsx}
+		{
+			config.user
+			?<div className="innerbox pageMy">
+				<MobileTabContainer>
+					<MobileTab to={'/my/info'} active={tabState===0}>회원 정보</MobileTab>
+					<MobileTab to={'/my/favorites'} active={tabState===1}>찜한 목록</MobileTab>
+					<MobileTab to={'/my/qna'} active={tabState===2}>1:1 문의</MobileTab>
+				</MobileTabContainer>
+				<div className="mainContent">
+					<div className="tabContentDivisionAlter">
+						<SsangTabContainer>
+							<SsangTab to={'/my/info'} active={tabState===0}>회원 정보</SsangTab>
+							<SsangTab to={'/my/favorites'} active={tabState===1}>찜한 목록</SsangTab>
+							<SsangTab to={'/my/qna'} active={tabState===2}>1:1 문의</SsangTab>
+						</SsangTabContainer>
+						<div className="leftRightDivision">
+							<UserInfo kakaoUser={config.user} handleConfig={handleConfig}/>
+							<div className="rightContent">
+								{jsx}
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			:<></>
+		}
 	</>
 }
