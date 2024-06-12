@@ -4,7 +4,7 @@ import GenericTag from '../GenericTag';
 import { isFestivalLiked } from '/src/api_utils/festivalUtil';
 import { likeFestival } from '/src/api_utils/festivalUtil';
 import { configContext } from '/src/App';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function FestivalLikeButton({festivalId,userId}) {
 	const [pressed,setPressed] = useState(false);
@@ -80,12 +80,13 @@ function FestivalCard({festival,disableTag,userId}) {
 		}
 	},[])
 	//
-	const navigateCallback = ()=>{
-		if (!festival.festival_id) {return;}
-		navigate(`/festival/detail/${festival.festival_id}`);
-	}
+	// const navigateCallback = ()=>{
+	// 	if (!festival.festival_id) {return;}
+	// 	navigate(`/festival/detail/${festival.festival_id}`);
+	// }
 	//
-	return <div className='festivalCard' onClick={navigateCallback}>
+	// Link
+	return <Link className={`festivalCard${(festival===null)?' disabled':''}`} to={`/festival/detail/${festival.festival_id}`}>
 		<div className='festivalCardTop'>
 			{
 				(!isNull)
@@ -115,7 +116,7 @@ function FestivalCard({festival,disableTag,userId}) {
 		<div className='fontSubTitle'>
 			{(!isNull)?festival.title:''}
 		</div>
-	</div>
+	</Link>
 }
 
 function FestivalCardList({festivals,className}) {
@@ -128,4 +129,4 @@ function FestivalCardList({festivals,className}) {
 	</div>
 }
 
-export { FestivalCardList, FestivalCard };
+export { FestivalCardList, FestivalCard, FestivalLikeButton };

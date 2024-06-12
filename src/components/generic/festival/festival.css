@@ -5,6 +5,10 @@
 	cursor: pointer;
 }
 
+.festivalCard.disabled {
+	pointer-events: none;
+}
+
 .festivalCardTop {
 	position: relative;
 	width: 100%;

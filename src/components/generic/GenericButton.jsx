@@ -1,14 +1,20 @@
-import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import './genericbutton.css'
 
 export default function GenericButton({children, to, onClick}) {
-	const navigate = useNavigate();
-	const navigateCallback = ()=>{
-		if (to) {navigate(to);}
-	}
-	return <div className="genericButton" onClick={onClick?onClick:navigateCallback}>
-		<div className="fontMain">
-			{children}
-		</div>
-	</div>
+	return <>
+		{
+			to
+			?<Link className="genericButton" to={to} onClick={onClick?onClick:(()=>{})}>
+				<div className="fontMain">
+					{children}
+				</div>
+			</Link>
+			:<div className="genericButton" onClick={onClick?onClick:(()=>{})}>
+				<div className="fontMain">
+					{children}
+				</div>
+			</div>
+		}
+	</>
 }

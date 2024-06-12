@@ -1,28 +1,37 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom";
 import { getFestivalDetail } from "/src/api_utils/festivalUtil";
 import TopBanner from "../../generic/TopBanner";
 import './pagefestivaldetail.css';
 import GenericTag from "../../generic/GenericTag";
 import { getFestivalLikeCount } from "../../../api_utils/festivalUtil";
+import { configContext } from '/src/App';
+import { FestivalLikeButton } from "../../generic/festival/FestivalCard";
+import GoogleMapComponent from "../../generic/googlemap/GoogleMapComponent";
+import GenericButton from '/src/components/generic/GenericButton'
 
 function LikeIndicator({festival}) {
+	const config = useContext(configContext)
 	const [count,setCount] = useState(0);
 	useEffect(()=>{
 		if (!festival) {return;}
 		getFestivalLikeCount({
 			festivalId:festival.festival_id
 		},(response)=>{
-			console.log(response.data);
+			// console.log(response.data);
 			setCount(response.data);
 		})
 	},[festival])
 	return <div className="likeIndicator fontMain">
-		{count}
+		<FestivalLikeButton festivalId={festival.festival_id} userId={config.user.id}/>
+		<div className="fontSubTitle">
+			{count}
+		</div>
 	</div>
 }
 
 function FestivalContent({festival}) {
+	const navigate = useNavigate();
 	const [tagVariation,setTagVariation] = useState({
 		value:0,
 		string:''
@@ -53,13 +62,15 @@ function FestivalContent({festival}) {
 	return <div className="festivalDetail">
 		{/* 상단 제목 */}
 		<div className="top">
-			<GenericTag variation={tagVariation.value}>
-				{tagVariation.string}
-			</GenericTag>
+			<div className="tagAndLike">
+				<GenericTag variation={tagVariation.value}>
+					{tagVariation.string}
+				</GenericTag>
+				<LikeIndicator festival={festival}/>
+			</div>
 			<div className="fontTitle">
 				{festival?festival.title:''}
 			</div>
-			<LikeIndicator festival={festival}/>
 		</div>
 		{/* 포스터&설명 */}
 		<div className="middle">
@@ -123,6 +134,22 @@ function FestivalContent({festival}) {
 					</div>
 				</div>
 			</div>
+		</div>
+		{/* 꾸글지도 */}
+		<div className="bottom">
+			<div className="fontSubTitle">오시는 길</div>
+			{festival
+				?<GoogleMapComponent 
+					mapX={festival.map_x} 
+					mapY={festival.map_y}
+					center={{
+						lat: festival.map_x,
+						lng: festival.map_y
+					}}
+				/>
+				:<></>
+			}
+			<GenericButton to={'/festival/gallery'}>목록으로</GenericButton>
 		</div>
 	</div>
 }

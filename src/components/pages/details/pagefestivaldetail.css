@@ -6,15 +6,35 @@
 		gap: 15px;
 	}
 	@media screen and (max-width:1023px) {
-		gap: calc( 100vw * (15/400) );
+		gap: calc( 100vw * (15 / 400) );
 	}
 }
 
 /* 상단 제목 */
 .festivalDetail > .top {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	gap: calc( 100vw * (16 / 400) );
+}
+
+.festivalDetail > .top>.tagAndLike {
+	display: flex;
+	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.festivalDetail > .top>.fontTitle {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	@media screen and (max-width:1023px) {
+		position: static;
+		transform: none;
+	}
 }
 
 /* 중단 이미지&설명 */
@@ -23,6 +43,14 @@
 	justify-content: space-between;
 	/* align-items: center; */
 	gap: 30px;
+	@media screen and (max-width:1439px) {
+		gap: 15px;
+	}
+	@media screen and (max-width:1023px) {
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: calc( 100vw * (15 / 400) );
+	}
 }
 
 /* 좌측 이미지 */
@@ -74,6 +102,13 @@
 	gap: 23px;
 	font-weight: bold;
 	line-height: 29px;
+	@media screen and (max-width:1439px) {
+		gap: 15px;
+	}
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (15 / 400) );
+		line-height: calc( 100vw * (29 / 400) );
+	}
 }
 
 .festivalDetail .descriptionRow:last-child {
@@ -92,4 +127,48 @@
 	border-bottom: 1px solid #ccc;
 	flex: 1;
 	padding: 25px 25px;
+}
+
+/* 하단 맵 */
+.festivalDetail .bottom {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 23px;
+	@media screen and (max-width:1439px) {
+		gap: 15px;
+	}
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (15 / 400) );
+	}
+}
+
+.festivalDetail .bottom .fontSubTitle {
+	width: 100%;
+	text-align: left;
+	font-weight: bold;
+}
+
+/* 조아요표시기 */
+.likeIndicator {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bold;
+	color: var(--color-red);
+	border-radius: 10px;
+	width: 80px;
+	padding: 8px;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+	@media screen and (max-width:1023px) {
+		border-radius: calc( 100vw * (10 / 400) );
+		width: calc( 100vw * (80 / 400) );
+		padding: calc( 100vw * (8 / 400) );
+	}
+}
+
+.likeIndicator .festivalLikeButton {
+	position: relative;
+	top:0;
+	left:0;
 }
