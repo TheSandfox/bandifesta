@@ -9,7 +9,7 @@ function PageNoticeEdit(){
 
     let params = useParams();
 
-    let data = params.id;
+    let data = params.noticeId;
 
     const navigate = useNavigate();
 
