@@ -1,9 +1,109 @@
-import { useEffect } from "react";
+import React, { useEffect, useState  } from "react";
+import './SubMyQNA.css'
+import axios from 'axios';
+// import ReactDOM from 'react-dom';
+import ReactPaginate from 'react-paginate';
+import MyQNAList from './MyQNAList'
+
+import GenericButton from '../../generic/GenericButton'
+// import {insertNoti, getNotiId} from './myQnaData/main_server'
+
+
 
 export default function SubMyQNA({handleTabState,index}) {
+	// TAB 메뉴
 	useEffect(()=>{
 		handleTabState.set(index);
 	},[])
+
+	// DB 통신 
+	const [data, setData] = useState([]);
+	useEffect(() => {
+	  axios.get('http://localhost:3013/data', { withCredentials: true})
+	  .then(response => {console.log(response.data)
+		setData(response.data);
+	  })
+	  .catch(error => {
+		console.error('There was an error fetching the data!', error);
+	  });
+  	}, []);
+
+
+	// 페이지네이트
+	const itemsPerPage = 10;
+	const items = data;
+	const [currentItems, setCurrentItems] = useState(null);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);  // 번호 개수(1~10)
+  
+    useEffect(() => {
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(items.slice(itemOffset, endOffset)); // 10번까지 배열 자르기
+      setPageCount(Math.ceil(items.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
+    }, [itemOffset, itemsPerPage]);
+    
+    
+    const handlePageClick = (event) => {
+        const newOffset = event.selected * itemsPerPage % items.length;
+        setItemOffset(newOffset);
+        console.log(itemOffset)
+    };
+
+	// CRUD
+	const [idx, setIdx] = useState(16)
+	const [title, setTitle] = useState("")
+	const [text, setText] = useState("")
+	const [createTime, setCreateTime] = useState("")
+	const [userID, setUserId] = useState("")
+
+	function insertQna(){
+		app.post({
+			idx : idx,
+			title : title,
+			text : text,
+			createTime : createTime,
+			userID : userID
+		}).then(()=>{
+			console.log('success')
+		})
+	}
+
+	function onChangeFunc(e){
+		setIdx(e.target.value);
+		console.log(e.target.value);
+	}
+
+
+	// create
+
 	return <>
+		<div className="MyQnaRight">
+			<h1>1:1 문의 내역</h1>
+			<div className="MyQna">
+				<p>총 <span>{data.length}</span>개의 게시글이 있습니다.</p>
+				<MyQNAList currentItems={currentItems} data={data}/>
+				<div className="MyQnaWriteBtn">
+					<GenericButton to="/qna/write">글쓰기</GenericButton>
+				</div>
+				<ReactPaginate
+					nextLabel={<img src="/bandifesta/assets/arrowBlack.png"/>}
+					previousLabel={<img src="/bandifesta/assets/arrowBlack.png"/>}
+					nextLinkClassName="subNoticePageNext"
+					previousLinkClassName="subNoticePagePrev"
+
+					activeClassName="subNoticePageActive"
+					pageClassName="subNoticePage"
+					containerClassName="subNoticeNavi"
+
+					pageRangeDisplayed={3}
+					pageCount={pageCount}
+					onPageChange={handlePageClick}
+					onClick={false}
+					
+					renderOnZeroPageCount={null}
+				/>
+				{/* <input type="text" onChange={onChangeFunc}/> */}
+			</div>
+		</div>
 	</>
 }

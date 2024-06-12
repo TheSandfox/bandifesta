@@ -1,0 +1,69 @@
+.MyQnaWrap{
+    width: 100%;
+    display: flex; gap: 50px;
+    padding: 40px 20px;
+}
+.MyQnaRight{
+    width: 100%;
+}
+.MyQnaRight>h1{
+    font-size: 32px;
+    font-weight: bold;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.MyQna>p{
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 27px;
+}
+.MyQna>p>span{
+    font-weight: 900;
+}
+
+.MyQnaTable{
+    width: 100%;
+}
+.MyQnaTable>ul{
+    display: flex;
+    padding: 18px 25px;
+}
+.MyQnaTableTit{
+    border-top: 2px solid #686868;
+    border-bottom: 2px solid #686868;
+}
+.MyQnaTableTit>li{
+    font-size: 15px;
+    font-weight: bold;
+}
+.MyQnaTable li:nth-child(1){
+    width: 10%;
+    width: 100px;
+}
+.MyQnaTable li:nth-child(2){
+    width: 80%;
+}
+.MyQnaTable li:nth-child(3){
+    width: 10%;
+    width: 100px;
+}
+.MyQnaTableTit>li:nth-child(2){
+    text-align: center;
+}
+.MyQnaTableTxt{
+    border-bottom: 1px solid #ccc;
+    gap: 25px;
+}
+
+
+
+.MyQnaWriteBtn{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 17px;
+}
+.MyQnaWriteBtn>.genericButton{
+    display: inline-block;
+}
