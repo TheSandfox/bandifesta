@@ -1,21 +1,14 @@
-.sec3 .swiper{
+.Sec3_bottom{
     width: 1440px;
-    overflow: hidden;
-}
-.sec3 .swiper-slide>img{
-    aspect-ratio: .85 / 1;
-}
-.Sec3_top{
     position: relative;
     margin-top: 20px;
-    padding-bottom:30px;
 }
-.Sec3_top>h4{
+.Sec3_bottom>h4{
     text-align: center;
     font-size: 28px;
     padding-bottom: 30px;
 }
-.Sec3_top>button{
+.Sec3_bottom>button{
     position: absolute;
     right: 0;
     top:0;
