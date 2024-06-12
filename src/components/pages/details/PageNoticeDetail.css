@@ -32,13 +32,7 @@
 }
 .noticeBtn{
     display: flex;
+    margin: 23px 0;
     gap: 16px;
     justify-content: right;
-}
-.noticeBtn>button{
-    margin: 23px 0;
-    padding: 8px 24px;
-    border: none;
-    color: var(--color-white);
-    background-color: var(--color-main);
 }

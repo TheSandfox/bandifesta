@@ -28,6 +28,7 @@ function PageNoticeEdit(){
     function cancelBtn(){
         if(window.confirm("수정을 취소하시겠습니까?")){
             setUpdate(!update)
+            navigate(`/notice/detail/${datas[data-1].id}`)
         }
     }
 

@@ -1,6 +1,7 @@
 import {useContext} from 'react';
-import {Routes, Route, Link, useParams, useNavigate} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import {editContext, dataContext} from '../../../App';
+import GenericButton from '../../generic/GenericButton';
 import TopBanner from '../../generic/TopBanner';
 import './PageNoticeDetail.css';
 
@@ -40,8 +41,9 @@ function PageNoticeDetail(){
                     <p className='fontMain'>{datas[data-1].content}</p>
                 </article>
                 <article className='noticeBtn'>
-                    <button><Link to={`/notice/edit/${datas[data-1].id}`}>수정</Link></button>
-                    <button onClick={removeBtn}>삭제</button>
+                    <GenericButton to="/notice/main">목록</GenericButton>
+                    <GenericButton to={`/notice/edit/${datas[data-1].id}`}>수정</GenericButton>
+                    <GenericButton onClick={removeBtn}>삭제</GenericButton>
                 </article>
             </section>
         </>
