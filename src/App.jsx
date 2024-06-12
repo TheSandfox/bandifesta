@@ -111,13 +111,17 @@ function App() {
 	const {name, title, content} = state.inputs;
 	const userId = useRef(21);
   
-	const createNotice = useCallback((title, content)=>{
-	  const createDate = new Date().toLocaleDateString();
+	const createNotice = useCallback((name, title, content)=>{
+	  const today = new Date();
+	  const year = today.getFullYear();
+	  const month = (today.getMonth()+1).toString().padStart(2, '0');
+	  const day = today.getDate().toString().padStart(2, '0');
+	  const createDate = year + '-' + month + '-' + day;
   
 	  dispatch({
 		type: "create",
 		data: {
-		  title, content,
+		  name, title, content,
 		  id: userId.current,
 		  createDate
 		}

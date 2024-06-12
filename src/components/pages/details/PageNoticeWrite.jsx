@@ -9,7 +9,8 @@ function PageNoticeWrite(){
 
     const navigate = useNavigate();
 
-    const [{content, title}, onchange, reset] = DataInput({
+    const [{name, content, title}, onchange, reset] = DataInput({
+        name: "관리자",
         content: "",
         title: ""
     })
@@ -17,7 +18,7 @@ function PageNoticeWrite(){
     const {createNotice} = useContext(editContext);
 
     const createBtn = ()=>{
-        createNotice(title, content)
+        createNotice(name, title, content)
         reset()
         navigate("/notice/main")
     }
@@ -29,6 +30,10 @@ function PageNoticeWrite(){
                     <h2 className='fontTitle'>공지 작성</h2>
                 </div>
                 <div className='notiWriteBox'>
+                    <label className='fontSubTitle writeTit'>작성자</label>
+                    <input type="text" className='writeBox' name="name" value={name} onChange={onchange} />
+                </div>
+                <div className='notiWriteBox'>
                     <label className='fontSubTitle writeTit'>제목</label>
                     <input type="text" className='writeBox' name="title" value={title} onChange={onchange} />
                 </div>
@@ -37,10 +42,6 @@ function PageNoticeWrite(){
                     <textarea className='writeBox' name="content" value={content} onChange={onchange}></textarea>
                 </div>
             </article>
-            {/* <article className='noticeBtn'>
-                <button onClick={createBtn}>작성하기</button>
-                <button><Link to="/notice">취소하기</Link></button>
-            </article> */}
             <article className='noticeBtn'>
                 <GenericButton onClick={createBtn}>작성하기</GenericButton>
                 <GenericButton to="/notice/main">취소하기</GenericButton>
