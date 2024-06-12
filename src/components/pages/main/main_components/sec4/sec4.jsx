@@ -34,7 +34,7 @@ function MainSec4() {
 
     const handleScrollDown = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = 1000; // 원하는 픽셀 위치 설정
+      const triggerPosition = 2800; // 원하는 픽셀 위치 설정
       if (scrollPosition > triggerPosition) {
         setActive(true);
       }else {

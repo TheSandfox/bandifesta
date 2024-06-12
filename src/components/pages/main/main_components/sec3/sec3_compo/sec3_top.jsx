@@ -1,14 +1,19 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useNavigate } from 'react-router-dom';
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 import "./sec3_top.css";
 function Sec3_top() {
+const Navigate = useNavigate()
+const sec3_button_festival = ()=>{
+  Navigate("/festival/gallery");
+}
   return (
     <>
       <div className="Sec3_top ">
         <h4>관람안내</h4>
-        <button>더보기 +</button>
+        <button onClick={sec3_button_festival}>더보기 +</button>
         <Swiper
           loop={true}
           slidesPerView={4}

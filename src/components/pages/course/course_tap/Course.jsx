@@ -91,9 +91,6 @@ function Course({ currentSet }) {
           <h2>{getCourseTitle()}</h2>
           <GenericButton onClick={tiketLink}>온라인 예약하기</GenericButton>
         </div>
-        <div className="course_gbg_map">
-          <img src="/bandifesta/assets/gbg_map02.jpg" alt="" />
-        </div>
         <div className="course_wrap" style={course_wrap_height}>
           <div className="course_gbg_spot">
             <div className="course_line_top"></div>
@@ -139,6 +136,9 @@ function Course({ currentSet }) {
             <img src={data[currentKey]?.image} alt={currentKey} />
           )}
           <p>{data[currentKey]?.text}</p>
+        </div>
+        <div className="course_gbg_map">
+          <img src="/bandifesta/assets/gbg_map02.jpg" alt="" />
         </div>
       </div>
     </>
