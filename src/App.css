@@ -58,16 +58,21 @@ ul,ol,li {
 		--main-padding-aside: 20px;
 		--main-padding-top: 50px;
 		--main-padding-bottom: 10px;
-	@media screen and (max-width:1439px) {
-		--main-padding-aside: 30px;
-		--main-padding-top: 30px;
-		--main-padding-bottom: 10px;
-	}
-	@media screen and (max-width:1023px) {
-		--main-padding-aside: calc( 100vw * (20 / 400));
-		--main-padding-top: calc( 100vw * (20 / 400));
-		--main-padding-bottom: calc( 100vw * (40 / 400));
-	}
+		--header-height: 100px;
+		--header-padding: 0 32px;
+		@media screen and (max-width:1439px) {
+			--main-padding-aside: 30px;
+			--main-padding-top: 30px;
+			--main-padding-bottom: 10px;
+			--header-padding: 0 16px;
+		}
+		@media screen and (max-width:1023px) {
+			--main-padding-aside: calc( 100vw * (20 / 400));
+			--main-padding-top: calc( 100vw * (20 / 400));
+			--main-padding-bottom: calc( 100vw * (40 / 400));
+			--header-height: calc(100vw * (64 / 400));
+			--header-padding: 0 calc(100vw * (16 / 400));
+		}
 }
 
 /*내부박스*/
