@@ -15,9 +15,6 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 			) {
 			return;
 		}
-		setFestivals(festivals.map(()=>{
-			return null;
-		}));
 		getFestivals({
 			itemsPerPage:12,
 			pageNum:1,
@@ -33,6 +30,18 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 		},(error)=>{
 			// setFestivals([]);
 		});
+
+		//클린업
+		return ()=>{
+			if (festivals.length>0) {
+				setFestivals(festivals.map((item)=>{
+					return null;
+				}));
+			} else {
+				setFestivals([]);
+			}
+		}	
+
 	},[festivalPeriodType,festivalSortMethod,dateValue,getFavorites,userId]);
 	//스크롤다운 콜백
 	useEffect(()=>{

@@ -6,7 +6,7 @@ import { likeFestival } from '/src/api_utils/festivalUtil';
 import { configContext } from '/src/App';
 import { Link, useNavigate } from 'react-router-dom';
 
-function FestivalLikeButton({festivalId,userId}) {
+function FestivalLikeButton({festivalId,userId,onChange}) {
 	const [pressed,setPressed] = useState(false);
 	//최초 마운트시 좋아요여부 확인
 	useEffect(()=>{
@@ -32,6 +32,9 @@ function FestivalLikeButton({festivalId,userId}) {
 		},(response2)=>{
 			//좋아요 반영
 			setPressed(!pressed);
+			if (onChange) {
+				onChange(!pressed);
+			}
 		},(error2)=>{
 
 		})

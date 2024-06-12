@@ -22,8 +22,20 @@ function LikeIndicator({festival}) {
 			setCount(response.data);
 		})
 	},[festival])
+	//
+	const onChangeCallback = (flag)=>{
+		if (flag) {
+			setCount(count+1);
+		} else {
+			setCount(count-1);
+		}
+	}
 	return <div className="likeIndicator fontMain">
-		<FestivalLikeButton festivalId={festival.festival_id} userId={config.user.id}/>
+		{
+			festival
+			?<FestivalLikeButton festivalId={festival.festival_id} userId={config.user?config.user.id:null} onChange={onChangeCallback}/>
+			:<></>
+		}
 		<div className="fontSubTitle">
 			{count}
 		</div>
