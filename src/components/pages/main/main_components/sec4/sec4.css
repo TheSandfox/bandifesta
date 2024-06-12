@@ -23,7 +23,7 @@
 
 .Main_sec4 {
   width: 100%;
-  background-image: url(/bandifesta/public/assets/main_sec4_bg.png);
+  background-image: url(/bandifesta/assets/main_sec4_bg.png);
   color: var(--color-white);
   text-align: center;
   padding: calc( 100vw * (20 / 400)) 0 100px;
