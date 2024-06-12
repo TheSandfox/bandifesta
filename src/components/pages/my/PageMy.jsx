@@ -25,7 +25,11 @@ function UserInfo({kakaoUser,handleConfig}) {
 	}
 	return <div className="pageMyUserInfo">
 		{/* 프사공간 */}
-		<img src={imgPath} alt={'프로필 이미지'} className="portrait"/>
+		{
+			imgPath
+			?<img src={String(imgPath).replace('http://','https://')} alt={'프로필 이미지'} className="portrait"/>
+			:<></>
+		}
 		<div className="nameAndLogout">
 			<div className="fontSubTitle name">
 				{kakaoUser?('#'+kakaoUser.name):''}
