@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
 import './festival.css';
 import { useEffect, useRef, useState, useContext } from 'react';
 import GenericTag from '../GenericTag';
-import { getKakaoUser } from '/src/api_utils/loginUtil';
 import { isFestivalLiked } from '/src/api_utils/festivalUtil';
 import { likeFestival } from '/src/api_utils/festivalUtil';
 import { configContext } from '/src/App';

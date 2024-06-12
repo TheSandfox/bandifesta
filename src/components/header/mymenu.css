@@ -40,15 +40,22 @@
 	z-index: 16384;
 	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
 	transition: right 0.25s ease;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	@media screen and (max-width:1023px) {
 		width: 100%;
 		height: 100dvh;
 		border-radius: 0;
 		overflow-y: scroll;
-		padding-bottom: calc( 100vw * (20 / 400));
+		padding-bottom: calc( 100vw * (40 / 400));
 	}
 }
+
+.myMenuContainerWrapper{
+	-ms-overflow-style: none;
+ }
+ .myMenuContainerWrapper::-webkit-scrollbar{
+   display:none;
+ }
 
 .myMenuContainer {
 	width: 100%;
@@ -57,7 +64,8 @@
 	gap: 40px;
 	@media screen and (max-width:1023px) {
 		gap: calc( 100vw * (30 / 400));
-		min-height: 1024px;
+		margin-bottom: calc(100vw * (64 / 400));
+		/* min-height: 1024px; */
 	}
 }
 
@@ -80,7 +88,7 @@
 
 .myMenuContainerWrapper .close {
 	cursor: pointer;
-	background-image: url('bandifesta/assets/closeBtn.png');
+	background-image: url('/bandifesta/assets/closeBtn.png');
 	background-size: 100%;
 	aspect-ratio: 1;
 	width: 40px;
@@ -147,7 +155,7 @@
 }
 
 .serviceNavItem>.arrow {
-	background-image: url('bandifesta/assets/arrowBlack.png');
+	background-image: url('/bandifesta/assets/arrowBlack.png');
 	background-size: 100%;
 	aspect-ratio: 1;
 	width: 16px;
