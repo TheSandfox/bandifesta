@@ -9,6 +9,5 @@ export default function PageMain({ }) {
 		<MainSec2 />
 		<MainSec3 />
 		<MainSec4 />
-		{/* <Main_data/> */}
 	</>
 }

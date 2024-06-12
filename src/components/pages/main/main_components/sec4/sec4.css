@@ -40,7 +40,7 @@
   margin: 30px 0;
 }
 .Main_sec4_bottom{
-  padding-top: 1000px;
+  padding-top: 800px;
   position: relative;
   overflow: hidden;
 }
@@ -82,12 +82,54 @@
   }
 }
 .Main_sec4_bottom_bottom{
-  width: 100%;
   position: absolute;
   bottom: -480px;
   left: 0;
   transition-duration: 2s;
 }
+.Main_sec4_bottom_bottom>img{
+  width: 100%;
+}
 .Main_sec4_bottom_bottom.active{
   bottom: 0;
+}
+.sec4SwiperMobile{
+  display: none;
+}
+@media screen and (max-width:1023px) {
+  .sec4SwiperMobile{
+      display: block;
+  }
+  .sec4Swiper{
+    display: none;
+  }
+  .swiper .fontSubTitle{
+    display: none;
+  }
+  .Main_sec4_bottom_logoMoon{
+    width: calc( 100vw * (600 / 400));;
+    height: calc( 100vw * (600 / 400));;
+    top:50px;
+  }
+  .Main_sec4_bottom_logoMoon>img{
+    width: calc( 100vw * (100 / 400));
+    transform: rotate(90deg) translateX(-50%);
+    transition-duration: 2s;
+    left: 50%;
+  }
+  .Main_sec4_bottom{
+    padding-top: calc( 100vw * (350 / 400));
+  }    
+  .Main_sec4  h5 {
+    font-size: calc( 100vw * (20 / 400));
+    font-weight: 600;
+    padding-bottom: calc( 100vw * (20 / 400));;
+  }
+  .Main_sec4  p {
+    display: none;
+  }
+  .festivalCardTop{
+    border-radius: calc( 100vw * (20 / 400));
+  }
+
 }

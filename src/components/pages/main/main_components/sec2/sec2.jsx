@@ -1,8 +1,7 @@
 import "./sec2.css";
-import "../main_1024.css";
-import "../main_400.css";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import MainSec3_mobile from"./sec3_mobile"
 function MainSec2() {
   const Navigate = useNavigate();
 
@@ -29,7 +28,9 @@ function MainSec2() {
           <img src="/bandifesta/assets/mainImg.png" alt="sec2_img" />
           <img src="/bandifesta/assets/poster.png" alt="sec2_mobile_img" />
         </div>
+        <MainSec3_mobile />
       </section>
+      
     </>
   );
 }

@@ -33,7 +33,7 @@ function MainSec4() {
 
     const handleScrollDown = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = 2800; // 원하는 픽셀 위치 설정
+      const triggerPosition = window.innerHeight * 1; // 원하는 픽셀 위치 설정
       if (scrollPosition > triggerPosition) {
         setActive(true);
       }else {
@@ -60,11 +60,32 @@ function MainSec4() {
             spaceBetween={15}
             centeredSlides={true}
             autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
+            delay: 2500,
+            disableOnInteraction: false,
             }}
             modules={[Autoplay]}
-            className="mySwiper"
+            className="mySwiper sec4Swiper"
+          >
+            {festivals.map((festival) => (
+              <SwiperSlide key={festival.festival_id}>
+                <FestivalCard
+                  festival={festival}
+                  disableTag={true}
+                ></FestivalCard>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Swiper
+            loop={true}
+            slidesPerView={2}
+            spaceBetween={10}
+            centeredSlides={true}
+            autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            className="mySwiper sec4SwiperMobile"
           >
             {festivals.map((festival) => (
               <SwiperSlide key={festival.festival_id}>

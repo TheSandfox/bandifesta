@@ -31,3 +31,27 @@
     margin: 30px 0;
     font-weight: 400;
 }
+.MainSec3_mobile{
+    display: none;
+}
+@media screen and (max-width : 1439px) {
+    .main_sec3_bottom{
+         display: none;
+     }
+     .sec3_info_title>h3{
+         font-size: 32px;
+         font-weight: 600;
+     }
+     .sec3_info_title>p{
+         font-size: 16px;
+         margin: 20px 0;
+         font-weight: 400;
+     }
+    }
+@media screen and (max-width:1023px) {
+    .sec3{
+        display: none;
+    }
+
+
+}    
