@@ -47,7 +47,7 @@ export default function PageMy({handleConfig}) {
 	let jsx = <></>
 	switch (tabName) {
 		case 'info':
-			jsx = <SubMyInfo handleTabState={handleTabState} index={0} kakaoUser={config.user}/>
+			jsx = <SubMyInfo handleTabState={handleTabState} index={0} kakaoUser={config.user} handleConfig={handleConfig}/>
 			break;
 		case 'favorites':
 			jsx = <SubMyFavorites handleTabState={handleTabState} index={1} kakaoUser={config.user}/>

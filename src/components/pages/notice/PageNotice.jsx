@@ -6,8 +6,6 @@ import { MobileTab, MobileTabContainer } from '../../generic/MobileTab';
 import TopBanner from "../../generic/TopBanner";
 import SubNoticeMain from "./SubNoticeMain";
 import SubNoticeFAQ from "./SubNoticeFAQ";
-import TopBanner from "../../generic/TopBanner";
-import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
 
 export default function PageNotice({}) {
 	const { tabName } = useParams();

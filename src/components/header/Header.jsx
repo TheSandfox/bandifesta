@@ -130,10 +130,6 @@ function MyMenu({handleConfig}) {
 						<div className='logout' onClick={logoutCallback}>
 							로그아웃
 						</div>
-						{/* 임시 */}
-						<div className='logout' onClick={unlinkCallback}>
-							연결끊기
-						</div>
 					</div>
 				}
 			</div>
