@@ -1,8 +1,8 @@
 import React from 'react'
-// import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-    width:'1050px',
+    width:'100%',
     height: '480px',
     marginTop: '70px',
     boxShadow: '2px 2px 2px 0 rgba(0,0,0,.25)'
