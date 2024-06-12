@@ -1,62 +1,48 @@
+import { editContext } from '../my/SubMyQNA';
+import { useContext } from 'react';
+import { configContext } from "../../../App";
+import QnaInput from '../my/myQnaInput';
+
 import './PageQNAWrite.css'
 import GenericButton from '../../generic/GenericButton'
-import axios from 'axios';
-// import {onChangeFunc} from '../my/SubMyQNA'
+
 
 
 export default function PageQNAWrite({}) {
 
-	const [title, setTitle] = useState("");
+	const config = useContext(configContext);
 
-	const handleSubmit = (event) => {
-	  event.preventDefault();
-  
-	  const newData = {
-		title,
-	  };
-  
-	  axios
-		.post("http://localhost:3012/data", newData)
-		.then((response) => {
-		  console.log(response);
-		  setTitle("");
-		})
-		.catch((error) => {
-		  console.log(error);
-		});
-	};
-	// useEffect(() => {
-	// 	axios.get('http://localhost:3012/data', { method: "PUT", idx : idx,
-	// 		title : title,
-	// 		text : text,
-	// 		createTime : createTime,
-	// 		userID : userID})
-	// 	.then(response => {
-	// 	  setData(response.data);
-	// 	})
-	// 	// .catch(error => {
-	// 	//   console.error('There was an error fetching the data!', error);
-	// 	// });
-	// 	}, []);
+	const [{title, text, time}, onchange, reset] = QnaInput({
+        title: '',
+        text: '',
+        time: ''
+    });
+
+    const {createWord} = useContext(editContext);
+	
+    const createBtn = ()=>{
+        createWord(userID, title, text, time)
+        reset()
+    }
 
 	return <div className='PageQNAWrite'>
 		<h1>문의 작성</h1>
-		<ul className='PageQNAWriteInput' onSubmit={handleSubmit}>
+		<ul className='PageQNAWriteInput'>
 			<li>
 				<label>아이디</label>
-				<input type='text'value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+				<input type='text' value = {config.user.id} />
 			</li>
 			<li>
 				<label>제목</label>
-				<input type='text'/>
+				{/* <input type='text' name='title' value={title} onchange={onchange}/> */}
 			</li>
 			<li>
 				<label>내용</label>
-				<textarea/>
+				{/* <textarea name='text' value={text} onChange={onchange}></textarea> */}
 			</li>
 		</ul>
 		<div className="MyQnaWriteBtn">
-			<GenericButton to="/">작성하기</GenericButton>
+			<GenericButton to="/" onClick={createBtn}>작성하기</GenericButton>
 			<GenericButton to="/">취소하기</GenericButton>
 		</div>
 	</div>
