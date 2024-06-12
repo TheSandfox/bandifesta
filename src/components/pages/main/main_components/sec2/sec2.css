@@ -18,8 +18,7 @@
 }
 .sec2_wrap{
     width: 1440px;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
     padding-left:100px;
 }
 .sec2_top > h3{
@@ -38,4 +37,7 @@
     line-height: 50px;
     border-radius: 30px;
     cursor: pointer;
+}
+.sec2_img>img:last-child{
+    display: none;
 }

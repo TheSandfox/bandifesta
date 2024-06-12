@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "../../main_1024.css";
+import "../../main_400.css";
 import { useNavigate } from 'react-router-dom';
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";

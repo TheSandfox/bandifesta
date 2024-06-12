@@ -24,7 +24,6 @@ function MainSec4() {
         sortMethod: 1,
       },
       (response) => {
-        console.log(response);
         setFestivals(response.data);
       },
       (error) => {
@@ -48,7 +47,6 @@ function MainSec4() {
     };
   }, [config.language]);
 
-  console.log(festivals);
 
   return (
     <>
