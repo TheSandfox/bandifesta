@@ -170,8 +170,8 @@ function App() {
 				        <Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
 				        <Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>
 				        <Route path={'/notice/edit/:noticeId'} 		element={<PageNoticeEdit/>}/>
-				        <Route path={'/qna/detail:qnaId'} 			element={<PageQNADetail/>}/>
-				        <Route path={'/qna/edit:qnaId'} 			element={<PageQNAEdit/>}/>
+				        <Route path={'/qna/detail/:qnaId'} 			element={<PageQNADetail/>}/>
+				        <Route path={'/qna/edit/:qnaId'} 			element={<PageQNAEdit/>}/>
 				        <Route path={'/qna/write'} 					element={<PageQNAWrite/>}/>
 				        <Route path={'/answer/write'} 				element={<PageAnswerWrite/>}/>
 				        <Route path={'/answer/edit/:answerId'} 		element={<PageAnswerEdit/>}/>
