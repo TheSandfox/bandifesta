@@ -2,6 +2,11 @@
 	display: flex;
 	flex-direction: column;
 	gap:10px;
+	cursor: pointer;
+}
+
+.festivalCard.disabled {
+	pointer-events: none;
 }
 
 .festivalCardTop {

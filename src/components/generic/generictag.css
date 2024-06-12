@@ -20,3 +20,7 @@
 .genericTag.var2 {
 	background-color: var(--color-red);
 }
+/*로딩안됨*/
+.genericTag.var3 {
+	background-color: #ccc;
+}

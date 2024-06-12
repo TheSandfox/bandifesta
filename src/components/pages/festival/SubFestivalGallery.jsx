@@ -14,13 +14,13 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	const containerRef = useRef(null);
 	const handleFestivalPeriodType = {
 		set:(index)=>{
-			console.log(index);
+			// console.log(index);
 			setFestivalPeriodType(parseInt(index));
 		}
 	}
 	const handleFestivalSortMethod = {
 		set:(index)=>{
-			console.log(index);
+			// console.log(index);
 			setFestivalSortMethod(parseInt(index));
 		}
 	}
@@ -49,14 +49,14 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	//
 	return <div ref={containerRef} className="subFestivalGallery">
 		<div className="subFestivalGallerySelectContainer">
-			<FestivalSelect handleValue={handleFestivalPeriodType} value={[
+			<FestivalSelect handleValue={handleFestivalPeriodType} values={[
 				...festivalPeriodTypes
 			]}/>
-			<FestivalSelect handleValue={handleFestivalSortMethod} value={[
+			<FestivalSelect handleValue={handleFestivalSortMethod} values={[
 				...festivalSortMethods
-			]}/>
+			]} initialValue={1}/>
 		</div>
-		<FestivalCardList festivals={festivals}></FestivalCardList>
+		<FestivalCardList festivals={festivals}/>
 		<FestivalScrollLoader
 			onChange={setFestivals}
 			festivalPeriodType={festivalPeriodType}
