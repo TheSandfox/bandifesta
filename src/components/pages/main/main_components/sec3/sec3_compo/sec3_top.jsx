@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { useNavigate } from 'react-router-dom';
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 import "./sec3_top.css";
+import "swiper/css";
 function Sec3_top() {
 const Navigate = useNavigate()
 const sec3_button_festival = ()=>{

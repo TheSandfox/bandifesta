@@ -5,10 +5,9 @@ import MainSec3 from "./main_components/sec3/sec3"
 import MainSec4 from "./main_components/sec4/sec4"
 export default function PageMain({ }) {
 	return <>
-		{/* <Scene/> */}
+		<Scene/>
 		<MainSec2 />
 		<MainSec3 />
 		<MainSec4 />
-		{/* <Main_data/> */}
 	</>
 }
