@@ -2,6 +2,8 @@ import "./PageNotice.css";
 import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../generic/LeftTab";
 import { useState } from "react";
 import { useParams } from "react-router";
+import { MobileTab, MobileTabContainer } from '../../generic/MobileTab';
+import TopBanner from "../../generic/TopBanner";
 import SubNoticeMain from "./SubNoticeMain";
 import SubNoticeFAQ from "./SubNoticeFAQ";
 import TopBanner from "../../generic/TopBanner";

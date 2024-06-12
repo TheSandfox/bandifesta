@@ -10,6 +10,9 @@
     padding-bottom: 30px;
     border-bottom: 1px solid #ccc;
 }
+.notiWriteBox:nth-child(2){
+    display: none;
+}
 .notiWriteBox>h2{
     text-align: center;
 }
