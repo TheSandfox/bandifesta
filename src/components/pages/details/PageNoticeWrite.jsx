@@ -18,7 +18,7 @@ function PageNoticeWrite(){
     const createBtn = ()=>{
         createNotice(title, content)
         reset()
-        navigate("/notice")
+        navigate("/notice/main")
     }
 
     return(

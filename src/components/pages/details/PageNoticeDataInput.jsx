@@ -8,7 +8,6 @@ const DataInput = (inputNoti)=>{
         const {name, value} = e.target;
         setNoti((noti)=>({
             ...noti,
-            // name은 key값이기 때문에 대괄호로 감싸는 것
             [name] : value
         }))
     }, [])

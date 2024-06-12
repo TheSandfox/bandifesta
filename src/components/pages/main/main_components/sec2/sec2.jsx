@@ -25,7 +25,7 @@ function MainSec2() {
         </div>
         </div>
         <div className="sec2_img">
-          <img src="/bandifesta/assets/mainImg.png" alt="" />
+          <img src="/bandifesta/assets/mainImg.png" alt="sec2_img" />
         </div>
       </section>
     </>

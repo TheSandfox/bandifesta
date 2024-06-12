@@ -128,7 +128,4 @@ function FestivalCardList({festivals,className}) {
 	</div>
 }
 
-export {
-	FestivalCardList,
-	FestivalCard,
-}
+export { FestivalCardList, FestivalCard };
