@@ -42,12 +42,12 @@ export default function SubMyQNA({handleTabState,index}) {
 	const idx = useRef(16);
 
 		// 추가
-		const createWord = useCallback((title, text, time, userID)=>{
+		const createWord = useCallback((title, text, time, newUserId)=>{
 			const date = new Date().toLocaleDateString;
 			dispatch({
 				type : 'create',
 				datas : {
-				title, text, time, userID,
+				title, text, time, newUserId,
 				idx : idx.current,
 				time : date,
 				userID : config.user.id
