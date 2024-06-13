@@ -107,7 +107,7 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 		<FestivalScrollLoader
 			onChange={setFestivals}
 			festivalPeriodType={1}
-			festivalSortMethod={0}
+			festivalSortMethod={1}
 			containerRef={containerRef}
 			dateValue={parseInt(targetDate)}
 		/>
