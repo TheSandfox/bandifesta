@@ -33,7 +33,7 @@ function MainSec4() {
 
     const handleScrollDown = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = window.innerWidth * 2; // 원하는 픽셀 위치 설정
+      const triggerPosition = document.documentElement.scrollHeight - window.innerHeight - 500; // 원하는 픽셀 위치 설정
       if (scrollPosition > triggerPosition) {
         setActive(true);
       }else {
@@ -102,9 +102,7 @@ function MainSec4() {
             <img src="/bandifesta/assets/logo2.png" alt="달님" />
           </div>
         </div>
-        <div className={`Main_sec4_bottom_bottom ${active ? "active" : ""}`}>
-            <img src="/bandifesta/assets/fot_bg.png" alt="푸터사람들" />
-          </div>
+        
       </div>
     </>
   );
