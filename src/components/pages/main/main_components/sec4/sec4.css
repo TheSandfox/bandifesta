@@ -40,12 +40,12 @@
   margin: 30px 0;
 }
 .Main_sec4_bottom{
-  padding-top: 800px;
+  padding-top: 600px;
   position: relative;
   overflow: hidden;
 }
 .Main_sec4_bottom_logoMoon>img{
-  width: 300px;
+  width: 250px;
   transform: rotate(90deg) translateX(-50%);
   transition-duration: 2s;
   left: 50%;
@@ -54,7 +54,7 @@
   width: 1440px;
   height: 1440px;
   position: absolute;
-  top:200px;
+  top:50px;
   left:50%;
   transform: translateX(-50%) rotate(-90deg);
   transition-duration: 2s;
@@ -72,13 +72,13 @@
 
 @keyframes MoonLight {
   0% {
-    filter: drop-shadow(0 0 5px rgba(255, 223, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 223, 0, 0.3)) drop-shadow(0 0 15px rgba(255, 223, 0, 0.2));
+    filter: drop-shadow(0 0 3px rgba(255, 223, 0, 0.4)) drop-shadow(0 0 7px rgba(255, 223, 0, 0.3)) drop-shadow(0 0 10px rgba(255, 223, 0, 0.2));
   }
   50% {
-    filter: drop-shadow(0 0 20px rgba(255, 223, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 223, 0, 0.6)) drop-shadow(0 0 40px rgba(255, 223, 0, 0.4));
+    filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 223, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 223, 0, 0.4));
   }
   100% {
-    filter: drop-shadow(0 0 5px rgba(255, 223, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 223, 0, 0.3)) drop-shadow(0 0 15px rgba(255, 223, 0, 0.2));
+    filter: drop-shadow(0 0 3px rgba(255, 223, 0, 0.4)) drop-shadow(0 0 7px rgba(255, 223, 0, 0.3)) drop-shadow(0 0 10px rgba(255, 223, 0, 0.2));
   }
 }
 .Main_sec4_bottom_bottom{
