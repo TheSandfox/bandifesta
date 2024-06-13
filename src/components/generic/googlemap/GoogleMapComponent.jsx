@@ -1,65 +1,48 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { Loader } from '@googlemaps/js-api-loader';
+import { useEffect, useRef, useState } from 'react'
 
 const containerStyle = {
-    width:'100%',
+	width:'100%',
 	aspectRatio:'16 / 9'
-  };
-  
-  const center = {
-    lat: 37.5796722,
-    lng: 126.9793945
-  };
-function GoogleMapComponent({mapX,mapY}) {
-	// let center = {
-	// 	lat: mapX,
-    // 	lng: mapY
-	// }
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: "AIzaSyDE2pOs8IIpfbn-COYNBIeDxIDflRK-UzA"
-    })
-  
-    const [map, setMap] = React.useState(null)
-  
-    const onLoad = React.useCallback(function callback(map) {
-      // This is just an example of getting and using the map instance!!! don't just blindly copy!
-      const bounds = new window.google.maps.LatLngBounds(center);
-      map.fitBounds(bounds);
-  
-      setMap(map)
-    }, [])
-  
-    const onUnmount = React.useCallback(function callback(map) {
-      setMap(null)
-    }, [])
+};
 
-	React.useEffect(() => {
-		// console.log('야');
-        if (map) {
-            map.setCenter(center);
-        }
-    }, [map, mapX, mapY]);
-  
-    return isLoaded ? (
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-        >
-          <Marker 
-                position={center} 
-                icon={{
-                    url: '/bandifesta/assets/night_star_marker.png',  // 커스텀 아이콘 URL
-                    scaledSize: new window.google.maps.Size(100, 110),  // 아이콘 크기 조정
-                }} 
-            />
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
-        </GoogleMap>
-    ) : <></>
-  }
-  
-  export default React.memo(GoogleMapComponent)
+export default function GoogleMapComponent({mapX,mapY,title}) {
+	const containerRef = useRef(null);
+	const [map,setMap] = useState(null);
+	//맵 로드
+	useEffect(()=>{
+		let loader = new Loader({
+			apiKey: import.meta.env.VITE_GOOGLE_MAP_KEY
+		})
+
+		loader.load().then(() => {
+			const newMap = new google.maps.Map(containerRef.current,{
+				center: { lng: parseFloat(mapX), lat: parseFloat(mapY) },
+				zoom: 12
+			});
+			setMap(newMap);
+		}).catch(()=>{});
+
+		return ()=>{
+			setMap(null);
+		}
+	},[])
+	//맵에 마커박기
+	useEffect(()=>{
+		if (!map) {return;}
+		let marker = new google.maps.Marker({
+			map: map,
+			position: { lng: parseFloat(mapX), lat: parseFloat(mapY) },
+			title: title
+		});
+
+		return ()=>{
+			if (marker) {
+				marker.setMap(null); // 맵에서 마커 제거
+			}
+		}
+	},[map])
+	return <div ref={containerRef} className='googleMapComponent' style={containerStyle}>
+
+	</div>	
+}

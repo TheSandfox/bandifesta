@@ -166,10 +166,7 @@ function FestivalContent({festival}) {
 				?<GoogleMapComponent 
 					mapX={festival.map_x} 
 					mapY={festival.map_y}
-					center={{
-						lat: festival.map_x,
-						lng: festival.map_y
-					}}
+					title={festival.title}
 				/>
 				:<></>
 			}

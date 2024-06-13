@@ -55,21 +55,24 @@ ul,ol,li {
 	--color-sub: #FDD745;
 	--color-red: #EC1C24;
 	/*여백*/
+		--footer-img-height: 320px;
 		--main-padding-aside: 20px;
 		--main-padding-top: 50px;
-		--main-padding-bottom: 10px;
+		--main-padding-bottom: calc(10px + var(--footer-img-height));
 		--header-height: 100px;
 		--header-padding: 0 32px;
 		@media screen and (max-width:1439px) {
+			--footer-img-height: 320px;
 			--main-padding-aside: 30px;
 			--main-padding-top: 30px;
-			--main-padding-bottom: 10px;
+			--main-padding-bottom: calc(10px + var(--footer-img-height));
 			--header-padding: 0 16px;
 		}
 		@media screen and (max-width:1023px) {
+			--footer-img-height: calc( 100vw * (320 / 400));
 			--main-padding-aside: calc( 100vw * (20 / 400));
 			--main-padding-top: calc( 100vw * (20 / 400));
-			--main-padding-bottom: calc( 100vw * (40 / 400));
+			--main-padding-bottom: calc( 100vw * (40 / 400) + var(--footer-img-height));
 			--header-height: calc(100vw * (64 / 400));
 			--header-padding: 0 calc(100vw * (16 / 400));
 		}
