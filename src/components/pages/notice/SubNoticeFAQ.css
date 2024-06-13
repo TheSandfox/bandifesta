@@ -1,3 +1,6 @@
+
+
+
 /* -----------------faq css------------------------ */
 .faqWrap{
     width: 100%;
@@ -59,7 +62,7 @@
 .faqListsQuestion{
     display: flex;
     justify-content: space-between;
-    padding: 17px 25px;
+    padding: 18px 25px;  /*  */
 }
 .faqListsQuestion>div{
     align-items: center;

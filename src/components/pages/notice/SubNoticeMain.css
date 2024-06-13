@@ -7,7 +7,7 @@
     border: 1px solid #ccc;
 }
 .noticeListN{
-    padding: 17px 0 23px;
+    padding-bottom: 23px;
     font-weight: 500;
 }
 .noticeListN span{
@@ -65,6 +65,7 @@
 
 /* notice list */
 .noticeListT{
+    border-top: 2px solid #686868;
     border-bottom: 2px solid #686868;
     text-align: center;
     font-weight: 700;

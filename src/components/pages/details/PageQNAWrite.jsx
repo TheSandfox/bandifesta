@@ -1,4 +1,4 @@
-import { editContext } from '../my/SubMyQNA';
+import { editContext, qnaContext } from '../my/SubMyQNA';
 import { useContext, useState, useEffect } from 'react';
 import { configContext } from "../../../App";
 import QnaInput from '../my/myQnaInput';
@@ -6,7 +6,7 @@ import GenericButton from '../../generic/GenericButton'
 
 
 
-export default function PageQNAWrite({setPage, datas}) {
+export default function PageQNAWrite({setPage}) {
 	const config = useContext(configContext);
 
 	const [{title, text}, onchange, reset] = QnaInput({
@@ -15,6 +15,7 @@ export default function PageQNAWrite({setPage, datas}) {
     });
 
     const {createWord} = useContext(editContext);
+    const {datas} = useContext(qnaContext);
 	
 		
     const createBtn = ()=>{
@@ -37,6 +38,10 @@ export default function PageQNAWrite({setPage, datas}) {
 			<li>
 				<label>아이디</label>
 				<input type='text' name='userID' value = {config.user.id} readOnly/>
+			</li>
+			<li>
+				<label>날짜</label>
+				<input type='text' name='userID' value ="2024-06-11"/>
 			</li>
 			<li>
 				<label>제목</label>

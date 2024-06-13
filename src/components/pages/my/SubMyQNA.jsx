@@ -82,7 +82,6 @@ export default function SubMyQNA({handleTabState,index}) {
 
 	// 페이지네이트
 	const itemsPerPage = 10;
-	const items = datas;
 	const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);  // 번호 개수(1~10)
@@ -95,8 +94,7 @@ export default function SubMyQNA({handleTabState,index}) {
 		const filterItems = datas.filter((data) => Number(data.userID) === Number(config.user.id));
 		const sliceData = filterItems.slice(itemOffset, endOffset)
 		setCurrentItems(sliceData); // 10번까지 배열 자르기
-		setPageCount(Math.ceil(items.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
-
+		setPageCount(Math.ceil(datas.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
 		setLeng(filterItems.length)
 	}, [datas, config.user.id, itemOffset, itemsPerPage, leng]);
 		
@@ -107,7 +105,22 @@ export default function SubMyQNA({handleTabState,index}) {
         setItemOffset(newOffset);
 	};
 
-	
+
+	let [st, setSt] = useState([]);
+
+	// useEffect(()=>{
+	// 	let dataFilter = datas.map((data)=>{
+	// 		// console.log(data)
+	// 		return data
+	// 	})
+	// 	setSt(dataFilter)
+	// },[datas])
+
+	function filt(){
+		datas && datas.map((data)=>setSt(data))
+	}
+	console.log(st)
+
 	return <>
 		{page ? 
 			<qnaContext.Provider value={datas}>

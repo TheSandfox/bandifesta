@@ -1,5 +1,5 @@
 .subNoticeNavi{
-    display: flex; gap: 20px;
+    display: flex; gap: 12px;  /*  */
     justify-content: center;
 }
 .subNoticePageNext, .subNoticePagePrev{
@@ -8,7 +8,9 @@
     width: 30px; height: 30px;
     text-align: center;
     line-height: 35px;
-    /* line-height 안맞음. */
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin: 0 3px;  /*  */
 }
 .subNoticePagePrev>img{
     width: 60%; height: 60%;
@@ -18,12 +20,23 @@
     width: 60%; height: 60%;
 }
 .subNoticePage{
+    width: 30px; height: 30px;  /*  */
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;  /*  */
     color: #6E6E6E;
+    background-color: var(--color-white);  /*  */
+    border: 1px solid #ccc;  /*  */
+    /* color: #fff; */
+    border-radius: 5px;  /*  */
+    text-align: center;
 }
 .subNoticePageActive>a{
-    color: #000;
+    display: block;
+    width: 30px; height: 30px;  /*  */
+    color: var(--color-white);
+    background-color: var(--color-main);
+    border-radius: 5px;
+    text-align: center;
 }
 
 
@@ -38,7 +51,7 @@
 /* 글쓰기 버튼 */
 .FaqPageBtn{
     display: flex;
-    gap: 17px;
+    gap: 10px;
     justify-content: end;
 }
 .FAQWriteBtn>button{

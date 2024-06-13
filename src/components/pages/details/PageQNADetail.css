@@ -1,5 +1,41 @@
 /* PageQNAWrite */
-.PageQNAWrite{
+.PageQNAWrite>h1{
+    border-bottom: 2px solid var(--tit-border-color);
+    text-align: center;
+    padding-bottom: 23px;
+}
+.PageQNAWriteInput>li{
+    border-bottom: 1px solid #ccc;
+    padding: 18px 25px;
+    display: flex;
+}
+.PageQNAWriteInput>li:last-child{
+    border-bottom: 2px solid var(--tit-border-color);
+}
+.PageQNAWriteInput>li>label{
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.PageQNAWriteInput>li>input{
+    font-size: 16px;
+    width: 80%; height: 40px;
+    border: 1px solid #eee;
+    /* border: none; */
+    outline: none;
+    padding: 17px;
+    background-color: var(--color-white);
+}
+.PageQNAWriteInput>li>textarea{
+    font-size: 16px;
+    width: 80%; height: 300px;
+    border: 1px solid #eee;
+    background-color: var(--color-white);
+    margin-bottom: 23px;
+}
+
+
+/* .PageQNAWrite{
     width: 100%;
     padding: 30px 32px;
     border: 1px solid #ccc;
@@ -14,6 +50,10 @@
     }
 .PageQNAWriteInput>li{
     margin-top: 17px;
+    display: flex; gap: 20px;
+}
+.PageQNAWriteInput>li>label{
+    width: 70px;
 }
 .PageQNAWriteInput p{
     font-size: 20px;
@@ -45,7 +85,7 @@
     background-color: #050819;
     font-size: 16px;
     color: #fff;   
-}
+} */
 
 /* PageQNADetail */
 .MyQNADetail{

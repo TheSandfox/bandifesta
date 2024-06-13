@@ -64,8 +64,10 @@ function FAQPage({ itemsPerPage, items }) {
           <FAQWriteBtn text="글편집"/>
         </div>
         <ReactPaginate
-          nextLabel={<img src="/bandifesta/assets/arrowBlack.png"/>}
-          previousLabel={<img src="/bandifesta/assets/arrowBlack.png"/>}
+          // nextLabel={<img src="/bandifesta/assets/arrowBlack.png"/>}
+          // previousLabel={<img src="/bandifesta/assets/arrowBlack.png"/>}
+          nextLabel='>'
+          previousLabel='<'
           nextLinkClassName="subNoticePageNext"
           previousLinkClassName="subNoticePagePrev"
 
