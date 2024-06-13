@@ -1,118 +1,200 @@
-.course{
-    width: 1090px;
+.course {
+  width: 1090px;
 }
-.course_top{
-    justify-content: space-between;
+.course_top {
+  justify-content: space-between;
 }
-.course_gbg_map{
-    padding: 20px;
-    margin: 50px 0;
+.course_gbg_map {
+  padding: 20px;
+  margin: 50px 0;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.course_gbg_map > img {
+  width: 1050px;
+}
+.course_wrap {
+  width: 1090px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  margin: 50px 0;
+}
+.people-image {
+  width: 70px;
+  position: absolute;
+}
+.course_gbg_spot {
+  position: relative;
+  width: 1090px;
+  height: 100%;
+}
+.point_spot_wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.point_spot {
+  width: 38px;
+  height: 38px;
+  border-radius: 38px;
+  background-color: #6e6e6e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.point_spot > div {
+  width: 15px;
+  height: 15px;
+  border-radius: 38px;
+  background-color: var(--color-white);
+}
+.point_spot_wrap > .point-end.point_spot {
+  background: none;
+  width: 50px;
+  height: 92px;
+  border-radius: 0;
+  background-image: url(/bandifesta/assets/finish.png);
+  background-size: cover;
+}
+.point-end > div {
+  background: none;
+  border-radius: 0;
+}
+.course_line_top {
+  position: absolute;
+  right: 80px;
+  top: 120px;
+  width: 910px;
+  height: 2px;
+  background-color: #6e6e6e;
+}
+.course_line_bottom {
+  position: absolute;
+  right: 80px;
+  top: 160px;
+  width: 260px;
+  height: 110px;
+  border-right: 2px solid #6e6e6e;
+  border-bottom: 2px solid #6e6e6e;
+}
+.course_line_bottom.min40 {
+  display: none;
+}
+.course_line_bottom.min90 {
+  width: 390px;
+}
+.point_spot.clicked {
+  background-color: var(--color-main);
+}
+.course_info > h3 {
+  font-size: 32px;
+  font-weight: 400px;
+  text-align: center;
+}
+.course_info > img {
+  display: block;
+  width: 1090px;
+  margin: 32px 0;
+}
+.course_info > p {
+  font-weight: 400;
+  line-height: 36px;
+}
+.clickable-point {
+  color: #6e6e6e;
+  font-weight: 400;
+}
+.clickable-point.clicked {
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+@media screen and (max-width: 1439px) {
+  .course {
+    width: 690px;
+  }
+  .course_gbg_map {
+    padding: 10px;
+    margin: 30px 0;
     border: 1px solid #ccc;
-    box-shadow: 2px 2px 2px  rgba(0,0,0,.25);
-}
-.course_gbg_map>img{
-    width: 1050px;
-}
-.course_wrap{
-    width: 1090px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 2px  rgba(0,0,0,.25);
-    margin: 50px 0;
-    
-}
-.people-image{
-    width: 70px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  .course_gbg_map > img {
+    width: 670px;
+  }
+  .course_wrap {
+    width: 690px;
+    margin: 30px 0;
+  }
+  .people-image {
+    width: 65px;
     position: absolute;
-}
-.course_gbg_spot{
+  }
+  .course_gbg_spot {
     position: relative;
-    width: 1090px;
+    width: 690px;
     height: 100%;
-}
-.point_spot_wrap{
+  }
+  .point_spot_wrap {
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-}
-.point_spot{
-    width: 38px;
-    height: 38px;
-    border-radius: 38px;
-    background-color: #6e6e6e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.point_spot>div{
-    width: 15px;
-    height: 15px;
-    border-radius: 38px;
-    background-color: var(--color-white);
-}
-.point_spot_wrap>.point-end.point_spot{
-    background: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 0;
-    background-image: url(/bandifesta/assets/finish.png);
-    background-size: cover;
-}
-.point-end>div{
-    background: none;
-    border-radius: 0;
-}
-.course_line_top{
+  }
+  .point_spot {
+    width: 24px;
+    height: 24px;
+  }
+  .point_spot > div {
+    width: 8px;
+    height: 8px;
+  }
+  .point_spot_wrap > .point-end.point_spot {
+    width: 40px;
+    height: 74px;
+  }
+  .course_line_top {
+    left: 30px;
+    top: 100px;
+    width: 630px;
+  }
+  .course_line_bottom {
     position: absolute;
-    right: 80px;
-    top:120px;
-    width: 910px;
-    height: 2px;
-    background-color: #6e6e6e
-}
-.course_line_bottom{
-    position: absolute;
-    right: 80px;
-    top:160px;
+    right: 25px;
+    top: 160px;
     width: 260px;
     height: 110px;
     border-right: 2px solid #6e6e6e;
     border-bottom: 2px solid #6e6e6e;
-}
-.course_line_bottom.min40{
-    display: none;
-}
-.course_line_bottom.min90{
+  }
+
+  .course_line_bottom.min90 {
     width: 390px;
-}
-.point_spot.clicked{
-    background-color: var(--color-main);
-}
-.course_info>h3{
-    font-size: 32px;
-    font-weight: 400px;
-    text-align: center;
-}
-.course_info>img{
+  }
+
+  .course_info > h3 {
+    font-size: 24px;
+  }
+  .course_info > img {
     display: block;
-    width: 1090px;
-    margin:32px 0;
-}
-.course_info>p{
+    width: 690px;
+    margin: 30px 0;
+  }
+  .course_info > p {
     font-weight: 400;
-    line-height: 36px;
-}
-.clickable-point{
-    color:#6e6e6e;
-    font-weight: 400;
-}
-.clickable-point.clicked{
-    font-weight: 600;
-    color:var(--color-main)
+    font-size: 14px;
+    line-height: 32px;
+  }
+  .clickable-point {
+    font-size: 14px;
+  }
+
 }
