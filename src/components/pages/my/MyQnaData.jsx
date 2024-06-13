@@ -125,12 +125,12 @@ const reducer = (state, action)=>{
         case "edit" :   //수정
             return{
                 ...state,
-                datas : state.datas.map((item)=>item.id === action.id ? {...item, text:action.text} : item)
+                datas : state.datas.map((item)=>item.idx === action.idx ? {...item, title:action.title, text:action.text} : item)
             }
         case "remove" :   //삭제
             return{
                 ...state,
-                datas : state.datas.filter((item)=>item.id !== action.id)
+                datas : state.datas.filter((item)=>item.idx !== action.idx)
             }
         case "search" :   //검색
             return{

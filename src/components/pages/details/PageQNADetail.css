@@ -1,0 +1,134 @@
+/* PageQNAWrite */
+.PageQNAWrite>h1{
+    border-bottom: 2px solid var(--tit-border-color);
+    text-align: center;
+    padding-bottom: 23px;
+}
+.PageQNAWriteInput>li{
+    border-bottom: 1px solid #ccc;
+    padding: 18px 25px;
+    display: flex;
+}
+.PageQNAWriteInput>li:last-child{
+    border-bottom: 2px solid var(--tit-border-color);
+}
+.PageQNAWriteInput>li>label{
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.PageQNAWriteInput>li>input{
+    font-size: 16px;
+    width: 80%; height: 40px;
+    border: 1px solid #eee;
+    /* border: none; */
+    outline: none;
+    padding: 17px;
+    background-color: var(--color-white);
+}
+.PageQNAWriteInput>li>textarea{
+    font-size: 16px;
+    width: 80%; height: 300px;
+    border: 1px solid #eee;
+    background-color: var(--color-white);
+    margin-bottom: 23px;
+}
+
+
+/* .PageQNAWrite{
+    width: 100%;
+    padding: 30px 32px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    }
+    .PageQNAWrite>h1{
+        width: 100%;
+        text-align: center;
+    font-size: 32px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    }
+.PageQNAWriteInput>li{
+    margin-top: 17px;
+    display: flex; gap: 20px;
+}
+.PageQNAWriteInput>li>label{
+    width: 70px;
+}
+.PageQNAWriteInput p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 17px;
+}
+.PageQNAWriteInput input, .PageQNAWriteInput textarea{
+    width: 100%;
+    padding: 17px 25px;
+    font-size: 18px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px inset;
+}
+.PageQNAWriteInput textarea{
+    width: 100%;
+    height: 450px;
+    resize: none;
+}
+.PageQNAWriteBtn{
+    margin-top: 17px;
+    display: flex; gap: 17px;
+    justify-content: end;
+}
+.PageQNAWriteBtn>button{
+    padding: 8px 24px;
+    background-color: #050819;
+    font-size: 16px;
+    color: #fff;   
+} */
+
+/* PageQNADetail */
+.MyQNADetail{
+    border-top: 2px solid #686868;
+    border-bottom: 2px solid #686868;
+}
+.MyQNADetail>li:not(.MyQNADetailTit){
+    border-bottom: 1px solid #ccc;
+}
+.MyQNADetailTit{
+    padding: 17px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 2px solid #686868;
+}
+.MyQNADetailUser{
+    display: flex;
+    text-align: center;
+}
+.MyQNADetailUser>h3{
+    width: 10%;
+    padding: 17px 25px;
+    border-right: 1px solid #ccc;
+    font-size: 16px;
+}
+.MyQNADetailUser>p{
+    padding: 17px 25px;
+    font-size: 15px;
+}
+.MyQNADetailCont{
+    padding: 50px;
+}
+/* 
+.MyQNADetailUser>li{
+    width: 20%;
+    border-right: 1px solid #ccc;
+}
+.MyQNADetailCont{
+    width: 80%;
+}
+.MyQNADetail li{
+    font-weight: bold;
+}
+.MyQNADetailTit{
+    text-align: center;
+} */

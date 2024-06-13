@@ -1,78 +1,82 @@
-import {useState, useRef, useEffect} from 'react'
-// import './faq.css'
+import { useState,useReducer,useRef,useMemo,useCallback,useEffect,createContext } from 'react'
 
-function Faqs(){
-    let datas = [
-        {
-            id : 1,
-            tit : '문의사항 Q1',
-            txt : '답변내역 A1'
-        },{
-            id : 2,
-            tit : '문의사항 Q2',
-            txt : '답변내역 A2'
-        },{
-            id : 3,
-            tit : '문의사항 Q3',
-            txt : '답변내역 A3'
-        }
-    ]
+import './SubNoticeFAQ.css'
+import {FaqDb, reducer} from './FaqDb'
+// import FaqData from './data/FaqData'
+import FAQPage from './FAQPage'
+import SubNoticeSearch from './SubNoticeSearch'
 
-    let ques = useRef();
-    let answ = useRef();
-    const [state, setState] = useState(false);
-
-
-    function scrollEvent(e){
-        if(state == false){
-            answ.current.style.display = 'none'
-            setState(true)
-        }else{
-            answ.current.style.display = 'flex'
-            setState(false)
-        }
-        // console.log(ques.current)
-    }
-
-    return(
-        <ul className="faqLists">
-            {datas.map((data)=>{return(
-                <li key={data.id}>
-                    <div className="faqListsQuestion" ref={ques} onClick={scrollEvent}>
-                        <div>
-                            <img src="/bandifesta/assets/question.png"/>
-                            <p>{data.tit}</p>
-                        </div>
-                        <span><img src="/bandifesta/assets/arrowBlack.png"/></span>
-                    </div>
-                    <div className="faqListsAnswer" ref={answ}>
-                        <img src="/bandifesta/assets/answer.png"/>
-                        <p>{data.txt}</p>
-                    </div>
-                </li>
-            )})}
-        </ul> 
-    )
-}
-
+export const bandiContext = createContext();
+export const editContext = createContext();
 
 export default function SubNoticeFAQ({handleTabState,index}) {
+	// 탭메뉴 연결
 	useEffect(()=>{
 		handleTabState.set(index);
 	},[]);
+
+	// 페이지네이션 데이터 전달
+    const items = FaqDb.datas;
+    
+	// CRUD
+	const [state, dispatch] = useReducer(reducer, FaqDb);
+	const {datas} = state;
+	const {id, tit, txt} = state.inputs;
+	const contId = useRef(16)
+	console.log(datas[0])
+	
+	// 추가 기능
+	const createWord = useCallback((tit, txt)=>{
+		dispatch({
+			type : "create",
+			datas : {
+				id : contId.current,
+				tit, txt
+			}
+		})
+		contId.current += 1
+	},[tit,txt])
+
+	// 수정 기능
+	const editWord = (id, tit, txt)=>{
+		dispatch({
+			type : "edit",
+			id, tit, txt
+		})
+	}
+
+	// 삭제 기능
+	const removeWord = (id)=>{
+		dispatch({
+			type : "remove",
+			id
+		})
+	}
+
+	// 검색 기능  // 안됨 보류.
+	const searchWord = (txt)=>{
+		dispatch({
+			type : "search",
+			txt
+		})
+	}
+
+
+	const memoWord = useMemo(()=>{
+		return{createWord, editWord, removeWord, searchWord}
+	},[])
+
+	// --------------------------------------------------------
 	return <>
 		<div className="faqWrap">
-			{/* search */}
-			<div className="noticeSearch">
-				<h1>원하시는 내용을 검색해 보세요.</h1>
-				<div className="noticeSearchBar">
-					<input placeholder="검색어를 입력해 주세요."/>
-					<button><img src="/bandifesta/assets/glass_search.png"/></button>
-				</div>
-			</div>
-			{/* contents */}
-			<Faqs/>
-			<p>페이지네이션 들어갈 자리</p>
+			<bandiContext.Provider value={datas}>
+				<editContext.Provider value={memoWord}>
+					{/* 검색창 */}
+					<SubNoticeSearch />
+					{/* 리스트 */}
+					<FAQPage itemsPerPage={10} items={items}/>
+				</editContext.Provider>
+			</bandiContext.Provider>
 		</div>
 	</>
 }

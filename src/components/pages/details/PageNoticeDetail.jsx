@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
-import {editContext, dataContext} from '../../../App';
+import {editContext, dataContext, configContext} from '../../../App';
 import GenericButton from '../../generic/GenericButton';
 import TopBanner from '../../generic/TopBanner';
 import './PageNoticeDetail.css';
@@ -8,6 +8,7 @@ import './PageNoticeDetail.css';
 function PageNoticeDetail(){
 
     const datas = useContext(dataContext);
+    const config = useContext(configContext);
 
     let params = useParams();
 
@@ -42,8 +43,9 @@ function PageNoticeDetail(){
                 </article>
                 <article className='noticeBtn'>
                     <GenericButton to="/notice/main">목록</GenericButton>
+                    {config.user===null ? "" : <>
                     <GenericButton to={`/notice/edit/${datas[data-1].id}`}>수정</GenericButton>
-                    <GenericButton onClick={removeBtn}>삭제</GenericButton>
+                    <GenericButton onClick={removeBtn}>삭제</GenericButton> </>}
                 </article>
             </section>
         </>
