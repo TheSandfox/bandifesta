@@ -41,7 +41,7 @@ export default function SubMyQNA({handleTabState,index}) {
 	const idx = useRef(16);
 
 		// 추가
-		const createWord = useCallback((idx, title, text, time, userID)=>{
+		const createWord = useCallback((title, text, time, userID)=>{
 			const today = new Date();
 			const year = today.getFullYear();
 			const month = (today.getMonth()+1).toString().padStart(2, '0');
@@ -57,7 +57,7 @@ export default function SubMyQNA({handleTabState,index}) {
 				  }
 			   })
 			   idx.current += 1;
-		 },[idx, title, text, time, userID])
+		 },[title, text, time, userID])
 		 
 			
 		// 수정
