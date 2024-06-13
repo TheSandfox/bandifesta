@@ -23,19 +23,19 @@ function LeftTab({children,to,active,onClick}) {
 function LeftTabContainer({children}) {
 	const [top, setTop] = useState(0);
 	const offsetY = 240
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollTop = window.scrollY - offsetY;
-			setTop(scrollTop);
-		};
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		const scrollTop = window.scrollY - offsetY;
+	// 		setTop(scrollTop);
+	// 	};
 
-		window.addEventListener('scroll', handleScroll);
+	// 	window.addEventListener('scroll', handleScroll);
 
-		// Cleanup on component unmount
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+	// 	// Cleanup on component unmount
+	// 	return () => {
+	// 		window.removeEventListener('scroll', handleScroll);
+	// 	};
+	// }, []);
 	return <div className='leftTabContainer' style={{ marginTop: `${(top>=0?top:0)}px` }}>
 		{children}
 	</div>
