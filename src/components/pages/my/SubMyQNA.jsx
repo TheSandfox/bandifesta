@@ -48,17 +48,16 @@ export default function SubMyQNA({handleTabState,index}) {
 			const day = today.getDate().toString().padStart(2, '0');
 			const createDate = year + '-' + month + '-' + day;
 			dispatch({
-			   type : 'create',
-			   datas : {
-				  idx : idx.current,
-				  title, text,
-				  time: createDate,
-				  userID : config.user.id
-				  }
-			   })
-			   idx.current += 1;
-		 },[title, text, time, userID])
-		 
+				type : 'create',
+				datas : {
+					idx : idx.current,
+					title, text,
+					time: createDate,
+					userID : config.user.id
+				}
+			})
+			idx.current += 1;
+		},[time, userID, title, text])
 			
 		// 수정
 		const editWord = (idx, title, text)=>{

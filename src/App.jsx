@@ -112,7 +112,11 @@ function App() {
 	const userId = useRef(21);
   
 	const createNotice = useCallback((name, title, content)=>{
-	  const createDate = new Date().toLocaleDateString();
+	  const today = new Date();
+	  const year = today.getFullYear();
+	  const month = (today.getMonth()+1).toString().padStart(2, '0');
+	  const day = today.getDate().toString().padStart(2, '0');
+	  const createDate = year + '-' + month + '-' + day;
   
 	  dispatch({
 		type: "create",
@@ -170,8 +174,8 @@ function App() {
 				        <Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
 				        <Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>
 				        <Route path={'/notice/edit/:noticeId'} 		element={<PageNoticeEdit/>}/>
-				        <Route path={'/qna/detail:qnaId'} 			element={<PageQNADetail/>}/>
-				        <Route path={'/qna/edit:qnaId'} 			element={<PageQNAEdit/>}/>
+				        <Route path={'/qna/detail/:qnaId'} 			element={<PageQNADetail/>}/>
+				        <Route path={'/qna/edit/:qnaId'} 			element={<PageQNAEdit/>}/>
 				        <Route path={'/qna/write'} 					element={<PageQNAWrite/>}/>
 				        <Route path={'/answer/write'} 				element={<PageAnswerWrite/>}/>
 				        <Route path={'/answer/edit/:answerId'} 		element={<PageAnswerEdit/>}/>

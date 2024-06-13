@@ -7,7 +7,6 @@ import GenericButton from '../../generic/GenericButton'
 
 
 export default function PageQNAWrite({setPage, datas}) {
-	console.log(datas)
 	const config = useContext(configContext);
 
 	const [{title, text}, onchange, reset] = QnaInput({
@@ -46,6 +45,7 @@ export default function PageQNAWrite({setPage, datas}) {
 			<li>
 				<label>내용</label>
 				<textarea name='text' value={text} onChange={onchange}></textarea>
+				{console.log(text)}
 			</li>
 		</ul>
 		<div className="MyQnaWriteBtn">

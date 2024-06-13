@@ -2,6 +2,8 @@ import "./PageNotice.css";
 import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../generic/LeftTab";
 import { useState } from "react";
 import { useParams } from "react-router";
+import { MobileTab, MobileTabContainer } from '../../generic/MobileTab';
+import TopBanner from "../../generic/TopBanner";
 import SubNoticeMain from "./SubNoticeMain";
 import SubNoticeFAQ from "./SubNoticeFAQ";
 export default function PageNotice({}) {
@@ -23,7 +25,17 @@ export default function PageNotice({}) {
     default:
   }
   return (
-    <div className="innerbox">
+  <>
+  <TopBanner>알려드립니다</TopBanner>
+  <div className="innerbox">
+      <MobileTabContainer>
+        <MobileTab to={"/notice/main"} active={tabState === 0}>
+          공지사항
+        </MobileTab>
+        <MobileTab to={"/notice/faq"} active={tabState === 1}>
+          자주하는 질문
+        </MobileTab>
+      </MobileTabContainer>
       <div className="mainContent">
         <div className="tabContentDivision">
           <LeftTabContainer>
@@ -41,5 +53,6 @@ export default function PageNotice({}) {
         </div>
       </div>
     </div>
+  </>
   );
 }

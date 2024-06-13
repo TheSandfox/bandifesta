@@ -4,6 +4,7 @@ import GenericTag from '../GenericTag';
 import { isFestivalLiked } from '/src/api_utils/festivalUtil';
 import { likeFestival } from '/src/api_utils/festivalUtil';
 import { configContext } from '/src/App';
+import { useNavigate } from 'react-router-dom';
 
 function FestivalLikeButton({festivalId,userId}) {
 	const [pressed,setPressed] = useState(false);
@@ -41,6 +42,7 @@ function FestivalLikeButton({festivalId,userId}) {
 }
 
 function FestivalCard({festival,disableTag,userId}) {
+	const navigate = useNavigate();
 	const imgElement = useRef(null);
 	const [tagVariation,setTagVariation] = useState({
 		value:0,
@@ -77,7 +79,13 @@ function FestivalCard({festival,disableTag,userId}) {
 			})
 		}
 	},[])
-	return <div className='festivalCard'>
+	//
+	const navigateCallback = ()=>{
+		if (!festival.festival_id) {return;}
+		navigate(`/festival/detail/${festival.festival_id}`);
+	}
+	//
+	return <div className='festivalCard' onClick={navigateCallback}>
 		<div className='festivalCardTop'>
 			{
 				(!isNull)
