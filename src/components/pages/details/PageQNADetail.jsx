@@ -20,33 +20,37 @@ export default function PageQNADetail({datas, setDetail, refs}) {
     function removeBtn(){
         if(window.confirm(`문의 내용을 정말 삭제하시겠습니까?`)){
             removeWord(det.idx)
+			setDetail(true)
         }
-		setDetail(true)
     }
-	
+
+	// 페이지 변경
 	function editPageBtn(){       
         setUpdate(!update)
     }
-	// 수정
-	function editBtn(){       
-        setUpdate(!update)
-		setDetail(true)
+	function editBtn(){  
+		if(window.confirm(`문의 내용 수정을 취소하시겠습니까?`)){
+			setUpdate(!update)
+			setUpdate(true)
+		}     
+        
     }
+	
 	// 수정 - 값 변경
     function editChangeTit(e){
         setEditTitle(e.target.value)
     }
     function editChangeTxt(e){
-        setEditTitle(e.target.value)
+        setEditCont(e.target.value)
     }
 
 	// 저장
     function saveBtn(){
         if(window.confirm(`문의 내용을 수정하시겠습니까?`)){
-			editWord(idx, editTitle, editCont)
+			editWord(det.idx, editTitle, editCont)
 			editBtn()
-			}
-		setDetail(true) 
+			setDetail(true) 
+		}
     }
 	
 	return (

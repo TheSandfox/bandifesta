@@ -1,5 +1,5 @@
 import { editContext } from '../my/SubMyQNA';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { configContext } from "../../../App";
 import QnaInput from '../my/myQnaInput';
 
@@ -8,31 +8,30 @@ import GenericButton from '../../generic/GenericButton'
 
 
 
-export default function PageQNAWrite({setPage}) {
-
+export default function PageQNAWrite({setPage, datas}) {
+	console.log(datas)
 	const config = useContext(configContext);
 
-	const [{title, text, time, userID}, onchange, reset] = QnaInput({
+	const [{title, text}, onchange, reset] = QnaInput({
 		title: '',
-        text: '',
-		time: '',
-		userID: ''
+        text: ''
     });
 
     const {createWord} = useContext(editContext);
 	
+		
     const createBtn = ()=>{
 		if(window.confirm(`해당 내용을 문의 하시겠습니까?`)){
-			createWord(title, text, time, userID)
+			createWord(title, text)
 			reset()
-			}
-		setPage(true)
+			setPage(true)
+		}
     }
 
 	function backBtn(){
-		if(window.confirm(`이 페이지에서 나가시겠습니까?`)){
+		if(window.confirm(`문의 작성을 취소 하시겠습니까?`)){
+			setPage(true)
 		}
-	// setPage(true)
 	}
 
 	return <div className='PageQNAWrite'>

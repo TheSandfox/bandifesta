@@ -6,7 +6,6 @@ import MyQNAList from './MyQNAList'
 import { configContext } from "../../../App";
 import {myQnaData, reducer} from './MyQnaData';
 import PageQNAWrite from '../details/PageQNAWrite'
-import PageQNADetail from "../details/PageQNADetail";
 // import axios from 'axios';
 
 export const qnaContext = createContext();
@@ -47,17 +46,17 @@ export default function SubMyQNA({handleTabState,index}) {
 			dispatch({
 				type : 'create',
 				datas : {
-				idx : idx.current,
-				title, text,
-				time : date,
-				userID : config.user.id
+					idx : idx.current,
+					title, text,
+					time : date,
+					userID : config.user.id
 				}
 			})
 			idx.current += 1
-		},[title, text, time, userID])
+		},[idx, title, text, time, userID])
 			
 		// 수정
-			const editWord = (idx, title, text)=>{
+		const editWord = (idx, title, text)=>{
 			dispatch({
 				type: "edit",
 				idx, title, text
@@ -84,6 +83,8 @@ export default function SubMyQNA({handleTabState,index}) {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);  // 번호 개수(1~10)
 	const [leng, setLeng] = useState()
+
+	
 
     useEffect(() => {
 		const endOffset = itemOffset +  itemsPerPage;
@@ -130,7 +131,7 @@ export default function SubMyQNA({handleTabState,index}) {
 		:
 			<qnaContext.Provider value={datas}>
 				<editContext.Provider value={memoWord}>
-					<PageQNAWrite setPage={setPage}/>
+					<PageQNAWrite setPage={setPage} datas={datas}/>
 				</editContext.Provider>
 			</qnaContext.Provider>
 		}
