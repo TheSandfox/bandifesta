@@ -23,7 +23,7 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 	const {datas} = state;
 	const {id, tit, txt} = state.inputs;
 	const contId = useRef(16)
-	console.log(datas[0])
+console.log(datas[0])
 	
 	// 추가 기능
 	const createWord = useCallback((tit, txt)=>{
