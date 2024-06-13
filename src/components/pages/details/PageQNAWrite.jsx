@@ -2,8 +2,6 @@ import { editContext } from '../my/SubMyQNA';
 import { useContext, useState, useEffect } from 'react';
 import { configContext } from "../../../App";
 import QnaInput from '../my/myQnaInput';
-
-import './PageQNAWrite.css'
 import GenericButton from '../../generic/GenericButton'
 
 

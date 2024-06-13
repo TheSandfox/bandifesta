@@ -15,7 +15,7 @@ export default function PageQNADetail({datas, setDetail, refs}) {
 		const filterDetail = datas.filter((data) => Number(data.idx) === Number(refs));
 		const detailMAp = filterDetail.map((data) => setDet(data));
 	},[])
-
+console.log(det)
    // 삭제 
     function removeBtn(){
         if(window.confirm(`문의 내용을 정말 삭제하시겠습니까?`)){
@@ -52,6 +52,9 @@ export default function PageQNADetail({datas, setDetail, refs}) {
 			setDetail(true) 
 		}
     }
+    function backList(){
+			setDetail(true) 
+    }
 	
 	return (
 		<>
@@ -59,14 +62,14 @@ export default function PageQNADetail({datas, setDetail, refs}) {
 				{update ?
 					<ul className="MyQNADetail">
 						<li className="MyQNADetailTit">
-							<p>{det.title}</p>
+							<h2>{det.title}</h2>
 						</li>
 						<li className="MyQNADetailUser">
-							<div>작성자</div>
+							<h3>작성자</h3>
 							<p>{det.userID}</p>
 						</li>
 						<li className="MyQNADetailUser">
-							<div>작성일</div>
+							<h3>작성일</h3>
 							<p>{det.time}</p>
 						</li>
 						<li className="MyQNADetailCont">
@@ -80,11 +83,11 @@ export default function PageQNADetail({datas, setDetail, refs}) {
 						</li>
 						<li className="MyQNADetailUser">
 							<div>작성자</div>
-							<input type='text' placeholder={det.userID} />
+							<input type='text' placeholder={det.userID} readOnly />
 						</li>
 						<li className="MyQNADetailUser">
 							<div>작성일</div>
-							<input type='text' placeholder={det.time}/>
+							<input type='text' placeholder={det.time} readOnly/>
 						</li>
 						<li className="MyQNADetailCont">
 							<textarea placeholder={det.text} value={editCont} onChange={editChangeTxt}></textarea>
@@ -93,6 +96,7 @@ export default function PageQNADetail({datas, setDetail, refs}) {
 				}
 				{update ?
 					<div className="MyQnaWriteBtn">
+						<GenericButton onClick={backList}>목록으로</GenericButton>
 						<GenericButton onClick={editPageBtn}>수정</GenericButton>
 						<GenericButton onClick={removeBtn}>삭제</GenericButton>
 					</div>

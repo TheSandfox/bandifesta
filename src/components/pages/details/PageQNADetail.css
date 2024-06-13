@@ -1,4 +1,4 @@
-/* qnaWrite */
+/* PageQNAWrite */
 .PageQNAWrite{
     width: 100%;
     padding: 30px 32px;
@@ -47,29 +47,48 @@
     color: #fff;   
 }
 
-/* qnaDetail */
+/* PageQNADetail */
 .MyQNADetail{
-    width: 100%;
     border-top: 2px solid #686868;
     border-bottom: 2px solid #686868;
-    border-collapse: collapse;
 }
-.MyQNADetail th, .MyQNADetail td{
-    padding: 10px;
-}
-.MyQNADetail>tr:not(.MyQNADetail>tr:last-child){
+.MyQNADetail>li:not(.MyQNADetailTit){
     border-bottom: 1px solid #ccc;
 }
-.MyQNADetailUser>th{
+.MyQNADetailTit{
+    padding: 17px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 2px solid #686868;
+}
+.MyQNADetailUser{
+    display: flex;
+    text-align: center;
+}
+.MyQNADetailUser>h3{
+    width: 10%;
+    padding: 17px 25px;
+    border-right: 1px solid #ccc;
+    font-size: 16px;
+}
+.MyQNADetailUser>p{
+    padding: 17px 25px;
+    font-size: 15px;
+}
+.MyQNADetailCont{
+    padding: 50px;
+}
+/* 
+.MyQNADetailUser>li{
     width: 20%;
     border-right: 1px solid #ccc;
 }
 .MyQNADetailCont{
     width: 80%;
 }
-.MyQNADetail th{
+.MyQNADetail li{
     font-weight: bold;
 }
 .MyQNADetailTit{
     text-align: center;
-}
+} */

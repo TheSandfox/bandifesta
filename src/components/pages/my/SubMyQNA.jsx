@@ -1,8 +1,8 @@
 import React, { useState, useReducer, useRef, useMemo, useCallback, useEffect, createContext, useContext } from "react";
 import './SubMyQNA.css'
+import '../details/PageQNADetail.css'
 import ReactPaginate from 'react-paginate';
 import MyQNAList from './MyQNAList'
-
 import { configContext } from "../../../App";
 import {myQnaData, reducer} from './MyQnaData';
 import PageQNAWrite from '../details/PageQNAWrite'
@@ -42,18 +42,23 @@ export default function SubMyQNA({handleTabState,index}) {
 
 		// 추가
 		const createWord = useCallback((idx, title, text, time, userID)=>{
-			const date = new Date().toLocaleDateString;
+			const today = new Date();
+			const year = today.getFullYear();
+			const month = (today.getMonth()+1).toString().padStart(2, '0');
+			const day = today.getDate().toString().padStart(2, '0');
+			const createDate = year + '-' + month + '-' + day;
 			dispatch({
-				type : 'create',
-				datas : {
-					idx : idx.current,
-					title, text,
-					time : date,
-					userID : config.user.id
-				}
-			})
-			idx.current += 1
-		},[idx, title, text, time, userID])
+			   type : 'create',
+			   datas : {
+				  idx : idx.current,
+				  title, text,
+				  time: createDate,
+				  userID : config.user.id
+				  }
+			   })
+			   idx.current += 1;
+		 },[idx, title, text, time, userID])
+		 
 			
 		// 수정
 		const editWord = (idx, title, text)=>{
