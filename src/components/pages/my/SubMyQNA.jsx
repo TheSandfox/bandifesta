@@ -121,6 +121,9 @@ export default function SubMyQNA({handleTabState,index}) {
 	}
 	console.log(st)
 
+
+
+	
 	return <>
 		{page ? 
 			<qnaContext.Provider value={datas}>
