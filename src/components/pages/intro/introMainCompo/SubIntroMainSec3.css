@@ -1,4 +1,5 @@
 .SubIntroMainSec3_wrap{
+	width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -7,15 +8,22 @@
 /* 인트로메인섹션 제목-start */
 .SubIntroMainSec3_wrap>h1{
     font-family: 'BookkBold';
-    font-size: 90px;
+    font-size: 64px;
     padding-top: 70px;
     font-weight: 400;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 32 / 400));
+   	 	padding-top: calc( 100vw * ( 50 / 400));
+	}
 }
 .SubIntroMainSec3_bar>div:first-child{
     width: 1px;
     height: 60px;
     background-color: var(--color-main);
     margin:0 auto;
+	@media screen and (max-width:1023px) {
+		height: calc( 100vw * ( 32 / 400));
+	}
 }
 .SubIntroMainSec3_bar>div:last-child{
     width: 7px;
@@ -30,12 +38,32 @@
     padding-top: 20px;
     padding-bottom: 70px;
     font-weight: 400;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 20 / 400));
+   	 	padding-top: calc( 100vw * ( 10 / 400));
+   	 	padding-bottom: calc( 100vw * ( 30 / 400));
+	}
 }
 /* 인트로메인섹션 제목-end */
 .SubIntroMainSec3_wrap>p{
     padding-top: 70px;
-    font-weight: 400;
     font-family: 'BookkThin';
-    font-size: 30px;
+    font-weight: 400;
+    font-size: 24px;
     line-height: 57px;
+	@media screen and (max-width:1023px) {
+		padding-top: calc( 100vw * ( 32 / 400));
+		font-size: calc( 100vw * ( 14 / 400));
+		line-height: calc( 100vw * ( 32 / 400));
+	}
+}
+
+.SubIntroMainSec3_wrap .gookak {
+	width: 100%;
+	aspect-ratio: 950/800;
+}
+
+.SubIntroMainSec3_wrap .gookak>img{
+	width: 100%;
+	height: 100%;
 }

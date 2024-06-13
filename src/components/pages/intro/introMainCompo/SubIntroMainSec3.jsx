@@ -9,7 +9,7 @@ export default function SubIntroMainSec3({}) {
 				<div></div>
 			</div>
 			<h2>국악 공연</h2>
-			<div><img src="/bandifesta/assets/singsingsing.png" alt="국악공연" /></div>
+			<div className={'gookak'} ><img src="/bandifesta/assets/singsingsing.png" alt="국악공연" /></div>
 			<p>
 				국악 공연과 함께<br/>
 				가족과 함께<br/>
