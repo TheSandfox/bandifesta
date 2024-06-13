@@ -4,7 +4,6 @@ import { editContext } from '../my/SubMyQNA';
 
 export default function PageQNADetail({datas, setDetail, refs}) {
 
-	
 	const [det, setDet] = useState([]);
 	const {removeWord, editWord} = useContext(editContext);
     const [update, setUpdate] = useState(true);

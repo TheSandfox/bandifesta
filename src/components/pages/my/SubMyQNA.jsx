@@ -41,19 +41,23 @@ export default function SubMyQNA({handleTabState,index}) {
 	const idx = useRef(16);
 
 		// 추가
-		const createWord = useCallback((idx, title, text, time, userID)=>{
-			const date = new Date().toLocaleDateString;
+		const createWord = useCallback((title, text, time, userID)=>{
+			const today = new Date();
+			const year = today.getFullYear();
+			const month = (today.getMonth()+1).toString().padStart(2, '0');
+			const day = today.getDate().toString().padStart(2, '0');
+			const createDate = year + '-' + month + '-' + day;
 			dispatch({
 				type : 'create',
 				datas : {
 					idx : idx.current,
 					title, text,
-					time : date,
+					time: createDate,
 					userID : config.user.id
 				}
 			})
-			idx.current += 1
-		},[idx, title, text, time, userID])
+			idx.current += 1;
+		},[time, userID, title, text])
 			
 		// 수정
 		const editWord = (idx, title, text)=>{
