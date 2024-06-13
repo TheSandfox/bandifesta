@@ -32,7 +32,7 @@
 	transition: opacity 0.25s;
 }
 
-.festivalCardTop:hover .hightlight {
+.festivalCard:hover .hightlight {
 	opacity: 0.33;
 }
 

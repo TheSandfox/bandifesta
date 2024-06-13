@@ -108,8 +108,9 @@ function Course({ currentSet }) {
                 }}
               />
             </div>
-            {points[currentSet].map((point) => (
+            {points[currentSet].map((point,index) => (
               <div
+				key={index}
                 className={`point_spot_wrap point-${point.id}`}
                 style={{ left: `${point.x}px`, top: `${point.y}px` }}
                 onClick={() => ClickInfo(point.id, point.x, point.y)}

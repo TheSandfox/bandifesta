@@ -37,16 +37,16 @@ function Faqs(){
     return(
         <ul className="faqLists">
             {datas.map((data)=>{return(
-                <li>
+                <li key={data.id}>
                     <div className="faqListsQuestion" ref={ques} onClick={scrollEvent}>
                         <div>
-                            <img src="assets/question.png"/>
+                            <img src="/bandifesta/assets/question.png"/>
                             <p>{data.tit}</p>
                         </div>
-                        <span><img src="assets/arrowBlack.png"/></span>
+                        <span><img src="/bandifesta/assets/arrowBlack.png"/></span>
                     </div>
                     <div className="faqListsAnswer" ref={answ}>
-                        <img src="assets/answer.png"/>
+                        <img src="/bandifesta/assets/answer.png"/>
                         <p>{data.txt}</p>
                     </div>
                 </li>
@@ -67,7 +67,7 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 				<h1>원하시는 내용을 검색해 보세요.</h1>
 				<div className="noticeSearchBar">
 					<input placeholder="검색어를 입력해 주세요."/>
-					<button><img src="assets/glass_search.png"/></button>
+					<button><img src="/bandifesta/assets/glass_search.png"/></button>
 				</div>
 			</div>
 			{/* contents */}

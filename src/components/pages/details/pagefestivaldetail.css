@@ -1,12 +1,12 @@
 .festivalDetail {
 	display: flex;
 	flex-direction: column;
-	gap: 23px;
+	gap: 48px;
 	@media screen and (max-width:1439px) {
-		gap: 15px;
+		gap: 32px;
 	}
 	@media screen and (max-width:1023px) {
-		gap: calc( 100vw * (15 / 400) );
+		gap: calc( 100vw * (32 / 400) );
 	}
 }
 
@@ -128,9 +128,11 @@
 	display: flex;
 	justify-content: center;
 	width: 200px;
+	min-width: 200px;
 	padding: 25px 0;
 	@media screen and (max-width:1023px) {
 		width: calc( 100vw * (100 / 400) );
+		min-width: calc( 100vw * (100 / 400) );
 		padding: calc( 100vw * (16 / 400) ) 0;
 	}
 }
@@ -139,6 +141,10 @@
 	border-bottom: 1px solid #ccc;
 	flex: 1;
 	padding: 25px 25px;
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * (100 / 400) );
+		padding: calc( 100vw * (16 / 400) ) calc( 100vw * (16 / 400) );
+	}
 }
 
 /* 하단 맵 */

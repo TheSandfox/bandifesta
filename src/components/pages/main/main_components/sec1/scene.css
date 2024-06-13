@@ -3,6 +3,9 @@
 	width:100vw;
 	height:calc(80vw * (1080 / 1920));
 	overflow: hidden;
+	background-image: url('/bandifesta/assets/main_sec4_bg.png');
+	background-size: 100%;
+	background-position: bottom;
 	& .loadingBackdrop {
 		top:50%;
 		left:50%;
@@ -16,10 +19,15 @@
 		background-repeat: no-repeat;
 		transform: translate(-50%, -50%);
 		filter: blur(4px);
+		opacity: 1;
+		transition: opacity 2.5s;
+		&.hidden {
+			opacity: 0;
+		}
 	}
 	& .canvas {
 		opacity: 0;
-		transition: opacity 3.0s;
+		transition: opacity 2.5s;
 		&.active {
 			opacity: 1;
 		}

@@ -122,7 +122,12 @@ function FestivalContent({festival}) {
 						주최
 					</div>
 					<div className="right fontMain">
-						{festival.sponsor2}
+						{festival.sponsor1}
+						{
+							festival.sponsor2
+							?<><br/>{festival.sponsor2}</>
+							:<></>
+						}
 					</div>
 				</div>
 				{/* 홈페이지 */}

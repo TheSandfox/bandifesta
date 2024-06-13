@@ -47,7 +47,7 @@ export default function SubMyQNA({handleTabState,index}) {
 			dispatch({
 				type : 'create',
 				datas : {
-				title, text, time, newUserId,
+				title, text, newUserId,
 				idx : idx.current,
 				time : date,
 				userID : config.user.id

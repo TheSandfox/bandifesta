@@ -68,13 +68,13 @@ function SceneObject() {
 	return (
 		<>
 			<fog/>
-			<Environment 
+			{/* <Environment 
 				files={'bandifesta_environment.hdr'} 
 				background blur={0.25}
 				environmentIntensity={0.33}
 				backgroundIntensityIntensity={0.15}
 				backgroundRotationotation={[ 0.5, 0, 0, 0.8660254 ]}
-			/>
+			/> */}
 			<ambientLight intensity={0.45}/>
 			<water ref={waterRef} args={[waterPlane, waterConfig]} rotation-x={-Math.PI / 2} />
 			<primitive 
@@ -86,26 +86,38 @@ function SceneObject() {
 
 export default function Scene() {
 	const canvasRef = useRef();
+	const [loading,setLoading] = useState(true);
 	useEffect(()=>{
 		const timeoutCallback = ()=>{
 			// console.log(canvasRef.current);
 			canvasRef.current.parentElement.parentElement.classList.add('active');
 		}
+		const loadingTimeout = ()=>{
+			setLoading(false);
+		}
 		const timer = setTimeout(timeoutCallback,1000);
+		const loadingTimer = setTimeout(loadingTimeout,2500);
 
 		return ()=>{
 			clearTimeout(timer);
+			clearTimeout(loadingTimer);
 		}
 	},[])
 	return <div className='scene'>
-		<div className='loadingBackdrop'>
+		<div className={`loadingBackdrop${!loading?' hidden':''}`}>
 		</div>
-		<Loading timeout={2.5}/>
 		<Canvas 
 			className='canvas'
 			ref={canvasRef}
 		>
 			<SceneObject />
 		</Canvas>
+		{
+			loading
+			?<>
+				<Loading/>
+			</>
+			:<></>
+		}
 	</div>
 }
