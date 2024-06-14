@@ -14,14 +14,14 @@ export default function FAQPageList({ currentItems }){
                 <li className='faqLists'>
                     <div className="faqListsQuestion" onClick={()=>scrollEvent(idx)}>
                         <div>
-                            <img src="/bandifesta/assets/question.png" alt='question'/>
+                            <span><img src="/bandifesta/assets/question.png" alt='question'/></span>
                             <p className='fontMain'>{data.tit}</p>
                         </div>
                         <span><img src="/bandifesta/assets/arrowBlack.png" className={idx === click ? 'AnswerRotate': ''}/></span>
                     </div>
                     <div className={`faqListsAnswer${idx === click ? ' faqListsAnswerActive' : ''}`}>
                         <div>
-                            <img src="/bandifesta/assets/answer.png" alt='answer'/>
+                            <span><img src="/bandifesta/assets/answer.png" alt='answer'/></span>
                             <p className='fontMain'>{data.txt}</p>
                         </div>
                     </div>
