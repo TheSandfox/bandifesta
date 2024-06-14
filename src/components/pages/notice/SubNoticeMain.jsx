@@ -1,7 +1,7 @@
 import {useContext, useEffect} from 'react';
 import {dataContext, configContext} from '../../../App';
 import SubNoticeList from './SubNoticeList';
-import SearchBox from './SubNoticeSearch';
+import SearchBox from './SearchBox';
 import GenericButton from '../../generic/GenericButton';
 import './SubNoticeMain.css';
 

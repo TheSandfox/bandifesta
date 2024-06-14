@@ -1,3 +1,114 @@
 .PageNoticeWrap {
 	flex: 1;
 }
+/* ------------------------------------ */
+
+/* 버튼 상위 div */
+.btnWrap{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: var(--notice-padding);
+}
+.btnWrap>div{
+    display: inline-block;
+}
+
+/* 페이지네이션 */
+.subNoticeNavi{
+    display: flex; gap: 12px;
+    justify-content: center;
+	align-items: center;
+	padding-top: var(--notice-padding);
+}
+.subNoticePageNext, .subNoticePagePrev{
+	display: block;
+	cursor: pointer;
+	width: 25px; height: 25px;
+	margin: 0 3px;
+}
+.subNoticeNavi img{
+    width: 100%;
+}
+.subNoticePage{
+	display: block;
+	cursor: pointer;
+	/* padding: 4px 11px; */
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	color: var(--tit-border-color);
+	background-color: var(--color-white);
+	text-align: center;
+}
+.subNoticePage>a{
+	display: block;
+	padding: 4px 11px;
+}
+.subNoticePageActive{
+    color: var(--color-white);
+    background-color: var(--color-main);
+}
+.subNoticePageActive>a{
+	display: block;
+	padding: 4px 11px;
+}
+@media screen and (max-width:1439px) {
+	.subNoticeNavi{
+		gap: 10px;
+	}
+}
+@media screen and (max-width:1023px) {
+	.subNoticePage>a{
+		padding: 5px 10px;
+	}
+	.subNoticePageActive>a{
+		padding: 5px 10px;
+	}
+}
+
+/* 검색창 */
+.noticeSearch{
+	width: 100%;
+    border: 1px solid var(--txt-border-color);
+    border-radius: 12px;
+    padding: var(--notice-padding) 0;
+	text-align: center;
+    margin-bottom: 40px;
+}
+.noticeSearch>h1{
+    margin-bottom: 17px;
+}
+.noticeSearchBar{
+	width: 100%;
+	justify-content: center;
+}
+.SearchBox{
+	width: 70%;
+	margin: 0 auto;
+	position: relative;
+}
+.SearchBox>input{
+    width: 100%; 
+    border: 1px solid var(--txt-border-color);
+    border-radius: 50px;
+    background-color: var(--list-hover-color);
+    box-shadow: var(--box-shadow-in);
+    padding: var(--list-padding);
+}
+.SearchBox>button{
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    background-color: var(--color-main);
+    position: absolute;
+    right: 15px; top: 50%;
+    transform: translateY(-50%);
+    box-shadow: var(--box-shadow-out);
+}
+.SearchBox>button>img{
+    width: 70%; height: 70%;
+}
+@media screen and (max-width:1023px) {
+	.SearchBox{
+		width: 85%;
+	}
+}

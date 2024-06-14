@@ -6,6 +6,7 @@ import { MobileTab, MobileTabContainer } from '../../generic/MobileTab';
 import TopBanner from "../../generic/TopBanner";
 import SubNoticeMain from "./SubNoticeMain";
 import SubNoticeFAQ from "./SubNoticeFAQ";
+
 export default function PageNotice({}) {
   const { tabName } = useParams();
   const [tabState, setTabState] = useState(0);
