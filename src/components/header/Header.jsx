@@ -1,13 +1,81 @@
 import { Link } from 'react-router-dom';
 import './header.css';
 import './mymenu.css';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { loginRequest } from "/src/api_utils/loginUtil"
 import GenericIconButton from '../generic/GenericIconButton';
 import { configContext } from '../../App';
 
-function LanguageSelector() {
-	return <></>
+function LanguageSelector({handleConfig}) {
+	const [visible,setVisible] = useState(false);
+	const [displayValue,setDisplayValue] = useState('');
+	const config = useContext(configContext);
+	const containerRef = useRef(null)
+	useEffect(()=>{
+		let val = ''
+		switch(config.language) {
+		case 'Kor':
+			val = '한국어';
+			break;
+		case 'Eng' :
+			val = 'English';
+			break;
+		case 'Jpn' :
+			val = '日本語';
+			break;
+		}
+		setDisplayValue(val);
+	},[config.language])
+	useEffect(()=>{
+		setVisible(false);
+	},[displayValue])
+	//바깥 클릭 시 소멸
+	useEffect(()=>{
+		const clickCallback = (e)=>{
+			if (e.button!==0) {return;}
+			if (!visible) {return;}
+			if (e.target!==containerRef.current&&!(containerRef.current.contains(e.target))){
+				setVisible(false);
+			}
+		}
+
+		window.addEventListener('mousedown',clickCallback);
+
+		return ()=>{
+			window.removeEventListener('mousedown',clickCallback);
+		}
+	},[visible])
+	return <div ref={containerRef} className='languageSelector'>
+		<div className='contentAndArrow' onClick={()=>{setVisible(!visible)}}>
+			<div className='content fontMain'>
+				{displayValue}
+			</div>
+			<div className={`arrow${visible?' active':''}`}>
+
+			</div>
+		</div>
+		{
+			visible
+			?<div className='dropDown'>
+				<div className={`dropDownItem fontMain${displayValue==='한국어'?' active':''}`} onClick={()=>{
+					handleConfig.setLanguage('Kor');
+				}}>
+					한국어
+				</div>
+				<div className={`dropDownItem fontMain${displayValue==='English'?' active':''}`} onClick={()=>{
+					handleConfig.setLanguage('Eng');
+				}}>
+					English
+				</div>
+				<div className={`dropDownItem fontMain${displayValue==='日本語'?' active':''}`} onClick={()=>{
+					handleConfig.setLanguage('Jpn');
+				}}>
+					日本語
+				</div>
+			</div>
+			:<></>
+		}
+	</div>
 }
 
 function MyMenu({handleConfig}) {

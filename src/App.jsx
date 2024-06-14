@@ -43,15 +43,23 @@ function App() {
 			'Jpn'
 		],
 		language:'Kor',
-		user:null
+		user:null,
+		festivalView:'gallery'
 	})
 	//전역설정 핸들러
 	const handleConfig = {
+		setFestivalView:(val)=>{
+			setConfig({
+				...config,
+				festivalView:val
+			})
+		},
 		setLanguage:(value)=>{
 			setConfig({
 				...config,
 				language:value
 			})
+			navigate(`/festival/${config.festivalView}`);
 		},
 		getLanguageByIndex:(index)=>{
 			return config.languages[index]
@@ -169,7 +177,7 @@ function App() {
 				        <Route path={'/intro/:tabName'} element={<PageIntro/>}/>
 				        <Route path={'/course'} element={<PageCourse/>}/>
 				        <Route path={'/notice/:tabName'} element={<PageNotice/>}/>
-				        <Route path={'/festival/:tabName'} element={<PageFestival/>}/>
+				        <Route path={'/festival/:tabName'} element={<PageFestival handleConfig={handleConfig}/>}/>
 				        <Route path={'/my/:tabName'} element={<PageMy handleConfig={handleConfig}/>}/>
 				        {/*상세,작성,수정페이지*/}
 				        <Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>

@@ -5,7 +5,7 @@ import { getFestivalPeriodTypes, getFestivalSortMethods } from "../../../api_uti
 import './subfestivalgallery.css';
 import FestivalScrollLoader from "../../generic/festival/FestivalScrollLoader";
 
-export default function SubFestivalGallery({handleTabState,index}) {
+export default function SubFestivalGallery({handleTabState,index,handleConfig}) {
 	const [festivalPeriodType,setFestivalPeriodType] = useState(null);
 	const [festivalSortMethod,setFestivalSortMethod] = useState(null);
 	const [festivalPeriodTypes,setFestivalPeriodTypes] = useState([]);
@@ -27,6 +27,7 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	//상위컴포넌트의 탭활성상태 변경
 	useEffect(()=>{
 		handleTabState.set(index);
+		handleConfig.setFestivalView('schedule');
 	},[])
 	//축제유형&정렬방식 가져오기
 	useEffect(()=>{

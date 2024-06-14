@@ -1,7 +1,35 @@
 .goTop {
+	cursor: pointer;
 	position: fixed;
 	right: 32px;
 	bottom: 32px;
-	width: 48px;
-	height: 48px;
+	width: 80px;
+	aspect-ratio: 1;
+	background-color: var(--color-main);
+	border-radius: 100%;
+	border: 2px solid var(--color-white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: var(--color-white);
+	font-family: 'BookkBold';
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+	gap: 4px;
+	z-index: 18184175;
+	@media screen and (max-width:1023px) {
+		gap: calc(100vw * (2 / 400) );
+		width: calc(100vw * (64 / 400) );
+	}
+}
+
+.goTop > .arrowUp {
+	width: 16px;
+	aspect-ratio: 1;
+	background-image: url('/bandifesta/assets/arrowWhite.png');
+	background-size: 100%;
+	transform: rotate(-90deg);
+	@media screen and (max-width:1023px) {
+		width: calc(100vw * (10 / 400) );
+	}
 }

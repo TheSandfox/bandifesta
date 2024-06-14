@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FestivalCardList } from "../../generic/festival/FestivalCard";
 import { configContext } from "../../../App";
 import FestivalScrollLoader from "../../generic/festival/FestivalScrollLoader";
+import GoTop from "../../generic/GoTop";
 
 export default function SubMyFavorites({handleTabState,index}) {
 	const [festivals,setFestivals] = useState([]);
@@ -37,5 +38,6 @@ export default function SubMyFavorites({handleTabState,index}) {
 			/>
 			:<></>
 		}
+		<GoTop/>
 	</div>
 }
