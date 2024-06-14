@@ -10,6 +10,7 @@ import { FestivalLikeButton } from "../../generic/festival/FestivalCard";
 import GoogleMapComponent from "../../generic/googlemap/GoogleMapComponent";
 import GenericButton from '/src/components/generic/GenericButton'
 import Loading from '/src/components/generic/Loading'
+import GoBack from "../../generic/GoBack";
 
 function LikeIndicator({festival}) {
 	const config = useContext(configContext)
@@ -180,6 +181,7 @@ function FestivalContent({festival}) {
 }
 
 export default function PageFestivalDetail({}) {
+	const navigate = useNavigate();
 	const { festivalId } = useParams(); //festivalId
 	const [ festival,setFestival ] = useState(null);
 	useEffect(()=>{
@@ -205,5 +207,6 @@ export default function PageFestivalDetail({}) {
 				
 			</div>
 		</div>
+		<GoBack/>
 	</>
 }

@@ -1,4 +1,4 @@
-.goTop {
+.goto {
 	cursor: pointer;
 	position: fixed;
 	right: 32px;
@@ -23,13 +23,21 @@
 	}
 }
 
-.goTop > .arrowUp {
+.goto .arrow {
 	width: 16px;
 	aspect-ratio: 1;
 	background-image: url('/bandifesta/assets/arrowWhite.png');
 	background-size: 100%;
-	transform: rotate(-90deg);
+	transition: 0.25s;
 	@media screen and (max-width:1023px) {
 		width: calc(100vw * (10 / 400) );
 	}
+}
+
+.goto.top > .arrow {
+	transform: rotate(-90deg);
+}
+
+.goto.back > .arrow {
+	transform: rotate(180deg);
 }
