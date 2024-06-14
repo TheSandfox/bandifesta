@@ -51,16 +51,16 @@ const points_1439 = {
     { id: "end", x: 638, y: 63 },
   ],
   min60: [
-    { id: "01", x: 210, y: 185 },
-    { id: "03", x: 340, y: 185 },
-    { id: "06", x: 470, y: 185 },
-    { id: "05", x: 600, y: 185 },
-    { id: "02", x: 730, y: 185 },
-    { id: "04", x: 860, y: 185 },
-    { id: "09", x: 990, y: 185 },
-    { id: "11", x: 990, y: 35 },
-    { id: "13", x: 860, y: 35 },
-    { id: "end", x: 730, y: 35 },
+    { id: "01", x: 98, y: 215 },
+    { id: "03", x: 188, y: 215 },
+    { id: "06", x: 278, y: 215 },
+    { id: "05", x: 368, y: 215 },
+    { id: "02", x: 458, y: 215 },
+    { id: "04", x: 548, y: 215 },
+    { id: "09", x: 638, y: 215 },
+    { id: "11", x: 638, y: 63 },
+    { id: "13", x: 548, y: 63},
+    { id: "end", x: 458, y: 63 },
   ],
   min90: [
     { id: "01", x: 210, y: 185 },
@@ -136,14 +136,12 @@ function Course({ currentSet }) {
           if (currentSet === "min40") {
             setPosition({ x: 80, y: 35 });
             setPeople_height({ x: 15, y: 40 });
-            setCurrentKey("");
-            setBlackSpot("");
           } else {
             setPosition({ x: 80, y: 185 });
             setPeople_height({ x: 15, y: 40 });
-            setCurrentKey("");
-            setBlackSpot("");
           }
+          setCurrentKey("");
+          setBlackSpot("");
           setPrevious(currentSet);
         }
       } else if (window.innerWidth >= 1024) {
@@ -152,84 +150,35 @@ function Course({ currentSet }) {
           if (currentSet === "min40") {
             setPosition({ x: 12, y: 63 });
             setPeople_height({ x: 12, y: 33 });
-            setCurrentKey("");
-            setBlackSpot("");
           } else {
-            setPosition({ x: 80, y: 185 });
-            setCurrentKey("");
-            setBlackSpot("");
+            setPosition({ x: 12, y: 150 });
+            setPeople_height({ x: 12, y: 62 });
           }
+          setCurrentKey("");
+          setBlackSpot("");
           setPrevious(currentSet);
-        } else {
-          setPoints(points_1023);
-          if (currentSet !== previous) {
-            if (currentSet === "min40") {
-              setPosition({ x: 80, y: 35 });
-              setCurrentKey("");
-              setBlackSpot("");
-            } else {
-              setPosition({ x: 80, y: 185 });
-              setCurrentKey("");
-              setBlackSpot("");
-            }
-            setPrevious(currentSet);
+        }
+      } else {
+        setPoints(points_1023);
+        if (currentSet !== previous) {
+          if (currentSet === "min40") {
+            setPosition({ x: 12, y: 35 });
+          } else {
+            setPosition({ x: 12, y: 185 });
           }
+          setCurrentKey("");
+          setBlackSpot("");
+          setPrevious(currentSet);
         }
       }
     };
+
     Resize();
     window.addEventListener("resize", Resize);
     return () => {
       window.removeEventListener("resize", Resize);
     };
-  }, []);
-
-  useEffect(() => {
-    if (window.innerWidth >= 1440) {
-      if (currentSet !== previous) {
-        if (currentSet === "min40") {
-          setPosition({ x: 80, y: 35 });
-          setPeople_height({ x: 15, y: 40 });
-          setCurrentKey("");
-          setBlackSpot("");
-        } else {
-          setPosition({ x: 80, y: 185 });
-          setPeople_height({ x: 15, y: 40 });
-          setCurrentKey("");
-          setBlackSpot("");
-        }
-        setPrevious(currentSet);
-      }
-    } else if (window.innerWidth >= 1024) {
-      if (currentSet !== previous) {
-        if (currentSet === "min40") {
-          setPosition({ x: 12, y: 63 });
-          setPeople_height({ x: 12, y: 33 });
-          setCurrentKey("");
-          setBlackSpot("");
-        } else {
-          setPosition({ x: 80, y: 185 });
-          setCurrentKey("");
-          setBlackSpot("");
-        }
-        setPrevious(currentSet);
-      }
-    } else {
-      if (currentSet !== previous) {
-        if (currentSet === "min40") {
-          setPosition({ x: 80, y: 35 });
-          setCurrentKey("");
-          setBlackSpot("");
-        } else {
-          setPosition({ x: 80, y: 185 });
-          setCurrentKey("");
-          setBlackSpot("");
-        }
-        setPrevious(currentSet);
-      }
-    }
   }, [currentSet, previous]);
-
   const ClickInfo = (key, x, y) => {
     setPosition({ x, y });
     setCurrentKey(key);
