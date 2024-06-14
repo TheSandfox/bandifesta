@@ -68,19 +68,23 @@ ul,ol,li {
 	--detail-tit-font : 24px;
 
 	--notice-padding : 23px;
+	--notice-gap : 18px;
 	--box-shadow-in : rgba(0, 0, 0, 0.15) 2px 2px 2px inset;
 	--box-shadow-out : rgba(0, 0, 0, 0.25) 2px 2px 2px;
+
 
 		/* tit font :  class명 fontMain*/
 	@media screen and (max-width:1439px) {
 		--txt-font-size : 14px;
 		--detail-tit-font : 20px;
 		--notice-padding : 13px;
+		--notice-gap : 15px;
 	}
 	@media screen and (max-width:1023px) {
 		--txt-font-size : calc( 100vw * (12 / 400));
 		--detail-tit-font : calc( 100vw * (18 / 400));
 		--notice-padding : calc( 100vw * (10 / 400));
+		--notice-gap : calc( 100vw * (10 / 400));
 	}
 
 	/*여백*/

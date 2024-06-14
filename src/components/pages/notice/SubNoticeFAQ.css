@@ -13,81 +13,52 @@
 .faqLists{
     border-bottom: 1px solid var(--txt-border-color);
 }
-.faqLists>div{
-    align-items: center;
+.faqEach{
+    display: flex; gap: var(--notice-gap);
+    padding: var(--notice-padding);
 }
-
-
-
-.faqLists>div>div{
-    display: flex; gap: 17px;
+.faqEach>span{
+    width: 5%; height: 100%;
+    text-align: end;
 }
-.faqListsQuestion{
-    display: flex;
-    padding: var(--list-padding);
-    justify-content: space-between;
+.faqEach>span:nth-child(1)>img{
+    display: block;
+    width: 100%;
 }
-.faqListsQuestion>div{
-    width: 95%;
-}
-.faqListsQuestion>div>img{
-    width: 10%; max-height: 36px;
-}
-.faqListsQuestion>div>p{
-    height: auto;
-    display: flex;
-    align-items: center;
-    font-weight: var(--txt-weight);
-    font-size: var(--txt-font-size);
-}
-.faqListsQuestion>span{
-    /* width: 5%; */
-    /* text-align: end; */
-    /* margin-left: 10px; */
-}
-.faqListsQuestion>span>img{
-    width: 20px; height: 20px;
+.faqEach>span:nth-child(3)>img{
+    width: 80%; height: 80%;
+    margin-top: 10%;
     transform: rotate(90deg);
     transition: 0.3s;
+}
+.faqEach>div{
+    width: 90%; height: inherit;
+    display: flex;
+    align-items: center;
+}
+.faqListsQuestion>div{
+    align-items: center;
+}
+.faqListsQuestion p{
+    font-weight: var(--txt-weight);
+}
+.faqListsAnswer{
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--list-hover-color);
+    transition: 0.4s;
+}
+.faqListsAnswer>div{
+    border-top: 1px solid var(--txt-border-color);
+}
+.faqListsAnswer p{
+    line-height: 180%;
+    font-size: var(--txt-font-size);
 }
 .AnswerRotate{
     transform: rotate(-90deg) !important;
     transition: 0.3s;
 }
-.faqListsAnswer{
-    max-height: 0;
-    overflow: hidden;
-    background-color: #f8f8f8;
-    transition: 0.3s;
-}
-.faqListsAnswer>div{
-    padding: var(--list-padding);
-    width: 98%;
-    border-top: 1px solid var(--txt-border-color);
-}
-.faqListsAnswer p{
-    font-size: var(--txt-font-size);
-}
 .faqListsAnswerActive{
     max-height: 200vh;
-    /* border-top: 1px solid var(--txt-border-color); */
 }
-@media screen and (max-width:1439px) {
-    /* .faqLists img{
-        height: calc( 100vw * (20 / 400));
-    } */
-}
-@media screen and (max-width:1023px) {
-    /* .faqLists img{
-        width: auto; height: calc( 100vw * (20 / 400)); */
-    /* } */
-}
-
-
-
-
-/* --------------------- */
-/* .faqLists img{
-    max-width: 38px; height: 36px;
-} */
-/* --------------------- */
