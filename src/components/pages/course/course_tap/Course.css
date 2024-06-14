@@ -39,6 +39,12 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  width: 45px;
+  height: 62px;
+}
+.point_spot_wrap.point-end{
+  width: auto;
+  height: auto;
 }
 .point_spot {
   width: 38px;
@@ -69,16 +75,16 @@
 }
 .course_line_top {
   position: absolute;
-  right: 80px;
-  top: 120px;
+  right: 75px;
+  top: 119px;
   width: 910px;
   height: 2px;
   background-color: #6e6e6e;
 }
 .course_line_bottom {
   position: absolute;
-  right: 80px;
-  top: 160px;
+  right: 75px;
+  bottom: 78px;
   width: 260px;
   height: 110px;
   border-right: 2px solid #6e6e6e;
@@ -115,6 +121,9 @@
   font-weight: 600;
   color: var(--color-main);
 }
+.mobile_course_line_top,.mobile_course_line_bottom{
+  display: none;
+}
 
 @media screen and (max-width: 1439px) {
   .course {
@@ -142,42 +151,45 @@
     width: 690px;
     height: 100%;
   }
-  .point_spot_wrap {
+  .course .point_spot_wrap{
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    width: 44px;
+    height: 58px;
+  }
+  .point_spot_wrap.point-end{
+    width: auto;
+    height: auto;
   }
   .point_spot {
-    width: 24px;
-    height: 24px;
+    width: 38px;
+    height: 38px;
   }
   .point_spot > div {
-    width: 8px;
-    height: 8px;
+    width: 15px;
+    height: 15px;
   }
   .point_spot_wrap > .point-end.point_spot {
     width: 40px;
     height: 74px;
   }
   .course_line_top {
-    left: 30px;
-    top: 100px;
+    right: 28px;
+    top: 95px;
     width: 630px;
   }
   .course_line_bottom {
-    position: absolute;
-    right: 25px;
-    top: 160px;
-    width: 260px;
+    right: 28px;
+    top: 138px;
+    width: 180px;
     height: 110px;
-    border-right: 2px solid #6e6e6e;
-    border-bottom: 2px solid #6e6e6e;
   }
 
   .course_line_bottom.min90 {
-    width: 390px;
+    width: 270px;
   }
 
   .course_info > h3 {
@@ -196,5 +208,109 @@
   .clickable-point {
     font-size: 14px;
   }
+
+}
+@media screen and (max-width:1023px) {
+  
+  .course {
+    width: 100%;
+  }
+  .course_gbg_map {
+    padding: 0px;
+    margin: 10px 0;
+  }
+  .course_gbg_map > img {
+    width: 100%;
+  }
+  .course_wrap {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .people-image {
+    width: 50px;
+    position: absolute;
+  }
+  .course_gbg_spot {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .course .point_spot_wrap{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+  }
+  .point_spot_wrap.point-end{
+    width: auto;
+    height: auto;
+  }
+  .point_spot {
+    width: calc(100vw * (24 / 400));
+    height: calc(100vw * (24 / 400));
+  }
+  .point_spot > div {
+    width: calc(100vw * (8 / 400));
+    height: calc(100vw * (8 / 400));
+  }
+  .point_spot_wrap > .point-end.point_spot {
+    width: calc(100vw * (40 / 400));
+    height: auto;
+  }
+  .course_line_top {
+display: none;
+  }
+  .course_line_bottom {
+display: none;
+  }
+
+  .mobile_course_line_top {
+    position: absolute;
+    right: 2%;
+    bottom: 75%;
+    width: 96%;
+    height: 2px;
+    background-color: #6e6e6e;
+    display: block;
+    
+  }
+  .mobile_course_line_bottom {
+    display: block;
+    position: absolute;
+    right: 2%;
+    bottom: 78px;
+    width: 50%;
+    height: 30%px;
+    border-right: 2px solid #6e6e6e;
+    border-bottom: 2px solid #6e6e6e;
+  }
+  .point_spot_wrap{
+  }
+
+
+  .course_info > h3 {
+    font-size: 24px;
+  }
+  .course_info > img {
+    display: block;
+    width: 690px;
+    margin: 30px 0;
+  }
+  .course_info > p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 32px;
+  }
+  .clickable-point {
+    font-size: 14px;
+  }
+
+
+
+
+
 
 }
