@@ -5,7 +5,7 @@ import FAQPageList from './FAQPageList'
 import Paginate from '../details/paginate'
 import GenericButton from '../../generic/GenericButton'
 
-function FAQPage({ items }) {
+function FAQPage() {
   const config = useContext(configContext);
   const datas = useContext(faqContext);
   
@@ -36,10 +36,9 @@ function FAQPage({ items }) {
     // console.log(config.user.id)
     
   return <>
+        <p className='faqTotal'>총 <span>{datas.length}</span>개의 게시글이 있습니다.</p>
         <FAQPageList currentItems={currentItems} />
-        {config.user == null ?
-          null
-        : 
+        {config.user == null ? null : 
           <div className='btnWrap'>
             <GenericButton>글쓰기</GenericButton>
           </div>

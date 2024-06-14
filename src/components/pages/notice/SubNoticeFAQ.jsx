@@ -51,7 +51,7 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 		})
 	}
 
-	// 검색 기능  // 안됨 보류.
+	// 검색 기능
 	const searchWord = (txt)=>{
 		dispatch({
 			type : "search",
@@ -64,30 +64,12 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 		return{createWord, editWord, removeWord, searchWord}
 	},[])
 
-	
-
-	// 데이터 분리
-	function dataFilter(){
-		let datasID = [];
-		let datasTit = [];
-		let datasTxt = [];
-
-		datas.forEach(({id, tit, txt}) => {
-			datasID.push(id)
-			datasTit.push(tit)
-			datasTxt.push(txt)
-		});
-	}
-
-
 	// --------------------------------------------------------
 	return <>
 		<div className="faqWrap">
 			<faqContext.Provider value={datas}>
 				<editContext.Provider value={memoWord}>
-					{/* 검색창 */}
 					<SearchBox />
-					{/* 리스트 */}
 					<FAQPage/>
 				</editContext.Provider>
 			</faqContext.Provider>

@@ -75,12 +75,12 @@ ul,ol,li {
 	@media screen and (max-width:1439px) {
 		--txt-font-size : 14px;
 		--detail-tit-font : 20px;
-		--notice-padding : 33px;
+		--notice-padding : 13px;
 	}
 	@media screen and (max-width:1023px) {
 		--txt-font-size : calc( 100vw * (12 / 400));
 		--detail-tit-font : calc( 100vw * (18 / 400));
-		--notice-padding : calc( 100vw * (20 / 400));
+		--notice-padding : calc( 100vw * (10 / 400));
 	}
 
 	/*여백*/

@@ -9,20 +9,20 @@ export default function FAQPageList({ currentItems }){
     }
     
     return<>
-        <ul className="faqLists">
+        <ul className="faqListsWrap">
             {currentItems && currentItems.map((data, idx)=>{return(
-                <li>
+                <li className='faqLists'>
                     <div className="faqListsQuestion" onClick={()=>scrollEvent(idx)}>
                         <div>
                             <img src="/bandifesta/assets/question.png" alt='question'/>
-                            <p>{data.tit}</p>
+                            <p className='fontMain'>{data.tit}</p>
                         </div>
-                        <span><img src="/bandifesta/assets/arrowBlack.png" className={idx === click ? 'faqListsAnswerRotate': ''}/></span>
+                        <span><img src="/bandifesta/assets/arrowBlack.png" className={idx === click ? 'AnswerRotate': ''}/></span>
                     </div>
                     <div className={`faqListsAnswer${idx === click ? ' faqListsAnswerActive' : ''}`}>
                         <div>
                             <img src="/bandifesta/assets/answer.png" alt='answer'/>
-                            <p>{data.txt}</p>
+                            <p className='fontMain'>{data.txt}</p>
                         </div>
                     </div>
                 </li>
