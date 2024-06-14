@@ -80,6 +80,9 @@ header {
 	color: var(--color-white);
 	font-weight: bold;
 	position: relative;
+	@media screen and (max-width:1023px) {
+		display: none;
+	}
 }
 
 .languageSelector .contentAndArrow {
