@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import SubFestivalGallery from "./SubFestivalGallery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubFestivalSchedule from "./SubFestivalSchedule";
 import { SsangTab, SsangTabContainer } from "../../generic/SsangTab";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
@@ -16,6 +16,9 @@ export default function PageFestival({handleConfig}) {
 		}
 	}
 	let jsx = <></>
+	useEffect(()=>{
+		window.scrollTo(0,0);
+	},[])
 	switch (tabName) {
 		case 'gallery':
 			jsx = <SubFestivalGallery handleTabState={handleTabState} index={0} handleConfig={handleConfig}/>
