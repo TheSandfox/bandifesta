@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useReducer, useMemo, useCallback, u
 import {Contents, Reducer} from './components/pages/notice/data';
 import './App.css'
 //
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 //헤더푸터
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -25,6 +25,7 @@ import PageAnswerWrite 		from './components/pages/details/PageAnswerWrite';
 import PageAnswerEdit 		from './components/pages/details/PageAnswerEdit';
 import PageFestivalDetail 	from './components/pages/details/PageFestivalDetail';
 import PageQNAEdit from './components/pages/details/PageQNAEdit';
+import { getKakaoUser, logout, unlink } from './api_utils/loginUtil';
 
 const configContext = createContext();
 
@@ -32,6 +33,8 @@ export const dataContext = createContext();
 export const editContext = createContext();
 
 function App() {
+	//네비게이트
+	const navigate = useNavigate();
 	//전역설정
 	const [config,setConfig] = useState({
 		languages:[
@@ -40,9 +43,7 @@ function App() {
 			'Jpn'
 		],
 		language:'Kor',
-		user:{
-			id:0
-		}
+		user:null
 	})
 	//전역설정 핸들러
 	const handleConfig = {
@@ -54,11 +55,55 @@ function App() {
 		},
 		getLanguageByIndex:(index)=>{
 			return config.languages[index]
+		},
+		setKakaoUser:(obj)=>{
+			setConfig({
+				...config,
+				user:obj
+			})
+		},
+		logout:()=>{
+			logout({
+
+			},(response)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},(error)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},()=>{
+				navigate('/')
+			})
+		},
+		unlink:()=>{
+			unlink({
+
+			},(response)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},(error)=>{
+				setConfig({
+					...config,
+					user:null
+				})
+			},()=>{
+				navigate('/')
+			})
 		}
 	}
 	//쿠키에서 유저세션확인
 	useEffect(()=>{
+		getKakaoUser({
 
+		},(response)=>{
+			handleConfig.setKakaoUser(response.data);
+		})
 	},[])
 	// notice 
 	const [state, dispatch] = useReducer(Reducer, Contents);
@@ -67,7 +112,11 @@ function App() {
 	const userId = useRef(21);
   
 	const createNotice = useCallback((name, title, content)=>{
-	  const createDate = new Date().toLocaleDateString();
+	  const today = new Date();
+	  const year = today.getFullYear();
+	  const month = (today.getMonth()+1).toString().padStart(2, '0');
+	  const day = today.getDate().toString().padStart(2, '0');
+	  const createDate = year + '-' + month + '-' + day;
   
 	  dispatch({
 		type: "create",
@@ -120,13 +169,13 @@ function App() {
 				        <Route path={'/course'} element={<PageCourse/>}/>
 				        <Route path={'/notice/:tabName'} element={<PageNotice/>}/>
 				        <Route path={'/festival/:tabName'} element={<PageFestival/>}/>
-				        <Route path={'/my/:tabName'} element={<PageMy/>}/>
+				        <Route path={'/my/:tabName'} element={<PageMy handleConfig={handleConfig}/>}/>
 				        {/*상세,작성,수정페이지*/}
 				        <Route path={'/notice/detail/:noticeId'} 	element={<PageNoticeDetail/>}/>
 				        <Route path={'/notice/write'} 				element={<PageNoticeWrite/>}/>
 				        <Route path={'/notice/edit/:noticeId'} 		element={<PageNoticeEdit/>}/>
-				        <Route path={'/qna/detail:qnaId'} 			element={<PageQNADetail/>}/>
-				        <Route path={'/qna/edit:qnaId'} 			element={<PageQNAEdit/>}/>
+				        <Route path={'/qna/detail/:qnaId'} 			element={<PageQNADetail/>}/>
+				        <Route path={'/qna/edit/:qnaId'} 			element={<PageQNAEdit/>}/>
 				        <Route path={'/qna/write'} 					element={<PageQNAWrite/>}/>
 				        <Route path={'/answer/write'} 				element={<PageAnswerWrite/>}/>
 				        <Route path={'/answer/edit/:answerId'} 		element={<PageAnswerEdit/>}/>

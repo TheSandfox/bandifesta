@@ -1,0 +1,95 @@
+.festivalDetail {
+	display: flex;
+	flex-direction: column;
+	gap: 23px;
+	@media screen and (max-width:1439px) {
+		gap: 15px;
+	}
+	@media screen and (max-width:1023px) {
+		gap: calc( 100vw * (15/400) );
+	}
+}
+
+/* 상단 제목 */
+.festivalDetail > .top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* 중단 이미지&설명 */
+.festivalDetail > .middle {
+	display: flex;
+	justify-content: space-between;
+	/* align-items: center; */
+	gap: 30px;
+}
+
+/* 좌측 이미지 */
+.festivalDetail .imgContainer {
+	flex: calc(630 / 1440);
+	aspect-ratio: 1/1.414;
+	font-size: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.festivalDetail .imgContainer>.blur {
+	position: absolute;
+	width: 120%;
+	height: 120%;
+	object-fit: cover;
+	filter: blur(3px) grayscale(0.5) brightness(50%);
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	transition: 0.25s;
+}
+
+.festivalDetail .imgContainer:hover>.blur {
+	width: 130%;
+	height: 130%;
+}
+
+.festivalDetail .imgContainer>.upper {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	object-fit: cover;
+	transform: translateY(-50%);
+	box-shadow: 0 0 64px #000;
+}
+
+/* 우측 설명 */
+.festivalDetail .description {
+	flex: calc( 1 - (630 / 1440) );
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.festivalDetail .descriptionRow {
+	display: flex;
+	gap: 23px;
+	font-weight: bold;
+	line-height: 29px;
+}
+
+.festivalDetail .descriptionRow:last-child {
+	flex: 1;
+}
+
+.festivalDetail .descriptionRow>.left {
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: center;
+	width: 200px;
+	padding: 25px 0;
+}
+
+.festivalDetail .descriptionRow>.right {
+	border-bottom: 1px solid #ccc;
+	flex: 1;
+	padding: 25px 25px;
+}

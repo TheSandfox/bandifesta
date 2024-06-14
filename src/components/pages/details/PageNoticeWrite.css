@@ -10,6 +10,9 @@
     padding-bottom: 30px;
     border-bottom: 1px solid #ccc;
 }
+.notiWriteBox:nth-child(2){
+    display: none;
+}
 .notiWriteBox>h2{
     text-align: center;
 }
@@ -35,11 +38,6 @@
 }
 .notiWriteBox>textarea{
     height: 434px;
-}
-.notiWriteWrap>div:last-child{
-    display: flex;
-    gap: 16px;
-    justify-content: right;
 }
 .noticeWrite button{
     padding: 8px 24px;

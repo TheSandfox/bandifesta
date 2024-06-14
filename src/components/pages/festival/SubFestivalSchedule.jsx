@@ -30,6 +30,7 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 	const [listPage,setListPage] = useState(0);
 	const now = new Date();
 	const containerRef = useRef(null);
+	const [kakaoUser,setKakaoUser] = useState(null);
 	const [targetDate,setTargetDate] = useState(new Date(now.getFullYear()+
 	'-'+
 	now.getMonth()+
@@ -74,10 +75,6 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 	useEffect(()=>{
 		handleTabState.set(index);
 	},[])
-	//타겟데이트 체인지
-	useEffect(()=>{
-		
-	},[targetDate]);
 	const dateChangeCallback = (val)=>{
 		setTargetDate(val);
 	}

@@ -44,7 +44,7 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	useEffect(()=>{
 		//배열이 준비되면
 		setFestivalPeriodType(0);
-		setFestivalSortMethod(0);
+		setFestivalSortMethod(1);
 	},[festivalSortMethods])
 	//
 	return <div ref={containerRef} className="subFestivalGallery">
@@ -56,7 +56,7 @@ export default function SubFestivalGallery({handleTabState,index}) {
 				...festivalSortMethods
 			]}/>
 		</div>
-		<FestivalCardList festivals={festivals}></FestivalCardList>
+		<FestivalCardList festivals={festivals}/>
 		<FestivalScrollLoader
 			onChange={setFestivals}
 			festivalPeriodType={festivalPeriodType}

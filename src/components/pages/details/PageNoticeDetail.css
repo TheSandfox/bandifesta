@@ -1,17 +1,16 @@
 .noticeDetail>h2{
     padding: 30px 0;
     text-align: center;
-    border-bottom: 1px solid #ccc;
 }
 .noticeDetail>div{
     border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     display: flex;
 }
+.noticeDetail>div:nth-child(3){
+    border-bottom: 1px solid #ccc;
+}
 .noticeDetail>div>div{
-    /* height: 40px; */
     padding: 10px 8px;
-    /* line-height: 40px; */
 }
 .detailTit{
     width: 15%;
@@ -23,4 +22,17 @@
 .noticeDetail>p{
     padding: 40px 24px;
     border-bottom: 1px solid var(--color-main);
+    white-space: pre-wrap;
+}
+.noticeDetail>textarea{
+    width: 100%;
+    padding: 40px 24px;
+    border: none;
+    border-bottom: 1px solid var(--color-main);
+}
+.noticeBtn{
+    display: flex;
+    margin: 23px 0;
+    gap: 16px;
+    justify-content: right;
 }

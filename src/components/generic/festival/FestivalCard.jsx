@@ -1,66 +1,64 @@
-import { Link } from 'react-router-dom';
 import './festival.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import GenericTag from '../GenericTag';
-import { getKakaoUser } from '/src/api_utils/loginUtil';
 import { isFestivalLiked } from '/src/api_utils/festivalUtil';
 import { likeFestival } from '/src/api_utils/festivalUtil';
+import { configContext } from '/src/App';
+import { useNavigate } from 'react-router-dom';
 
-function FestivalLikeButton({festivalId}) {
+function FestivalLikeButton({festivalId,userId}) {
 	const [pressed,setPressed] = useState(false);
 	//최초 마운트시 좋아요여부 확인
 	useEffect(()=>{
-		getKakaoUser({
+		// console.log(userId);
+		if(!userId) {return;}
+		isFestivalLiked({
+			userId:userId,
+			festivalId:festivalId
+		},(response2)=>{
+			// console.log(Boolean(response2.data))
+			setPressed(Boolean(response2.data));
+		},(error2)=>{
 
-		},(response)=>{
-			//유저정보받기 성공
-			isFestivalLiked({
-				userId:response.data['id'],
-				festivalId:festivalId
-			},(response2)=>{
-				// console.log(Boolean(response2.data))
-				setPressed(Boolean(response2.data));
-			},(error2)=>{
-
-			})
-		},(error)=>{
-			console.log(error);
 		})
-	},[])
+	},[userId])
 	//좋아요버튼 콜백
 	const likeRequest = ()=>{
-		getKakaoUser({
-			
-		},(response)=>{
-			//유저정보받기 성공
-			// console.log(festivalId);
-			likeFestival({
-				userId:response.data['id'],
-				festivalId:festivalId,
-				flag:String(!pressed)
-			},(response2)=>{
-				//좋아요 반영
-				setPressed(!pressed);
-			},(error2)=>{
+		if(!userId) {return;}
+		likeFestival({
+			userId:userId,
+			festivalId:festivalId,
+			flag:String(!pressed)
+		},(response2)=>{
+			//좋아요 반영
+			setPressed(!pressed);
+		},(error2)=>{
 
-			})
-		},(error)=>{
-			// console.log(error);
-		});
+		})
 	}
 	return <div className='festivalLikeButton' onClick={likeRequest}>
 		<img className={'heart'} src={`/bandifesta/assets/${pressed?'heartFill':'heart'}.png`} alt={'축제 좋아요 버튼'}/>
 	</div>
 }
 
-function FestivalCard({festival,disableTag}) {
+function FestivalCard({festival,disableTag,userId}) {
+	const navigate = useNavigate();
 	const imgElement = useRef(null);
 	const [tagVariation,setTagVariation] = useState({
 		value:0,
 		string:''
 	});
+	const isNull = festival===null;
+	// console.log(userId);
 	//진,예,마 판별
 	useEffect(()=>{
+		if (isNull){
+			setTagVariation({
+				value:3,
+				string:''
+			});
+			return;
+		}
 		let startDate = new Date(festival.start_date);
 		let today = new Date();
 		let endDate = new Date(festival.end_date);
@@ -81,13 +79,28 @@ function FestivalCard({festival,disableTag}) {
 			})
 		}
 	},[])
-	return <div className='festivalCard'>
+	//
+	const navigateCallback = ()=>{
+		if (!festival.festival_id) {return;}
+		navigate(`/festival/detail/${festival.festival_id}`);
+	}
+	//
+	return <div className='festivalCard' onClick={navigateCallback}>
 		<div className='festivalCardTop'>
-			<img src={festival.image1}
+			{
+				(!isNull)
+				?<img src={festival.image1}
 				alt={festival.title} 
 				className='festivalCardImage'
 				ref={imgElement}/>
-			<FestivalLikeButton festivalId={festival.festival_id}/>
+				:<></>
+			}
+			{
+				//userId에 따른 좋아요버튼 표시 분기
+				(userId&&!isNull)
+				?<FestivalLikeButton festivalId={festival.festival_id} userId={userId}/>
+				:<></>
+			}
 		</div>
 		{/* 진,예,마 태그 */}
 		{
@@ -100,55 +113,19 @@ function FestivalCard({festival,disableTag}) {
 			</div>
 		}
 		<div className='fontSubTitle'>
-			{festival.title}
+			{(!isNull)?festival.title:''}
 		</div>
 	</div>
 }
 
-function FestivalCardList({festivals}) {
-	return <div className="festivalCardList">
-		{festivals.map((festival)=>{
-			return <FestivalCard key={festival.festival_id} festival={festival}/>
+function FestivalCardList({festivals,className}) {
+	const config = useContext(configContext);
+	// console.log(config);
+	return <div className={`festivalCardList${className?(' '+className):''}`}>
+		{festivals.map((festival,index)=>{
+			return <FestivalCard key={(festival===null)?index:festival.festival_id} festival={festival} userId={(config.user)?config.user.id:undefined}/>
 		})}
 	</div>
-	// const config = useContext(configContext)
-	// const [festivals,setFestivals] = useState({
-	// 	loaded:false,
-	// 	items:[]
-	// });
-	// //언어 변경 시
-	// useEffect(()=>{
-	// 	setFestivals({
-	// 		loaded:false,
-	// 		items:[]
-	// 	})
-	// 	getOngoingFestivals({
-	// 		itemsPerPage:10,
-	// 		pageNum:1,
-	// 		language:config.language
-	// 	},(response)=>{
-	// 		console.log(response);
-	// 		setFestivals({
-	// 			loaded:true,
-	// 			items:response.data
-	// 		})
-	// 	})
-	// },[config.language]);
-	// return (
-	// 	<>
-	// 		{
-	// 			!festivals.loaded
-	// 			?'로딩중'
-	// 			:(
-	// 				festivals.items.length>0
-	// 				?festivals.items.map((item)=>{
-	// 					return <FestivalCard key={item.festival_id} festival={item}/>
-	// 				})
-	// 				:'...'
-	// 			)
-	// 		}
-	// 	</>
-	// )
 }
 
 export {
