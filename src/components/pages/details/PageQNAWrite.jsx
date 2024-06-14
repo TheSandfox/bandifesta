@@ -16,6 +16,7 @@ export default function PageQNAWrite({setPage}) {
 
     const {createWord} = useContext(editContext);
     const {datas} = useContext(qnaContext);
+	console.log(datas)
 	
 		
     const createBtn = ()=>{
