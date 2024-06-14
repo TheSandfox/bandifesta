@@ -1,7 +1,11 @@
 header {
+	/* position: fixed; */
+	top:0;
+	left: 0;
 	width: 100%;
 	background-color: var(--color-main);
 	height: var(--header-height);
+	z-index: 13789;
 }
 
 header {
