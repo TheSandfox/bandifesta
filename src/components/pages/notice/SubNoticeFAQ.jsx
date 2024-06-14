@@ -23,7 +23,6 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 	const {datas} = state;
 	const {id, tit, txt} = state.inputs;
 	const contId = useRef(16)
-	console.log(datas[0])
 	
 	// 추가 기능
 	const createWord = useCallback((tit, txt)=>{
@@ -65,6 +64,29 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 	const memoWord = useMemo(()=>{
 		return{createWord, editWord, removeWord, searchWord}
 	},[])
+
+
+
+
+
+
+	console.log(datas)
+
+	let [st, setSt] = useState([]);
+
+	useEffect(()=>{
+		// let dataFilter = datas.map((data)=>{
+		// 	return data
+		// })
+		// setSt(dataFilter)
+
+		
+	},[datas])
+
+	function filt(){
+		datas && datas.map((data)=>setSt(data))
+	}
+	console.log(st)
 
 	// --------------------------------------------------------
 	return <>
