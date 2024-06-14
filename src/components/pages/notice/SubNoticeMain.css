@@ -14,7 +14,7 @@
     font-weight: 700;
     color: var(--color-main);
 }
-.noticeListN>.noticeWriteBtn{
+.noticeListN>.btnWrap{
     display: none;
 }
 .noticeMain ul{
@@ -68,11 +68,6 @@
 .notiArrow{
     display: none;
 }
-.noticeMain>.noticeWriteBtn{
-    margin: 23px 0;
-    border: none;
-    float: right;
-}
 
 
 @media screen and (max-width: 1439px) {
@@ -114,7 +109,7 @@
         align-items: center;
         justify-content: space-between;
     }
-    .noticeListN>.noticeWriteBtn{
+    .noticeListN>.btnWrap{
         display: flex;
     }
     .noticeListT{
@@ -154,7 +149,7 @@
         display: block;
         width: calc(100vw * (20/400));
     }
-    .noticeMain>.noticeWriteBtn{
+    .noticeMain>.btnWrap{
         display: none;
     }
 }

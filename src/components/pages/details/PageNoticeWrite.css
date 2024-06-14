@@ -1,4 +1,10 @@
-.notiWriteWrap{
+.writeWrap>h2{
+    border-bottom: 2px solid var(--tit-border-color);
+    text-align: center;
+    padding-
+}
+
+/* .notiWriteWrap{
     padding: 30px 32px 32px;
     border: 1px solid #ccc;
     border-radius: 12px;
@@ -44,4 +50,4 @@
     border: none;
     color: var(--color-white);
     background-color: var(--color-main);
-}
+} */

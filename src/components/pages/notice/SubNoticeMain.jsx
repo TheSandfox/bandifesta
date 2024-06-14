@@ -22,7 +22,7 @@ function SubNoticeMain({handleTabState,index}) {
                     <p>
                         총 <span>{datas.length}</span>개의 게시글이 있습니다.
                     </p>
-                    {config.user===null ? "" : <div className='noticeWriteBtn'>
+                    {config.user===null ? "" : <div className='btnWrap'>
                         <GenericButton to="/notice/write">글쓰기</GenericButton>
                     </div>}
                 </div>
@@ -37,7 +37,7 @@ function SubNoticeMain({handleTabState,index}) {
                     {datas.map((data)=>
                     <SubNoticeList key={data.id} {...data} />)}
                 </div>
-                {config.user===null ? "" : <div className='noticeWriteBtn'>
+                {config.user===null ? "" : <div className='btnWrap'>
                     <GenericButton to="/notice/write">글쓰기</GenericButton>
                 </div>}
             </div>
