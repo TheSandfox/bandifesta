@@ -19,7 +19,7 @@ function MainSec4 (){
         });     
 
     },[]) 
-    console.log(festivals)
+    // console.log(festivals)
     return<>
     
     </>

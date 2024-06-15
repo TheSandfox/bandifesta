@@ -15,7 +15,6 @@ function SubNoticeMain({handleTabState,index}) {
 	const datas = useContext(dataContext);
     const config = useContext(configContext);
 
-    console.log(datas)
     // 페이지네이션
     const itemsPerPage = 10;
     const [currentItems, setCurrentItems] = useState(null);

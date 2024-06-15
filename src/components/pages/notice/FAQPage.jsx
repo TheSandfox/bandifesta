@@ -40,7 +40,7 @@ function FAQPage() {
         <FAQPageList currentItems={currentItems} />
         {config.user == null ? null : 
           <div className='btnWrap'>
-            <GenericButton>글쓰기</GenericButton>
+            <GenericButton to="notice/write">글쓰기</GenericButton>
           </div>
         }
         <Paginate pageCount={pageCount} handlePageClick={handlePageClick}/>
