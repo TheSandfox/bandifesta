@@ -31,18 +31,18 @@ export default function Footer({}) {
               <img src="/bandifesta/assets/logoGrey.png" alt="회색로고" />
             </div>
             <div className="footer_info_wrap">
-              <ul>
+              <ul className="footer_info_01">
                 <li>개인정보 처리방침</li>
                 <li>이용약관</li>
                 <li>저작권정책</li>
                 <li>이용약관</li>
               </ul>
-              <ul>
+              <ul className="footer_info_02">
                 <li>(01693) 서울 노원구 상계로3길 21 3층, 6층</li>
                 <li>Tel. 02-6953-2002</li>
                 <li>Fax. 02-6953-2002</li>
               </ul>
-              <ul>
+              <ul className="footer_info_03">
                 <li>(주)TOTb</li>
                 <li>대표이사: 우대희</li>
                 <li>사업자등록번호 : 105-85-29522</li>
