@@ -7,15 +7,22 @@
 /* 인트로메인섹션 제목-start */
 .SubIntroMainSec2_wrap>h1{
     font-family: 'BookkBold';
-    font-size: 90px;
+    font-size: 64px;
     padding-top: 70px;
     font-weight: 400;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 32 / 400));
+   	 	padding-top: calc( 100vw * ( 50 / 400));
+	}
 }
 .SubIntroMainSec2_bar>div:first-child{
     width: 1px;
     height: 60px;
     background-color: var(--color-main);
     margin:0 auto;
+	@media screen and (max-width:1023px) {
+		height: calc( 100vw * ( 32 / 400));
+	}
 }
 .SubIntroMainSec2_bar>div:last-child{
     width: 7px;
@@ -26,57 +33,102 @@
 }
 .SubIntroMainSec2_wrap>h2{
     font-family: 'BookkThin';
-    font-size: 50px;
+    font-size: 40px;
     padding-top: 20px;
     padding-bottom: 70px;
     font-weight: 400;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 20 / 400));
+   	 	padding-top: calc( 100vw * ( 10 / 400));
+   	 	padding-bottom: calc( 100vw * ( 30 / 400));
+	}
 }
 /* 인트로메인섹션 제목-end */
 .SubIntroMainSec2_wrap>p{
     padding-top: 70px;
     font-family: 'BookkThin';
     font-weight: 400;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 57px;
+	@media screen and (max-width:1023px) {
+		padding-top: calc( 100vw * ( 32 / 400));
+		font-size: calc( 100vw * ( 14 / 400));
+		line-height: calc( 100vw * ( 32 / 400));
+	}
 }
 
 /*SubIntroMainSec2_composition*/
 .SubIntroMainSec2_composition{
-    background-image: url(/bandifesta/assets/foodlistback.png);
+    /* background-image: url(/bandifesta/assets/foodlistback.png);
     background-position: center;
-    background-repeat: no-repeat;
-    width: 950px;
-    height: 920px;
+    background-repeat: no-repeat; */
+    width: 100%;
+    aspect-ratio: 1;
     background-color: #B88C62;
     margin : 0 auto;
     position: relative;
     margin-top: 110px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 .SubIntroMainSec2_composition>h4{
     font-family: 'BookkBold';
-    font-size: 50px;
+    font-size: 32px;
     font-weight: 400;
     height: 70px;
     width: 300px;
     margin: 0 auto;
     background-color: var(--color-white);
     border-radius: 50px;
-    line-height: 70px;
     position: absolute;
     top : -35px;
     left: 50%;
     transform: translateX(-50%);
     border: 1px solid #b88C62;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media screen and (max-width:1023px) {
+		top: calc( 100vw * ( -24 / 400));
+		height: calc( 100vw * ( 48 / 400));
+		width: calc( 100vw * ( 192 / 400));
+		font-size: calc( 100vw * ( 20 / 400));
+	}
 }
 .SubIntroMainSec2_composition_wrap{
-    padding-top: 170px;
-    width: 740px;
+    padding: 56px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
+	justify-content: center;
+	gap: 16px;
+	align-items: flex-start;
+	@media screen and (max-width:1023px) {
+		/* font-size: calc( 100vw * ( 32 / 400)); */
+		gap: calc( 100vw * ( 12 / 400));
+		padding: calc( 100vw * ( 24 / 400));
+	}
+}
+.SubIntroMainSec2_composition_left {
+	flex: 0.23;
+	aspect-ratio: 216/639;
+	/* width: 254px; */
+	background-image: url(/bandifesta/assets/foodlistback.png);
+    background-position: center;
+    background-repeat: no-repeat;
+	background-size: contain;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	@media screen and (max-width:1023px) {
+		flex: 0.28;
+	}
 }
 .SubIntroMainSec2_composition_left>div{
-    width: 254px;
-    height: 200px;
+    width: 100%;
     font-family: 'BookkThin';
     font-weight: 400;
     font-size: 30px;
@@ -84,18 +136,38 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 30px;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 12 / 400));
+	}
 }
 .SubIntroMainSec2_composition_left>div:first-child{
-    padding-bottom: 40px;
+	flex: 0.33;
+}
+.SubIntroMainSec2_composition_left>div:nth-child(2){
+	flex: 0.42;
 }
 .SubIntroMainSec2_composition_left>div:last-child{
-    padding-top : 40px;
+	flex: 0.25;
 }
 
-
+.SubIntroMainSec2_composition_right {
+	/* width: 483px; */
+	flex: 0.77;
+	padding-top: 32px;
+	border: 2px solid var(--color-white);
+	border-radius: 8px 8px 80px 80px;
+	@media screen and (max-width:1023px) {
+		flex: 0.72;
+		padding-top: calc( 100vw * ( 16 / 400));
+		border-radius: calc( 100vw * ( 4 / 400))
+			calc( 100vw * ( 4 / 400))
+			calc( 100vw * ( 40 / 400))
+			calc( 100vw * ( 40 / 400))
+		;
+	}
+}
 .SubIntroMainSec2_composition_right>div{
-    width: 483px;
+	width: 100%;
     height: 150px;
     font-family: 'BookkThin';
     font-weight: 400;
@@ -105,14 +177,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 12 / 400));
+		height: calc( 100vw * ( 48 / 400));
+	}
 }
 .SubIntroMainSec2_composition_under{
-    width: 950px;
-    text-align: start;
-    margin:40px auto 0;
+    /* width: 950px; */
+    text-align: right;
+    margin-top:32px;
     font-family: 'BookkThin';
     font-weight: 400;
-    font-size: 20px;
+    /* font-size: 20px; */
     color: var(--color-main);
-    line-height: 27px;
+    /* line-height: 27px; */
+	font-size: 20px;
+    line-height: 40px;
+	@media screen and (max-width:1023px) {
+		margin-top: calc( 100vw * ( 16 / 400));
+		font-size: calc( 100vw * ( 10 / 400));
+		line-height: calc( 100vw * ( 20 / 400));
+	}
+}
+
+.SubIntroMainSec2_wrap .sura {
+	aspect-ratio: 950/670;
+	width: 100%;
+	font-size: 0;
+}
+
+.SubIntroMainSec2_wrap .sura>img {
+	width: 100%;
+	height: 100%;
 }

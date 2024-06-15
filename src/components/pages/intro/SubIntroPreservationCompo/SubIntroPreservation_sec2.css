@@ -31,8 +31,13 @@
     height: 50px;
 }
 .SubIntroPreservation_sec2_wrap>p{
-    padding: 30px 0 70px;
     font-size: 16px;
     line-height: 36px;
+    padding: 30px 0 70px;
     font-family: "BookkThin";
+	@media screen and (max-width:1023px) {
+		font-size: calc(100vw * ( 10 / 400 ));
+		line-height: calc(100vw * ( 18 / 400 ));
+		padding: calc(100vw * ( 16 / 400 )) 0 calc(100vw * ( 30 / 400 ));
+	}
 }

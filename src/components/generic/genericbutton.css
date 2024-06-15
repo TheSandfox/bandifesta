@@ -12,6 +12,10 @@
 	}
 }
 
+.genericButton .fontMain {
+	color: var(--color-white);
+}
+
 .genericIconButton {
 	cursor: pointer;
 	display: flex;

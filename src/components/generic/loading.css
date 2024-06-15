@@ -2,8 +2,40 @@
 	position: absolute;
 	width:64px;
 	height:64px;
+	padding: 4px;
 	top:calc( 50% - 32px );
 	left:calc( 50% - 32px );
-	background-color: #333;
+	background-color: #ccc;
 	border-radius: 8px;
+	display: flex;
+	@media screen and (max-width:1023px) {
+		padding: calc( 100vw * ( 4 / 400) );
+		width: calc( 100vw * ( 32 / 400) );
+		height: calc( 100vw * ( 32 / 400) );
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+	}
+}
+
+.loadingIcon {
+	flex:1;
+	background-image: url('/bandifesta/assets/loading.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+	transform-origin: 50% 50%;
+	/* animation: loadingRolling 1.5s ease 0 infinite; */
+	animation-name: loadingRolling;
+	animation-iteration-count: infinite;
+	animation-duration: 1.5s;
+}
+
+@keyframes loadingRolling {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

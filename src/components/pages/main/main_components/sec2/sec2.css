@@ -1,35 +1,110 @@
 .sec2{
     width: 100%;
     background-image: url("/bandifesta/assets/main_sec2_bg.png");
-    padding : 250px;
+    padding : 100px 0;
     color:var(--color-white);
     flex-direction: column;
     justify-content: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    background-size: cover;
 }
 .sec2_img{
     text-align: center;
     margin-top: 100px;
 }
+.sec2_img>img{
+    width: 1100px;
+}
 .sec2_wrap{
     width: 1440px;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
     padding-left:100px;
 }
-.sec2_top{
+.sec2_top > h3{
     font-family: "BookkBold";
-    font-size: 50px;
-    line-height: 80px;
+    font-size: 40px;
+    line-height: 60px;
 }
 .sec2_button{
-    width: 170px;
-    height: 60px;
-    font-size: 32px;
+    width: 140px;
+    height: 50px;
+    font-size: 18px;
     font-family: "BookkBold";
     margin-top: 30px;
     border: 2px solid var(--color-white);
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
     border-radius: 30px;
     cursor: pointer;
 }
+.sec2_img>img:last-child{
+    display: none;
+}
+
+@media screen and (max-width : 1439px) {
+    /* sec2 */
+    .sec2_wrap{
+        width: 1024px;
+    }
+     .sec2_img>img{
+         width: 900px;
+     }
+     .sec2_img{
+         margin-top: 80px;
+     }
+     .sec2_top > h3{
+         font-family: "BookkBold";
+         font-size: 32px;
+         line-height: 52px;
+     }
+     .sec2_button{
+         width: 120px;
+         height: 40px;
+         font-size: 16px;
+         margin-top: 20px;
+         line-height: 40px;
+     }
+    }
+    @media screen and (max-width:1023px) {
+        .sec2{
+            padding : calc( 100vw * (20 / 400)) 0;
+        }
+        .sec2_img>img:last-child{
+            display: block;
+            border-radius: calc( 100vw * (20 / 400));
+        }
+        .sec2_img>img:first-child{
+            display: none;
+        }
+        .sec2_img>img{
+            width: 95%;
+            margin: 0 auto;
+        }
+        .sec2_wrap{
+            padding-left: calc( 100vw * (10 / 400));
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .sec2_img{
+            margin-top: calc( 100vw * (10 / 400));
+            width: 100%;
+            padding-bottom: calc( 100vw * (20 / 400));
+        }
+        .sec2_top > h3{
+            font-family: "BookkBold";
+            font-size: calc( 100vw * (20 / 400));
+            line-height: calc( 100vw * (32 / 400));
+            text-align: start;
+            width: 100%;
+        }
+        .sec2_button{
+            width: calc( 100vw * (75 / 400));
+            height: calc( 100vw * (25 / 400));
+            font-size: calc( 100vw * (12 / 400));
+            margin-top: calc( 100vw * (10 / 400));
+            line-height: calc( 100vw * (25/ 400));
+        }
+    }

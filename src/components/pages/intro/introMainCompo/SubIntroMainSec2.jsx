@@ -8,7 +8,7 @@ export default function SubIntroMainSec2({ }) {
 				<div></div>
 			</div>
 			<h2>도슭수라상</h2>
-			<div>
+			<div className="sura">
 				<img src="/bandifesta/assets/20230411115006105_6807NZLA.png" alt="12첩반상사진" />
 			</div>
 			<p>‘도슭’은 도시락의 옛말로 왕과 왕비에게 올리던<br />
@@ -43,7 +43,7 @@ export default function SubIntroMainSec2({ }) {
 				</div>
 				
 				<p className="SubIntroMainSec2_composition_under">
-				채식 메뉴를 희망하시는 분은 행사일 3일 전 티켓링크 콜센터(1588-7890)로 사전 신청 부탁드립니다.<br/>
+				채식 메뉴를 희망하시는 분은 행사일 3일 전<br/>티켓링크 콜센터(1588-7890)로 사전 신청 부탁드립니다.<br/>
 				메뉴 구성은 상황에 따라 변경될 수 있습니다.
 				</p>
 			

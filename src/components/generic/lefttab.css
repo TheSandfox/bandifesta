@@ -1,15 +1,22 @@
-.leftTabContainer{
-	position: relative;
-	display: flex;
-	flex-direction: column;
+.leftTabContainerWrapper {
 	width: 260px;
-	font-family: 'NotoSans';
+	min-width: 260px;
+	overflow-y: hidden;
 	@media screen and (max-width:1439px) {
 		width:224px;
+		min-width:224px;
 	}
 	@media screen and (max-width:1023px) {
 		display: none;
 	}
+}
+
+.leftTabContainer{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	font-family: 'NotoSans';
 }
 
 .leftTabTitle {

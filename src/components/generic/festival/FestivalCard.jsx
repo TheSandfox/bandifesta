@@ -4,9 +4,9 @@ import GenericTag from '../GenericTag';
 import { isFestivalLiked } from '/src/api_utils/festivalUtil';
 import { likeFestival } from '/src/api_utils/festivalUtil';
 import { configContext } from '/src/App';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function FestivalLikeButton({festivalId,userId}) {
+function FestivalLikeButton({festivalId,userId,onChange}) {
 	const [pressed,setPressed] = useState(false);
 	//최초 마운트시 좋아요여부 확인
 	useEffect(()=>{
@@ -32,6 +32,9 @@ function FestivalLikeButton({festivalId,userId}) {
 		},(response2)=>{
 			//좋아요 반영
 			setPressed(!pressed);
+			if (onChange) {
+				onChange(!pressed);
+			}
 		},(error2)=>{
 
 		})
@@ -80,19 +83,30 @@ function FestivalCard({festival,disableTag,userId}) {
 		}
 	},[])
 	//
-	const navigateCallback = ()=>{
-		if (!festival.festival_id) {return;}
-		navigate(`/festival/detail/${festival.festival_id}`);
-	}
+	// const navigateCallback = ()=>{
+	// 	if (!festival.festival_id) {return;}
+	// 	navigate(`/festival/detail/${festival.festival_id}`);
+	// }
 	//
-	return <div className='festivalCard' onClick={navigateCallback}>
+	// Link
+	return <div className={`festivalCard${(festival===null)?' disabled':''}`}>
 		<div className='festivalCardTop'>
 			{
 				(!isNull)
-				?<img src={festival.image1}
-				alt={festival.title} 
-				className='festivalCardImage'
-				ref={imgElement}/>
+				?<Link to={`/festival/detail/${festival?festival.festival_id:'0'}`}>
+					{/* 썸네일 */}
+					{
+						festival.image1
+						?<img src={String(festival.image1).replace('http://','https://')}
+						alt={festival.title} 
+						className='festivalCardImage'
+						ref={imgElement}/>
+						:<></>
+					}
+						
+					{/* 하이라이팅 */}
+					<div className='hightlight'></div>
+				</Link>
 				:<></>
 			}
 			{
@@ -128,7 +142,4 @@ function FestivalCardList({festivals,className}) {
 	</div>
 }
 
-export {
-	FestivalCardList,
-	FestivalCard,
-}
+export { FestivalCardList, FestivalCard, FestivalLikeButton };

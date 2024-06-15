@@ -5,6 +5,10 @@
 	cursor: pointer;
 }
 
+.festivalCard.disabled {
+	pointer-events: none;
+}
+
 .festivalCardTop {
 	position: relative;
 	width: 100%;
@@ -15,6 +19,21 @@
 	background-size: 50%;
 	background-repeat: no-repeat;
 	overflow: hidden;
+}
+
+.festivalCardTop .hightlight {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	opacity: 0;
+	transition: opacity 0.25s;
+}
+
+.festivalCard:hover .hightlight {
+	opacity: 0.33;
 }
 
 .festivalCardImage {

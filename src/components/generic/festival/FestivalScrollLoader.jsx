@@ -4,7 +4,7 @@ import { configContext } from "/src/App";
 
 export default function FestivalScrollLoader({onChange,festivalPeriodType,festivalSortMethod,containerRef,dateValue,userId,getFavorites}) {
 	const [festivals,setFestivals] = useState([]);
-	const [loading,setLoading] = useState(false);
+	const [loading,setLoading] = useState(true);
 	const [pageNum,setPageNum] = useState(1);
 	const config = useContext(configContext);
 	const [end,setEnd] = useState(false);
@@ -15,9 +15,6 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 			) {
 			return;
 		}
-		setFestivals(festivals.map(()=>{
-			return null;
-		}));
 		getFestivals({
 			itemsPerPage:12,
 			pageNum:1,
@@ -29,10 +26,26 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 			getFavorites:getFavorites||false
 		},(response)=>{
 			// console.log(response);
+			setLoading(false);
 			setFestivals(response.data)
 		},(error)=>{
 			// setFestivals([]);
 		});
+
+		//클린업
+		return ()=>{
+			// setLoading(true);
+			setPageNum(1);
+			setEnd(false);
+			if (festivals.length>0) {
+				setFestivals(festivals.map((item)=>{
+					return null;
+				}));
+			} else {
+				setFestivals([]);
+			}
+		}	
+
 	},[festivalPeriodType,festivalSortMethod,dateValue,getFavorites,userId]);
 	//스크롤다운 콜백
 	useEffect(()=>{
@@ -67,6 +80,7 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 		// console.log(pageNum);
 		if (end) {return;}
 		if (pageNum>1) {
+			// console.log(pageNum);
 			getFestivals({
 				itemsPerPage:12,
 				pageNum:pageNum,

@@ -7,8 +7,13 @@
 }
 .faqListsWrap{
     width: 100%;
+<<<<<<< HEAD
     border-top: 2px solid var(--tit-border-color);
     border-bottom: 2px solid var(--tit-border-color);
+=======
+    border-top: 2px solid #666;
+    /* margin-bottom: 23px; */
+>>>>>>> chaemin2
 }
 .faqLists{
     border-bottom: 1px solid var(--txt-border-color);

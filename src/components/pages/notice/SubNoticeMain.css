@@ -14,7 +14,7 @@
     font-weight: 700;
     color: var(--color-main);
 }
-.noticeListN>.noticeWriteBtn{
+.noticeListN>.btnWrap{
     display: none;
 }
 .noticeMain ul{
@@ -31,15 +31,15 @@
     display: flex;
 }
 .noticeListM{
-    border-bottom: 1px solid #ccc;
-    font-size: 15px;
+    border-bottom: 1px solid var(--txt-border-color);
+    font-size: var(--txt-font-size);
     font-weight: 500;
     display: flex;
     align-items: center;
 }
 .noticeListM:hover{
     transition: 0.2s;
-    background-color: #eee;
+    background-color: var(--color-white);
 }
 .noticeListM>li:not(.notiTitle){
     text-align: center;
@@ -67,11 +67,6 @@
 }
 .notiArrow{
     display: none;
-}
-.noticeMain>.noticeWriteBtn{
-    margin: 23px 0;
-    border: none;
-    float: right;
 }
 
 
@@ -106,9 +101,6 @@
     .notiView{
         width: 10%;
     }
-    .noticeListM{
-        font-size: 14px;
-    }
 }
 
 @media screen and (max-width: 1023px) {
@@ -117,14 +109,13 @@
         align-items: center;
         justify-content: space-between;
     }
-    .noticeListN>.noticeWriteBtn{
+    .noticeListN>.btnWrap{
         display: flex;
     }
     .noticeListT{
         display: none;
     }
     .noticeListM{
-        font-size: calc(100vw * (15/400));
         flex-direction: column;
         align-items: start;
     }
@@ -158,7 +149,7 @@
         display: block;
         width: calc(100vw * (20/400));
     }
-    .noticeMain>.noticeWriteBtn{
+    .noticeMain>.btnWrap{
         display: none;
     }
 }

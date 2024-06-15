@@ -14,13 +14,13 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	const containerRef = useRef(null);
 	const handleFestivalPeriodType = {
 		set:(index)=>{
-			console.log(index);
+			// console.log(index);
 			setFestivalPeriodType(parseInt(index));
 		}
 	}
 	const handleFestivalSortMethod = {
 		set:(index)=>{
-			console.log(index);
+			// console.log(index);
 			setFestivalSortMethod(parseInt(index));
 		}
 	}
@@ -44,15 +44,15 @@ export default function SubFestivalGallery({handleTabState,index}) {
 	useEffect(()=>{
 		//배열이 준비되면
 		setFestivalPeriodType(0);
-		setFestivalSortMethod(1);
+		setFestivalSortMethod(0);
 	},[festivalSortMethods])
 	//
 	return <div ref={containerRef} className="subFestivalGallery">
 		<div className="subFestivalGallerySelectContainer">
-			<FestivalSelect handleValue={handleFestivalPeriodType} value={[
+			<FestivalSelect handleValue={handleFestivalPeriodType} values={[
 				...festivalPeriodTypes
 			]}/>
-			<FestivalSelect handleValue={handleFestivalSortMethod} value={[
+			<FestivalSelect handleValue={handleFestivalSortMethod} values={[
 				...festivalSortMethods
 			]}/>
 		</div>

@@ -57,7 +57,6 @@ export default function PageQNAWrite({setPage}) {
 			<li>
 				<label>내용</label>
 				<textarea name='text' value={text} onChange={onchange}></textarea>
-				{console.log(text)}
 			</li>
 		</ul>
 		<div className="MyQnaWriteBtn">

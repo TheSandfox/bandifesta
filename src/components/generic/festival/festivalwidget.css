@@ -5,11 +5,16 @@
 }
 
 .festivalWidget {
-	padding: 11px 0;
+	padding: 11px 11px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	border-bottom: 1px solid #ccc;
+	transition: background-color 0.15s;
+}
+
+.festivalWidget:hover {
+	background-color: #dedede;
 }
 
 .festivalWidget>.left {

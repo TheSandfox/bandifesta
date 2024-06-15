@@ -30,7 +30,7 @@ function PageNoticeDetail(){
             <TopBanner>알려드립니다</TopBanner>
             <section key={datas[data-1].id} className='innerbox mainContent'>
                 <article className='noticeDetail'>
-                    <h2 className='fontTitle'>{datas[data-1].title}</h2>
+                    <h2>{datas[data-1].title}</h2>
                     <div>
                         <div className='fontMain detailTit'>작성자</div>
                         <div className='fontMain detailBox'>관리자</div>

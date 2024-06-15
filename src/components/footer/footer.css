@@ -1,0 +1,69 @@
+.footer_bottom {
+    height: 300px;
+  background-color: #110a0d;
+  z-index: 9999;
+  position: relative;
+  overflow: hidden;
+}
+.footer_wrap {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 64px 0;
+  align-items: center;
+}
+.footer_info_wrap {
+  padding-left: 64px;
+  align-items: center;
+}
+.footer div {
+  font-size: 0;
+}
+.footer_info_wrap > ul {
+  display: flex;
+  color: #909090;
+  gap: 30px;
+}
+.footer_info_wrap > ul:not(:first-child) {
+  padding-top: 20px;
+}
+.footer_info_wrap > ul:first-child > li {
+  font-size: 16px;
+  font-weight: 400;
+}
+.footer_info_wrap > ul > li {
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+.footer_APILOGO img {
+  height: 45px;
+}
+.footer_info_wrap > ul > li:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 10px;
+  background-color: #909090;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -15px;
+}
+.footer{
+  position: relative;
+}
+.footer_top{
+    position: absolute;
+    bottom:0;
+    height: calc((100vw * (238 / 1920)) + 300px);
+    overflow:hidden
+}
+.footer_top>img{
+    width: 100%;
+    font-size: 0;
+    display: block;
+    padding-top: calc(100vw * (238 / 1920));
+    transition-duration: 2s;
+}
+.footer_top>img.active{
+    padding-top : 0;
+}

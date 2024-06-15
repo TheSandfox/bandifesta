@@ -31,7 +31,11 @@ function MyMenu({handleConfig}) {
 	}
 	return <>
 		<div className='myMenuButton' onClick={handleVisible.toggle}>
+<<<<<<< HEAD
 			{/* {(config.user&&config.user.thumbnail)?<img src={config.user.thumbnail}/>:<></>} */}
+=======
+			{(config.user&&config.user.thumbnail)?<img src={String(config.user.thumbnail).replace('http://','https://')}/>:<></>}
+>>>>>>> chaemin2
 		</div>
 		<div className={`myMenuContainerWrapper${visible?' active':''}`}>
 			<div className='myMenuContainer'>
@@ -79,7 +83,7 @@ function MyMenu({handleConfig}) {
 							</Link>
 							<Link to={'/my/qna'} onClick={handleVisible.hide}>
 								<div className='serviceNavItem'>
-									<img className='icon' src="/bandifesta/assets/user2.png" alt='1:1 문의'/>
+									<img className='icon' src="/bandifesta/assets/question2.png" alt='1:1 문의'/>
 									<div className='title fontMain'>1:1 문의</div>
 									<div className='arrow'></div>
 								</div>
@@ -129,10 +133,6 @@ function MyMenu({handleConfig}) {
 					:<div className='logoutContainer'>
 						<div className='logout' onClick={logoutCallback}>
 							로그아웃
-						</div>
-						{/* 임시 */}
-						<div className='logout' onClick={unlinkCallback}>
-							연결끊기
 						</div>
 					</div>
 				}

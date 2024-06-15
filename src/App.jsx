@@ -80,6 +80,7 @@ function App() {
 			})
 		},
 		unlink:()=>{
+			if (!confirm('카카오 계정 연결을 해제하시겠습니까?')) {return;}
 			unlink({
 
 			},(response)=>{
