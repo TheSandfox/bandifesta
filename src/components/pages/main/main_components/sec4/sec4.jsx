@@ -9,12 +9,6 @@ import { FestivalCard } from "/src/components/generic/festival/FestivalCard";
 import "./sec4.css";
 // import { Autoplay } from "swiper/modules";
 
-<<<<<<< HEAD
-    },[]) 
-    // console.log(festivals)
-    return<>
-    
-=======
 function MainSec4() {
   const config = useContext(configContext);
   const [festivals, setFestivals] = useState([]);
@@ -110,7 +104,6 @@ function MainSec4() {
         </div>
         
       </div>
->>>>>>> chaemin2
     </>
   );
 }

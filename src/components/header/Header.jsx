@@ -31,11 +31,7 @@ function MyMenu({handleConfig}) {
 	}
 	return <>
 		<div className='myMenuButton' onClick={handleVisible.toggle}>
-<<<<<<< HEAD
-			{/* {(config.user&&config.user.thumbnail)?<img src={config.user.thumbnail}/>:<></>} */}
-=======
 			{(config.user&&config.user.thumbnail)?<img src={String(config.user.thumbnail).replace('http://','https://')}/>:<></>}
->>>>>>> chaemin2
 		</div>
 		<div className={`myMenuContainerWrapper${visible?' active':''}`}>
 			<div className='myMenuContainer'>
