@@ -78,7 +78,7 @@ const points_1439 = {
 };
 const points_1023 = {
   min40: [
-    { id: "01", x: '20%', y: '67%' },
+    { id: "01", x: '20%', y: '50%' },
     { id: "02", x: '40%', y: '50%' },
     { id: "03", x: '60%', y: '50%' },
     { id: "04", x: '80%', y: '50%' },
@@ -87,16 +87,16 @@ const points_1023 = {
     { id: "end", x: '40%', y: '10%' },
   ],
   min60: [
-    { id: "01", x: 210, y: 185 },
-    { id: "03", x: 340, y: 185 },
-    { id: "06", x: 470, y: 185 },
-    { id: "05", x: 600, y: 185 },
-    { id: "02", x: 730, y: 185 },
-    { id: "04", x: 860, y: 185 },
-    { id: "09", x: 990, y: 185 },
-    { id: "11", x: 990, y: 35 },
-    { id: "13", x: 860, y: 35 },
-    { id: "end", x: 730, y: 35 },
+    { id: "01", x: '20%', y: '50%' },
+    { id: "03", x: '40%', y: '50%' },
+    { id: "06", x: '60%', y: '50%' },
+    { id: "05", x: '80%', y: '50%' },
+    { id: "02", x: '80%', y: '10%' },
+    { id: "04", x: '60%', y: '10%' },
+    { id: "09", x: '40%', y: '10%' },
+    { id: "11", x: '20%', y: '10%' },
+    { id: "13", x: "0%", y: '10%' },
+    { id: "end", x: '0%', y: '0%' },
   ],
   min90: [
     { id: "01", x: 210, y: 185 },
@@ -165,11 +165,17 @@ function Course({ currentSet }) {
         if (currentSet === "min40") {
           setPosition({ x: 12, y: 35 });
           setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("2 / 1")
+          setCourse_wrap_height("2 / 2")
+          setCurrentKey("");
+          setBlackSpot("");
+        } else if (currentSet === "min60") {
+          setPosition({ x: 80, y: 185 });
+          setPeople_height({ x: '12px', y: '33px' });
+          setCourse_wrap_height("4 / 1")
           setCurrentKey("");
           setBlackSpot("");
         } else {
-          setPosition({ x: 12, y: 185 });
+          setPosition({ x: 80, y: 185 });
           setPeople_height({ x: '12px', y: '33px' });
           setCourse_wrap_height("1 / 1")
           setCurrentKey("");
@@ -189,55 +195,61 @@ function Course({ currentSet }) {
 
     if (currentSet !== previous) {
       if (window.innerWidth >= 1440) {
-        if (currentSet === "min40"){
+        if (currentSet === "min40") {
           setPosition({ x: '80px', y: '35px' });
           setPeople_height({ x: '15px', y: '40px' });
-          setCourse_wrap_height("200px")
+          setCourse_wrap_height("200px");
           setCurrentKey("");
           setBlackSpot("");
-        }else {
+        } else {
           setPosition({ x: '80px', y: '185px' });
           setPeople_height({ x: '15px', y: '40px' });
-          setCourse_wrap_height("350px")
+          setCourse_wrap_height("350px");
           setCurrentKey("");
           setBlackSpot("");
         }
         setPrevious(currentSet);
-      }else if(window.innerWidth >= 1024){
+      } else if (window.innerWidth >= 1024) {
         if (currentSet === "min40") {
           setPosition({ x: '8px', y: '63px' });
           setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("200px")
+          setCourse_wrap_height("200px");
           setCurrentKey("");
           setBlackSpot("");
         } else {
           setPosition({ x: '8px', y: '215px' });
           setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("350px")
+          setCourse_wrap_height("350px");
           setCurrentKey("");
           setBlackSpot("");
         }
         setPrevious(currentSet);
-      }else{
-            if (currentSet === "min40") {
-              setPosition({ x: 8, y: 215 });
-              setPeople_height({ x: '12px', y: '33px' });
-              setCourse_wrap_height("2 / 1")
-              setCurrentKey("");
-              setBlackSpot("");
-            } else {
-              setPosition({ x: 80, y: 185 });
-              setPeople_height({ x: '12px', y: '33px' });
-              setCourse_wrap_height("1 / 1")
-              setCurrentKey("");
-              setBlackSpot("");
-            }
-            setPrevious(currentSet);
+      } else {
+        if (currentSet === "min40") {
+          setPosition({ x: 8, y: 215 });
+          setPeople_height({ x: '12px', y: '33px' });
+          setCourse_wrap_height("2 / 1");
+          setCurrentKey("");
+          setBlackSpot("");
+        } else if (currentSet === "min60") {
+          setPosition({ x: 80, y: 185 });
+          setPeople_height({ x: '12px', y: '33px' });
+          setCourse_wrap_height("3 / 2");
+          setCurrentKey("");
+          setBlackSpot("");
+        } else {
+          setPosition({ x: 80, y: 185 });
+          setPeople_height({ x: '12px', y: '33px' });
+          setCourse_wrap_height("1 / 1");
+          setCurrentKey("");
+          setBlackSpot("");
+        }
+        setPrevious(currentSet);
       }
     }
   }
 
-, [currentSet, previous]);
+    , [currentSet, previous]);
 
   const ClickInfo = (key, x, y) => {
     setPosition({ x, y });
@@ -267,13 +279,13 @@ function Course({ currentSet }) {
           <h2 className="fontTitle">{getCourseTitle()}</h2>
           <GenericButton onClick={tiketLink}>온라인 예약하기</GenericButton>
         </div>
-        <div className="course_wrap" style= {(window.innerWidth >= 1024) ?
-          {height :`${course_wrap_height}`} : {aspectRatio : `${course_wrap_height}`}}>
+        <div className="course_wrap" style={(window.innerWidth >= 1024) ?
+          { height: `${course_wrap_height}` } : { aspectRatio: `${course_wrap_height}` }}>
           <div className="course_gbg_spot">
             <div className="course_line_top"></div>
             <div className={`course_line_bottom ${currentSet}`}></div>
-            <div className="mobile_course_line_top"></div>
-            <div className={`mobile_course_line_bottom ${currentSet}`}></div>
+            {/* <div className="mobile_course_line_top"></div>
+            <div className={`mobile_course_line_bottom ${currentSet}`}></div> */}
             <div>
               <img
                 src="/bandifesta/assets/people.png"
@@ -290,22 +302,20 @@ function Course({ currentSet }) {
             {points[currentSet].map((point, index) => (
               <div
                 key={index}
-                className={`point_spot_wrap point-${point.id}`}
+                className={`point_spot_wrap ${currentSet} point-${point.id}`}
                 style={{ left: `${point.x}`, bottom: `${point.y}` }}
                 onClick={() => ClickInfo(point.id, point.x, point.y)}
               >
                 <div
-                  className={`point_spot ${
-                    blackSpot === point.id ? "clicked" : ""
-                  } point-${point.id}`}
+                  className={`point_spot ${blackSpot === point.id ? "clicked" : ""
+                    } point-${point.id}`}
                 >
                   <div></div>
                 </div>
                 <div
                   key={point.id}
-                  className={`clickable-point ${
-                    blackSpot === point.id ? "clicked" : ""
-                  }`}
+                  className={`clickable-point ${blackSpot === point.id ? "clicked" : ""
+                    }`}
                 >
                   {data[point.id]?.name}
                 </div>
