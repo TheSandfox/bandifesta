@@ -16,7 +16,7 @@ export default function PageQNADetail({setPage, click, setAnswer}) {
     }
 
 	function ans(){
-		setAnswer(true)
+		setAnswer(click.idx)
 		setPage('list')
 	}
 	

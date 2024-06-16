@@ -39,14 +39,14 @@ export default function SubNoticeFAQ({handleTabState,index}) {
   
     useEffect(() => {
       const endOffset = itemOffset + itemsPerPage;
-      setCurrentItems(datas.reverse().slice(itemOffset, endOffset)); // 10번까지 배열 자르기
+	  const reverseData = [...datas].reverse()
+      setCurrentItems(reverseData.slice(itemOffset, endOffset)); // 10번까지 배열 자르기
       setPageCount(Math.ceil(datas.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
     }, [itemOffset, itemsPerPage, datas]);
     
     const handlePageClick = (event) => {
         const newOffset = event.selected * itemsPerPage % datas.length;
         setItemOffset(newOffset);
-        console.log(itemOffset)
     };
 
 	// --------------------------------------------------------

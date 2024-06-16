@@ -36,8 +36,6 @@ export default function SubMyQNA({handleTabState,index}) {
 	//   });
   	// }, []);
 
-	
-
 	// CRUD
 	const [state, dispatch] = useReducer(reducer,myQnaData);
 	const {datas} = state;
@@ -128,30 +126,22 @@ export default function SubMyQNA({handleTabState,index}) {
 		},[datas, idxs])
 
 	
-	const [answer, setAnswer] = useState(false);
+	const [answer, setAnswer] = useState(null);
 
-	function complete(click){
-		if(answer && click.idx == datas.idx){
-			setAnswer(!answer)
-		}
-	}
 
 	return <>
-		{/* <div> */}
-			<qnaContext.Provider value={datas}>
-				<memoContext.Provider value={memoWord}>
-					{page === 'list' &&
-						<>
-							<MyQNAList setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} leng={leng} answer={answer} click={click}/>
-							<Paginate  pageCount={pageCount} handlePageClick={handlePageClick}/>
-						</>
-					}
-					{page === 'write' && <PageQNAWrite setPage={setPage}/>}
-					{page === 'detail' && <PageQNADetail setPage={setPage} click={click} setAnswer={setAnswer}/>}
-					{page === 'edit' && <PageQNAEdit setPage={setPage} click={click}/>}
-				</memoContext.Provider>
-			</qnaContext.Provider>
-		{/* </div> */}
-		
+		<qnaContext.Provider value={datas}>
+			<memoContext.Provider value={memoWord}>
+				{page === 'list' &&
+					<>
+						<MyQNAList setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} leng={leng} answer={answer} click={click}/>
+						<Paginate  pageCount={pageCount} handlePageClick={handlePageClick}/>
+					</>
+				}
+				{page === 'write' && <PageQNAWrite setPage={setPage}/>}
+				{page === 'detail' && <PageQNADetail setPage={setPage} click={click} setAnswer={setAnswer}/>}
+				{page === 'edit' && <PageQNAEdit setPage={setPage} click={click}/>}
+			</memoContext.Provider>
+		</qnaContext.Provider>
 	</>
 }
