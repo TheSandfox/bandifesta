@@ -14,9 +14,6 @@
     font-weight: 700;
     color: var(--color-main);
 }
-.noticeListN>.btnWrap{
-    display: none;
-}
 .noticeMain ul{
     padding: 18px 25px;
     justify-content: space-between;
@@ -109,9 +106,6 @@
         align-items: center;
         justify-content: space-between;
     }
-    .noticeListN>.btnWrap{
-        display: flex;
-    }
     .noticeListT{
         display: none;
     }
@@ -148,8 +142,5 @@
     .notiArrow{
         display: block;
         width: calc(100vw * (20/400));
-    }
-    .noticeMain>.btnWrap{
-        display: none;
     }
 }

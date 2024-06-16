@@ -22,9 +22,6 @@ function SubNoticeMain({handleTabState,index}) {
                     <p>
                         총 <span>{datas.length}</span>개의 게시글이 있습니다.
                     </p>
-                    {config.user===null ? "" : <div className='btnWrap'>
-                        <GenericButton to="/notice/write">글쓰기</GenericButton>
-                    </div>}
                 </div>
                 <div>
                     <ul className='noticeListT'>
