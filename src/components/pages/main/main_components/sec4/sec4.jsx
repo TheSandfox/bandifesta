@@ -17,7 +17,7 @@ function MainSec4() {
   useEffect(() => {
     getFestivals(
       {
-        itemsPerPage: 10,
+        itemsPerPage: 30,
         pageNum: 1,
         language: config.language,
         periodType: 1,

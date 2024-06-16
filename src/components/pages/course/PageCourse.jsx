@@ -3,6 +3,7 @@ import Course from "./course_tap/Course";
 import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../generic/LeftTab";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
+import "./PageCourse.css"
 export default function PageCourse({}) {
 	const [currentSet, setCurrentSet] = useState("min40");
 
