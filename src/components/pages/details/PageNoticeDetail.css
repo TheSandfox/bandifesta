@@ -1,6 +1,9 @@
 .noticeDetail>h2{
     padding: 30px 0;
     text-align: center;
+    font-size: var(--detail-tit-font);
+    border-top: 2px solid var(--color-black);
+    border-bottom: 2px solid var(--color-black);
 }
 .noticeDetail>div{
     border-top: 1px solid #ccc;
@@ -14,6 +17,7 @@
 }
 .detailTit{
     width: 15%;
+    font-weight: 500;
     border-right: 1px solid #ccc;
 }
 .detailBox{
@@ -33,6 +37,6 @@
 .noticeBtn{
     display: flex;
     margin: 23px 0;
-    gap: 16px;
+    gap: 10px;
     justify-content: right;
 }

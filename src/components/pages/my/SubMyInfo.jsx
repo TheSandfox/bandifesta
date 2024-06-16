@@ -9,6 +9,8 @@ export default function SubMyInfo({handleTabState,index,handleConfig}) {
 	useEffect(()=>{
 		handleTabState.set(index);
 	},[])
+
+	console.log(config.user)
 	
 	return<>
 		{

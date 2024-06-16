@@ -14,54 +14,10 @@
     font-weight: 700;
     color: var(--color-main);
 }
-.noticeListN>.noticeWriteBtn{
-    display: none;
-}
 .noticeMain ul{
     padding: 18px 25px;
     justify-content: space-between;
 }
-
-
-/* search */
-.noticeSearch{
-    text-align: center;
-    border: 1px solid #D9D9D9;
-    border-radius: 12px;
-    padding: 23px 0;
-    margin-bottom: 23px;
-}
-.noticeSearch>h1{
-    /* font-size: 20px; */
-    margin-bottom: 17px;
-}
-.noticeSearchBar{
-    width: 70%;
-    position: relative;
-    margin-left: 15%;
-}
-.noticeSearchBar>input{
-    width: 100%; 
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    background-color: #f8f8f8;
-    box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px inset;
-    padding: 15px;
-    font-size: 16px;
-}
-.noticeSearchBar>button{
-    width: 35px; height: 35px;
-    border-radius: 50%;
-    background-color: #050819;
-    position: absolute;
-    right: 15px; top: 50%;
-    transform: translateY(-50%);
-    box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px;
-}
-.noticeSearchBar>button>img{
-    width: 70%; height: 70%;
-}
-
 
 /* notice list */
 .noticeListT{
@@ -72,15 +28,15 @@
     display: flex;
 }
 .noticeListM{
-    border-bottom: 1px solid #ccc;
-    font-size: 15px;
+    border-bottom: 1px solid var(--txt-border-color);
+    font-size: var(--txt-font-size);
     font-weight: 500;
     display: flex;
     align-items: center;
 }
 .noticeListM:hover{
     transition: 0.2s;
-    background-color: #eee;
+    background-color: var(--color-white);
 }
 .noticeListM>li:not(.notiTitle){
     text-align: center;
@@ -108,11 +64,6 @@
 }
 .notiArrow{
     display: none;
-}
-.noticeMain>.noticeWriteBtn{
-    margin: 23px 0;
-    border: none;
-    float: right;
 }
 
 
@@ -147,9 +98,6 @@
     .notiView{
         width: 10%;
     }
-    .noticeListM{
-        font-size: 14px;
-    }
 }
 
 @media screen and (max-width: 1023px) {
@@ -158,14 +106,10 @@
         align-items: center;
         justify-content: space-between;
     }
-    .noticeListN>.noticeWriteBtn{
-        display: flex;
-    }
     .noticeListT{
         display: none;
     }
     .noticeListM{
-        font-size: calc(100vw * (15/400));
         flex-direction: column;
         align-items: start;
     }
@@ -198,8 +142,5 @@
     .notiArrow{
         display: block;
         width: calc(100vw * (20/400));
-    }
-    .noticeMain>.noticeWriteBtn{
-        display: none;
     }
 }

@@ -17,7 +17,12 @@ export default function PageQNAWrite({setPage}) {
     const {createWord} = useContext(editContext);
     const {datas} = useContext(qnaContext);
 	
-		
+	const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const createDate = year + '-' + month + '-' + day;
+	
     const createBtn = ()=>{
 		if(window.confirm(`해당 내용을 문의 하시겠습니까?`)){
 			createWord(title, text)
@@ -32,27 +37,27 @@ export default function PageQNAWrite({setPage}) {
 		}
 	}
 
-	return <div className='PageQNAWrite'>
-		<h1>문의 작성</h1>
-		<ul className='PageQNAWriteInput'>
-			<li>
-				<label>아이디</label>
-				<input type='text' name='userID' value = {config.user.id} readOnly/>
-			</li>
-			<li>
-				<label>날짜</label>
-				<input type='text' name='userID' value ="2024-06-11"/>
-			</li>
-			<li>
-				<label>제목</label>
-				<input type='text' name='title' value={title} onChange={onchange}/>
-			</li>
-			<li>
-				<label>내용</label>
-				<textarea name='text' value={text} onChange={onchange}></textarea>
-			</li>
-		</ul>
-		<div className="MyQnaWriteBtn">
+	return <div className='innerbox mainContent writeWrap'>
+		<h2 className='fontTitle'>문의 작성</h2>
+		<div className='writeBox'>
+			<div>
+				<label className='fontSubTitle'>아이디</label>
+				<input type="text" name='userId' value={config.user.id} readOnly />
+			</div>
+			<div>
+				<label className='fontSubTitle'>날짜</label>
+				<input type="text" name='createDate' value={createDate} />
+			</div>
+			<div>
+				<label className='fontSubTitle'>제목</label>
+				<input type="text" name='title' value={title} onChange={onchange} />
+			</div>
+			<div>
+				<label className='fontSubTitle'>내용</label>
+				<textarea name="text" value={text} onChange={onchange}></textarea>
+			</div>
+		</div>
+		<div className='btnWrap'>
 			<GenericButton onClick={createBtn}>작성하기</GenericButton>
 			<GenericButton onClick={backBtn}>취소하기</GenericButton>
 		</div>

@@ -1,12 +1,11 @@
 import { useState,useReducer,useRef,useMemo,useCallback,useEffect,createContext } from 'react'
-
-import './SubNoticeFAQ.css'
 import {FaqDb, reducer} from './FaqDb'
 // import FaqData from './data/FaqData'
+import SearchBox from './SearchBox'
 import FAQPage from './FAQPage'
-import SubNoticeSearch from './SubNoticeSearch'
+import './SubNoticeFAQ.css'
 
-export const bandiContext = createContext();
+export const faqContext = createContext();
 export const editContext = createContext();
 
 export default function SubNoticeFAQ({handleTabState,index}) {
@@ -23,7 +22,6 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 	const {datas} = state;
 	const {id, tit, txt} = state.inputs;
 	const contId = useRef(16)
-console.log(datas[0])
 	
 	// 추가 기능
 	const createWord = useCallback((tit, txt)=>{
@@ -66,17 +64,33 @@ console.log(datas[0])
 		return{createWord, editWord, removeWord, searchWord}
 	},[])
 
+	
+
+	// 데이터 분리
+	function dataFilter(){
+		let datasID = [];
+		let datasTit = [];
+		let datasTxt = [];
+
+		datas.forEach(({id, tit, txt}) => {
+			datasID.push(id)
+			datasTit.push(tit)
+			datasTxt.push(txt)
+		});
+	}
+
+
 	// --------------------------------------------------------
 	return <>
 		<div className="faqWrap">
-			<bandiContext.Provider value={datas}>
+			<faqContext.Provider value={datas}>
 				<editContext.Provider value={memoWord}>
 					{/* 검색창 */}
-					<SubNoticeSearch />
+					<SearchBox />
 					{/* 리스트 */}
-					<FAQPage itemsPerPage={10} items={items}/>
+					<FAQPage/>
 				</editContext.Provider>
-			</bandiContext.Provider>
+			</faqContext.Provider>
 		</div>
 	</>
 }
