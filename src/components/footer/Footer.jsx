@@ -6,7 +6,7 @@ export default function Footer({}) {
   useEffect(() => {
     const handleScrollDown = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = document.documentElement.scrollHeight - window.innerHeight - 400; 
+      const triggerPosition = document.documentElement.scrollHeight - window.innerHeight - 600; 
       if (scrollPosition > triggerPosition) {
         setActive(true);
       } else {
@@ -23,7 +23,8 @@ export default function Footer({}) {
     <>
       <div className="footer">
         <div className="footer_top">
-          <img className={`${active ? "active" : ""}`} src="/bandifesta/assets/fot_bg.png" alt="푸터사람들" />
+          <img className={`footer_top_image ${active ? "active" : ""}`} src="/bandifesta/assets/fot_bg.png" alt="푸터사람들" />
+          <img className={`footer_top_image_mobile ${active ? "active" : ""}`} src="/bandifesta/assets/fot_bg1.png" alt="푸터사람들" />
         </div>
         <div className="footer_bottom">
           <div className="flex footer_wrap">

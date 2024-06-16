@@ -9,6 +9,7 @@
 	@media screen and (max-width:1023px) {
 		grid-column-gap: calc(100vw * ( 8 / 400 ));
 		font-size: calc(100vw * ( 12 / 400 ));
+        padding: calc(100vw * ( 30 / 400 )) 0 calc(100vw * ( 40 / 400 ));
 	}
 }
 .SubIntroPreservation_sec3>div:first-child,.SubIntroPreservation_sec3>div:nth-child(2){
@@ -17,17 +18,29 @@
 .SubIntroPreservation_sec3>.grid_title{
     border-bottom: 2px solid var(--color-main);
     padding:30px 10px;
+    @media screen and (max-width:1023px) {
+        padding: calc(100vw * ( 10 / 400 ));
+    }
 }
 .SubIntroPreservation_sec3>.grid_cont{
     border-bottom: 2px solid var(--color-main);
     padding:30px 10px;
+    @media screen and (max-width:1023px) {
+        padding: calc(100vw * ( 10 / 400 ));
+    }
 }
 .SubIntroPreservation_sec3 p{
     font-size: 16px;
     line-height: 36px;
     padding: 6px 0 0 20px;
     font-family: "BookkThin";
+    @media screen and (max-width:1023px) {
+        font-size: calc(100vw * ( 10 / 400 ));
+    line-height: calc(100vw * ( 18 / 400 ));
+    padding: calc(100vw * ( 10 / 400 )) 0 0 calc(100vw * ( 10 / 400 ));
+    font-family: "BookkThin";;
+    }
 }
 .SubIntroPreservation_sec3>div:last-child{
-    line-height: 44px;
+    line-height:calc(100vw * ( 18 / 400 ));
 }

@@ -1,19 +1,36 @@
 .SubIntroLocation_sec1{
     margin-top: 70px;
+    @media screen and (max-width:1023px) {
+        margin-top: calc(100vw * ( 40 / 400));
+    }
 }
 .SubIntroLocation_sec1_first{
     padding: 30px 0 70px;
     font-family: 'BookkBold';
     font-size: 24px;
     display: grid;
-    grid-template-columns: 220px 770px;
+    grid-template-columns: 22fr 77fr;
     grid-template-rows: repeat(4, auto);
     grid-column-gap: 60px;
     line-height: 44px;
+    @media screen and (max-width:1439px) {
+        padding: 30px 0 50px;
+        font-size: 20px;
+    }
+    @media screen and (max-width:1023px) {
+        line-height: calc(100vw * ( 20 / 400));
+        font-size : calc(100vw * ( 12 / 400))  ;
+    }
 }
 .SubIntroLocation_sec1_first>div{
     padding : 30px 10px;
     border-bottom: 2px solid var(--color-main);
+    @media screen and (max-width:1439px) {
+        padding: 10px
+    }
+    @media screen and (max-width:1023px) {
+        padding: calc(100vw * ( 12 / 400))  ;
+    }
 }
 .SubIntroLocation_sec1_first>div:first-child,.SubIntroLocation_sec1_first>div:nth-child(2){
     border-top: 2px solid var(--color-main);
@@ -23,15 +40,25 @@
 font-family: 'BookkBold';
 font-size: 24px;
 display: grid;
-grid-template-columns: 220px 770px;
-grid-template-rows: repeat(4, auto);
-grid-column-gap: 60px;
+grid-template-columns: 25fr 77fr;
+    grid-template-rows: repeat(4, auto);
+    grid-column-gap: 60px;
 line-height: 44px;
 margin-top: 30px;
+@media screen and (max-width:1439px) {
+        padding: 30px 0 50px;
+        font-size: 20px;
+    }@media screen and (max-width:1023px) {
+        line-height: calc(100vw * ( 20 / 400));
+        font-size : calc(100vw * ( 12 / 400))  ;
+    }
 }
 .SubIntroLocation_sec1_second>div{
     padding : 30px 10px;
     border-bottom: 2px solid var(--color-main);
+    @media screen and (max-width:1439px) {
+        padding: 10px
+    }
 }
 .SubIntroLocation_sec1_second>div:first-child,.SubIntroLocation_sec1_second>div:nth-child(2){
     border-top: 2px solid var(--color-main);
