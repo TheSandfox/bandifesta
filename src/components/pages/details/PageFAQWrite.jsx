@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { configContext } from "../../../App";
-import { crudContext, faqContext } from '../notice/SubNoticeFAQ';
+import { editContext, faqContext } from '../notice/SubNoticeFAQ';
 import FAQInput from '../notice/FAQInput';
 import GenericButton from '../../generic/GenericButton'
 
-export default function PageFAQWrite({setPages}){
+export default function PageFAQWrite({setPage}){
     const config = useContext(configContext);
-	const {createWord} = useContext(crudContext);
+	const {createWord} = useContext(editContext);
 
 	const [{tit, txt}, onchange, reset] = FAQInput({
 		tit: '',
@@ -17,13 +17,13 @@ export default function PageFAQWrite({setPages}){
 		if(window.confirm(`해당 내용을 문의 하시겠습니까?`)){
 			createWord(tit, txt)
 			reset()
-			setPages('list')
+			setPage('list')
 		}
     }
 
 	function backBtn(){
 		if(window.confirm(`문의 작성을 취소 하시겠습니까?`)){
-			setPages('list')
+			setPage('list')
 		}
 	}
 
