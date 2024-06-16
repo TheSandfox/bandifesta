@@ -23,7 +23,7 @@ function SubNoticeMain({handleTabState,index}) {
   
     useEffect(() => {
       const endOffset = itemOffset + itemsPerPage;
-      setCurrentItems(datas.slice(itemOffset, endOffset));
+      setCurrentItems(datas.reverse().slice(itemOffset, endOffset));
       setPageCount(Math.ceil(datas.length / itemsPerPage));
     }, [itemOffset, itemsPerPage]);
     

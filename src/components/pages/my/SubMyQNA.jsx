@@ -1,13 +1,13 @@
 import { useState, useReducer, useRef, useMemo, useCallback, useEffect, createContext, useContext } from "react";
 import { configContext } from "../../../App";
-import {myQnaData, reducer} from './MyQnaData';
-import MyQNAList from './MyQNAList'
-import PageQNAWrite from '../details/PageQNAWrite'
-import PageQNADetail from '../details/PageQNADetail'
-import PageQNAEdit from '../details/PageQNAEdit'
+import { myQnaData, reducer } from './MyQnaData';
+import MyQNAList from './MyQNAList';
+import PageQNAWrite from '../details/PageQNAWrite';
+import PageQNADetail from '../details/PageQNADetail';
+import PageQNAEdit from '../details/PageQNAEdit';
 import Paginate from "../details/paginate";
-import '../details/PageQNADetail.css'
-import './SubMyQNA.css'
+import '../details/PageQNADetail.css';
+import './SubMyQNA.css';
 // import axios from 'axios';
 
 export const qnaContext = createContext();
@@ -105,6 +105,16 @@ export default function SubMyQNA({handleTabState,index}) {
 		setItemOffset(newOffset);
 	};
 
+	// event.selected : 유저가 요청한 페이지 넘버
+    // itemsPerPage : 한 페이지당 아이템의 수
+    // items.length : 데이터 리스트의 개수
+    // items.length : 데이터 리스트의 개수
+    // pageCount : 총 페이지 개수
+    // currentItems : 리스트 idx별 데이터(배열)
+    // console.log(config.user.id)
+
+	
+
 	// 페이지 전환
  	const [page, setPage] = useState('list')
 	// 리스트 인덱스 - 디테일 인덱스 비교
@@ -117,23 +127,31 @@ export default function SubMyQNA({handleTabState,index}) {
 			const detailMap = filterDetail.map((data)=>setClick(data))
 		},[datas, idxs])
 
+	
+	const [answer, setAnswer] = useState(false);
+
+	function complete(click){
+		if(answer && click.idx == datas.idx){
+			setAnswer(!answer)
+		}
+	}
+
 	return <>
-		<h1>1:1 문의내역</h1>
-		<div>
+		{/* <div> */}
 			<qnaContext.Provider value={datas}>
 				<memoContext.Provider value={memoWord}>
 					{page === 'list' &&
 						<>
-							<MyQNAList setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} leng={leng}/>
+							<MyQNAList setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} leng={leng} answer={answer} click={click}/>
 							<Paginate  pageCount={pageCount} handlePageClick={handlePageClick}/>
 						</>
 					}
 					{page === 'write' && <PageQNAWrite setPage={setPage}/>}
-					{page === 'detail' && <PageQNADetail setPage={setPage} click={click}/>}
+					{page === 'detail' && <PageQNADetail setPage={setPage} click={click} setAnswer={setAnswer}/>}
 					{page === 'edit' && <PageQNAEdit setPage={setPage} click={click}/>}
 				</memoContext.Provider>
 			</qnaContext.Provider>
-		</div>
+		{/* </div> */}
 		
 	</>
 }

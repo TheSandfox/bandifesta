@@ -1,70 +1,8 @@
 .PageNoticeWrap {
 	flex: 1;
 }
+
 /* ------------------------------------ */
-
-/* 버튼 상위 div */
-.btnWrap{
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-    padding-top: var(--notice-padding);
-}
-.btnWrap>div{
-    display: inline-block;
-}
-
-/* 페이지네이션 */
-.subNoticeNavi{
-    display: flex; gap: 12px;
-    justify-content: center;
-	align-items: center;
-	padding-top: var(--notice-padding);
-}
-.subNoticePageNext, .subNoticePagePrev{
-	display: block;
-	cursor: pointer;
-	width: 25px; height: 25px;
-	margin: 0 3px;
-}
-.subNoticeNavi img{
-    width: 100%;
-}
-.subNoticePage{
-	display: block;
-	cursor: pointer;
-	/* padding: 4px 11px; */
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	color: var(--tit-border-color);
-	background-color: var(--color-white);
-	text-align: center;
-}
-.subNoticePage>a{
-	display: block;
-	padding: 4px 11px;
-}
-.subNoticePageActive{
-    color: var(--color-white);
-    background-color: var(--color-main);
-}
-.subNoticePageActive>a{
-	display: block;
-	padding: 4px 11px;
-}
-@media screen and (max-width:1439px) {
-	.subNoticeNavi{
-		gap: 10px;
-	}
-}
-@media screen and (max-width:1023px) {
-	.subNoticePage>a{
-		padding: 5px 10px;
-	}
-	.subNoticePageActive>a{
-		padding: 5px 10px;
-	}
-}
 
 /* 검색창 */
 .noticeSearch{

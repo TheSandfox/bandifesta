@@ -35,33 +35,33 @@ export default function PageQNAWrite({setPage}) {
 	const createDate = year + '-' + month + '-' + day;
 
 
-	return <div className='PageQNAWrite'>
-		<h1>문의 작성</h1>
-		<div>
-			<p>궁금한 사항을 문의해 주세요. 최대한 빠른 시일 내에 친절하게 답변드리겠습니다.</p>
-			<span>(가입하신 카카오톡 아이디로 답변을 드리며, 평일 운영시간에 순차적으로 답변됩니다.)</span>
+	return <>
+		<h1 className=" myqnas fontTitle">1:1 문의 작성</h1>
+		<div className='qnaexp'>
+			<p>궁금한 사항을 문의해 주세요. <br/> 최대한 빠른 시일 내에 친절하게 답변드리겠습니다.</p>
+			<span>(가입하신 카카오톡 아이디로 답변됩니다.)</span>
 		</div>
 		<ul className='PageQNAWriteInput'>
 			<li>
-				<label>아이디</label>
+				<label className='fontMain'>아이디</label>
 				<input type='text' name='userID' value = {config.user.id} readOnly/>
 			</li>
 			<li>
-				<label>날짜</label>
-				<input type='text' name='time' value ={createDate}/>
+				<label className='fontMain'>날짜</label>
+				<input type='text' name='time' value ={createDate} readOnly/>
 			</li>
 			<li>
-				<label>제목</label>
+				<label className='fontMain'>제목</label>
 				<input type='text' name='title' value={title} onChange={onchange}/>
 			</li>
 			<li>
-				<label>내용</label>
+				<label className='fontMain'>내용</label>
 				<textarea name='text' value={text} onChange={onchange}></textarea>
 			</li>
 		</ul>
-		<div className="MyQnaWriteBtn">
+		<div className="btnWrap">
 			<GenericButton onClick={createBtn}>작성하기</GenericButton>
 			<GenericButton onClick={backBtn}>취소하기</GenericButton>
 		</div>
-	</div>
+	</>
 }

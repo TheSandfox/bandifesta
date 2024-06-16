@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { memoContext } from '../my/SubMyQNA';
+import { configContext } from "../../../App";
 import GenericButton from '../../generic/GenericButton'
 
-export default function PageQNADetail({setPage, click}) {
+export default function PageQNADetail({setPage, click, setAnswer}) {
 	
+	const config = useContext(configContext);
 	const {removeWord} = useContext(memoContext);
 
     function removeBtn(){
@@ -12,10 +14,16 @@ export default function PageQNADetail({setPage, click}) {
 			setPage('list')
         }
     }
+
+	function ans(){
+		setAnswer(true)
+		setPage('list')
+	}
 	
 	return <>
+		<h1 className=" myqnas qnasdisplay fontTitle">1:1 문의내역</h1>
 		<ul className="MyQNADetail">
-			<li className="MyQNADetailTit">
+			<li className="MyQNADetailTit fontMain">
 				<h2>{click.title}</h2>
 			</li>
 			<li className="MyQNADetailUser">
@@ -30,10 +38,11 @@ export default function PageQNADetail({setPage, click}) {
 				<p>{click.text}</p>
 			</li>
 		</ul>
-		<div className="MyQnaWriteBtn">
+		<div className="btnWrap">
 			<GenericButton onClick={()=>setPage('list')}>목록</GenericButton>
 			<GenericButton onClick={()=>setPage('edit')}>수정</GenericButton>
 			<GenericButton onClick={removeBtn}>삭제</GenericButton>
+			{config.user == null ? null : <GenericButton onClick={ans}>답변 완료</GenericButton>}
 		</div>
 	</>
 }

@@ -30,23 +30,26 @@ export default function PageQNAEdit({setPage, click}) {
 		}
 	}
 	return <>
-		<ul className="MyQNADetail">
-			<li className="MyQNADetailTit">
-				<input type='text' placeholder={click.title} value={editTitle} onChange={editChangeTit}/>
-			</li>
-			<li className="MyQNADetailUser">
-				<div>작성자</div>
+		<h1 className=" myqnas fontTitle">문의 수정</h1>
+		<ul className='PageQNAWriteInput'>
+			<li>
+				<label className='fontMain'>아이디</label>
 				<input type='text' placeholder={click.userID} readOnly />
 			</li>
-			<li className="MyQNADetailUser">
-				<div>작성일</div>
+			<li>
+				<label className='fontMain'>날짜</label>
 				<input type='text' placeholder={click.time} readOnly/>
 			</li>
-			<li className="MyQNADetailCont">
+			<li>
+				<label className='fontMain'>제목</label>
+				<input type='text' placeholder={click.title} value={editTitle} onChange={editChangeTit}/>
+			</li>
+			<li>
+				<label className='fontMain'>내용</label>
 				<textarea placeholder={click.text} value={editCont} onChange={editChangeTxt}></textarea>
 			</li>
 		</ul>
-		<div className="MyQnaWriteBtn">
+		<div className="btnWrap">
 			<GenericButton onClick={saveBtn}>수정완료</GenericButton>
 			<GenericButton onClick={cancelBtn}>수정취소</GenericButton>
 		</div>
