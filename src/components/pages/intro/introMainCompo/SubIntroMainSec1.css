@@ -1,50 +1,84 @@
-.SubIntroMainSec1_wrap{
-    background-image: url(/bandifesta/assets/intromain01.png);
-    width: 1050px;
+.SubIntroMainSec1_wrap {
+	background-image: url(/bandifesta/assets/intromain01.png);
+	width: 1050px;
 	aspect-ratio: 1050/1450;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    text-align: center;
-    margin-bottom: 100px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+	margin-bottom: 100px;
+
+	@media screen and (max-width:1439px) {
+		width: 710px;
+		margin-bottom: 40px;
+	}
+
 	@media screen and (max-width:1023px) {
 		width: 100%;
-		margin-bottom: calc( 100vw * (100 / 400));
+		margin-bottom: calc(100vw * (40 / 400));
 	}
 }
-.SubIntroMainSec1_wrap h3{
-    padding-top: 70px;
-    font-size: 32px;
-    font-family: 'BookkBold';
-    color:#b88c62;
-    font-weight: 400;
+
+
+.SubIntroMainSec1_wrap h3 {
+	padding-top: 70px;
+	font-size: 32px;
+	font-family: 'BookkBold';
+	color: #b88c62;
+	font-weight: 400;
+
+	@media screen and (max-width:1439px) {
+		padding-top: 40px;
+		font-size: 28px;
+	}
+
 	@media screen and (max-width:1023px) {
-		padding-top: calc( 100vw * (24 / 400));
-    	font-size: calc( 100vw * (16 / 400));
+		width: 100%;
+		padding-top: calc(100vw * (12 / 400));
+		font-size: calc(100vw * (14 / 400));
 	}
 }
-.SubIntroMainSec1_img1{
-    padding: 70px 0;
+
+.SubIntroMainSec1_img1 {
+	padding: 70px 0;
 	font-size: 0;
+
+	@media screen and (max-width:1439px) {
+		padding: 40px 0;
+	}
+
 	@media screen and (max-width:1023px) {
-		padding: calc( 100vw * (24 / 400)) 0;
+		padding: calc(100vw * (20 / 400)) 0;
 	}
 }
 
-.SubIntroMainSec1_img1 > img{
+.SubIntroMainSec1_img1>img {
 	aspect-ratio: 1;
+
+	@media screen and (max-width:1439px) {
+		width: 180px;
+	}
+
 	@media screen and (max-width:1023px) {
-		height: calc( 100vw * (100 / 400));
+		width: calc(100vw * (100 / 400));
 	}
 }
 
-.SubIntroMainSec1_wrap p{
-    color:var(--color-white);
-    font-family: 'BookkBold';
-    font-size: 24px;
-    line-height: 57px;
+.SubIntroMainSec1_wrap p {
+	text-align: center;
+	color: var(--color-white);
+	font-family: 'BookkBold';
+	font-size: 24px;
+	line-height: 57px;
+
+	@media screen and (max-width:1439px) {
+		font-size: 20px;
+		line-height: 42px;
+	}
+
 	@media screen and (max-width:1023px) {
-		font-size: calc( 100vw * (10 / 400));
-		line-height: calc( 100vw * (18 / 400));;
+		font-size: calc(100vw * (12 / 400));
+		line-height: calc(100vw * (20 / 400));
+		;
 	}
 }

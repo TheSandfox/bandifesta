@@ -11,6 +11,9 @@
     font-size: 64px;
     padding-top: 70px;
     font-weight: 400;
+    @media screen and (max-width:1439px) {
+		padding-top: 30px;
+	}
 	@media screen and (max-width:1023px) {
 		font-size: calc( 100vw * ( 32 / 400));
    	 	padding-top: calc( 100vw * ( 50 / 400));
@@ -21,6 +24,9 @@
     height: 60px;
     background-color: var(--color-main);
     margin:0 auto;
+    @media screen and (max-width:1439px) {
+		height: 50px;
+	}
 	@media screen and (max-width:1023px) {
 		height: calc( 100vw * ( 32 / 400));
 	}
@@ -38,6 +44,9 @@
     padding-top: 20px;
     padding-bottom: 70px;
     font-weight: 400;
+    @media screen and (max-width:1439px) {
+		font-size: 36px;
+	}
 	@media screen and (max-width:1023px) {
 		font-size: calc( 100vw * ( 20 / 400));
    	 	padding-top: calc( 100vw * ( 10 / 400));
@@ -51,6 +60,10 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 57px;
+    @media screen and (max-width:1439px) {
+        font-size: 20px;
+		line-height: 40px;
+    }
 	@media screen and (max-width:1023px) {
 		padding-top: calc( 100vw * ( 32 / 400));
 		font-size: calc( 100vw * ( 14 / 400));

@@ -12,10 +12,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-	/* @media screen and (max-width:1439px) {
-		width: 200px;
+	@media screen and (max-width:1439px) {
+		width: 280px;
 		height: 80px;
-	} */
+	}
 	@media screen and (max-width:1023px) {
 		width: calc( 100vw * ( 160 / 400 ));
 		height: calc( 100vw * ( 64 / 400 ));
@@ -29,13 +29,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-	/* @media screen and (max-width:1439px) {
-		width: 180px;
+	@media screen and (max-width:1439px) {
+		width: 260px;
 		height: 60px;
-	} */
+	}
 	@media screen and (max-width:1023px) {
-		width: calc( 100vw * ( 144 / 400 ));
-		height: calc( 100vw * ( 48 / 400 ));
+		width: calc( 100vw * ( 140 / 400 ));
+		height: calc( 100vw * ( 46 / 400 ));
 	}
 }
 .IntroTitle_crossbox{
@@ -47,13 +47,13 @@
     height: 48px;
     background-color: #050819;
     border-radius: 999px;
-	/* @media screen and (max-width:1439px) {
-		width: 240px;
-		height: 32px;
-	} */
+	@media screen and (max-width:1439px) {
+		width: 320px;
+		height: 40px;
+	}
 	@media screen and (max-width:1023px) {
-		width: calc( 100vw * ( 192 / 400 ));
-		height: calc( 100vw * ( 24 / 400 ));
+		width: calc( 100vw * ( 190 / 400 ));
+		height: calc( 100vw * ( 26 / 400 ));
 	}
 }
 .IntroTitle_title{
@@ -64,12 +64,12 @@
     margin:0;
     line-height: 48px;
     font-family: 'BookkBold';
-	/* @media screen and (max-width:1439px) {
-		font-size: 20px;
-		line-height: 32px;
-	} */
+	@media screen and (max-width:1439px) {
+		font-size: 30px;
+		line-height: 40px;
+	}
 	@media screen and (max-width:1023px) {
 		font-size: calc( 100vw * ( 16 / 400 ));
-		line-height: calc( 100vw * ( 24 / 400 ));
+		line-height: calc( 100vw * ( 26 / 400 ));
 	}
 }

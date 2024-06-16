@@ -4,6 +4,7 @@ import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../generic/LeftTab";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
 import { useParams } from "react-router-dom";
+import "./PageCourse.css"
 export default function PageCourse({}) {
 	const params = useParams();
 	const [currentSet, setCurrentSet] = useState(params.tabName||"min40");
