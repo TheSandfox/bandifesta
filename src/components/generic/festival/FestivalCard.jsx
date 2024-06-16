@@ -93,7 +93,7 @@ function FestivalCard({festival,disableTag,userId}) {
 		let startDate = new Date(festival.start_date);
 		let today = new Date();
 		let endDate = new Date(festival.end_date);
-		if(startDate>today) {
+		if(startDate>=today) {
 			setTagVariation({
 				value:1,
 				string:localeString[1]

@@ -14,7 +14,7 @@ function noticeList(data){
         <ul key={data.id} className='noticeListM'>
             <li className='notiNumber'>{data.id}</li>
             <li className='notiTitle'>
-                <Link to={`/notice/detail/${data.id}`} onClick={onIncrease} onIncrease={onIncrease}>
+                <Link to={`/notice/detail/${data.id}`} onClick={onIncrease}>
                     <span className='notiTitTxt'>{data.title}</span>
                     <img className='notiArrow' src="/bandifesta/assets/arrowGrey.png" alt="" />
                 </Link>
