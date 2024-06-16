@@ -19,7 +19,7 @@ export default function MyQNAList({ setPage, currentItems, setIdxs, leng, answer
         <p className='qnaTotal fontMain'>총 <span>{leng}</span>개의 게시글이 있습니다.</p>
         <div className="MyQnaTable">
             <ul className="MyQnaTableTit fontMain">
-                <li>번호</li>
+                <li>접수 번호</li>
                 <li>답변 여부</li>
                 <li>문의 제목</li>
                 <li>문의 날짜</li>

@@ -18,7 +18,7 @@ export default function FaqSearchBox(){
             <h1 className="fontSubTitle">원하시는 내용을 검색해 보세요.</h1>
             <div className="noticeSearchBar">
                 <div className="SearchBox">
-                    <input type="text" placeholder="검색어를 입력해 주세요." className="fontMain" value={search} onChange={searchChange}/>
+                    <input type="text" placeholder="검색어를 입력해 주세요." className="fontMain" value={search} onChange={searchChange} onKeyPress={searchBtn}/>
                     <button onClick={searchBtn}><img src="/bandifesta/assets/glass_search.png"/></button>
                 </div>
             </div>

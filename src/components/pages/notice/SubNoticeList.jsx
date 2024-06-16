@@ -9,20 +9,22 @@ function noticeList(data){
             setCount(prevCount => prevCount +1);
         }
 
-    return(
-        <ul key={data.id} className='noticeListM'>
-            <li className='notiNumber'>{data.id}</li>
-            <li className='notiTitle'>
-                <Link to={`/notice/detail/${data.id}`} onClick={onIncrease}>
-                    <span className='notiTitTxt'>{data.title}</span>
-                    <img className='notiArrow' src="/bandifesta/assets/arrowGrey.png" alt="" />
-                </Link>
-            </li>
-            <li className='notiWriter'>{data.name}</li>
-            <li className='notiDate'>{data.createDate}</li>
-            <li className='notiView'>{count}</li>
-        </ul>
-    )
+    return(<>
+        {/* {currentItems && currentItems.map((data)=>{return( */}
+            <ul key={data.id} className='noticeListM'>
+                <li className='notiNumber'>{data.id}</li>
+                <li className='notiTitle'>
+                    <Link to={`/notice/detail/${data.id}`} onClick={onIncrease}>
+                        <span className='notiTitTxt'>{data.title}</span>
+                        <img className='notiArrow' src="/bandifesta/assets/arrowGrey.png" alt="" />
+                    </Link>
+                </li>
+                <li className='notiWriter'>{data.name}</li>
+                <li className='notiDate'>{data.createDate}</li>
+                <li className='notiView'>{count}</li>
+            </ul>
+        {/* )})} */}
+    </>)
 }
 
 export default noticeList;

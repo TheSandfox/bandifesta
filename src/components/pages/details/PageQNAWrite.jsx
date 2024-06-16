@@ -52,7 +52,7 @@ export default function PageQNAWrite({setPage}) {
 			</li>
 			<li>
 				<label className='fontMain'>제목</label>
-				<input type='text' name='title' value={title} onChange={onchange}/>
+				<input type='text' name='title' value={title || ''} onChange={onchange}/>
 			</li>
 			<li>
 				<label className='fontMain'>내용</label>
