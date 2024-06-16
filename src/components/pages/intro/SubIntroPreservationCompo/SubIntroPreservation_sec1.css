@@ -5,12 +5,19 @@
     border-top: 2px solid var(--color-main);
     margin-top: 70px;
     border-bottom: 2px solid var(--color-main);
-    
+    @media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 16 / 400 ) );
+		line-height: calc( 100vw * ( 32 / 400 ) );
+        margin-top: calc( 100vw * ( 40 / 400 ) );
+	}
 }
 .SubIntroPreservation_sec1_top>div{
     background-color: var(--color-main);
     margin: 10px auto;
     padding : 50px 0;
+    @media screen and (max-width:1023px) {
+        padding: calc( 100vw * ( 24 / 400 ) ) 0;
+    }
 }
 .SubIntroPreservation_sec1_top h3{
     width: 100%;
@@ -26,23 +33,11 @@
 }
 .SubIntroPreservation_sec1_first{
     padding-top: 70px;
+    @media screen and (max-width:1023px) {
+        padding-top: calc( 100vw * ( 40 / 400 ) );
+    }
 }
-.SubIntroPreservation_sec1_title{
-    align-items: center;
-    gap : 10px
-}
-.SubIntroPreservation_sec1_first_title>div{
-    height: 41px;
-    padding : 3px 0 ;
-}
-.SubIntroPreservation_sec1_wrap h5{
-    font-size: 20px;
-    font-family: 'BookkBold';
-    font-weight: 400;
-	@media screen and (max-width:1023px) {
-		font-size: calc(100vw * ( 12 / 400 ));
-	}
-}
+
 .SubIntroPreservation_sec1_first_cont>p{
     font-size: 16px;
     font-family: 'BookkThin';
@@ -53,8 +48,9 @@
     border-bottom:2px solid var(--color-main);
     margin-top: 30px;
 	@media screen and (max-width:1023px) {
-		font-size: calc(100vw * ( 10 / 400 ));
+		font-size: calc(100vw * ( 12 / 400 ));
 		line-height: calc(100vw * ( 24 / 400 ));
+        padding : calc(100vw * ( 10 / 400 ));
 	}
 }
 .SubIntroPreservation_sec1_first>p{
@@ -80,6 +76,7 @@
     grid-template-rows: repeat(4, auto);
     grid-column-gap: 60px;
 	@media screen and (max-width:1023px) {
+        padding-top: 30px;
 		font-size: calc(100vw * ( 12 / 400 ));
 		grid-column-gap: calc(100vw * ( 8 / 400 ));
 	}
@@ -90,10 +87,15 @@
 .SubIntroPreservation_sec1_second_cont>.grid_title{
     border-bottom: 2px solid var(--color-main);
     padding:30px 10px;
-}
+    @media screen and (max-width:1023px) {
+        padding : calc(100vw * (10 / 400));
+        font-size:  calc(100vw * (12 / 400));;
+}}
 .SubIntroPreservation_sec1_second_cont>.grid_cont{
     border-bottom: 2px solid var(--color-main);
-    padding:30px 10px;
+    padding:30px 10px;@media screen and (max-width:1023px) {
+        padding : calc(100vw * (10 / 400));
+}
 }
 .SubIntroPreservation_sec1_second_cont>ul:first-child{
     width: 300px;
