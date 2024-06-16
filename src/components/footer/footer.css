@@ -125,7 +125,7 @@
   }
 
   .footer_info_wrap>ul:not(:first-child) {
-    padding-top: calc(100vw * (20 / 400));
+    padding-top: calc(100vw * (10 / 400));
   }
 
   .footer_info_wrap>ul:first-child>li {
@@ -177,7 +177,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap:
+    gap:10px
   }
 
   .footer_info_wrap>.footer_info_03>li:nth-child(3) {
@@ -195,7 +195,4 @@
   .footer_info_wrap>ul>li {
     text-align: center;
   }
-
-  .footer
-
 }
