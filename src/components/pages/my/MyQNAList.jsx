@@ -8,10 +8,10 @@ export default function MyQNAList({ setPage, currentItems, setIdxs, leng, answer
     };
 
     const answerClass = (item)=>{
-        return answer && item.idx == click.idx ? 'ansComplete' : 'ansReady'
+        return answer === item.idx ? 'ansComplete' : 'ansReady'
     }
     const answered = (item)=>{
-        return answer && item.idx == click.idx ? '답변 완료' : '접수 완료'
+        return answer === item.idx ? '답변 완료' : '접수 완료'
     }
 
     return <>

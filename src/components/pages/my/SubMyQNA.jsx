@@ -126,13 +126,8 @@ export default function SubMyQNA({handleTabState,index}) {
 		},[datas, idxs])
 
 	
-	const [answer, setAnswer] = useState(false);
+	const [answer, setAnswer] = useState(null);
 
-	function complete(click){
-		if(answer && click.idx == datas.idx){
-			setAnswer(!answer)
-		}
-	}
 
 	return <>
 		<qnaContext.Provider value={datas}>
