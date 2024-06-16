@@ -1,31 +1,26 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import FestivalDatePicker from "../../generic/festival/FestivalDatePicker";
 import './subfestivalschedule.css';
 import { FestivalWidgetList } from "../../generic/festival/FestivalWidget";
 import FestivalScrollLoader from "../../generic/festival/FestivalScrollLoader";
 import { FestivalCardList } from "../../generic/festival/FestivalCard";
+import { configContext } from "../../../App";
 
-function d2S(val) {
-	switch (parseInt(val)) {
-	case 0:
-		return '일';
-	case 1:
-		return '월';
-	case 2:
-		return '화';
-	case 3:
-		return '수';
-	case 4:
-		return '목';
-	case 5:
-		return '금';
-	case 6:
-		return '토';
+function d2S(val,language) {
+	let strings = ['일','월','화','수','목','금','토'];
+	switch (language) {
+	case 'Eng' :
+		strings = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+		break;
+	case 'Jpn' :
+		strings = ['日','月','火','水','木','金','土'];
+		break;
 	}
-	return '';
+	return strings[parseInt(val)];
 }
 
 export default function SubFestivalSchedule({handleTabState,index,handleConfig}) {
+	const config = useContext(configContext);
 	const itemsPerPage = 6;
 	const [listPage,setListPage] = useState(0);
 	const now = new Date();
@@ -42,8 +37,8 @@ export default function SubFestivalSchedule({handleTabState,index,handleConfig})
 		let day = new Date(parseInt(targetDate));
 		return day.getFullYear()+'.'+
 			(day.getMonth()+1)+'.'+
-			day.getDate()+' ('+d2S(day.getDay())+')'
-	},[targetDate])
+			day.getDate()+' ('+d2S(day.getDay(),config.language)+')'
+	},[targetDate,config.language])
 	//축제들
 	const [festivals,setFestivals] = useState([]);
 	//페이지 토탈
@@ -53,12 +48,20 @@ export default function SubFestivalSchedule({handleTabState,index,handleConfig})
 	//상위 컴포넌트 
 	useEffect(()=>{
 		handleTabState.set(index);
-		handleConfig.setFestivalView('schedule');
 	},[])
 	const dateChangeCallback = (val)=>{
 		setTargetDate(val);
 	}
-
+	//
+	let localeString = ['오늘의 축제'];
+	switch (config.language) {
+	case 'Eng':
+		localeString = ['Today'];
+		break;
+	case 'Jpn':
+		localeString = ['今日の祭り'];
+		break;
+	}
 	return <div ref={containerRef} className="subFestivalSchedule">
 		<div className="top">
 			{/* 달력 */}
@@ -67,7 +70,7 @@ export default function SubFestivalSchedule({handleTabState,index,handleConfig})
 			<div className="festivalWidgetContainer shadowBox">
 				<div className="top">
 					<div className="left">
-						<p className="fontMain">오늘의 축제</p>
+						<p className="fontMain">{localeString[0]}</p>
 						<p className="fontSubTitle">{targetDateString}</p>
 					</div>
 					{/*페이징*/}

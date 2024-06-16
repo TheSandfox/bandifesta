@@ -1,8 +1,10 @@
 import axios from "axios";
 
 //축제유형들 가져오기
-const getFestivalPeriodTypes = async(thenCallback,catchCallback,finallyCallback)=>{
-	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getFestivalPeriodTypes')
+const getFestivalPeriodTypes = async(params,thenCallback,catchCallback,finallyCallback)=>{
+	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getFestivalPeriodTypes',{
+		params
+	})
 	.then(function (response) {
 		// 성공 핸들링
 		thenCallback(response);
@@ -18,8 +20,10 @@ const getFestivalPeriodTypes = async(thenCallback,catchCallback,finallyCallback)
 }
 
 //정렬방식들 가져오기
-const getFestivalSortMethods = async(thenCallback,catchCallback,finallyCallback)=>{
-	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getFestivalSortMethods')
+const getFestivalSortMethods = async(params,thenCallback,catchCallback,finallyCallback)=>{
+	await axios.get(import.meta.env.VITE_REST_URL+'/festival/getFestivalSortMethods',{
+		params
+	})
 	.then(function (response) {
 		// 성공 핸들링
 		thenCallback(response);

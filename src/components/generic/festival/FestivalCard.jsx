@@ -55,6 +55,7 @@ function FestivalLikeButton({festivalId,userId,onChange}) {
 }
 
 function FestivalCard({festival,disableTag,userId}) {
+	const config = useContext(configContext);
 	const navigate = useNavigate();
 	const imgElement = useRef(null);
 	const [tagVariation,setTagVariation] = useState({
@@ -64,6 +65,23 @@ function FestivalCard({festival,disableTag,userId}) {
 	const isNull = festival===null;
 	// console.log(userId);
 	//진,예,마 판별
+	let localeString = ['진행중','예정','마감'];
+	switch (config.language) {
+	case 'Eng' :
+		localeString = [
+			'ongoing',
+			'scheduled',
+			'expired'
+		]
+		break;
+	case 'Jpn' :
+		localeString = [
+			'進行中',
+			'予定',
+			'終了'
+		]
+		break;
+	}
 	useEffect(()=>{
 		if (isNull){
 			setTagVariation({
@@ -78,17 +96,17 @@ function FestivalCard({festival,disableTag,userId}) {
 		if(startDate>today) {
 			setTagVariation({
 				value:1,
-				string:'예정'
+				string:localeString[1]
 			})
 		} else if(endDate<today) {
 			setTagVariation({
 				value:2,
-				string:'마감'
+				string:localeString[2]
 			})
 		} else {
 			setTagVariation({
 				value:0,
-				string:'진행중'
+				string:localeString[0]
 			})
 		}
 	},[])

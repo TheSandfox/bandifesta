@@ -1,7 +1,9 @@
+import { configContext } from '../../../App';
 import './festivaldatepicker.css';
-import { useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 
 export default function FestivalDatePicker({value,onChange}) {
+	const config = useContext(configContext);
 	const [targetDate,setTargetDate] = useState({
 		value:value
 			?new Date(value.getFullYear(),value.getMonth(),value.getDate())
@@ -59,6 +61,16 @@ export default function FestivalDatePicker({value,onChange}) {
 			onChange(targetDate.value.getTime());
 		}
 	},[targetDate])
+	//
+	let localeString = ['축제일정','일','월','화','수','목','금','토'];
+	switch (config.language) {
+	case 'Eng' :
+		localeString = ['Today','S','M','T','W','T','F','S'];
+		break;
+	case 'Jpn' :
+		localeString = ['スケジュール','日','月','火','水','木','金','土'];
+		break;
+	}
 	//return JSX
 	return <>
 		<div className={`festivalDatePicker shadowBox`}>
@@ -66,7 +78,7 @@ export default function FestivalDatePicker({value,onChange}) {
 				<div className="left">
 					{/* 연,월 디스플레이 */}
 					<div className='fontMain'>
-						축제일정
+						{localeString[0]}
 					</div>
 					<div className='yearAndMonth fontSubTitle'>
 						{targetDate.display.getFullYear()}.{targetDate.display.getMonth()+1}
@@ -87,13 +99,13 @@ export default function FestivalDatePicker({value,onChange}) {
 			<div className="bottom">
 				{/* 요일 */}
 				<div className="dayColumns">
-					<div className="dayColumn fontMain red">일</div>
-					<div className="dayColumn fontMain">월</div>
-					<div className="dayColumn fontMain">화</div>
-					<div className="dayColumn fontMain">수</div>
-					<div className="dayColumn fontMain">목</div>
-					<div className="dayColumn fontMain">금</div>
-					<div className="dayColumn fontMain blue">토</div>
+					<div className="dayColumn fontMain red">{localeString[1]}</div>
+					<div className="dayColumn fontMain">{localeString[2]}</div>
+					<div className="dayColumn fontMain">{localeString[3]}</div>
+					<div className="dayColumn fontMain">{localeString[4]}</div>
+					<div className="dayColumn fontMain">{localeString[5]}</div>
+					<div className="dayColumn fontMain">{localeString[6]}</div>
+					<div className="dayColumn fontMain blue">{localeString[7]}</div>
 				</div>
 				{/* 날짜 위젯들 */}
 				<div className='days'>

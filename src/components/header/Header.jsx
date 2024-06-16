@@ -207,9 +207,10 @@ function MyMenu({handleConfig}) {
 }
 
 function SubMenu({displaySubMenu,setDisplaySubMenu}) {
+	const config = useContext(configContext);
 	const containerRef = useRef(null);
 	return <div 
-		className={`subMenu${displaySubMenu?'':' hidden'}`} 
+		className={`subMenu${(displaySubMenu&&config.language==='Kor')?'':' hidden'}`} 
 		ref={containerRef}
 		onMouseLeave={()=>{setDisplaySubMenu(false);}}>
 		{/* 소개 */}
@@ -290,7 +291,7 @@ export default function Header({handleConfig}) {
 		return ()=>{
 			window.removeEventListener('scroll',scrollCallback);
 		}
-	},[])
+	},[]);
 	return <div className='headerDummy'>
 		<header ref={headerRef}>
 			{
