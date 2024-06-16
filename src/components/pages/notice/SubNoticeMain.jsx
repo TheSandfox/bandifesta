@@ -22,15 +22,11 @@ function SubNoticeMain({handleTabState,index}) {
     const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(0);
     
-    // const endOffset = itemOffset + itemsPerPage;
-    // const currentItems = datas.slice(itemOffset, endOffset);
-    // const pageCount = Math.ceil(datas.length / itemsPerPage);
-
     useEffect(() => {
         const endOffset = itemOffset + itemsPerPage;
         const reverseData = [...datas].reverse()
-        setCurrentItems(reverseData.slice(itemOffset, endOffset)); // 10번까지 배열 자르기
-        setPageCount(Math.ceil(datas.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
+        setCurrentItems(reverseData.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(datas.length / itemsPerPage));
       }, [itemOffset, itemsPerPage, datas]);
 
     const handlePageClick = (event) => {
@@ -57,7 +53,6 @@ function SubNoticeMain({handleTabState,index}) {
                     </ul>
                     {currentItems && currentItems.map((data)=>
                     <SubNoticeList key={data.id} {...data} />)}
-                    {/* <SubNoticeList currentItems={currentItems} key={datas.id} {...datas}/> */}
                 </div>
                 {config.user===null ? "" : <div className='btnWrap'>
                     <GenericButton to="/notice/write">글쓰기</GenericButton>

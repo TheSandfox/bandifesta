@@ -9,8 +9,7 @@ function noticeList(data){
             setCount(prevCount => prevCount +1);
         }
 
-    return(<>
-        {/* {currentItems && currentItems.map((data)=>{return( */}
+    return(
             <ul key={data.id} className='noticeListM'>
                 <li className='notiNumber'>{data.id}</li>
                 <li className='notiTitle'>
@@ -23,8 +22,7 @@ function noticeList(data){
                 <li className='notiDate'>{data.createDate}</li>
                 <li className='notiView'>{count}</li>
             </ul>
-        {/* )})} */}
-    </>)
+    )
 }
 
 export default noticeList;
