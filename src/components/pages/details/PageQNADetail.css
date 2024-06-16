@@ -1,45 +1,85 @@
-/* PageQNADetail */
-.MyQNADetail{
-    border-top: 2px solid #686868;
-    border-bottom: 2px solid #686868;
+/* PageQNAWrite */
+.qnaexp{
+    text-align: center;
+    padding: var(--notice-padding);
+    margin-bottom: var(--notice-padding);
+    color: var(--tit-border-color);
+    font-size: var(--txt-font-size);
 }
-.MyQNADetail>li:not(.MyQNADetailTit){
+.PageQNAWriteInput{
+    width: 100%;
+    border-top: 2px solid var(--tit-border-color);
+    border-bottom: 2px solid var(--tit-border-color);
+}
+.PageQNAWriteInput>li{
+    display: flex; gap: 2%;
+    align-items: center;
+    padding: var(--list-padding);
     border-bottom: 1px solid #ccc;
 }
+.PageQNAWriteInput>li>label{
+    width: 10%;
+    font-weight: var(--tit-weight);
+}
+.PageQNAWriteInput>li>input{
+    width: 80%; 
+    outline: none;
+    padding: var(--list-padding);
+    border: 1px solid #eee;
+    background-color: #eee;
+    font-size: var(--txt-font-size);
+    font-weight: var(--txt-weight);
+}
+.PageQNAWriteInput>li>textarea{
+    width: 80%; height: 300px;
+    padding: var(--list-padding);
+    margin-bottom: var(--notice-padding);
+    border: 1px solid #eee;
+    background-color: #eee;
+    font-size: var(--txt-font-size);
+    resize: none;
+}
+
+@media screen and (max-width:1023px) {
+    .MyQNADetailUser>h3{
+        height: calc(100vw * (64 / 400));
+    }
+}
+/* PageQNADetail */
+.MyQNADetail{
+    border-top: 2px solid var(--tit-border-color);
+    border-bottom: 2px solid var(--tit-border-color);
+}
+.MyQNADetail>li:not(.MyQNADetail>li:nth-child(1)){
+    border-bottom: 1px solid var(--txt-border-color);
+}
 .MyQNADetailTit{
-    padding: 17px 25px;
+    padding: var(--list-padding);
     text-align: center;
-    font-size: 16px;
-    border-bottom: 2px solid #686868;
+    border-bottom: 2px solid var(--tit-border-color);
+    font-weight: var(--tit-weight);
 }
 .MyQNADetailUser{
     display: flex;
     text-align: center;
 }
 .MyQNADetailUser>h3{
-    width: 10%;
-    padding: 17px 25px;
-    border-right: 1px solid #ccc;
-    font-size: 16px;
+    width: 15%;
+    padding: var(--list-padding);
+    border-right: 1px solid var(--txt-border-color);
+    font-size: var(--txt-font-size);
+    font-weight: var(--tit-weight);
 }
 .MyQNADetailUser>p{
-    padding: 17px 25px;
-    font-size: 15px;
+    padding: var(--list-padding);
+    font-size: var(--txt-font-size);
 }
 .MyQNADetailCont{
     padding: 50px;
+    font-size: var(--txt-font-size);
 }
-/* 
-.MyQNADetailUser>li{
-    width: 20%;
-    border-right: 1px solid #ccc;
+@media screen and (max-width:1023px) {
+    .MyQNADetailUser>h3{
+        width: 20%;
+    }
 }
-.MyQNADetailCont{
-    width: 80%;
-}
-.MyQNADetail li{
-    font-weight: bold;
-}
-.MyQNADetailTit{
-    text-align: center;
-} */

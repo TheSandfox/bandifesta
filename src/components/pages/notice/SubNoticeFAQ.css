@@ -1,43 +1,64 @@
-/* ------------------contents------------ */
-.faqLists{
+.faqTotal{
+    font-weight: var(--txt-weight);
+    padding-bottom: var(--notice-padding);
+}
+.faqTotal>span{
+    font-weight: var(--tit-weight);
+}
+.faqListsWrap{
     width: 100%;
-    border-top: 2px solid #666;
-    /* margin-bottom: 23px; */
+    border-top: 2px solid var(--tit-border-color);
+    border-bottom: 2px solid var(--tit-border-color);
 }
-.faqLists img{
-    width: 38px; height: 36px;
+.faqLists{
+    border-bottom: 1px solid var(--txt-border-color);
 }
-.faqLists>li>div{
-    border-bottom: 1px solid #ccc;
-    align-items: center;
+.faqEach{
+    display: flex; gap: var(--notice-gap);
+    padding: var(--notice-padding);
 }
-.faqLists>li>div>div{
-    display: flex; gap: 17px;
+.faqEach>span{
+    width: 5%; height: 100%;
+    text-align: end;
 }
-.faqListsQuestion{
+.faqEach>span:nth-child(1)>img{
+    display: block;
+    width: 100%;
+}
+.faqEach>span:nth-child(3)>img{
+    width: 80%; height: 80%;
+    margin-top: 10%;
+    transform: rotate(90deg);
+    transition: 0.3s;
+}
+.faqEach>div{
+    width: 90%; height: inherit;
     display: flex;
-    justify-content: space-between;
-    padding: 18px 25px;  /*  */
+    align-items: center;
 }
 .faqListsQuestion>div{
     align-items: center;
 }
-.faqListsQuestion>span>img{
-    width: 20px; height: 20px;
-    transform: rotate(90deg);
-}
-.faqListsAnswerRotate{
-    transform: rotate(-90deg) !important;
-    transition: 0.5s;
+.faqListsQuestion p{
+    font-weight: var(--txt-weight);
 }
 .faqListsAnswer{
-    display: none;
+    max-height: 0;
     overflow: hidden;
-    background-color: #eee;
+    background-color: var(--list-hover-color);
+    transition: 0.4s;
 }
 .faqListsAnswer>div{
-    padding: 17px 25px;
+    border-top: 1px solid var(--txt-border-color);
+}
+.faqListsAnswer p{
+    line-height: 180%;
+    font-size: var(--txt-font-size);
+}
+.AnswerRotate{
+    transform: rotate(-90deg) !important;
+    transition: 0.3s;
 }
 .faqListsAnswerActive{
-    display: block;
+    max-height: 200vh;
 }

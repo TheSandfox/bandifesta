@@ -1,42 +1,43 @@
-import { useState } from "react";
-import PageQNADetail from "../details/PageQNADetail";
 import GenericButton from '../../generic/GenericButton'
 
-export default function MyQNAList({currentItems, datas, leng, setPage}){
-    let [detail, setDetail] = useState(true);
-    let [refs, setRefs] = useState();
-    
+export default function MyQNAList({ setPage, currentItems, setIdxs, leng, answer, click}){
+
     const detailOne = (idx) => {
-        setRefs(idx);
-        setDetail(false)
+        setIdxs(idx);
+        setPage('detail')
     };
 
-    return <div className="MyQnaRight">
-        <h1>1:1 문의 내역</h1>
-        {detail ? 
-            <div className="MyQna">
-                <p>총 <span>{leng}</span>개의 게시글이 있습니다.</p>
-                <div className="MyQnaTable">
-                    <ul className="MyQnaTableTit">
-                        <li>답변여부</li>
-                        <li>제목</li>
-                        <li>작성일</li>
+    const answerClass = (item)=>{
+        return answer && item.idx == click.idx ? 'ansComplete' : 'ansReady'
+    }
+    const answered = (item)=>{
+        return answer && item.idx == click.idx ? '답변 완료' : '접수 완료'
+    }
+
+    return <>
+        <h1 className=" myqnas fontTitle">1:1 문의내역</h1>
+        <p className='qnaTotal fontMain'>총 <span>{leng}</span>개의 게시글이 있습니다.</p>
+        <div className="MyQnaTable">
+            <ul className="MyQnaTableTit fontMain">
+                <li>번호</li>
+                <li>답변 여부</li>
+                <li>문의 제목</li>
+                <li>문의 날짜</li>
+                <li></li>
+            </ul>
+            {currentItems &&
+                currentItems.map((item)=>{return(
+                    <ul className="MyQnaTableTxt" key={item.idx} onClick={() => detailOne(item.idx)}>
+                        <li>{item.idx}</li>
+                        <li><p className={answerClass(item)}>{answered(item)}</p></li>
+                        <li>{item.title}</li>
+                        <li>{item.time}</li>
+                        <li><img className='notiArrow' src="/bandifesta/assets/arrowGrey.png"/></li>
                     </ul>
-                    {currentItems &&
-                        currentItems.map((item)=>{return(
-                            <ul className="MyQnaTableTxt" key={item.idx} onClick={() => detailOne(item.idx)}>
-                                <li>답변완료</li>
-                                <li>{item.title}</li>
-                                <li>{item.time}</li>
-                            </ul>
-                    )})}
-                </div>
-                <div className="MyQnaWriteBtn">
-                    <GenericButton onClick={()=>setPage(false)}>글쓰기</GenericButton>
-                </div>
-            </div>
-        :
-        <PageQNADetail datas={datas} setDetail={setDetail} refs={refs}/>
-        }
-    </div>
+            )})}
+        </div>
+        <div className="btnWrap">
+            <GenericButton onClick={()=>setPage('write')}>글쓰기</GenericButton>
+        </div>
+    </>
 }

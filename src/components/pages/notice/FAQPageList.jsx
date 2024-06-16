@@ -1,28 +1,35 @@
-import {useState} from 'react'
+import { useState, useContext } from 'react';
+import { faqContext } from './SubNoticeFAQ' ;
+import { editContext } from './SubNoticeFAQ' ;
+import { configContext } from "../../../App";
+import GenericButton from '../../generic/GenericButton';
 
-export default function FAQPageList({ currentItems }){
+export default function FAQPageList({currentItems}){
+    const datas = useContext(faqContext);
 
     // 아코디언 기능
-    const [click, setClick] = useState(null);
+    const [ans, setAns] = useState(null);
     function scrollEvent(idx){
-        setClick((click)=>click === idx ? null : idx)
+        setAns((ans)=>ans === idx ? null : idx)
     }
+
     
     return<>
-        <ul className="faqLists">
-            {currentItems && currentItems.map((data, idx)=>{return(
-                <li>
-                    <div className="faqListsQuestion" onClick={()=>scrollEvent(idx)}>
-                        <div>
-                            <img src="/bandifesta/assets/question.png" alt='question'/>
-                            <p>{data.tit}</p>
+        <p className='faqTotal' key={datas.length}>총 <span>{datas.length}</span>개의 게시글이 있습니다.</p>
+        <ul className="faqListsWrap">
+            {currentItems && currentItems.map((item, idx)=>{return(
+                <li className="faqLists" key={item.idx}>
+                    <div className='faqListsQuestion' onClick={()=>scrollEvent(idx)}>
+                        <div className="faqEach">
+                            <span><img src="/bandifesta/assets/question.png" alt='question'/></span>
+                            <div><p className='fontMain'>{item.tit}</p></div>
+                            <span><img src="/bandifesta/assets/nextPage.png" className={idx === ans ? 'AnswerRotate': ''}/></span>
                         </div>
-                        <span><img src="/bandifesta/assets/arrowBlack.png" className={idx === click ? 'faqListsAnswerRotate': ''}/></span>
                     </div>
-                    <div className={`faqListsAnswer${idx === click ? ' faqListsAnswerActive' : ''}`}>
-                        <div>
-                            <img src="/bandifesta/assets/answer.png" alt='answer'/>
-                            <p>{data.txt}</p>
+                    <div className={`faqListsAnswer ${idx === ans ? 'faqListsAnswerActive' : ''}`}>
+                        <div className="faqEach">
+                            <span><img src="/bandifesta/assets/answer.png" alt='answer'/></span>
+                            <div><p className='fontMain'>{item.txt}</p></div>
                         </div>
                     </div>
                 </li>

@@ -1,70 +1,115 @@
-.MyQnaWrap{
-    width: 100%;
-    display: flex; gap: 50px;
-    padding: 40px 20px;
-}
-
-
-/* MyQNAList */
-.MyQnaRight>h1{
-    font-size: 32px;
-    padding-bottom: 40px;
+.myqnas{
     text-align: center;
+    padding-bottom: var(--notice-padding);
 }
-.MyQnaRight{
-    width: 100%;
+.qnasdisplay{
+    text-align: start;
 }
-.MyQna>p{
-    font-size: 16px;
-    font-weight: 500;
-    padding-bottom: 27px;
+.qnaTotal{
+    font-weight: var(--txt-weight);
+    padding-bottom: var(--notice-padding);
 }
-.MyQna>p>span{
-    font-weight: 900;
+.qnaTotal>span{
+    font-weight: var(--tit-weight);
 }
-
 .MyQnaTable{
     width: 100%;
-}
-.MyQnaTable>ul{
-    display: flex;
-    padding: 18px 25px;
+    border-top: 2px solid var(--tit-border-color);
+    border-bottom: 2px solid var(--tit-border-color);
 }
 .MyQnaTableTit{
-    border-top: 2px solid #686868;
-    border-bottom: 2px solid #686868;
-}
-.MyQnaTableTit>li{
-    font-size: 15px;
-    font-weight: bold;
-}
-.MyQnaTable li:nth-child(1){
-    width: 10%;
-    width: 100px;
-}
-.MyQnaTable li:nth-child(2){
-    width: 80%;
-}
-.MyQnaTable li:nth-child(3){
-    width: 10%;
-    width: 100px;
-}
-.MyQnaTableTit>li:nth-child(2){
+    display: flex; gap: var(--notice-gap);
+    padding: var(--list-padding);
+    border-bottom: 2px solid var(--tit-border-color);
+    font-weight: var(--tit-weight);
     text-align: center;
+    align-items: center;
 }
 .MyQnaTableTxt{
-    border-bottom: 1px solid #ccc;
-    gap: 25px;
+    cursor: pointer;
+    display: flex; gap: var(--notice-gap);
+    padding: var(--list-padding);
+    border-bottom: 1px solid var(--txt-border-color);
+    font-size: var(--txt-font-size);
+    font-weight: var(--txt-weight);
+    align-items: center;
 }
-
-
-
-.MyQnaWriteBtn{
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-    padding-top: 17px;
+.MyQnaTableTxt:hover{
+    background-color: var(--color-white);
 }
-.MyQnaWriteBtn>.genericButton{
+.MyQnaTable>ul>li:nth-child(1){
+    width: 5%;
+    text-align: center;
+}
+.MyQnaTable>ul>li:nth-child(2){
+    width: 14%; 
+    text-align: center;
+}
+.MyQnaTable>ul>li:nth-child(2)>p{
     display: inline-block;
+    padding: 8px 12px;
+}
+.MyQnaTable>ul>li:nth-child(3){
+    width: 68%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.MyQnaTable>ul>li:nth-child(4){
+    width: 13%;
+    text-align: center;
+}
+.MyQnaTableTxt .notiArrow{
+    display: none;
+    width: 20px; height: 20px;
+}
+.notiArrow>img{
+    width: 100%; height: 100%;
+}
+.ansReady{
+    background-color: var(--color-sub);
+    color: var(--color-main);
+}
+.ansComplete{
+    background-color: var(--color-main);
+    color: var(--color-white);
+}
+
+@media screen and (max-width:1023px) {
+    .myqnas{
+        padding-bottom: 20px;
+    }
+    .MyQnaTableTit{
+        display: none;
+    }
+    .MyQnaTableTxt{
+        gap: 13px 8px;
+        flex-wrap: wrap;
+        position: relative;
+    }
+    .MyQnaTable>ul>li:nth-child(1){
+        display: none;
+    }
+    .MyQnaTable>ul>li:nth-child(2){
+        width: auto;
+        text-align: start;
+    }
+    /* .MyQnaTable>ul>li:nth-child(2)>p{
+        padding: ;
+    } */
+    .MyQnaTable>ul>li:nth-child(3){
+        order: 4;
+        width: 100%;
+    }
+    .MyQnaTable>ul>li:nth-child(4){
+        order: 3;
+        width: 30%;
+        text-align: start;
+    }
+    .MyQnaTableTxt .notiArrow{
+        display: block;
+        position: absolute;
+        top: 50%; right: 0;
+        transform: translateY(-50%);
+    }
 }

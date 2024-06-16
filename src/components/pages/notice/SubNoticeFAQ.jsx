@@ -1,8 +1,8 @@
-import { useState,useReducer,useRef,useMemo,useCallback,useEffect,createContext } from 'react'
-import {FaqDb, reducer} from './FaqDb'
-// import FaqData from './data/FaqData'
-import SearchBox from './SearchBox'
-import FAQPage from './FAQPage'
+import { useState, useReducer, useRef, useMemo, useCallback, useEffect, createContext } from 'react'
+import { FaqDb, reducer } from './FaqDb'
+import FaqSearchBox from './FaqSearchBox'
+import FAQPageList from './FAQPageList'
+import Paginate from '../details/paginate'
 import './SubNoticeFAQ.css'
 
 export const faqContext = createContext();
@@ -13,84 +13,52 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 	useEffect(()=>{
 		handleTabState.set(index);
 	},[]);
-
-	// 페이지네이션 데이터 전달
-    const items = FaqDb.datas;
     
 	// CRUD
-	const [state, dispatch] = useReducer(reducer, FaqDb);
+	const [state, dispatch] = useReducer(reducer,FaqDb);
 	const {datas} = state;
-	const {id, tit, txt} = state.inputs;
-	const contId = useRef(16)
-	
-	// 추가 기능
-	const createWord = useCallback((tit, txt)=>{
-		dispatch({
-			type : "create",
-			datas : {
-				id : contId.current,
-				tit, txt
-			}
-		})
-		contId.current += 1
-	},[tit,txt])
+	const {tit, txt} = state.inputs;
+	const idx = useRef(16);
 
-	// 수정 기능
-	const editWord = (id, tit, txt)=>{
-		dispatch({
-			type : "edit",
-			id, tit, txt
-		})
-	}
-
-	// 삭제 기능
-	const removeWord = (id)=>{
-		dispatch({
-			type : "remove",
-			id
-		})
-	}
-
-	// 검색 기능  // 안됨 보류.
-	const searchWord = (txt)=>{
+	// 검색 기능
+	const searchWord = (text)=>{
 		dispatch({
 			type : "search",
-			txt
+			text
 		})
 	}
-
-
 	const memoWord = useMemo(()=>{
-		return{createWord, editWord, removeWord, searchWord}
+		return{searchWord}
 	},[])
 
-	
-
-	// 데이터 분리
-	function dataFilter(){
-		let datasID = [];
-		let datasTit = [];
-		let datasTxt = [];
-
-		datas.forEach(({id, tit, txt}) => {
-			datasID.push(id)
-			datasTit.push(tit)
-			datasTxt.push(txt)
-		});
-	}
-
+	// 페이지네이션
+	const itemsPerPage = 10;
+    const [currentItems, setCurrentItems] = useState(null);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);  // 번호 개수(1~10)
+  
+    useEffect(() => {
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(datas.reverse().slice(itemOffset, endOffset)); // 10번까지 배열 자르기
+      setPageCount(Math.ceil(datas.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
+    }, [itemOffset, itemsPerPage, datas]);
+    
+    const handlePageClick = (event) => {
+        const newOffset = event.selected * itemsPerPage % datas.length;
+        setItemOffset(newOffset);
+        console.log(itemOffset)
+    };
 
 	// --------------------------------------------------------
 	return <>
-		<div className="faqWrap">
-			<faqContext.Provider value={datas}>
-				<editContext.Provider value={memoWord}>
-					{/* 검색창 */}
-					<SearchBox />
-					{/* 리스트 */}
-					<FAQPage/>
-				</editContext.Provider>
-			</faqContext.Provider>
-		</div>
+		<faqContext.Provider value={datas}>
+			<editContext.Provider value={memoWord}>
+				<>
+					<FaqSearchBox />
+					<FAQPageList currentItems={currentItems}/>
+					<Paginate  pageCount={pageCount} handlePageClick={handlePageClick}/>
+				</>
+			</editContext.Provider>
+		</faqContext.Provider>
 	</>
 }
