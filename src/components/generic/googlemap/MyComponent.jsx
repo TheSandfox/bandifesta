@@ -22,10 +22,9 @@ const containerStyle = {
   
     const onLoad = React.useCallback(function callback(map) {
       // This is just an example of getting and using the map instance!!! don't just blindly copy!
-      const bounds = new window.google.maps.LatLngBounds(center);
-      map.fitBounds(bounds);
-  
-      setMap(map)
+      map.setCenter(center);
+      map.setZoom(16); // 수동으로 줌 레벨 설정
+      setMap(map);
     }, [])
   
     const onUnmount = React.useCallback(function callback(map) {
@@ -36,7 +35,7 @@ const containerStyle = {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={16}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >

@@ -9,6 +9,8 @@
 	@media screen and (max-width:1023px) {
 		font-size: calc(100vw * ( 12 / 400 ));
 		line-height: calc(100vw * ( 18 / 400 ));
+        padding: calc(100vw * ( 10 / 400 ));
+        margin-top: calc(100vw * ( 30 / 400 ));
 	}
 }
 .SubIntroPreservation_sec4_bottom_cont{
@@ -19,6 +21,6 @@
 	@media screen and (max-width:1023px) {
 		font-size: calc(100vw * ( 10 / 400 ));
 		line-height: calc(100vw * ( 18 / 400 ));
-		padding: calc(100vw * ( 10 / 400 )) 0 calc(100vw * ( 30 / 400 ));
+		padding: calc(100vw * ( 10 / 400 )) 0 calc(100vw * ( 40 / 400 ));
 	}
 }
