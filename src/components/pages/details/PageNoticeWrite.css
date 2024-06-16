@@ -30,6 +30,7 @@
     width: 80%; height: 300px;
     border: 1px solid #eee;
     background-color: var(--color-white);
+    padding: 17px;
     margin-bottom: 23px;
     outline: none;
 }

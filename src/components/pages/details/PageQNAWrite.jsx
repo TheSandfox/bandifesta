@@ -38,7 +38,7 @@ export default function PageQNAWrite({setPage}) {
 	}
 
 	return <div className='innerbox mainContent writeWrap'>
-		<h2 className='fontTitle'>공지 작성</h2>
+		<h2 className='fontTitle'>문의 작성</h2>
 		<div className='writeBox'>
 			<div>
 				<label className='fontSubTitle'>아이디</label>
