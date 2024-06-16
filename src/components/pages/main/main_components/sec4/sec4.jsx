@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { getFestivals } from "/src/api_utils/festivalUtil";
 import { configContext } from "/src/App";
 import React from "react";
-// import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { FestivalCard } from "/src/components/generic/festival/FestivalCard";
-// import "swiper/css";
-// import "swiper/css/pagination";
+import "swiper/css";
+import "swiper/css/pagination";
 import "./sec4.css";
-// import { Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 function MainSec4() {
   const config = useContext(configContext);
@@ -17,11 +17,11 @@ function MainSec4() {
   useEffect(() => {
     getFestivals(
       {
-        itemsPerPage: 30,
+        itemsPerPage: 10,
         pageNum: 1,
         language: config.language,
         periodType: 1,
-        sortMethod: 1,
+        sortMethod: 0,
       },
       (response) => {
         setFestivals(response.data);
@@ -54,7 +54,7 @@ function MainSec4() {
         <div>
           <h5>인기있는 행사</h5>
           <p>다양한 축제를 통해 각 지역의 독특한 문화와 전통을 만나보세요!</p>
-          {/* <Swiper
+          <Swiper
             loop={true}
             slidesPerView={6.8}
             spaceBetween={15}
@@ -65,8 +65,8 @@ function MainSec4() {
             }}
             modules={[Autoplay]}
             className="mySwiper sec4Swiper"
-          > */}
-            {/* {festivals.map((festival) => (
+          >
+            {festivals.map((festival) => (
               <SwiperSlide key={festival.festival_id}>
                 <FestivalCard
                   festival={festival}
@@ -95,7 +95,7 @@ function MainSec4() {
                 ></FestivalCard>
               </SwiperSlide>
             ))}
-          </Swiper> */}
+          </Swiper>
         </div>
         <div className="Main_sec4_bottom">
           <div className={`Main_sec4_bottom_logoMoon ${active ? "active" : ""}`}>

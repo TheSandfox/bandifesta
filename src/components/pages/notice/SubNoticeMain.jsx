@@ -51,7 +51,9 @@ function SubNoticeMain({handleTabState,index}) {
                         <li className='notiDate'>작성일</li>
                         <li className='notiView'>조회수</li>
                     </ul>
-                    <SubNoticeList currentItems={currentItems} />
+                    {currentItems && currentItems.map((data)=>
+                    <SubNoticeList key={data.id} {...data} />)}
+                    {/* <SubNoticeList currentItems={currentItems} /> */}
                 </div>
                 {config.user===null ? "" : <div className='btnWrap'>
                     <GenericButton to="/notice/write">글쓰기</GenericButton>
