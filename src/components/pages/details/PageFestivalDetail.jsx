@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import { getFestivalDetail } from "/src/api_utils/festivalUtil";
 import TopBanner from "../../generic/TopBanner";
@@ -9,6 +9,8 @@ import { configContext } from '/src/App';
 import { FestivalLikeButton } from "../../generic/festival/FestivalCard";
 import GoogleMapComponent from "../../generic/googlemap/GoogleMapComponent";
 import GenericButton from '/src/components/generic/GenericButton'
+import Loading from '/src/components/generic/Loading'
+import GoBack from "../../generic/GoBack";
 
 function LikeIndicator({festival}) {
 	const config = useContext(configContext)
@@ -43,6 +45,7 @@ function LikeIndicator({festival}) {
 }
 
 function FestivalContent({festival}) {
+	const containerRef = useRef(null);
 	const navigate = useNavigate();
 	const [tagVariation,setTagVariation] = useState({
 		value:0,
@@ -50,6 +53,8 @@ function FestivalContent({festival}) {
 	});
 	useEffect(()=>{
 		if (festival===null) {return;}
+		let element = containerRef.current;
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
 		let startDate = new Date(festival.start_date);
 		let today = new Date();
 		let endDate = new Date(festival.end_date);
@@ -71,7 +76,7 @@ function FestivalContent({festival}) {
 			})
 		}
 	},[festival]);
-	return <div className="festivalDetail">
+	return <div className="festivalDetail" ref={containerRef}>
 		{/* 상단 제목 */}
 		<div className="top">
 			<div className="tagAndLike">
@@ -176,9 +181,11 @@ function FestivalContent({festival}) {
 }
 
 export default function PageFestivalDetail({}) {
+	const navigate = useNavigate();
 	const { festivalId } = useParams(); //festivalId
 	const [ festival,setFestival ] = useState(null);
 	useEffect(()=>{
+		window.scrollTo(0,0);
 		if (!festivalId) {return;}
 		getFestivalDetail({
 			festivalId:festivalId
@@ -195,10 +202,11 @@ export default function PageFestivalDetail({}) {
 				{
 					festival
 					?<FestivalContent festival={festival}/>
-					:<></>
+					:<Loading></Loading>
 				}
 				
 			</div>
 		</div>
+		<GoBack/>
 	</>
 }

@@ -46,7 +46,7 @@ export default function FestivalScrollLoader({onChange,festivalPeriodType,festiv
 			}
 		}	
 
-	},[festivalPeriodType,festivalSortMethod,dateValue,getFavorites,userId]);
+	},[festivalPeriodType,festivalSortMethod,dateValue,getFavorites,userId,config.language]);
 	//스크롤다운 콜백
 	useEffect(()=>{
 		const downCallback = ()=>{

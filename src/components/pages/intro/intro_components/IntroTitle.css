@@ -1,6 +1,7 @@
 .IntroTitle{
-    width: 1050px;
-    margin : 0 auto;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .IntroTitle_box{
     width: 380px;
@@ -10,7 +11,15 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+	/* @media screen and (max-width:1439px) {
+		width: 200px;
+		height: 80px;
+	} */
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * ( 160 / 400 ));
+		height: calc( 100vw * ( 64 / 400 ));
+	}
 }
 .IntroTitle_innerbox{
     position: relative;
@@ -20,6 +29,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+	/* @media screen and (max-width:1439px) {
+		width: 180px;
+		height: 60px;
+	} */
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * ( 144 / 400 ));
+		height: calc( 100vw * ( 48 / 400 ));
+	}
 }
 .IntroTitle_crossbox{
     position: absolute;
@@ -30,6 +47,14 @@
     height: 48px;
     background-color: #050819;
     border-radius: 999px;
+	/* @media screen and (max-width:1439px) {
+		width: 240px;
+		height: 32px;
+	} */
+	@media screen and (max-width:1023px) {
+		width: calc( 100vw * ( 192 / 400 ));
+		height: calc( 100vw * ( 24 / 400 ));
+	}
 }
 .IntroTitle_title{
     text-align: center;
@@ -39,4 +64,12 @@
     margin:0;
     line-height: 48px;
     font-family: 'BookkBold';
+	/* @media screen and (max-width:1439px) {
+		font-size: 20px;
+		line-height: 32px;
+	} */
+	@media screen and (max-width:1023px) {
+		font-size: calc( 100vw * ( 16 / 400 ));
+		line-height: calc( 100vw * ( 24 / 400 ));
+	}
 }

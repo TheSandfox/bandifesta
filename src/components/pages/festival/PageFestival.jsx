@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom"
 import SubFestivalGallery from "./SubFestivalGallery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubFestivalSchedule from "./SubFestivalSchedule";
 import { SsangTab, SsangTabContainer } from "../../generic/SsangTab";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
 import TopBanner from "../../generic/TopBanner";
+import GoTop from "../../generic/GoTop";
 
-export default function PageFestival({}) {
+export default function PageFestival({handleConfig}) {
 	const { tabName } = useParams();
 	const [tabState,setTabState] = useState(0);
 	const handleTabState = {
@@ -15,12 +16,15 @@ export default function PageFestival({}) {
 		}
 	}
 	let jsx = <></>
+	useEffect(()=>{
+		window.scrollTo(0,0);
+	},[])
 	switch (tabName) {
 		case 'gallery':
-			jsx = <SubFestivalGallery handleTabState={handleTabState} index={0}/>
+			jsx = <SubFestivalGallery handleTabState={handleTabState} index={0} handleConfig={handleConfig}/>
 			break;
 		case 'schedule':
-			jsx = <SubFestivalSchedule handleTabState={handleTabState} index={1}/>
+			jsx = <SubFestivalSchedule handleTabState={handleTabState} index={1} handleConfig={handleConfig}/>
 			break;
 		default:
 	}
@@ -43,5 +47,6 @@ export default function PageFestival({}) {
 				</div>
 			</div>
 		</div>
+		<GoTop/>
 	</>
 }

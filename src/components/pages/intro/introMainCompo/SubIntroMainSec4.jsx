@@ -8,7 +8,7 @@ export default function SubIntroMainSec4({ }) {
 				<div></div>
 			</div>
 			<h2>별빛 산책로</h2>
-			<div>
+			<div className="jido">
 				<img src="/bandifesta/assets/jido.png" alt="별빛산책로" />
 			</div>
 			<div className="SubIntroMainSec4_stroll">

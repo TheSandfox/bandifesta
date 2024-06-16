@@ -1,11 +1,15 @@
 .SubIntroPreservation_sec3{
     font-family: 'BookkBold';
-    font-size: 24px;
     padding: 30px 0 70px;
     display: grid;
-    grid-template-columns: 220px 770px;
+    grid-template-columns: 22fr 77fr;
     grid-template-rows: repeat(3, auto);
     grid-column-gap: 60px;
+	font-size: 16px;
+	@media screen and (max-width:1023px) {
+		grid-column-gap: calc(100vw * ( 8 / 400 ));
+		font-size: calc(100vw * ( 12 / 400 ));
+	}
 }
 .SubIntroPreservation_sec3>div:first-child,.SubIntroPreservation_sec3>div:nth-child(2){
     border-top: 2px solid var(--color-main);

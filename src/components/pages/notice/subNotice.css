@@ -1,0 +1,15 @@
+/* 버튼 상위 div */
+.btnWrap{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 17px;
+}
+.btnWrap>div{
+    display: inline-block;
+}
+
+/* 페이지네이션 */
+/* faqpage.css에서 옮기기 */
+
+/* 버튼: 글쓰기, 수정, 삭제, 목록  */

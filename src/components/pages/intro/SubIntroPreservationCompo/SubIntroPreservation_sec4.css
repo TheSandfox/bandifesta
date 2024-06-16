@@ -1,17 +1,24 @@
 .SubIntroPreservation_sec4>div{
     padding :30px 10px;
     font-family: "BookkBold";
-    font-size: 24px;
-    line-height: 44px;
+    line-height: 24px;
     border-top: 2px solid var(--color-main);
     border-bottom: 2px solid var(--color-main);
     margin-top: 30px;
+	font-size: 16px;
+	@media screen and (max-width:1023px) {
+		font-size: calc(100vw * ( 12 / 400 ));
+		line-height: calc(100vw * ( 18 / 400 ));
+	}
 }
 .SubIntroPreservation_sec4_bottom_cont{
-    font-family: "BookkThin";
     font-size: 16px;
-    font-weight: 400;
-    padding-top : 30px;
     line-height: 36px;
-    margin-bottom: 70px;
+    padding: 30px 0 70px;
+    font-family: "BookkThin";
+	@media screen and (max-width:1023px) {
+		font-size: calc(100vw * ( 10 / 400 ));
+		line-height: calc(100vw * ( 18 / 400 ));
+		padding: calc(100vw * ( 10 / 400 )) 0 calc(100vw * ( 30 / 400 ));
+	}
 }

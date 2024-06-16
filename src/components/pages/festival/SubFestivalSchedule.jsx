@@ -25,7 +25,7 @@ function d2S(val) {
 	return '';
 }
 
-export default function SubFestivalSchedule({handleTabState,index}) {
+export default function SubFestivalSchedule({handleTabState,index,handleConfig}) {
 	const itemsPerPage = 6;
 	const [listPage,setListPage] = useState(0);
 	const now = new Date();
@@ -50,30 +50,10 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 	const total = useMemo(()=>{
 		return Math.floor(festivals.length/itemsPerPage) - 1;
 	},[festivals]);
-	//페이지핸들링
-	const handlePageNum = {
-		get:()=>{
-			return pageNum;
-		},
-		set:(val)=>{
-			setPageNum(val);
-		}
-	}
-	const handleListPage = {
-		next:()=>{
-			if (listPage<total) {
-				setListPage(listPage+1);
-			}
-		},
-		prev:()=>{
-			if (listPage>0) {
-				setListPage(listPage-1);
-			}
-		}
-	}
 	//상위 컴포넌트 
 	useEffect(()=>{
 		handleTabState.set(index);
+		handleConfig.setFestivalView('schedule');
 	},[])
 	const dateChangeCallback = (val)=>{
 		setTargetDate(val);
@@ -107,7 +87,7 @@ export default function SubFestivalSchedule({handleTabState,index}) {
 		<FestivalScrollLoader
 			onChange={setFestivals}
 			festivalPeriodType={1}
-			festivalSortMethod={0}
+			festivalSortMethod={1}
 			containerRef={containerRef}
 			dateValue={parseInt(targetDate)}
 		/>

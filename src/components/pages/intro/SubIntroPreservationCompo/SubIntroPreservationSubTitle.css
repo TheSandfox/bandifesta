@@ -9,7 +9,10 @@
     justify-content: center;
 }
 .SubIntroPreservationSubTitle h5{
-    font-size: 32px;
+    font-size: 20px;
     font-family: 'BookkBold';
     font-weight: 400;
+	@media screen and (max-width:1023px) {
+		font-size: calc(100vw * ( 12 / 400 ));
+	}
 }
