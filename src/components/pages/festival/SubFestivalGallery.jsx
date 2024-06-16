@@ -36,7 +36,7 @@ export default function SubFestivalGallery({handleTabState,index,handleConfig}) 
 		getFestivalPeriodTypes({language:config.language},(response)=>{
 			setFestivalPeriodTypes(response.data);
 		})
-	},[]);
+	},[config.language]);
 	useEffect(()=>{
 		//정렬방식들 불러오고 아래로
 		getFestivalSortMethods({language:config.language},(response)=>{
@@ -45,8 +45,12 @@ export default function SubFestivalGallery({handleTabState,index,handleConfig}) 
 	},[festivalPeriodTypes]);
 	useEffect(()=>{
 		//배열이 준비되면
-		setFestivalPeriodType(0);
-		setFestivalSortMethod(0);
+		if (festivalPeriodType===null) {
+			setFestivalPeriodType(0);
+		}
+		if (festivalSortMethod===null) {
+			setFestivalSortMethod(0);
+		}
 	},[festivalSortMethods])
 	//
 	return <div ref={containerRef} className="subFestivalGallery">

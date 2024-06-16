@@ -45,6 +45,7 @@ function LikeIndicator({festival}) {
 }
 
 function FestivalContent({festival}) {
+	const config = useContext(configContext);
 	const infoTextRef = useRef(null);
 	const containerRef = useRef(null);
 	const navigate = useNavigate();
@@ -52,6 +53,54 @@ function FestivalContent({festival}) {
 		value:0,
 		string:''
 	});
+	//
+	let localeString = [
+		'진행중',
+		'예정',
+		'마감',
+		'진행기간',
+		'장소',
+		'주최',
+		'홈페이지',
+		'문의전화',
+		'전시내용',
+		'오시는 길',
+		'목록으로'
+	];
+	//
+	switch (config.language) {
+	case 'Eng' :
+		localeString = [
+			'ongoing',
+			'scheduled',
+			'expired',
+			'Duration',
+			'Location',
+			'Organizer',
+			'Website',
+			'Contact Number',
+			'Description',
+			'Directions',
+			'Back'
+		];
+		break;
+	case 'Jpn' :
+		localeString = [
+			'進行中',
+			'予定',
+			'終了',
+			'期間',
+			'場所',
+			'主催',
+			'ホームページ',
+			'問い合わせ電話番号',
+			'内容',
+			'アクセス',
+			'戻る'
+		];
+		break;
+	}
+	//
 	useEffect(()=>{
 		if (festival===null) {return;}
 		let element = containerRef.current;
@@ -63,22 +112,22 @@ function FestivalContent({festival}) {
 		if(startDate>today) {
 			setTagVariation({
 				value:1,
-				string:'예정'
+				string:localeString[1]
 			})
-		} else if(endDate<today) {
+		} else if(endDate<=today) {
 			setTagVariation({
 				value:2,
-				string:'마감'
+				string:localeString[2]
 			})
 		} else {
 			setTagVariation({
 				value:0,
-				string:'진행중'
+				string:localeString[0]
 			})
 		}
 		//인포
 		infoTextRef.current.innerHTML = festival.infotext;
-	},[festival]);
+	},[festival,config.language]);
 	return <div className="festivalDetail" ref={containerRef}>
 		{/* 상단 제목 */}
 		<div className="top">
@@ -109,7 +158,7 @@ function FestivalContent({festival}) {
 				{/* 진행기간 */}
 				<div className="descriptionRow">
 					<div className="left fontMain">
-						진행기간
+						{localeString[3]}
 					</div>
 					<div className="right fontMain">
 						{festival.start_date}~{festival.end_date}
@@ -118,7 +167,7 @@ function FestivalContent({festival}) {
 				{/* 장소 */}
 				<div className="descriptionRow">
 					<div className="left fontMain">
-						장소
+						{localeString[4]}
 					</div>
 					<div className="right fontMain">
 						{festival.eventplace}
@@ -127,7 +176,7 @@ function FestivalContent({festival}) {
 				{/* 주최 */}
 				<div className="descriptionRow">
 					<div className="left fontMain">
-						주최
+						{localeString[5]}
 					</div>
 					<div className="right fontMain">
 						{festival.sponsor1}
@@ -141,7 +190,7 @@ function FestivalContent({festival}) {
 				{/* 홈페이지 */}
 				<div className="descriptionRow">
 					<div className="left fontMain">
-						홈페이지
+						{localeString[6]}
 					</div>
 					<div className="right fontMain" dangerouslySetInnerHTML={{__html: festival.homepage.replace('홈페이지 ','')}}>
 
@@ -150,7 +199,7 @@ function FestivalContent({festival}) {
 				{/* 문의전화 */}
 				<div className="descriptionRow">
 					<div className="left fontMain">
-						문의전화
+						{localeString[7]}
 					</div>
 					<div className="right fontMain">
 						{festival.tel}
@@ -159,7 +208,7 @@ function FestivalContent({festival}) {
 				{/* 전시내용 */}
 				<div className="descriptionRow">
 					<div className="left fontMain">
-						전시내용
+						{localeString[8]}
 					</div>
 					<div className="right fontMain" ref={infoTextRef}>
 						{/* {festival.infotext} */}
@@ -169,7 +218,7 @@ function FestivalContent({festival}) {
 		</div>
 		{/* 꾸글지도 */}
 		<div className="bottom">
-			<div className="fontSubTitle">오시는 길</div>
+			<div className="fontSubTitle">{localeString[9]}</div>
 			{festival
 				?<GoogleMapComponent 
 					mapX={festival.map_x} 
@@ -178,7 +227,7 @@ function FestivalContent({festival}) {
 				/>
 				:<></>
 			}
-			<GenericButton to={'/festival/gallery'}>목록으로</GenericButton>
+			<GenericButton to={'/festival/gallery'}>{localeString[10]}</GenericButton>
 		</div>
 	</div>
 }

@@ -98,7 +98,7 @@ function FestivalCard({festival,disableTag,userId}) {
 				value:1,
 				string:localeString[1]
 			})
-		} else if(endDate<today) {
+		} else if(endDate<=today) {
 			setTagVariation({
 				value:2,
 				string:localeString[2]
