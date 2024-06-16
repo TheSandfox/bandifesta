@@ -16,6 +16,7 @@
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	font-weight: bold;
 	gap: calc( 100vw * (16 / 400) );
 }
 
@@ -108,7 +109,6 @@
 .festivalDetail .descriptionRow {
 	display: flex;
 	gap: 23px;
-	font-weight: bold;
 	line-height: 29px;
 	@media screen and (max-width:1439px) {
 		gap: 15px;
@@ -124,6 +124,7 @@
 }
 
 .festivalDetail .descriptionRow>.left {
+	font-weight: bold;
 	border-bottom: 1px solid #ccc;
 	display: flex;
 	justify-content: center;

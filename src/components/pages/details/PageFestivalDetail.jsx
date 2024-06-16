@@ -45,6 +45,7 @@ function LikeIndicator({festival}) {
 }
 
 function FestivalContent({festival}) {
+	const infoTextRef = useRef(null);
 	const containerRef = useRef(null);
 	const navigate = useNavigate();
 	const [tagVariation,setTagVariation] = useState({
@@ -75,6 +76,8 @@ function FestivalContent({festival}) {
 				string:'진행중'
 			})
 		}
+		//인포
+		infoTextRef.current.innerHTML = festival.infotext;
 	},[festival]);
 	return <div className="festivalDetail" ref={containerRef}>
 		{/* 상단 제목 */}
@@ -158,8 +161,8 @@ function FestivalContent({festival}) {
 					<div className="left fontMain">
 						전시내용
 					</div>
-					<div className="right fontMain">
-						{festival.infotext}
+					<div className="right fontMain" ref={infoTextRef}>
+						{/* {festival.infotext} */}
 					</div>
 				</div>
 			</div>

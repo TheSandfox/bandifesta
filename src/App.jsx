@@ -175,7 +175,7 @@ function App() {
 				        {/*페이지들*/}
 				        <Route path={'/main'} 			element={<PageMain/>}/>
 				        <Route path={'/intro/:tabName'} element={<PageIntro/>}/>
-				        <Route path={'/course'} element={<PageCourse/>}/>
+				        <Route path={'/course/:tabName'} element={<PageCourse/>}/>
 				        <Route path={'/notice/:tabName'} element={<PageNotice/>}/>
 				        <Route path={'/festival/:tabName'} element={<PageFestival handleConfig={handleConfig}/>}/>
 				        <Route path={'/my/:tabName'} element={<PageMy handleConfig={handleConfig}/>}/>

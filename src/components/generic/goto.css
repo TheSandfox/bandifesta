@@ -1,4 +1,5 @@
 .goto {
+	user-select: none;
 	cursor: pointer;
 	position: fixed;
 	right: 32px;

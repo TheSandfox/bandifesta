@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Course from "./course_tap/Course";
 import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../generic/LeftTab";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
+import { useParams } from "react-router-dom";
 export default function PageCourse({}) {
-	const [currentSet, setCurrentSet] = useState("min40");
+	const params = useParams();
+	const [currentSet, setCurrentSet] = useState(params.tabName||"min40");
 
 	const handleTabState = (set) => {
 		setCurrentSet(set);
 	};
+
+	useEffect(()=>{
+		handleTabState(params.tabName);
+	},[params.tabName])
 
 	return (
 		<>

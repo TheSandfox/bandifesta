@@ -69,6 +69,7 @@
 	appearance: none;
 	position: relative;
 	padding-left: 16px;
+	outline: none;
 	@media screen and (max-width:1023px) {
 		padding-left: calc( 100vw * (16 / 400));
 		width: calc( 100vw * (130 / 400));

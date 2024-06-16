@@ -22,7 +22,7 @@ function LeftTab({children,to,active,onClick}) {
 
 function LeftTabContainer({children}) {
 	const [top, setTop] = useState(0);
-	const offsetY = 240
+	const offsetY = 280
 	useEffect(() => {
 		const handleScroll = () => {
 			const scrollTop = window.scrollY - offsetY;

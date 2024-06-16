@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './header.css';
 import './mymenu.css';
+import './submenu.css';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { loginRequest } from "/src/api_utils/loginUtil"
 import GenericIconButton from '../generic/GenericIconButton';
@@ -205,40 +206,147 @@ function MyMenu({handleConfig}) {
 	</> 
 }
 
+function SubMenu({displaySubMenu,setDisplaySubMenu}) {
+	const containerRef = useRef(null);
+	return <div 
+		className={`subMenu${displaySubMenu?'':' hidden'}`} 
+		ref={containerRef}
+		onMouseLeave={()=>{setDisplaySubMenu(false);}}>
+		{/* 소개 */}
+		<div className='subMenuContainer'>
+			<Link className='subMenuItem fontSubTitle' to={'/intro/main'} onClick={()=>{setDisplaySubMenu(false)}}>
+				행사 소개
+			</Link>
+			<Link className='subMenuItem fontSubTitle' to={'/intro/preservation'} onClick={()=>{setDisplaySubMenu(false)}}>
+				예매 안내
+			</Link>
+			<Link className='subMenuItem fontSubTitle' to={'/intro/location'} onClick={()=>{setDisplaySubMenu(false)}}>
+				오시는 길
+			</Link>
+		</div>
+		{/* 코스 */}
+		<div className='subMenuContainer'>
+			<Link className='subMenuItem fontSubTitle' to={'/course/min40'} onClick={()=>{setDisplaySubMenu(false)}}>
+				아이와 함께
+			</Link>
+			<Link className='subMenuItem fontSubTitle' to={'/course/min60'} onClick={()=>{setDisplaySubMenu(false)}}>
+				가족과 함께
+			</Link>
+			<Link className='subMenuItem fontSubTitle' to={'/course/min90'} onClick={()=>{setDisplaySubMenu(false)}}>
+				연인과 함께
+			</Link>
+		</div>
+		{/* 알려드 */}
+		<div className='subMenuContainer'>
+			<Link className='subMenuItem fontSubTitle' to={'/notice/main'} onClick={()=>{setDisplaySubMenu(false)}}>
+				공지사항
+			</Link>
+			<Link className='subMenuItem fontSubTitle' to={'/notice/faq'} onClick={()=>{setDisplaySubMenu(false)}}>
+				자주하는 질문
+			</Link>
+		</div>
+		{/* 축제 */}
+		<div className='subMenuContainer'>
+			<Link className='subMenuItem fontSubTitle' to={'/festival/gallery'} onClick={()=>{setDisplaySubMenu(false)}}>
+				전체보기
+			</Link>
+			<Link className='subMenuItem fontSubTitle' to={'/festival/schedule'} onClick={()=>{setDisplaySubMenu(false)}}>
+				달력으로 보기
+			</Link>
+		</div>
+	</div>
+}
+
 export default function Header({handleConfig}) {
-	return <header>
-		{/* <div className={'innerbox'}> */}
-			<Link to={'/main'}>
-				<div className='headerLogo'>
+	const yPositionRef = useRef(0);
+	const headerRef = useRef(null);
+	const config = useContext(configContext);
+	const [displaySubMenu,setDisplaySubMenu] = useState(false);
+	//스크롤 콜백& y좌표 초기화
+	useEffect(()=>{
+		yPositionRef.current = window.scrollY;
+		const scrollCallback = (e)=>{
+			const element = headerRef.current;
+			if (window.scrollY>=element.offsetHeight) {
+				//헤더보다 밑으로 내려옴
+				element.classList.add('alter');
+			} else {
+				//헤더보다 위에있음
+				element.classList.remove('alter');
+			}
+
+			if (window.scrollY > yPositionRef.current) {
+				//스크롤 다운임
+				element.classList.add('hidden');
+				setDisplaySubMenu(false);
+			} else {
+				//스크롤 업임
+				element.classList.remove('hidden');
+			}
+			yPositionRef.current = window.scrollY;
+		}
+		window.addEventListener('scroll',scrollCallback);
+		
+		return ()=>{
+			window.removeEventListener('scroll',scrollCallback);
+		}
+	},[])
+	return <div className='headerDummy'>
+		<header ref={headerRef}>
+			{
+				config.language==='Kor'
+				?<Link to={'/main'}>
+					<div className='headerLogo'>
+						<img src='/bandifesta/assets/logo1.png' alt='대한민국 밤산책 로고'/>
+					</div>
+				</Link>
+				:<div className='headerLogo'>
 					<img src='/bandifesta/assets/logo1.png' alt='대한민국 밤산책 로고'/>
 				</div>
-			</Link>
-			<div className='headerMiddleNav'>
+			}
+			{
+				config.language==='Kor'
+				?<div className='headerMiddleNav'>
 				<Link 
 					className={'navItem fontSubTitle'} 
-					to={'/intro/main'}>
+					to={'/intro/main'}
+					onMouseEnter={()=>{setDisplaySubMenu(true);}}
+					/* onClick={()=>{setDisplaySubMenu(false)}} */>
 					경복궁별빛야행
 				</Link>
 				<Link 
 					className={'navItem fontSubTitle'} 
-					to={'/course'}>
+					to={'/course/min40'}
+					onMouseEnter={()=>{setDisplaySubMenu(true);}}
+					/* onClick={()=>{setDisplaySubMenu(false)}} */>
 					경복궁나들이
 				</Link>
 				<Link 
 					className={'navItem fontSubTitle'} 
-					to={'/notice/main'}>
+					to={'/notice/main'}
+					onMouseEnter={()=>{setDisplaySubMenu(true);}}
+					/* onClick={()=>{setDisplaySubMenu(false)}} */>
 					알려드립니다
 				</Link>
 				<Link 
 					className={'navItem fontSubTitle active'} 
-					to={'/festival/gallery'}>
+					to={'/festival/gallery'}
+					onMouseEnter={()=>{setDisplaySubMenu(true);}}
+					/* onClick={()=>{setDisplaySubMenu(false)}} */>
 					축제둘러보기
 				</Link>
-			</div>
+				</div>
+				:<></>
+			}
 			<div className='headerContext'>
+				{
+					config.language==='Kor'
+					?<MyMenu handleConfig={handleConfig}/>
+					:<></>
+				}
 				<LanguageSelector handleConfig={handleConfig}/>
-				<MyMenu handleConfig={handleConfig}/>
 			</div>
-		{/* </div> */}
-	</header>
+		</header>
+		<SubMenu displaySubMenu={displaySubMenu} setDisplaySubMenu={setDisplaySubMenu}/>
+	</div>
 }

@@ -8,7 +8,7 @@ export default function GoBack() {
 
 		</div>
 		<div className='title fontMain'>
-			뒤로<br/>가기
+			목록<br/>으로
 		</div>
 	</div>
 }

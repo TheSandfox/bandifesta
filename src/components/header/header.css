@@ -1,33 +1,28 @@
-header {
-	/* position: fixed; */
-	top:0;
-	left: 0;
+.headerDummy {
+	position: relative;
 	width: 100%;
-	background-color: var(--color-main);
 	height: var(--header-height);
-	z-index: 13789;
+	background-color: var(--color-main);
 }
 
 header {
-	/* height: 100%; */
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: var(--header-height);
+	background-color: var(--color-main);
+	z-index: 32768;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: var(--header-padding);
+	transition: transform 0.25s;
 }
-/* header>.innerbox {
-	height: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 32px;
-	@media screen and (max-width:1439px) {
-		padding: 0 16px;
-	}
-	@media screen and (max-width:1023px) {
-		padding: 0 calc(100vw * (16 / 400));
-	}
-} */
+
+header.hidden.alter {
+	transform: translateY(-100%);
+}
 
 .headerLogo {
 	font-size:0;
@@ -58,17 +53,30 @@ header {
 }
 
 .headerMiddleNav .navItem {
-	font-weight: bold;
+	/* font-weight: bold; */
 	color: var(--color-white);
+	transition: 0.25s;
+	width: 130px;
+	text-align: center;
+}
+
+.headerMiddleNav .navItem:hover {
+	/* font-weight: bold; */
+	color: var(--color-sub);
 }
 
 .headerMiddleNav .navItem.active {
 	color: var(--color-sub);
 }
 
+.headerMiddleNav .navItem.active:hover {
+	filter: drop-shadow(0 0 2px var(--color-sub));
+}
+
 .headerContext {
 	width: 144px;
 	display: flex;
+	flex-direction: row-reverse;
 	justify-content: space-between;
 	align-items: center;
 	@media screen and (max-width:1439px) {
@@ -134,6 +142,7 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-weight: initial;
 	padding: 4px 16px;
 	transition: 0.25s;
 }

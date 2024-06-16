@@ -27,7 +27,7 @@ function SceneObject() {
 			sunColor: 0x000033,
 			waterColor: 0x000033,
 			distortionScale: 1.5,
-			fog: true,
+			fog: false,
 			format: three.encoding
 		}
 	},[waterNormals]);

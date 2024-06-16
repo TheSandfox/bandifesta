@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
+import GoTop from "../../generic/GoTop";
 
 export default function PageIntro({}) {
 	const { tabName } = useParams();
@@ -55,6 +56,7 @@ export default function PageIntro({}) {
 				</div>
 			</div>
 		</div>
+		<GoTop/>
 	</>
 	);
 }
