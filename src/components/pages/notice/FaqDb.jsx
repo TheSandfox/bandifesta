@@ -87,8 +87,8 @@ const reducer = (state, action)=>{
         case "search" : //검색
             return{
                 ...state,
-                FaqDb : state.datas.filter((item)=>{return(
-                    item.tit.includes(action.tit) ||
+                datas : state.datas.filter((item)=>{return(
+                    item.tit.includes(action.text) ||
                     item.txt.includes(action.text)
                 )})
             }

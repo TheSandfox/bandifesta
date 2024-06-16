@@ -17,9 +17,9 @@ export default function FAQPageList({ setPage, currentItems, setIdxs, leng, answ
     
     // const [btn, setBtn] = useState(false);
 
-    // const detailOne = (idx) => {
-    //     setIdxs(idx);
-    // };
+    const detailOne = (idx) => {
+        setIdxs(idx);
+    };
 
     // function removeBtn(){
     //     if(window.confirm(`문의 내용을 정말 삭제하시겠습니까?`)){

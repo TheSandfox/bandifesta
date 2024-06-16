@@ -1,7 +1,7 @@
 import { useState, useReducer, useRef, useMemo, useCallback, useEffect, createContext, useContext } from 'react'
 import { FaqDb, reducer } from './FaqDb'
 // import { configContext } from "../../../App";
-import SearchBox from './SearchBox'
+import FaqSearchBox from './faqSearchBox'
 import FAQPageList from './FAQPageList'
 import PageFAQWrite from '../details/PageFAQWrite'
 import PageFAQEdit from '../details/PageFAQEdit'
@@ -56,10 +56,10 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 		}
 
 	// 검색 기능
-	const searchWord = (tit)=>{
+	const searchWord = (text)=>{
 		dispatch({
 			type : "search",
-			tit
+			text
 		})
 	}
 	const memoWord = useMemo(()=>{
@@ -76,8 +76,7 @@ export default function SubNoticeFAQ({handleTabState,index}) {
       const endOffset = itemOffset + itemsPerPage;
       setCurrentItems(datas.reverse().slice(itemOffset, endOffset)); // 10번까지 배열 자르기
       setPageCount(Math.ceil(datas.length / itemsPerPage)); //올림해서 전체 페이지 개수 구하기
-    }, [itemOffset, itemsPerPage]);
-    
+    }, [itemOffset, itemsPerPage, datas]);
     
     const handlePageClick = (event) => {
         const newOffset = event.selected * itemsPerPage % datas.length;
@@ -111,9 +110,8 @@ export default function SubNoticeFAQ({handleTabState,index}) {
 			<editContext.Provider value={memoWord}>
 				{page === 'list' &&
 						<>
-							<SearchBox />
-							{getSortList().map((data)=><FAQPageList key={data.id} {...data} setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} answer={answer} click={click} setAnswer={setAnswer}/>)}
-							{/* <FAQPageList setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} answer={answer} click={click} setAnswer={setAnswer}/> */}
+							<FaqSearchBox />
+							<FAQPageList setPage={setPage} currentItems={currentItems} setIdxs={setIdxs} answer={answer} click={click} setAnswer={setAnswer}/>
 							<Paginate  pageCount={pageCount} handlePageClick={handlePageClick}/>
 						</>
 				}

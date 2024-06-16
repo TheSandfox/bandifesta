@@ -1,16 +1,16 @@
 import { useState, useContext } from "react";
-import { editContext } from "../../../App";
+import { editContext } from "./SubNoticeFAQ";
 
-export default function SubNoticeSearch(){
+export default function FaqSearchBox(){
     
-    const {searchNotice} = useContext(editContext);
-    const [search, setSearch] = useState("");
+    const {searchWord} = useContext(editContext);
+    const [search, setSearch] = useState('');
 
     function searchChange(e){
         setSearch(e.target.value)
     }
     function searchBtn(){
-        searchNotice(search)
+        searchWord(search)
     }
 
     return <>
