@@ -270,32 +270,121 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 0;
-    height: calc(100vw * (200 / 400));
+    margin: calc(100vw * (20 / 400)) 0;
+    height: calc(100vw * (300 / 400));
+    padding: 0 calc(100vw * (20 / 400));
   }
 
   .people-image {
-    width: 50px;
+    width: calc(100vw * (60 / 400));
     position: absolute;
+    z-index: 999999999999999999999999999999999;
   }
 
   .course_gbg_spot {
     position: relative;
-    width: 100%;
+    width: calc(100vw * (312 / 400));
     height: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .course .point_spot_wrap {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    width: auto;
-    height: auto;
+    width: calc(100vw * (40 / 400));
+    height: calc(100vw * (65 / 400));
     z-index: 9999;
+    left: auto;
+    bottom: auto;
+    margin-left:calc(100vw * (38 / 400));;
+    margin-top:calc(100vw * (50/ 400));;
   }
 
+  .point_spot_wrap.min40:not(.point-end)::after {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (2 / 400));
+    width: calc(100vw * (66/ 400));
+    right: calc(100vw * (20 / 400));
+    top: calc(100vw * (12 / 400));
+    z-index: -1;
+  }
+
+  .point_spot_wrap.min40.point-09::before {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (72 / 400));
+    width: calc(100vw * (2 / 400));
+    right: 48%;
+    top: calc(-100vw * (72 / 400));
+    z-index: -1;
+  }
+  .point_spot_wrap.min60:not(.point-end):not(.point-11):not(.point-13)::after {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (2 / 400));
+    width: calc(100vw * (66/ 400));
+    right: calc(100vw * (20 / 400));
+    top: calc(100vw * (12 / 400));
+    z-index: -1;
+  }
+  .point_spot_wrap.min60.point-13::after {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (2 / 400));
+    width: calc(100vw * (66/ 400));
+    left: calc(100vw * (20 / 400));
+    top: calc(100vw * (12 / 400));
+    z-index: -1;
+  }
+  .point_spot_wrap.min60.point-02::before,.point_spot_wrap.min60.point-13::before {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (72 / 400));
+    width: calc(100vw * (2 / 400));
+    right: 48%;
+    top: calc(-100vw * (72 / 400));
+    z-index: -1;
+  }
+  .point_spot_wrap.min90:not(.point-end):not(.point-07):not(.point-12)::after {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (2 / 400));
+    width: calc(100vw * (66/ 400));
+    right: calc(100vw * (20 / 400));
+    top: calc(100vw * (12 / 400));
+    z-index: -1;
+  }
+  .point_spot_wrap.min90.point-14::before {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (2 / 400));
+    width: calc(100vw * (66/ 400));
+    left: calc(100vw * (20 / 400));
+    top: calc(100vw * (12 / 400));
+    z-index: -1;
+  }
+  .point_spot_wrap.min90.point-10::before,.point_spot_wrap.min90.point-12::before {
+    position: absolute;
+    content: "";
+    background-color: #6e6e6e;
+    height: calc(100vw * (72 / 400));
+    width: calc(100vw * (2 / 400));
+    right: 48%;
+    top: calc(-100vw * (72 / 400));
+    z-index: -1;
+  }
   .point_spot_wrap.point-end {
     width: calc(100vw * (30 / 400));
     height: auto;
@@ -326,44 +415,28 @@
   }
 
   .course_info>h3 {
-    font-size: 24px;
+    font-size: calc(100vw * (24 / 400));
   }
 
   .course_info>img {
     display: block;
-    width: 690px;
-    margin: 30px 0;
+    width: 100%;
+    margin: calc(100vw * (30 / 400)) 0;
   }
 
   .course_info>p {
     font-weight: 400;
-    font-size: 14px;
-    line-height: 32px;
+    font-size: calc(100vw * (14 / 400));
+    line-height: calc(100vw * (28 / 400));
   }
 
   .clickable-point {
     font-size: calc(100vw * (14 / 400));
   }
-
-  .point_spot_wrap:not(:last-child)::after {
+  .point_spot_wrap>.point-end.point_spot {
+    width: calc(100vw * (50 / 400));
+    height: calc(100vw * (92 / 400));
     position: absolute;
-    content: "";
-    background-color: #6e6e6e;
-    height: calc(100vw * (2 / 400));
-    width: calc(100vw * (66/ 400));
-    right: calc(100vw * (12 / 400));
-    top: calc(100vw * (12 / 400));
-    z-index: -1;
-  }
-
-  .point_spot_wrap.min40.point-09::before {
-    position: absolute;
-    content: "";
-    background-color: #6e6e6e;
-    height: calc(100vw * (38 / 400));
-    width: calc(100vw * (2 / 400));
-    right: 48%;
-    top: calc(-100vw * (38 / 400));
-    z-index: -1;
+    bottom: calc(100vw * (8 / 400));;
   }
 }

@@ -78,38 +78,38 @@ const points_1439 = {
 };
 const points_1023 = {
   min40: [
-    { id: "01", x: '20%', y: '50%' },
-    { id: "02", x: '40%', y: '50%' },
-    { id: "03", x: '60%', y: '50%' },
-    { id: "04", x: '80%', y: '50%' },
-    { id: "09", x: '80%', y: '10%' },
-    { id: "08", x: '60%', y: '10%' },
-    { id: "end", x: '40%', y: '10%' },
+    { id: "01", x: '29', y: '5' },
+    { id: "02", x: '104', y: '5' },
+    { id: "03", x: '179', y: '5' },
+    { id: "04", x: '253', y: '5' },
+    { id: "end", x:'104', y: '120' },
+    { id: "08", x: '179', y: '120' },
+    { id: "09", x: '253', y: '120' },
   ],
   min60: [
-    { id: "01", x: '20%', y: '50%' },
-    { id: "03", x: '40%', y: '50%' },
-    { id: "06", x: '60%', y: '50%' },
-    { id: "05", x: '80%', y: '50%' },
-    { id: "02", x: '80%', y: '10%' },
-    { id: "04", x: '60%', y: '10%' },
-    { id: "09", x: '40%', y: '10%' },
-    { id: "11", x: '20%', y: '10%' },
-    { id: "13", x: "0%", y: '10%' },
-    { id: "end", x: '0%', y: '0%' },
+    { id: "01", x: '29', y: '5' },
+    { id: "03", x: '104', y: '5' },
+    { id: "06", x: '179', y: '5' },
+    { id: "05", x: '253', y: '5' },
+    { id: "11", x: '29', y: '120' },
+    { id: "09", x: '104', y: '120' },
+    { id: "04", x: '179', y: '120' },
+    { id: "02", x: '253', y: '120' },
+    { id: "13", x: "29", y: '235' },
+    { id: "end", x: '104', y: '235' },
   ],
   min90: [
-    { id: "01", x: 210, y: 185 },
-    { id: "03", x: 340, y: 185 },
-    { id: "04", x: 470, y: 185 },
-    { id: "02", x: 600, y: 185 },
-    { id: "07", x: 730, y: 185 },
-    { id: "05", x: 860, y: 185 },
-    { id: "06", x: 990, y: 185 },
-    { id: "10", x: 990, y: 35 },
-    { id: "12", x: 860, y: 35 },
-    { id: "14", x: 730, y: 35 },
-    { id: "end", x: 600, y: 35 },
+    { id: "01", x: '29', y: '5' },
+    { id: "03", x: '104', y: '5' },
+    { id: "04", x: '179', y: '5' },
+    { id: "02", x: '253', y: '5'},
+    { id: "07", x: '29', y: '120' },
+    { id: "05", x: '104', y: '120' },
+    { id: "06", x: '179', y: '120' },
+    { id: "10", x: '253', y: '120' },
+    { id: "12", x: '29', y: '235' },
+    { id: "14", x: '104', y: '235' },
+    { id: "end", x: '179', y: '235' },
   ],
 };
 
@@ -162,25 +162,10 @@ function Course({ currentSet }) {
         }
       } else {
         setPoints(points_1023)
-        if (currentSet === "min40") {
-          setPosition({ x: 12, y: 35 });
-          setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("2 / 2")
+          setPosition({ x: -30, y: 5 });
+          setCourse_wrap_height("auto")
           setCurrentKey("");
           setBlackSpot("");
-        } else if (currentSet === "min60") {
-          setPosition({ x: 80, y: 185 });
-          setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("4 / 1")
-          setCurrentKey("");
-          setBlackSpot("");
-        } else {
-          setPosition({ x: 80, y: 185 });
-          setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("1 / 1")
-          setCurrentKey("");
-          setBlackSpot("");
-        }
       }
     };
 
@@ -225,29 +210,15 @@ function Course({ currentSet }) {
         }
         setPrevious(currentSet);
       } else {
-        if (currentSet === "min40") {
-          setPosition({ x: 8, y: 215 });
-          setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("2 / 1");
+          setPosition({ x: -30, y: 5 });
+          setCourse_wrap_height("auto")
           setCurrentKey("");
           setBlackSpot("");
-        } else if (currentSet === "min60") {
-          setPosition({ x: 80, y: 185 });
-          setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("3 / 2");
-          setCurrentKey("");
-          setBlackSpot("");
-        } else {
-          setPosition({ x: 80, y: 185 });
-          setPeople_height({ x: '12px', y: '33px' });
-          setCourse_wrap_height("1 / 1");
-          setCurrentKey("");
-          setBlackSpot("");
-        }
+      }
         setPrevious(currentSet);
       }
     }
-  }
+  
 
     , [currentSet, previous]);
 
@@ -279,34 +250,42 @@ function Course({ currentSet }) {
           <h2 className="fontTitle">{getCourseTitle()}</h2>
           <GenericButton onClick={tiketLink}>온라인 예약하기</GenericButton>
         </div>
-        <div className="course_wrap" style={(window.innerWidth >= 1024) ?
-          { height: `${course_wrap_height}` } : { aspectRatio: `${course_wrap_height}` }}>
-          <div className="course_gbg_spot">
+        <div className="course_wrap" style={{ height: `${course_wrap_height}`}}>
+          <div className="course_gbg_spot"
+          style={(window.innerWidth < 1024) ?
+           ( (currentSet === "min40")?
+            {justifyContent : 'end'} : 
+            {justifyContent : 'start'})
+          :{justifyContent : ""}}
+          >
             <div className="course_line_top"></div>
             <div className={`course_line_bottom ${currentSet}`}></div>
-            {/* <div className="mobile_course_line_top"></div>
-            <div className={`mobile_course_line_bottom ${currentSet}`}></div> */}
             <div>
               <img
                 src="/bandifesta/assets/people.png"
                 alt="people"
                 className="people-image"
-                style={{
-                  left: `calc(${position.x} - ${people_height.x})`,
+                style={(window.innerWidth >= 1024) ?
+                  { left: `calc(${position.x} - ${people_height.x})`,
                   bottom: `calc(${position.y} + ${people_height.y})`,
                   transitionDuration: "1s",
-                  zIndex: "999",
-                }}
+                  zIndex: "999" } : 
+                  { left: `calc(100vw * (${position.x} / 400)`,
+                  top : `calc(100vw * (${position.y} / 400)`,
+                  transitionDuration: "1s",
+                  zIndex: "999" }}
+                
               />
             </div>
             {points[currentSet].map((point, index) => (
               <div
                 key={index}
                 className={`point_spot_wrap ${currentSet} point-${point.id}`}
-                style={{ left: `${point.x}`, bottom: `${point.y}` }}
+                style={(window.innerWidth >= 1024) ?
+                  { left: `${point.x}`, bottom: `${point.y}` } : { left: `auto`, bottom: `auto` }}
                 onClick={() => ClickInfo(point.id, point.x, point.y)}
               >
-                <div
+              <div
                   className={`point_spot ${blackSpot === point.id ? "clicked" : ""
                     } point-${point.id}`}
                 >
