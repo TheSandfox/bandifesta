@@ -1,0 +1,8 @@
+.SubIntroPreservation_button{
+    display:flex;
+    justify-content:end;
+    margin-top : 35px;
+@media screen and (max-width:1023px) {
+        margin-top: calc(100vw * ( 20 / 400));
+}
+}

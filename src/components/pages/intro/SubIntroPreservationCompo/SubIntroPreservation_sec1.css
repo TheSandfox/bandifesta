@@ -3,12 +3,12 @@
 }
 .SubIntroPreservation_sec1_top{
     border-top: 2px solid var(--color-main);
-    margin-top: 70px;
+    margin-top: 35px;
     border-bottom: 2px solid var(--color-main);
     @media screen and (max-width:1023px) {
 		font-size: calc( 100vw * ( 16 / 400 ) );
 		line-height: calc( 100vw * ( 32 / 400 ) );
-        margin-top: calc( 100vw * ( 40 / 400 ) );
+        margin-top: calc( 100vw * ( 20 / 400 ) );
 	}
 }
 .SubIntroPreservation_sec1_top>div{

@@ -54,7 +54,7 @@ function FestivalLikeButton({festivalId,userId,onChange}) {
 	</div>
 }
 
-function FestivalCard({festival,disableTag,userId}) {
+function FestivalCard({festival,disableTag,userId,fontSize}) {
 	const config = useContext(configContext);
 	const navigate = useNavigate();
 	const imgElement = useRef(null);
@@ -154,7 +154,8 @@ function FestivalCard({festival,disableTag,userId}) {
 			</GenericTag>
 			</div>
 		}
-		<div className='fontSubTitle'>
+		<div className='fontSubTitle'
+			style={{fontSize : `${fontSize}px`}}>
 			{(!isNull)?festival.title:''}
 		</div>
 	</div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Course.css";
 import "../../../generic/lefttab.css";
-import GenericButton from "../../../generic/GenericButton";
+
 
 const points_1440 = {
   min40: [
@@ -248,7 +248,6 @@ function Course({ currentSet }) {
       <div className="course">
         <div className="course_top flex">
           <h2 className="fontTitle">{getCourseTitle()}</h2>
-          <GenericButton onClick={tiketLink}>온라인 예약하기</GenericButton>
         </div>
         <div className="course_wrap" style={{ height: `${course_wrap_height}`}}>
           <div className="course_gbg_spot"
