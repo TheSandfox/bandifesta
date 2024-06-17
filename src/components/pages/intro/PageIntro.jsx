@@ -3,7 +3,7 @@ import SubIntroLocation from "./SubIntroLocation";
 import SubIntroMain from "./SubIntroMain";
 import SubIntroPreservation from "./SubIntroPreservation";
 import { LeftTab, LeftTabContainer, LeftTabTitle } from "../../generic/LeftTab";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import TopBanner from "../../generic/TopBanner";
 import { MobileTab, MobileTabContainer } from "../../generic/MobileTab";
@@ -30,6 +30,10 @@ export default function PageIntro({}) {
 		break;
 		default:
 	}
+	//탭바뀌면 탑으로
+	useEffect(()=>{
+		window.scrollTo(0, 0);
+	},[tabState]);
 	return (<>
 		<TopBanner>경복궁별빛야행</TopBanner>
 		<div className="innerbox">

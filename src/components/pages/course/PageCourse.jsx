@@ -17,6 +17,10 @@ export default function PageCourse({}) {
 		handleTabState(params.tabName);
 	},[params.tabName])
 
+	//탭바뀌면 탑으로
+	useEffect(()=>{
+		window.scrollTo(0, 0);
+	},[currentSet]);
 	return (
 		<>
 			<TopBanner>경복궁나들이</TopBanner>
