@@ -170,7 +170,7 @@ function MyMenu({handleConfig}) {
 							<div className='arrow'></div>
 						</div>
 					</Link>
-					<Link to={'/course'} onClick={handleVisible.hide}>
+					<Link to={'/course/min40'} onClick={handleVisible.hide}>
 						<div className='serviceNavItem'>
 							<img className='icon' src="/bandifesta/assets/shoes.png" alt='경복궁나들이'/>
 							<div className='title fontMain'>경복궁나들이</div>
