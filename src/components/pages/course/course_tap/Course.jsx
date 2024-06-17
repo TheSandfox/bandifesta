@@ -240,9 +240,6 @@ function Course({ currentSet }) {
         return "";
     }
   };
-  const tiketLink = () => {
-    window.location.href = "https://www.ticketlink.co.kr/product/49248"; // 이동하려는 외부 URL
-  };
   return (
     <>
       <div className="course">
