@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { getFestivals } from "/src/api_utils/festivalUtil";
 import { configContext } from "/src/App";
 import React from "react";
@@ -13,6 +13,36 @@ function MainSec4() {
   const config = useContext(configContext);
   const [festivals, setFestivals] = useState([]);
   const [active, setActive] = useState(false);
+  const [fontSize, setFontSize] = useState(18)
+  const textRef = useRef()
+  
+  useEffect(() => {
+    const changeFontSize = () => {
+      if (textRef.current) {
+        const { clientWidth } = textRef.current;
+        const maxWidth = clientWidth;
+        const baseFontSize = 16;
+        let newFontSize = baseFontSize;
+
+        while (textRef.current.scrollWidth > maxWidth && newFontSize > 12) {
+          newFontSize -= 1;
+          textRef.current.style.fontSize = `${newFontSize}px`;
+        }
+
+        setFontSize(newFontSize);
+      }
+    };
+
+    changeFontSize();
+    window.addEventListener('resize', changeFontSize);
+
+    return () => {
+      window.removeEventListener('resize', changeFontSize);
+    };
+  }, []);
+
+
+
 
   useEffect(() => {
     getFestivals(
@@ -71,6 +101,7 @@ function MainSec4() {
                 <FestivalCard
                   festival={festival}
                   disableTag={true}
+                  fontSize={fontSize}
                 ></FestivalCard>
               </SwiperSlide>
             ))}
@@ -92,6 +123,7 @@ function MainSec4() {
                 <FestivalCard
                   festival={festival}
                   disableTag={true}
+                  fontSize={fontSize}
                 ></FestivalCard>
               </SwiperSlide>
             ))}

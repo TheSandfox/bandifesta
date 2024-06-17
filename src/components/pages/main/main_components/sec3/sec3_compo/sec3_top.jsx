@@ -7,7 +7,7 @@ import "swiper/css";
 function Sec3_top() {
 const Navigate = useNavigate()
 const sec3_button_festival = ()=>{
-  Navigate("/festival/gallery");
+  Navigate("/course/min40");
 }
   return (
     <>
