@@ -1,8 +1,7 @@
-# React + Vite
+주요 구현기능: 
+-express기반의 REST API별도 제작
+-서버사이드에서 주기적으로 TourAPI4.0에서 응답받은 데이터 DB에 저장
+-DB에 저장된 데이터 리스트형식으로 표시 및 무한스크롤 구현
+-카카오로그인기능 구현, 응답받은 카카오식별아이디를 pk로 사용한 테이블 구현 및 회원정보 저장기능 구현
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+DB활용이나 백엔드 어플 개발 계획은 원래 없었는데 TourAPI4.0 요청 처리 속도가 많이 느리고 원하는 필터링 기능도 제공을 하지 않아서 일단은 쓸 수 있는 모든 데이터를 DB에 쌓아놓고 활용하기로 결정하고 express랑 mysql사용법 복습해서 백엔드 어플도 개발해서 배포하게 되었습니다.(https://github.com/TheSandfox/bandifesta-rest)
